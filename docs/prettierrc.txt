@@ -1,0 +1,80 @@
+    "arrowParens": "always", 
+
+    // controls whether arrow with a single parameter should have paranthesis or not
+    // With "always"
+    const greet = (name) => console.log(`Hello, ${name}`);
+
+    // Without parentheses (confusing in some cases)
+    const greet = name => console.log(`Hello, ${name}`);
+
+
+    "bracketSpacing": true,
+     // controls spaces inside curly braces {} in object or imports
+     // true
+     const user = { name: "John", age: 25 };
+
+     // false
+     const user = {name:"John",age:25};
+
+
+
+    "endOfLine": "lf",
+    Define which type of line ending to use(Important for windows vs mac/linux differences).
+    Example:
+    Windows uses CRLF → \r\n
+    Mac/Linux uses LF → \n
+
+    Prettier converts all to LF, so Git doesn’t show fake diffs between teammates on different OSes.
+
+    "printWidth": 100,
+    sets the maximum line length before prettier wraps text to a new line 
+    //Wrapped automatically after 100 characters
+    const message = "This is a really long message that Prettier will break into multiple lines for readability.";
+
+
+    "semi": true,
+    controls whether statements end with semicolons
+    //With semicolon
+    const name = "HiTouch";
+
+    //Without semicolon
+    const name = "HiTouch"
+
+
+    "singleQuote": false,
+    use ' or " for string 
+    its false for not using single we will use double quote through out the project for strings
+
+
+    "tabWidth": 2,
+    Sets the number of spaces for indentation
+
+
+    "trailingComma": "all",
+    Adds a comma at the end of objects, arrays, or parameter list when possible
+
+    "useTabs": false,
+    Decide whether to use actual tab characters (\t) or spaces for indentation.
+
+    "jsxSingleQuote": false,
+    controls quotes inside jsx(suggested false to stick to double quote in jsx files)
+
+    "quoteProps": "as-needed",
+     Decides when to add quotes around object property names 
+     //as-needed
+    const obj = { name: "John", "user-id": 42 };
+
+    //always
+    const obj = { "name": "John", "user-id": 42 };
+
+
+    "proseWrap": "preserve",
+    controls how prettier wraps markdown or text blocks
+
+
+    "htmlWhitespaceSensitivity": "ignore",
+    DEfines how sensitive html/jsx is to whitespace chages
+
+
+    "embeddedLanguageFormatting": "auto"
+    controls whether prettier formats code inside string (like SQL,HTML,or graphQL)
