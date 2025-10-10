@@ -21,7 +21,9 @@ model User {
   phone         String   @unique
   passwordHash  String
   role          Role     @default(AGENT)
-  status        Status   @default(ACTIVE)
+  otp           String?
+  otpExpiresAt  DateTime?
+  status        Status   @default(PENDING)
   createdAt     DateTime @default(now())
   updatedAt     DateTime @updatedAt
 }
@@ -36,6 +38,7 @@ enum Status {
   ACTIVE
   INACTIVE
   SUSPENDED
+  PENDING
 }
 
 
