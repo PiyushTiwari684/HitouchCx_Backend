@@ -3,8 +3,8 @@ import helmet from 'helmet';
 import morgan from 'morgan';
 import cors from 'cors';
 import router from './src/routes/auth.js' 
+import otpRouter from "./src/routes/otp.js"
 import userRoute from "./src/routes/profile.js"
-
 import express from "express";
 
 dotenv.config();
@@ -28,6 +28,9 @@ app.get('/',(req,res)=>{
 
 app.use('/auth', router);
 
+
+// Mount OTP Routes
+app.use("/auth",otpRouter)
 
 //Protected Route
 app.use("/user",userRoute)

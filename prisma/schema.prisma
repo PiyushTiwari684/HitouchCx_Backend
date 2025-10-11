@@ -14,33 +14,46 @@ datasource db {
   url      = env("DATABASE_URL")
   directUrl = env("DIRECT_URL")
 }
-
 model User {
   id            String   @id @default(cuid())
   email         String   @unique
-  phone         String   @unique
-  passwordHash  String
+  emailVerified Boolean  @default(false)
+  phone         String?  @unique
+  phoneVerified Boolean  @default(false)
+  passwordHash  String?
   role          Role     @default(AGENT)
-  otp           String?
-  otpExpiresAt  DateTime?
   status        Status   @default(PENDING)
   createdAt     DateTime @default(now())
   updatedAt     DateTime @updatedAt
+
+  otps OTP[]
+}
+
+model OTP {
+  id        String   @id @default(cuid())
+  code      String
+  type      OTPType
+  target    String   // email or phone
+  userId    String
+  user      User     @relation(fields: [userId], references: [id])
+  expiresAt DateTime
+  consumed  Boolean  @default(false)
+  createdAt DateTime @default(now())
+}
+
+enum OTPType {
+  EMAIL
+  PHONE
 }
 
 enum Role {
   AGENT
   ADMIN
-  SUPER_ADMIN
 }
 
-enum Status {
+enum Status{
   ACTIVE
   INACTIVE
-  SUSPENDED
   PENDING
 }
-
-
-
 
