@@ -1,10 +1,10 @@
-import express from "express"
-import validator from 'validator';
 import { sendEmailOTP } from "../services/otpService.js"
 import { PrismaClient } from '@prisma/client';
 const prisma = new PrismaClient();
 const MAX_REQUESTS = 3;
 const WINDOW_MINUTES = 10;
+
+// Sending OTP to Phone/Email captured 
 const requestOtp = async (req, res) => {
 
     try {
@@ -32,26 +32,22 @@ const requestOtp = async (req, res) => {
                 data: { phone }
             })
         }
-        //Time Window in which OTP is valid
-        const cutOff = new Date(Date.now() + WINDOW_MINUTES * 60 * 1000);
-
         // count only OTPs for this type (EMAIL or PHONE)
         const recentCount = await prisma.oTP.count({
             where: {
-                userId: user.id,
+                target: email,
                 type: email ? "EMAIL" : "PHONE",
-                createdAt: { gte: cutOff },
             },
         });
-
+        console.log(recentCount)
         //Counting the number of OTPS
-        if (recentCount > MAX_REQUESTS) {
-            res.status(429).json({ message: `Max ${MAX_REQUESTS} OTPs Allowed.` })
+        if (recentCount >= MAX_REQUESTS) {
+           return res.status(429).json({ message: `Max ${MAX_REQUESTS} OTPs Allowed.` })
         }
 
         //If Email send the otp and give response
         if(email){
-          await sendEmailOTP(user);
+          await sendEmailOTP(user,WINDOW_MINUTES);
           res.json({message:"OTP Sent To Email",user:user})
         }
 
@@ -65,4 +61,54 @@ const requestOtp = async (req, res) => {
 
 }
 
-export { requestOtp };
+//Verifying OTP
+const verifyOtp = async(req,res)=>{
+    try{
+        //Extracting Email/Phone and user OTP from Request Body
+        const {email,phone,userOtp} = req.body;
+
+        //If both Email and Phone not provided
+        if(!email && !phone){
+            res.status(400).json({message:"Email/Phone required"})
+        }
+
+        //If Email is being provided
+        if(email){
+
+            //Latest Email OTP from OTP table
+            const otp = await prisma.oTP.findFirst({
+                where:{target:email},
+                orderBy:{createdAt:'desc'}
+            })
+
+            //Current Time
+
+            const presentTime = new Date(Date.now());
+
+            //If Latest Email OTP is same as User OTP
+            if(otp.code==userOtp && presentTime<otp.expiresAt){
+
+                //Update "consumed" to true of latest Email OTP
+                await prisma.oTP.update({
+                    where:{id:otp.id},
+                    data:{consumed:true}
+                })
+
+                // Update "emailVerified" to true of user sending OTP
+                await prisma.user.update({
+                    where:{id:otp.userId},
+                    data:{emailVerified:true}
+                })
+
+                res.json({message:"OTP Verified Successfully"})
+            }else{
+                res.json({error:"cannot verify"})
+            }
+        }
+    }
+    catch(error){
+        res.json({message:"Failed to verify Phone/Email OTP",error})
+    }
+}
+
+export { requestOtp,verifyOtp };

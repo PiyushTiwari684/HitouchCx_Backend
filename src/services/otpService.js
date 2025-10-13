@@ -13,13 +13,13 @@ const transporter = nodemailer.createTransport({
     }
 });
 
-async function sendEmailOTP(user) {
+async function sendEmailOTP(user,WINDOW_MINUTES) {
     try {
         // Generate a 6-digit random OTP (between 100000–999999)
         const otpCode = crypto.randomInt(100000, 999999).toString();
 
         // Set OTP expiry time to 15 minutes from now
-        const expiresAt = new Date(Date.now() + 15 * 60 * 1000);
+        const expiresAt = new Date(Date.now() + WINDOW_MINUTES * 60 * 1000);
 
         // Update the user record in the database with the new OTP and its expiry
         await prisma.oTP.create({

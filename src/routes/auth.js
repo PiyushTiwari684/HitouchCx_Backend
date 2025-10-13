@@ -2,48 +2,13 @@ import express from 'express';
 import bcrypt from 'bcrypt';
 import { PrismaClient } from '@prisma/client';
 import { generateToken } from '../utils/token.js';
-import { sendEmailOTP } from '../services/otpService.js';
-import validator from 'validator';
+import {signUp} from "../controllers/auth.js"
 
 const prisma = new PrismaClient();
 const router = express.Router();
 
 //To Review with Frontend Team
-router.post('/signup', async (req, res) => {
-  const { email, phone, password } = req.body;
-  try {
-    //Check Existing Email
-    const existingEmail = await prisma.user.findUnique({ where: { email } });
-    if (existingEmail) return res.status(400).json({ message: "User's email already exists" });
-
-    //Check Existing Phone Number
-    const existingPhone = await prisma.user.findUnique({ where: { phone } });
-    if (existingPhone) return res.status(400).json({ messasge: "User's Phone Number already exists" })
-
-    //Check Email Format
-    if (!validator.isEmail(email)) {
-      return res.status(400).json({ error: 'Invalid email format' });
-    }
-
-    //Check phone format
-    if (!validator.isMobilePhone(phone, 'any')) {
-      return res.status(400).json({ error: 'Invalid phone number' });
-    }
-
-    //Hash Password
-    const hashed = await bcrypt.hash(password, 10);
-
-    //Create a user
-    const user = await prisma.user.create({ data: { email, phone, passwordHash: hashed } });
-
-    // Send OTP (store otp & expiry in DB using sendEmailOTP function )
-    await sendEmailOTP(user);
-
-    res.json({ message: 'OTP sent to email' });
-  } catch (err) {
-    res.status(500).json({ message: "Error Occured while Sign Up", error: err.message });
-  }
-});
+router.post('/sign-up',signUp);
 
 //To Review with Frontend Team
 router.post('/verify-otp', async (req, res) => {
