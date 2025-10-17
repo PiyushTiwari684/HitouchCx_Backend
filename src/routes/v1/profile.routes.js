@@ -1,5 +1,5 @@
 import express from "express"
-import authMiddleware, { requireRole } from "../middleware/auth.js"
+import authMiddleware, { requireRole } from "../../middleware/authMiddleware.js"
 import { PrismaClient } from '@prisma/client';
 
 const prisma = new PrismaClient();
@@ -18,7 +18,7 @@ router.get("/profile",authMiddleware, requireRole('AGENT'), async(req,res)=>{
                 createdAt: true
             }
         });
-        res.json({message:"This is your profile",user})
+        res.json({message:`This is your profile and your mail is ${user.email}`,user})
     }
     catch(error){
         console.log("Error Occured",error)

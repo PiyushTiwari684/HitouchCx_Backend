@@ -2,10 +2,12 @@ import dotenv from "dotenv";
 import helmet from 'helmet';
 import morgan from 'morgan';
 import cors from 'cors';
-import authRouter from './src/routes/auth.js' 
-import otpRouter from "./src/routes/otp.js"
-import userRoute from "./src/routes/profile.js"
+import authRouter from './src/routes/v1/auth.routes.js' 
+import otpRouter from "./src/routes/v1/otp.routes.js"
+import userRoute from "./src/routes/v1/profile.routes.js"
 import express from "express";
+import passport from './src/config/passport.js'; 
+
 
 dotenv.config();
 const app = express();
@@ -15,8 +17,8 @@ const app = express();
 app.use(express.json());
 app.use(cors());
 app.use(helmet());
-// use a predefined format for morgan
 app.use(morgan('dev'));
+app.use(passport.initialize());
 
 
 // Health Check point
@@ -25,10 +27,10 @@ app.get('/',(req,res)=>{
 });
 
 // Mount auth routes
-app.use('/auth', authRouter);
+app.use('/api/v1/auth', authRouter);
 
 // Mount OTP Routes
-app.use("/otp",otpRouter)
+app.use("/api/v1/otp",otpRouter)
 
 //Protected Route
 app.use("/user",userRoute)

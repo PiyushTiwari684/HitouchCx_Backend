@@ -6,14 +6,14 @@
 
 generator client {
   provider = "prisma-client-js"
-
 }
 
 datasource db {
-  provider = "postgresql"
-  url      = env("DATABASE_URL")
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
   directUrl = env("DIRECT_URL")
 }
+
 model User {
   id            String   @id @default(cuid())
   email         String   @unique
@@ -23,6 +23,11 @@ model User {
   passwordHash  String?
   role          Role     @default(AGENT)
   status        Status   @default(PENDING)
+
+  googleId        String?  @unique
+  profilePicture  String?
+  provider        String?  @default("local") 
+
   createdAt     DateTime @default(now())
   updatedAt     DateTime @updatedAt
 
@@ -33,9 +38,9 @@ model OTP {
   id        String   @id @default(cuid())
   code      String
   type      OTPType
-  target    String   // email or phone
+  target    String // email or phone
   userId    String
-  user      User     @relation(fields: [userId], references: [id])
+  user      User     @relation(fields: [userId], references: [id],onDelete: Cascade)
   expiresAt DateTime
   consumed  Boolean  @default(false)
   createdAt DateTime @default(now())
@@ -51,9 +56,85 @@ enum Role {
   ADMIN
 }
 
-enum Status{
+enum Status {
   ACTIVE
   INACTIVE
   PENDING
 }
 
+model Agent {
+  id             String          @id @default(cuid())
+  firstName      String
+  middleName     String?
+  lastName       String?
+  email          String          @unique
+  phone          String          @unique
+  dob            DateTime
+  qualifications Qualification[]
+
+  hasExperience Boolean      @default(false)
+  experiences   Experience[]
+
+  isEmployed Boolean     @default(false)
+  employment Employment?
+
+  skills    String[]
+  languages String[]
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Qualification {
+  id          String            @id @default(cuid())
+  agentId     String
+  agent       Agent             @relation(fields: [agentId], references: [id], onDelete: Cascade)
+  type        QualificationType
+  degree      String?
+  field       String?
+  institution String?
+  startYear   Int?
+  endYear     Int?
+  grade       String?
+  createdAt   DateTime          @default(now())
+  updatedAt   DateTime          @updatedAt
+}
+
+enum QualificationType {
+  HIGH_SCHOOL
+  DIPLOMA
+  BACHELORS
+  MASTERS
+  PHD
+  CERTIFICATION
+}
+
+model Experience {
+  id      String @id @default(cuid())
+  agentId String
+  agent   Agent  @relation(fields: [agentId], references: [id], onDelete: Cascade)
+
+  yearsOfExperience Int
+  jobTitle          String
+  industry          String
+  vertical          String
+  companyName       String?
+
+  startDate DateTime
+  endDate   DateTime
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+//Employment means Current Employment of Agent
+model Employment {
+  id      String @id @default(cuid())
+  agentId String @unique
+  agent   Agent  @relation(fields: [agentId], references: [id], onDelete: Cascade)
+
+  companyName String?
+  role        String?
+  industry    String
+
+  startDate DateTime
+  endDate   DateTime?
+}

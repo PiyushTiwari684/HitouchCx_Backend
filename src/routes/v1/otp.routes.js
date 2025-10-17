@@ -1,5 +1,5 @@
 import express from 'express';
-import { requestOtp,verifyOtp } from '../controllers/otp.js';
+import { requestOtp,verifyOtp } from '../../controllers/v1/otp.controller.js';
 const router = express.Router();
 
 //Send OTP to email

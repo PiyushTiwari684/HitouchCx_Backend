@@ -9,6 +9,7 @@ function authMiddleware(req, res, next) {
 
   try {
     const decoded = verifyToken(token);
+    console.log(decoded.status)
     if (decoded.status !== 'ACTIVE') {
       return res.status(403).json({ message: 'Account inactive' });
     }
