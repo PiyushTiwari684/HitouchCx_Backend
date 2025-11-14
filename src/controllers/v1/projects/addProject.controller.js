@@ -19,8 +19,6 @@ const addProject = async (req, res) => {
       totalBudget,
       currency,
       projectDeadline,
-      category,
-      workMode,
       clientId
     } = req.body;
 
@@ -56,8 +54,6 @@ const addProject = async (req, res) => {
         totalBudget: parseFloat(totalBudget),
         currency: currency || 'INR',
         projectDeadline: new Date(projectDeadline),
-        category: category || 'BPO',
-        workMode: workMode || 'REMOTE',
         status: 'PLANNING',
         clientId
       },

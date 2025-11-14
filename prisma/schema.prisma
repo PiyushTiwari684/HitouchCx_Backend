@@ -132,12 +132,13 @@ model Qualification {
   agentId   String
   agent     Agent             @relation(fields: [agentId], references: [id], onDelete: Cascade)
   type      QualificationType
-  field     String?
+  field     QualificationField?
   startYear Int?
   endYear   Int?
   createdAt DateTime          @default(now())
   updatedAt DateTime          @updatedAt
 }
+
 
 enum QualificationType {
   HIGH_SCHOOL
@@ -148,6 +149,68 @@ enum QualificationType {
   CERTIFICATION
 }
 
+enum QualificationField {
+  CS_IT
+  ENGINEERING
+  DATA_AI
+  DESIGN
+  BUSINESS
+  MARKETING
+  FINANCE
+  HR
+  MEDIA_COMM
+  LANGUAGE
+  HEALTHCARE
+  EDUCATION
+  LAW
+  SCIENCE
+  OTHER
+}
+
+enum Industry {
+  BPO
+  CONTENT
+  TECH
+  MARKETING
+  SALES
+  FINANCE
+  HR
+  EDUCATION
+  HEALTHCARE
+  ECOMMERCE
+  LOGISTICS
+  IT_SERVICES
+  AI_ML
+  DATA_SCIENCE
+  OTHER
+}
+
+enum Vertical {
+  INBOUND_CALL
+  CHAT_SUPPORT
+  MULTI_CHANNEL_SUPPORT
+  PROMPT_ENGINEERING
+  DATA_ANNOTATION
+  MODEL_EVALUATION
+  FINE_TUNING
+  TRANSCRIPTION
+  TRANSLATION
+  UI_UX
+  DOCUMENTATION
+  SEO
+  SOCIAL_MEDIA
+  EMAIL_MARKETING
+  COPYWRITING
+  QA_TESTING
+  API_INTEGRATION
+  DATA_MIGRATION
+  DEVOPS
+  FIELD_VISIT
+  HARDWARE_AUDIT
+  TECH_SUPPORT
+  OTHER
+}
+
 model Experience {
   id      String @id @default(cuid())
   agentId String
@@ -156,8 +219,8 @@ model Experience {
   experienceMin Int //Lower value of a range eg. 5 in (5-10) experience
   experienceMax Int //Higher value of a range eg. 10 in (5-10) experience
   jobTitle      String?
-  industry      String?
-  vertical      String?
+  industry      Industry?
+  vertical      Vertical?
   companyName   String?
 
   startDate DateTime
@@ -173,8 +236,8 @@ model Employment {
   agent   Agent  @relation(fields: [agentId], references: [id], onDelete: Cascade)
 
   jobTitle    String?
-  industry    String?
-  vertical    String?
+  industry    Industry?
+  vertical    Vertical?
   companyName String?
 
   startDate DateTime?
@@ -256,7 +319,7 @@ model Project {
   // Basic Info
   title       String // "Customer Support Team - Q4 2024"
   description String // Detailed project requirements
-  department  String? // "Customer Support", "Sales", "Technical Support"
+  department  Industry? // "Customer Support", "Sales", "Technical Support"
 
   // Resource Requirements
   totalHoursNeeded Int // Total hours needed across all opportunities (e.g., 500 hours)
