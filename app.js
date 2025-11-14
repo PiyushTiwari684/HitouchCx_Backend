@@ -5,6 +5,12 @@ import cors from 'cors';
 import authRouter from './src/routes/v1/auth.routes.js' 
 import otpRouter from "./src/routes/v1/otp.routes.js"
 import userRoute from "./src/routes/v1/profile.routes.js"
+import agentRouter from "./src/routes/v1/agent.routes.js"
+import platformRouter from "./src/routes/v1/platform.routes.js"
+import clientRouter from "./src/routes/v1/client.routes.js"
+import opportunityRouter from "./src/routes/v1/opportunity.routes.js"
+import projectRouter from "./src/routes/v1/project.routes.js"
+
 import express from "express";
 import passport from './src/config/passport.js'; 
 
@@ -23,7 +29,7 @@ app.use(passport.initialize());
 
 // Health Check point
 app.get('/',(req,res)=>{
-    res.status(200).send("Hitouch backend running with supabase postgresql");
+    res.status(200).send("reboo8 backend running with supabase postgresql");
 });
 
 // Mount auth routes
@@ -31,6 +37,22 @@ app.use('/api/v1/auth', authRouter);
 
 // Mount OTP Routes
 app.use("/api/v1/otp",otpRouter)
+
+//Mount Agents Routes
+app.use("/api/v1/agent",agentRouter)
+
+//Mount Platform Specific Routes
+app.use("/api/v1/platform",platformRouter)
+
+//Mount Client Specific Routes
+app.use("/api/v1/client",clientRouter)
+
+//Mount Client's Project Routes
+app.use("/api/v1/project",projectRouter)
+
+//Mount Opportuntiy Specific Routes
+app.use("/api/v1/opportunity",opportunityRouter)
+
 
 //Protected Route
 app.use("/user",userRoute)

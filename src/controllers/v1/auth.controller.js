@@ -57,16 +57,16 @@ const signUp = async (req, res) => {
 const logIn = async(req,res)=>{
     try{
         const {email,phone,password}  = req.body;
-        if((!email && !phone) && !password){
+        if((!email && !phone) || !password){
             return res.status(400).json({error:"Enter all fields"})
         }
 
         
 
         //Checking User Credentials function
-        function authenticate(user){
+      async function authenticate(user){
                if(user){
-                const valid =  bcrypt.compare(user.passwordHash,password);
+                const valid = await bcrypt.compare(password,user.passwordHash);
                 
                 if(valid && user.status=="ACTIVE"){
                     const token = generateToken({id:user.id,role:user.role,status:user.status})
@@ -81,12 +81,12 @@ const logIn = async(req,res)=>{
             const user = await prisma.user.findUnique({
                 where:{email}
             })
-            authenticate(user);
+            await authenticate(user);
         }else if((phone && validator.isMobilePhone(phone))){
              const user = await prisma.user.findUnique({
                 where:{phone}
             })
-            authenticate(user);
+           await authenticate(user);
         }
 
 
