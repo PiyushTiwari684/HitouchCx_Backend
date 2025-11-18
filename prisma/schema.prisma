@@ -1,0 +1,142 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
+}
+
+model User {
+  id    String @id @default(uuid())
+  email String @unique
+  phone String @unique
+
+  role   Role          @default(AGENT)
+  status AccountStatus @default(ACTIVE)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+enum Role {
+  AGENT
+  CLIENT
+  ADMIN
+}
+
+enum AccountStatus {
+  ACTIVE
+  SUSPENDED
+  DELETED
+}
+
+// model AgentProfile {
+//   id                String    @id @default(uuid())
+//   userId            String    @unique
+//   user              User      @relation(fields: [userId], references: [id])
+
+//   firstName         String?
+//   middleName        String?
+//   lastName          String?
+//   dob               DateTime?
+
+//   education         Json?      // list of educational qualifications
+//   experience        Json?      // list of job experiences
+//   employmentStatus  Json?      // current job details
+//   certifications    Json?      // certificate name + file links
+
+//   skills            String[]   // array of skills
+//   languages         String[]   // array of known languages
+
+//   resumeUrl         String?
+//   isAutoParsed      Boolean    @default(false)
+//   parsedAt          DateTime?
+
+//   createdAt         DateTime   @default(now())
+//   updatedAt         DateTime   @updatedAt
+// }
+
+model Agent {
+  id             String          @id @default(cuid())
+  firstName      String
+  middleName     String?
+  lastName       String?
+  email          String          @unique
+  phone          String          @unique
+  dob            DateTime
+  qualifications Qualification[]
+
+  hasExperience Boolean      @default(false)
+  experiences   Experience[]
+
+  isEmployed Boolean     @default(false)
+  employment Employment?
+
+  skills    String[]
+  languages String[]
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Qualification {
+  id          String            @id @default(cuid())
+  agentId     String
+  agent       Agent             @relation(fields: [agentId], references: [id], onDelete: Cascade)
+  type        QualificationType
+  degree      String?
+  field       String?
+  institution String?
+  startYear   Int?
+  endYear     Int?
+  grade       String?
+  createdAt   DateTime          @default(now())
+  updatedAt   DateTime          @updatedAt
+}
+
+enum QualificationType {
+  HIGH_SCHOOL
+  DIPLOMA
+  BACHELORS
+  MASTERS
+  PHD
+  CERTIFICATION
+}
+
+model Experience {
+  id      String @id @default(cuid())
+  agentId String
+  agent   Agent  @relation(fields: [agentId], references: [id], onDelete: Cascade)
+
+  yearsOfExperience Int
+  jobTitle          String
+  industry          String
+  vertical          String
+  companyName       String?
+
+  startDate DateTime
+  endDate   DateTime
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+//Employment means Current Employment of Agent
+model Employment {
+  id      String @id @default(cuid())
+  agentId String @unique
+  agent   Agent  @relation(fields: [agentId], references: [id], onDelete: Cascade)
+
+  companyName String?
+  role        String?
+  industry    String
+
+  startDate DateTime
+  endDate   DateTime?
+}
