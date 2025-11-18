@@ -1,8 +1,35 @@
 import express from 'express';
-import { PrismaClient } from '@prisma/client';
+import {
+  PrismaClient,
+  ServiceCategory,
+  ProcessType,
+  PaymentType,
+  OpportunityStatus,
+  VisibilityLevel,
+  LanguageProficiency,
+  ProjectStatus
+} from '@prisma/client';
+
+
 const prisma = new PrismaClient();
 
-//POST an Opportunity Linked to Project
+// Helper to safely create a Set from a Prisma enum (avoids crash if undefined)
+const toSet = (e) => e ? new Set(Object.values(e)) : new Set();
+
+/* Prisma is an object like : const Prisma = {
+  ServiceCategory: { BPO: 'BPO', CONTENT: 'CONTENT', TECH: 'TECH' }
+  // ...
+} so toSet converts those object to the set of respective values of these enums */
+
+const ServiceCategoryValues     = toSet(ServiceCategory);
+const ProcessTypeValues         = toSet(ProcessType);
+const PaymentTypeValues         = toSet(PaymentType);
+const OpportunityStatusValues   = toSet(OpportunityStatus);
+const VisibilityLevelValues     = toSet(VisibilityLevel);
+const LanguageProficiencyValues = toSet(LanguageProficiency);
+const ProjectStatusValues       = toSet(ProjectStatus);
+
+
 const addOpportunity = async (req, res) => {
   try {
     const {
@@ -10,155 +37,103 @@ const addOpportunity = async (req, res) => {
       description,
       category,
       processType,
-      workMode,
       deadline,
-      duration,
-      durationType,
-      budget,
+      payAmount,
       currency,
       paymentType,
       status,
       visibility,
-      projectId
+      projectId,
+      minimumSkills,
+      requiredLanguages,
+      minimumQualifications,
+      minimumL1Score,
+      preferredExperience
     } = req.body;
+    console.log(ServiceCategoryValues)
 
-    // Validation
-    if (!title || !description || !processType || !deadline || !duration || !budget || !projectId) {
-      return res.status(400).json({
-        success: false,
-        message: 'Title, description, processType, deadline, duration, budget, and clientId are required'
-      });
+    if (!title || !description || !processType || !deadline || !payAmount || !projectId) {
+      return res.status(400).json({ error: 'Missing required fields.' });
     }
 
-    // Check if project exists
-    const existingProject = await prisma.project.findUnique({
-      where: { id: projectId }
-    });
-
-    if (!existingProject) {
-      return res.status(404).json({
-        success: false,
-        message: 'Project not found'
-      });
+    // Validate enums
+    if (category && !ServiceCategoryValues.has(category)) {
+      return res.status(400).json({ error: 'Invalid category.' });
+    }
+    if (!ProcessTypeValues.has(processType)) {
+      return res.status(400).json({ error: 'Invalid processType.' });
+    }
+    if (paymentType && !PaymentTypeValues.has(paymentType)) {
+      return res.status(400).json({ error: 'Invalid paymentType.' });
+    }
+    if (status && !OpportunityStatusValues.has(status)) {
+      return res.status(400).json({ error: 'Invalid status.' });
+    }
+    if (visibility && !VisibilityLevelValues.has(visibility)) {
+      return res.status(400).json({ error: 'Invalid visibility.' });
+    }
+    if (minimumL1Score && !LanguageProficiencyValues.has(minimumL1Score)) {
+      return res.status(400).json({ error: 'Invalid minimumL1Score.' });
     }
 
-    // Validate enum values
-    const validCategories = ['BPO', 'CONTENT', 'TECH'];
-    const validWorkModes = ['REMOTE', 'ON_SITE', 'HYBRID'];
-    const validDurationTypes = ['HOURS', 'DAYS', 'WEEKS', 'MONTHS'];
-    const validPaymentTypes = ['FIXED', 'HOURLY', 'MILESTONE'];
-    const validStatuses = ['OPEN', 'IN_PROGRESS', 'ON_HOLD', 'CANCELLED', 'COMPLETED', 'CLOSED'];
-    const validVisibilityLevels = ['PUBLIC', 'PRIVATE', 'DRAFT'];
-
-    if (category && !validCategories.includes(category)) {
-      return res.status(400).json({
-        success: false,
-        message: 'Invalid category. Must be one of: BPO, CONTENT, TECH'
-      });
+    const deadlineDate = new Date(deadline);
+    if (isNaN(deadlineDate.getTime())) {
+      return res.status(400).json({ error: 'Invalid deadline date.' });
     }
 
-    if (workMode && !validWorkModes.includes(workMode)) {
-      return res.status(400).json({
-        success: false,
-        message: 'Invalid workMode. Must be one of: REMOTE, ON_SITE, HYBRID'
-      });
-    }
+    const skillsArray = Array.isArray(minimumSkills) ? minimumSkills : [];
+    const languagesArray = Array.isArray(requiredLanguages) ? requiredLanguages : [];
+    const normalizedPayAmount = typeof payAmount === 'number' ? payAmount.toString() : payAmount;
 
-    if (durationType && !validDurationTypes.includes(durationType)) {
-      return res.status(400).json({
-        success: false,
-        message: 'Invalid durationType. Must be one of: HOURS, DAYS, WEEKS, MONTHS'
-      });
-    }
+    const result = await prisma.$transaction(async (tx) => {
+      const project = await tx.project.findUnique({ where: { id: projectId } });
+      if (!project) throw new Error('PROJECT_NOT_FOUND');
 
-    if (paymentType && !validPaymentTypes.includes(paymentType)) {
-      return res.status(400).json({
-        success: false,
-        message: 'Invalid paymentType. Must be one of: FIXED, HOURLY, MILESTONE'
-      });
-    }
-
-    if (status && !validStatuses.includes(status)) {
-      return res.status(400).json({
-        success: false,
-        message: 'Invalid status'
-      });
-    }
-
-    if (visibility && !validVisibilityLevels.includes(visibility)) {
-      return res.status(400).json({
-        success: false,
-        message: 'Invalid visibility. Must be one of: PUBLIC, PRIVATE, DRAFT'
-      });
-    }
-
-    // Validate budget is positive
-    if (budget <= 0) {
-      return res.status(400).json({
-        success: false,
-        message: 'Budget must be greater than 0'
-      });
-    }
-
-    // Validate duration is positive
-    if (duration <= 0) {
-      return res.status(400).json({
-        success: false,
-        message: 'Duration must be greater than 0'
-      });
-    }
-
-    // Create new opportunity
-    const newOpportunity = await prisma.opportunity.create({
-      data: {
-        title,
-        description,
-        category: category || 'BPO',
-        processType,
-        workMode: workMode || 'REMOTE',
-        deadline,
-        duration,
-        durationType: durationType || 'DAYS',
-        budget,
-        currency: currency || 'INR',
-        paymentType: paymentType || 'HOURLY',
-        status: status || 'OPEN',
-        visibility: visibility || 'PUBLIC',
-        projectId
-      },
-      include: {
-        project: {
-          select: {
-            id: true,
-            title: true,
-            category: true,
-            projectDeadline: true,
-            agentsNeeded:true
-          }
-        }
+      if (project.status === 'PLANNING') {
+        await tx.project.update({
+          where: { id: projectId },
+          data: { status: 'ACTIVE' }
+        });
       }
+
+      const opportunity = await tx.opportunity.create({
+        data: {
+          title,
+          description,
+          category: category || 'BPO',
+          processType,
+          deadline: deadlineDate,
+            payAmount: normalizedPayAmount,
+          currency: currency || 'INR',
+          paymentType: paymentType || 'FIXED',
+          status: status || 'OPEN',
+          visibility: visibility || 'PUBLIC',
+          projectId,
+          minimumSkills: skillsArray,
+          requiredLanguages: languagesArray,
+          minimumQualifications: minimumQualifications || undefined,
+          minimumL1Score: minimumL1Score || 'A1',
+          preferredExperience: preferredExperience || undefined
+        }
+      });
+
+      return opportunity;
     });
 
-    return res.status(201).json({
-      success: true,
-      message: 'Opportunity created successfully',
-      data: newOpportunity
-    });
-
-
-  } catch (error) {
-    console.error('Error creating opportunity:', error);
-    return res.status(500).json({
-      success: false,
-      message: 'Internal server error',
-      error: error.message
-    });
+    return res.status(201).json({ data: result });
+  } catch (err) {
+    if (err.message === 'PROJECT_NOT_FOUND') {
+      return res.status(404).json({ error: 'Project not found.' });
+    }
+    return res.status(500).json({ error: 'Internal server error.', detail: err.message });
   }
 };
 
 
+export { addOpportunity };
 
 
 
 
-export { addOpportunity};
+
+
