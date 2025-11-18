@@ -132,9 +132,12 @@ model Qualification {
   agentId   String
   agent     Agent             @relation(fields: [agentId], references: [id], onDelete: Cascade)
   type      QualificationType
+  degree    String?
   field     QualificationField?
+  institution String?
   startYear Int?
   endYear   Int?
+  grade     String?
   createdAt DateTime          @default(now())
   updatedAt DateTime          @updatedAt
 }
@@ -216,8 +219,10 @@ model Experience {
   agentId String
   agent   Agent  @relation(fields: [agentId], references: [id], onDelete: Cascade)
 
-  experienceMin Int //Lower value of a range eg. 5 in (5-10) experience
-  experienceMax Int //Higher value of a range eg. 10 in (5-10) experience
+  experienceMin Int?  //Lower value of a range eg. 5 in (5-10) experience
+  experienceMax Int? //Higher value of a range eg. 10 in (5-10) experience
+  yearsOfExperience Int?
+
   jobTitle      String?
   industry      Industry?
   vertical      Vertical?
@@ -236,7 +241,7 @@ model Employment {
   agent   Agent  @relation(fields: [agentId], references: [id], onDelete: Cascade)
 
   jobTitle    String?
-  industry    Industry?
+  industry    Industry? 
   vertical    Vertical?
   companyName String?
 

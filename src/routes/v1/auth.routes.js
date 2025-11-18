@@ -3,7 +3,7 @@ import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken'
 import { PrismaClient } from '@prisma/client';
 import { generateToken } from '../../utils/token.js';
-import {signUp,logIn} from "../../controllers/v1/auth.controller.js"
+import {signUp,logIn} from "../../controllers/v1/auth/auth.controller.js"
 import passport from '../../config/passport.js';
 
 

@@ -6,7 +6,8 @@ import {uploadAgentPhoto,deleteAgentPhoto} from "../../controllers/v1/agent/phot
 import {addBankDetails,getBankDetails} from "../../controllers/v1/agent/bankDetails.controller.js"
 import {getAgentById} from "../../controllers/v1/agent/getAgent.controller.js"
 import upload from "../../middleware/imageUpload.js"  // ← Add this line!
-import axios from "axios";
+import uploadResume from "../../middleware/multer.middleware.js";
+import { extractResume } from "../../controllers/v1/resume/resume.controller.js"
 
 const router = express.Router();
 
@@ -29,6 +30,10 @@ router.post("/:agentId/upload-photo",
   upload.single('profilePhoto'),  // Middleware
   uploadAgentPhoto
 )
+
+//Add Resume Auto Fill Route
+router.post("/resume-upload", uploadResume.single("resume"), extractResume);
+
 //Delete Agent Profile Photo
 router.delete("/:agentId/delete-photo",deleteAgentPhoto)
 
