@@ -10,7 +10,7 @@ generator client {
 
 datasource db {
   provider  = "postgresql"
-  url       = env("DATABASE_URL")
+  url       = env("DUMMY_DB_URL")
 }
 //Proctoring and Assesment Schema starts at line 885
 //Client and Opportunity Schema starts at line 297
