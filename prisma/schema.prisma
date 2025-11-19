@@ -13,6 +13,7 @@ datasource db {
   url       = env("DATABASE_URL")
 }
 //Proctoring and Assesment Schema starts at line 885
+//Client and Opportunity Schema starts at line 297
 //~~~~~~~~~ Auth ~~~~~~~~~
 
 enum AuthProvider {
@@ -132,7 +133,7 @@ model Qualification {
   id        String            @id @default(cuid())
   agentId   String
   agent     Agent             @relation(fields: [agentId], references: [id], onDelete: Cascade)
-  type      QualificationType
+  type      QualificationType 
   degree    String?
   field     QualificationField?
   institution String?
@@ -222,12 +223,10 @@ model Experience {
 
   experienceMin Int?  //Lower value of a range eg. 5 in (5-10) experience
   experienceMax Int? //Higher value of a range eg. 10 in (5-10) experience
-  yearsOfExperience Int?
-
   jobTitle      String?
-  industry      Industry?
-  vertical      Vertical?
-  companyName   String?
+  industry      Industry? //To have a fixed set of industry data for better recommendations
+  vertical      Vertical? //To have a fixed set of vertical data for better recommendations
+  companyName   String?   
 
   startDate DateTime
   endDate   DateTime
