@@ -12,8 +12,14 @@ datasource db {
   provider  = "postgresql"
   url       = env("DUMMY_DB_URL")
 }
-//Proctoring and Assesment Schema starts at line 885
-//Client and Opportunity Schema starts at line 297
+//ctrl + G to go to a particular line
+//~~~~~~ Proctoring and Assessment starts at line 891 ~~~~~~~~
+//~~~~~~ Client and Project starts at line 301 ~~~~~~~
+//~~~~~~ Opportunity starts at line 375 ~~~~~~~
+//~~~~~~ Time Slots and related starts at line 608 ~~~~~~~
+//~~~~~~ Review and Dispute starts at line 710 ~~~~~~~
+//~~~~~~ Payment and related starts at line 841 ~~~~~~~
+
 //~~~~~~~~~ Auth ~~~~~~~~~
 
 enum AuthProvider {
