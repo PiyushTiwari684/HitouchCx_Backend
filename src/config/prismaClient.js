@@ -1,7 +1,8 @@
-import { PrismaClient } from "../generated/prisma/index.js";
+import { PrismaClient } from '@prisma/client';
 
-const db = new PrismaClient();
+// Reuse one instance across hot reloads (nodemon)
+const g = globalThis;
+const prisma = g.prisma || new PrismaClient();
+if (!g.prisma) g.prisma = prisma;
 
-export default db;
-
-
+export default prisma;
