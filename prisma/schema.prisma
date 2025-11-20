@@ -9,9 +9,8 @@ generator client {
 }
 
 datasource db {
-  provider  = "postgresql"
-  url       = env("DATABASE_URL")
-  directUrl = env("DIRECT_URL")
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
 }
 
 //~~~~~~~~~ Auth ~~~~~~~~~
@@ -128,20 +127,19 @@ enum WorkShift {
 }
 
 model Qualification {
-  id        String            @id @default(cuid())
-  agentId   String
-  agent     Agent             @relation(fields: [agentId], references: [id], onDelete: Cascade)
-  type      QualificationType
-  degree    String?
-  field     QualificationField?
+  id          String              @id @default(cuid())
+  agentId     String
+  agent       Agent               @relation(fields: [agentId], references: [id], onDelete: Cascade)
+  type        QualificationType
+  degree      String?
+  field       QualificationField?
   institution String?
-  startYear Int?
-  endYear   Int?
-  grade     String?
-  createdAt DateTime          @default(now())
-  updatedAt DateTime          @updatedAt
+  startYear   Int?
+  endYear     Int?
+  grade       String?
+  createdAt   DateTime            @default(now())
+  updatedAt   DateTime            @updatedAt
 }
-
 
 enum QualificationType {
   HIGH_SCHOOL
@@ -219,14 +217,14 @@ model Experience {
   agentId String
   agent   Agent  @relation(fields: [agentId], references: [id], onDelete: Cascade)
 
-  experienceMin Int?  //Lower value of a range eg. 5 in (5-10) experience
-  experienceMax Int? //Higher value of a range eg. 10 in (5-10) experience
+  experienceMin     Int? //Lower value of a range eg. 5 in (5-10) experience
+  experienceMax     Int? //Higher value of a range eg. 10 in (5-10) experience
   yearsOfExperience Int?
 
-  jobTitle      String?
-  industry      Industry?
-  vertical      Vertical?
-  companyName   String?
+  jobTitle    String?
+  industry    Industry?
+  vertical    Vertical?
+  companyName String?
 
   startDate DateTime
   endDate   DateTime
@@ -241,7 +239,7 @@ model Employment {
   agent   Agent  @relation(fields: [agentId], references: [id], onDelete: Cascade)
 
   jobTitle    String?
-  industry    Industry? 
+  industry    Industry?
   vertical    Vertical?
   companyName String?
 
@@ -336,7 +334,6 @@ model Project {
   currency        String   @default("INR")
   projectDeadline DateTime // Final completion date
 
-
   // Status
   status ProjectStatus @default(PLANNING)
 
@@ -380,7 +377,7 @@ model Opportunity {
   processType ProcessType //How work happens/kind of work to be done
 
   //Time & Duration  
-  deadline     DateTime //Apply before this date 
+  deadline DateTime //Apply before this date 
 
   //Payment
   payAmount   Decimal     @db.Decimal(10, 2) //Money to be paid for the work
@@ -391,26 +388,24 @@ model Opportunity {
   status     OpportunityStatus @default(OPEN) //Lifecycle of Opportunity(IN_PROGRESS, COMPLETED, CANCELLED)
   visibility VisibilityLevel   @default(PUBLIC) // Opportunity visible to : (PUBLIC, PRIVATE etc)
 
-
   //Project that this opportunity is connected to
   projectId String // FK to brand
   project   Project @relation(fields: [projectId], references: [id], onDelete: Cascade)
 
-
   //Skills/Qualifications/Scores Required(To be given by client/admin)
 
-  minimumSkills String[]
-  requiredLanguages String[]
+  minimumSkills         String[]
+  requiredLanguages     String[]
   minimumQualifications Json?
-  minimumL1Score LanguageProficiency @default(A1)
-  preferredExperience Json?
+  minimumL1Score        LanguageProficiency @default(A1)
+  preferredExperience   Json?
 
   //Relationships
-  applications GigApplication[]
+  applications        GigApplication[]
   clientScheduleSlots ClientScheduleSlot[]
 
-  createdAt  DateTime          @default(now())
-  updatedAt  DateTime          @updatedAt
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 }
 
 enum ServiceCategory {
@@ -420,13 +415,13 @@ enum ServiceCategory {
 }
 
 enum ProcessType {
-  INBOUND_CALL      // Voice support
-  CHAT_SUPPORT      // Live chat / text
-  DATA_ANNOTATION   // Labeling / tagging
+  INBOUND_CALL // Voice support
+  CHAT_SUPPORT // Live chat / text
+  DATA_ANNOTATION // Labeling / tagging
   PROMPT_ENGINEERING // LLM prompt & refinement
-  TECH_SUPPORT      // General technical help
-  QA_TESTING        // Quality / testing tasks
-  DOCUMENTATION     // Writing / knowledge base
+  TECH_SUPPORT // General technical help
+  QA_TESTING // Quality / testing tasks
+  DOCUMENTATION // Writing / knowledge base
 }
 
 enum DurationType {
@@ -455,7 +450,7 @@ enum LanguageProficiency {
 }
 
 enum PaymentType {
-  FIXED  //Fixed Pay for the work
+  FIXED //Fixed Pay for the work
   HOURLY //Hourly Pay for the work
   MILESTONE_BASIS //Pay for a particular milestone in opportunity
 }
@@ -492,9 +487,8 @@ model GigApplication {
   dispute     Dispute[]
 
   // Timestamps
-  appliedAt   DateTime     @default(now())
-  hireDateAt  DateTime? //Date & Time at which the agent is succesfully accepted for the gig
-  
+  appliedAt  DateTime  @default(now())
+  hireDateAt DateTime? //Date & Time at which the agent is succesfully accepted for the gig
 }
 
 model SelectedGig {
@@ -514,11 +508,10 @@ model SelectedGig {
   submittedWorks SubmittedWork[] //Works/Deliverables of particular gig
   reviews        Review[]
   disputes       Dispute[] //Disputes related to any gig work
-  AgentWorkSlot AgentWorkSlot?
+  AgentWorkSlot  AgentWorkSlot?
 
-  createdAt     DateTime       @default(now())
-  updatedAt     DateTime       @updatedAt
-  
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 }
 
 enum GigStatus {
@@ -710,7 +703,7 @@ model Review {
   reviewType ReviewType // Type of review
 
   // Optional foreign keys (only one should be set based on reviewType)
-  submittedWorkId String?        
+  submittedWorkId String?
   submittedWork   SubmittedWork? @relation(fields: [submittedWorkId], references: [id], onDelete: Cascade)
 
   selectedGigId String?
@@ -724,7 +717,7 @@ model Review {
 
   // Who is reviewing
   reviewerId   String? // ID of the person giving the review
-  reviewerType ReviewerType  @default(ADMIN) // "AGENT", "CLIENT", "ADMIN", "SYSTEM"
+  reviewerType ReviewerType @default(ADMIN) // "AGENT", "CLIENT", "ADMIN", "SYSTEM"
 
   // Review content
   rating   Int? // 1-5 stars (required)
@@ -756,13 +749,14 @@ enum ReviewCategory {
   SUPPORT
   ASSESSMENT
 }
+
 enum ReviewerType {
-  AGENT        // An agent reviewing (e.g., peer or client performance)
-  CLIENT       // Client providing feedback
-  ADMIN        // Platform admin / moderator
-  SYSTEM       // Auto-generated/system evaluation
-  QA           // Dedicated quality/audit reviewer
-  TRAINER      // L&D / onboarding evaluator
+  AGENT // An agent reviewing (e.g., peer or client performance)
+  CLIENT // Client providing feedback
+  ADMIN // Platform admin / moderator
+  SYSTEM // Auto-generated/system evaluation
+  QA // Dedicated quality/audit reviewer
+  TRAINER // L&D / onboarding evaluator
 }
 
 model Dispute {
@@ -777,7 +771,6 @@ model Dispute {
 
   gigApplicationId String?
   gigApplication   GigApplication? @relation(fields: [gigApplicationId], references: [id], onDelete: Cascade)
-
 
   submittedWorkId String?
   submittedWork   SubmittedWork? @relation(fields: [submittedWorkId], references: [id], onDelete: Cascade)
@@ -857,7 +850,7 @@ model Payment {
   method   PaymentMethod @default(BANK_TRANSFER)
 
   //Relations
-  submittedWorkId String        
+  submittedWorkId String
   submittedWork   SubmittedWork @relation(fields: [submittedWorkId], references: [id])
 
   //NEFT Transfer Details (Essential)
