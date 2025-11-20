@@ -150,7 +150,6 @@ model Qualification {
   updatedAt DateTime          @updatedAt
 }
 
-
 enum QualificationType {
   HIGH_SCHOOL
   DIPLOMA

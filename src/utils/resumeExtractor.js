@@ -51,10 +51,13 @@ export async function extractWithGemini(text) {
       ${text}
     `;
 
-    const result = await ai.models.generateContent({
-      model: "models/gemini-2.5-flash",
-      contents: [{ parts: [{ text: prompt }] }]
-    });
+    // const result = await ai.models.generateContent({
+    //   model: "models/gemini-2.5-flash",
+    //   contents: [{ parts: [{ text: prompt }] }]
+    // });
+    
+    const model = ai.getGenerativeModel({ model: "gemini-2.0-flash-exp" });
+    const result = await model.generateContent(prompt);
 
     // Log the full response for debugging
     console.log("Gemini raw result:", JSON.stringify(result, null, 2));
@@ -80,26 +83,5 @@ export async function extractWithGemini(text) {
     console.error("Gemini API Error:", err);
     throw new Error("Failed to structure resume data with Gemini");
   }
- //2. Try the regex-based approach 
-  try {
-    const regexResult = extractResumeData(text);
-    // if atleast one key field is found return it 
-
-    if(regexResult && regexResult.fullName || regexResult.email || regexResult.phone || regexResult.education || regexResult.experience || regexResult.skills){
-      return regexResult;
-    }
-
-
-    //  If at least one key field is extract
-  } catch (error) {
-    console.error("Regex Extraction Error:",error);
-  }
-
-  try {
-    return await extractWithOpenSourceApi(text);
-  } catch (error) {
-    console.error("Open-Source API Error:", error);
-    return {error}
-  }
-
+ 
 }

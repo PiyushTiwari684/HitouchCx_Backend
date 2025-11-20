@@ -7,3 +7,5 @@ const router = express.Router();
 router.post("/resume-upload", upload.single("resume"), extractResume);
 
 export default router;
+
+// http//localhost:5000/api/agent/resume-upload

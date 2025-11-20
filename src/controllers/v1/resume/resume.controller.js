@@ -5,7 +5,7 @@ import pdfjsLib from "pdfjs-dist/legacy/build/pdf.js"; // for older versions of 
 import { extractWithGemini } from "../../../utils/resumeExtractor.js";
 
 export const extractResume = async(req,res) =>{
-  // get the path of the uploaded file from the multer 
+  // get the path of the uploaded file from the multer
 
   const filePath = req.file?.path;
   console.log("FilePath:", filePath);
@@ -61,6 +61,12 @@ export const extractResume = async(req,res) =>{
   }else{
     throw new ApiError(400," Unsupported file format. Please upload a pdf or word document ");
   } 
+  
+  try {
+    fs.unlinkSync(filePath);
+  } catch (error) {
+    console.warn("Could not delete temp file:", error.message);
+  }
 
   // After extracting textContent, call Gemini to structure the data
   try {

@@ -2,6 +2,7 @@ import express from 'express';
 import { PrismaClient } from '@prisma/client';
 const prisma = new PrismaClient();
 
+
 // POST an Application when Agent applies for an Opportunity
 const gigApplication = async (req, res) => {
   try {

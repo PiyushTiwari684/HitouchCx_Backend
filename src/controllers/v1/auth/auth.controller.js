@@ -4,6 +4,7 @@ import validator from 'validator';
 import bcrypt from 'bcrypt';
 const prisma = new PrismaClient();
 
+
 //Sign Up Controller
 const signUp = async (req, res) => {
     try {
@@ -53,6 +54,7 @@ const signUp = async (req, res) => {
     }
 }
 
+
 //Log In Controller
 const logIn = async(req,res)=>{
     try{
@@ -88,8 +90,6 @@ const logIn = async(req,res)=>{
             })
            await authenticate(user);
         }
-
-
     }
     catch(error){
         res.status(500).json({error:"User failed to login.",error})
@@ -98,3 +98,5 @@ const logIn = async(req,res)=>{
 
 
 export { signUp,logIn }
+
+ 

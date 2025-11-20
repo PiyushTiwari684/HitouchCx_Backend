@@ -34,6 +34,7 @@ router.post("/:agentId/upload-photo",
 //Add Resume Auto Fill Route
 router.post("/resume-upload", uploadResume.single("resume"), extractResume);
 
+
 //Delete Agent Profile Photo
 router.delete("/:agentId/delete-photo",deleteAgentPhoto)
 
