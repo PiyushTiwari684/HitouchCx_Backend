@@ -2,7 +2,8 @@ import fs from "fs";
 import mammoth from "mammoth";
 import ApiError from "../../../utils/ApiError.js";
 import pdfjsLib from "pdfjs-dist/legacy/build/pdf.js"; // for older versions of pdfjs-dist
-import { extractWithGemini } from "../../../utils/resumeExtractor.js";
+import { extractResumeWithFallback } from "../../../utils/resumeExtractor.js";
+
 
 export const extractResume = async(req,res) =>{
   // get the path of the uploaded file from the multer
@@ -70,7 +71,7 @@ export const extractResume = async(req,res) =>{
 
   // After extracting textContent, call Gemini to structure the data
   try {
-    const structuredData = await extractWithGemini(textContent);
+    const structuredData = await extractResumeWithFallback(textContent);
     // Respond with both the file name and the structured data
     res.json({
       file: req.file.originalname,
