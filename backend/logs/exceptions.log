@@ -1,0 +1,63 @@
+2025-11-03 12:13:37 [error]: TypeError: app.use() requires a middleware function
+    at Function.use (C:\Users\tiwar\Desktop\HitouchCX_Projects\ProctoringChecks\backend\node_modules\express\lib\application.js:213:11)
+    at file:///C:/Users/tiwar/Desktop/HitouchCX_Projects/ProctoringChecks/backend/app.js:171:5
+    at ModuleJob.run (node:internal/modules/esm/module_job:345:25)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:665:26)
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:117:5)
+2025-11-03 12:13:38 [error]: TypeError: app.use() requires a middleware function
+    at Function.use (C:\Users\tiwar\Desktop\HitouchCX_Projects\ProctoringChecks\backend\node_modules\express\lib\application.js:213:11)
+    at file:///C:/Users/tiwar/Desktop/HitouchCX_Projects/ProctoringChecks/backend/app.js:171:5
+    at ModuleJob.run (node:internal/modules/esm/module_job:345:25)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:665:26)
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:117:5)
+2025-11-03 12:13:42 [error]: TypeError: app.use() requires a middleware function
+    at Function.use (C:\Users\tiwar\Desktop\HitouchCX_Projects\ProctoringChecks\backend\node_modules\express\lib\application.js:213:11)
+    at file:///C:/Users/tiwar/Desktop/HitouchCX_Projects/ProctoringChecks/backend/app.js:171:5
+    at ModuleJob.run (node:internal/modules/esm/module_job:345:25)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:665:26)
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:117:5)
+2025-11-03 12:13:44 [error]: TypeError: app.use() requires a middleware function
+    at Function.use (C:\Users\tiwar\Desktop\HitouchCX_Projects\ProctoringChecks\backend\node_modules\express\lib\application.js:213:11)
+    at file:///C:/Users/tiwar/Desktop/HitouchCX_Projects/ProctoringChecks/backend/app.js:171:5
+    at ModuleJob.run (node:internal/modules/esm/module_job:345:25)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:665:26)
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:117:5)
+2025-11-03 12:13:50 [error]: ReferenceError: routes is not defined
+    at file:///C:/Users/tiwar/Desktop/HitouchCX_Projects/ProctoringChecks/backend/app.js:171:19
+    at ModuleJob.run (node:internal/modules/esm/module_job:345:25)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:665:26)
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:117:5)
+2025-11-03 12:13:53 [error]: ReferenceError: routes is not defined
+    at file:///C:/Users/tiwar/Desktop/HitouchCX_Projects/ProctoringChecks/backend/app.js:171:19
+    at ModuleJob.run (node:internal/modules/esm/module_job:345:25)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:665:26)
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:117:5)
+2025-11-03 12:14:05 [error]: ReferenceError: routes is not defined
+    at file:///C:/Users/tiwar/Desktop/HitouchCX_Projects/ProctoringChecks/backend/app.js:173:19
+    at ModuleJob.run (node:internal/modules/esm/module_job:345:25)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:665:26)
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:117:5)
+2025-11-03 12:14:09 [error]: ReferenceError: routes is not defined
+    at file:///C:/Users/tiwar/Desktop/HitouchCX_Projects/ProctoringChecks/backend/app.js:174:19
+    at ModuleJob.run (node:internal/modules/esm/module_job:345:25)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:665:26)
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:117:5)
+2025-11-07 15:22:10 [error]: ReferenceError: extension is not defined
+    at DiskStorage.filename [as getFilename] (file:///C:/Users/tiwar/Desktop/HitouchCX_Projects/ProctoringChecks/backend/src/config/multer.config.js:27:87)
+    at C:\Users\tiwar\Desktop\HitouchCX_Projects\ProctoringChecks\backend\node_modules\multer\storage\disk.js:34:10
+    at DiskStorage.destination [as getDestination] (file:///C:/Users/tiwar/Desktop/HitouchCX_Projects/ProctoringChecks/backend/src/config/multer.config.js:16:9)
+    at DiskStorage._handleFile (C:\Users\tiwar\Desktop\HitouchCX_Projects\ProctoringChecks\backend\node_modules\multer\storage\disk.js:31:8)
+    at C:\Users\tiwar\Desktop\HitouchCX_Projects\ProctoringChecks\backend\node_modules\multer\lib\make-middleware.js:158:17
+    at imageFilter (file:///C:/Users/tiwar/Desktop/HitouchCX_Projects/ProctoringChecks/backend/src/config/multer.config.js:63:5)
+    at wrappedFileFilter (C:\Users\tiwar\Desktop\HitouchCX_Projects\ProctoringChecks\backend\node_modules\multer\index.js:44:7)
+    at Multipart.<anonymous> (C:\Users\tiwar\Desktop\HitouchCX_Projects\ProctoringChecks\backend\node_modules\multer\lib\make-middleware.js:132:7)
+    at Multipart.emit (node:events:519:28)
+    at HeaderParser.cb (C:\Users\tiwar\Desktop\HitouchCX_Projects\ProctoringChecks\backend\node_modules\busboy\lib\types\multipart.js:358:14)

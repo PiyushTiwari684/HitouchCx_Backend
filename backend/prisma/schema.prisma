@@ -1,0 +1,1027 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
+}
+
+// Status of an assessment (Draft → Scheduled → Active → Completed)
+enum AssessmentStatus {
+  DRAFT // Assessment is being created by admin
+  SCHEDULED // Assessment is scheduled but not yet open
+  ACTIVE // Assessment is currently available for candidates
+  COMPLETED // Assessment period has ended
+  ARCHIVED // Assessment is archived (no longer visible)
+}
+
+// Assessment Type (Language Proficiency vs Skill-Based)
+enum AssessmentType {
+  LANGUAGE // Language proficiency test
+  SKILL    // Skill-based assessment (Sales, Marketing, etc.)
+}
+
+// Task Level within a question type
+enum TaskLevel {
+  LEVEL_1 // A1-A2 (Basic)
+  LEVEL_2 // B1-B2 (Intermediate)
+  LEVEL_3 // C1-C2 (Advanced)
+}
+
+// Types of questions supported in the platform
+enum QuestionType {
+  AUDIO_MCQ // Listening comprehension with multiple choice
+  SPEAKING // Voice recording with ASR evaluation
+  READING_MCQ // Reading comprehension with multiple choice
+  WRITING // Essay or short answer text response
+  FILL_BLANK // Fill in the blank (for grammar/vocabulary)
+}
+
+// CEFR proficiency levels (A1 = Basic, C2 = Mastery)
+enum CEFRLevel {
+  A1 // Beginner - Basic phrases and expressions
+  A2 // Elementary - Simple everyday expressions
+  B1 // Intermediate - Standard workplace discussions
+  B2 // Upper Intermediate - Fluent and spontaneous
+  C1 // Advanced - Complex subjects and detailed text
+  C2 // Mastery - Express spontaneously and precisely
+}
+
+// Status for individual checks (camera, mic, network, etc.)
+enum CheckStatus {
+  PENDING // Check has not been performed yet
+  PASSED // Check completed successfully
+  FAILED // Check failed (may block proceeding)
+  SKIPPED // Check was skipped (non-critical)
+  RETRY // Check failed but candidate is retrying
+}
+
+// Identity verification progress status
+enum VerificationStatus {
+  NOT_STARTED // Verification hasn't begun
+  IN_PROGRESS // Currently capturing/verifying face
+  VERIFIED // Successfully verified
+  FAILED // Verification failed (face mismatch, no face detected)
+  FLAGGED // Suspicious activity detected, needs manual review
+}
+
+// Severity levels for proctoring violations
+enum ViolationSeverity {
+  INFO // Informational event (not a violation)
+  LOW // Minor issue (brief look away, mouse leave)
+  MEDIUM // Moderate issue (single tab switch, right-click)
+  HIGH // Serious issue (multiple faces, extended absence)
+  CRITICAL // Critical violation (dev tools, recording disabled)
+}
+
+// Types of violations that can be detected
+enum ViolationType {
+  FACE_NOT_DETECTED // No face visible in webcam
+  MULTIPLE_FACES // More than one face detected
+  FACE_MISMATCH // Different person detected
+  TAB_SWITCH // Browser tab switched
+  WINDOW_BLUR // Window lost focus
+  FULLSCREEN_EXIT // Exited fullscreen mode
+  COPY_ATTEMPT // Tried to copy text
+  PASTE_ATTEMPT // Tried to paste text
+  CUT_ATTEMPT // Tried to cut text
+  RIGHT_CLICK // Right-click menu attempted
+  DEV_TOOLS_OPEN // Browser developer tools detected
+  MOUSE_LEAVE // Mouse left window boundaries
+  KEYBOARD_SHORTCUT // Suspicious keyboard shortcut used
+  SCREEN_SHARE_DISABLED // Screen sharing was disabled
+  AUDIO_DISABLED // Microphone was disabled
+  CAMERA_DISABLED // Camera was disabled
+  BACKGROUND_NOISE // Suspicious background voice detected
+  NETWORK_DISCONNECTED // Internet connection lost
+  SUSPICIOUS_ACTIVITY // Other suspicious behavior
+}
+
+// Test session status tracking
+enum SessionStatus {
+  NOT_STARTED // Session created but not started
+  PERMISSION_GRANTED // Candidate granted permissions
+  DEVICE_TEST_IN_PROGRESS // System check ongoing
+  DEVICE_TEST_COMPLETED // System check completed
+  FULLSCREEN_ENTERED // Fullscreen mode activated
+  IN_PROGRESS // Test is currently ongoing
+  PAUSED // Test paused (due to disconnection or violation)
+  COMPLETED // Test completed successfully
+  AUTO_SUBMITTED // Test auto-submitted (time up or violations)
+  TERMINATED // Test forcibly terminated by system/admin
+}
+
+// Blacklist reasons
+enum BlacklistReason {
+  VIOLATION_THRESHOLD // Exceeded maximum violations
+  CRITICAL_VIOLATION // Single critical violation (dev tools, etc.)
+  MANUAL_ADMIN // Manually blacklisted by admin
+  SUSPICIOUS_PATTERN // Pattern of suspicious behavior
+  IDENTITY_FRAUD // Identity verification fraud detected
+}
+
+// ============================================================================
+// USER & ROLE MANAGEMENT
+// ============================================================================
+
+// Super Admin table - Full system access
+// Note: Candidates are managed in the main application (not in this schema)
+model SuperAdmin {
+  id           String @id @default(uuid()) // Unique identifier
+  email        String @unique // Admin email (must be unique)
+  passwordHash String // Hashed password (never store plain)
+  firstName    String // Admin first name
+  lastName     String // Admin last name
+
+  // Audit fields
+  createdAt   DateTime  @default(now()) // When admin account was created
+  updatedAt   DateTime  @updatedAt // Auto-updates on any change
+  lastLoginAt DateTime? // Track last login time
+
+  // Relationships
+  createdAssessments Assessment[] @relation("CreatedBy") // Assessments created by this admin
+  blacklistEntries   Blacklist[]  @relation("BlacklistedBy") // Blacklist entries created by this admin
+
+  @@map("super_admins") // Table name in database
+}
+
+// Candidate table - Linked from main application
+// This stores only assessment-related data for candidates
+model Candidate {
+  id        String  @id @default(uuid()) // Unique identifier (should match main app)
+  email     String  @unique // Candidate email
+  firstName String // Candidate first name
+  lastName  String // Candidate last name
+  phone     String? // Optional phone number
+
+  // CEFR proficiency tracking (updated after each assessment)
+  overallCEFRLevel CEFRLevel? // Latest overall CEFR level
+
+  // Status flags
+  isBlacklisted Boolean @default(false) // Is candidate banned?
+  isActive      Boolean @default(true) // Is account active?
+
+  // Timestamps
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  // Relationships - One candidate can have many of each:
+  systemChecks          SystemCheck[] // All system validation checks
+  identityVerifications IdentityVerification[] // All face verifications
+  assessmentAttempts    CandidateAssessment[] // All assessment attempts
+  proctoringLogs        ProctoringLog[] // All proctoring events
+  proctoringSessions    ProctoringSession[] // All test sessions
+  answers               Answer[] // All submitted answers
+  speakingEvaluations   SpeakingEvaluation[] // All speaking scores
+  reconnectionLogs      ReconnectionLog[] // All reconnection attempts
+  blacklistEntries      Blacklist[] // Blacklist records (if banned)
+  ViolationSnapshot     ViolationSnapshot[]
+
+  @@index([email]) // Index for fast email lookups
+  @@index([isBlacklisted]) // Index for filtering blacklisted candidates
+  @@map("candidates")
+}
+
+// ============================================================================
+// ASSESSMENT & QUESTION BANK MANAGEMENT
+// ============================================================================
+
+// Assessment Configuration - Defines the test structure
+model Assessment {
+  id            String  @id @default(uuid())
+  title         String // Assessment name (e.g., "Language Proficiency Test")
+  description   String? // Detailed description  // Assessment metadata
+  totalDuration Int // Total test duration in minutes
+  passingScore  Float? // Minimum score to pass (optional)
+  maxAttempts   Int     @default(2) // Maximum attempts allowed per candidate
+
+  // Scheduling
+  startDate  DateTime? // When assessment becomes available
+  endDate    DateTime? // When assessment closes
+  isFlexible Boolean   @default(true) // Can take anytime within date range?
+
+  // Proctoring settings
+  requireCamera      Boolean @default(true) // Is camera mandatory?
+  requireMicrophone  Boolean @default(true) // Is microphone mandatory?
+  requireScreenShare Boolean @default(true) // Is screen sharing mandatory?
+  faceCheckInterval  Int     @default(5) // Seconds between face checks
+
+  // Violation settings
+  violationThreshold Int @default(10) // Max violations before auto-submit
+  graceViolations    Int @default(2) // First N violations are warnings only
+
+  // Session recovery settings
+  maxReconnects      Int @default(3) // Max allowed reconnections
+  idleTimeoutMinutes Int @default(10) // Auto-submit after idle time
+
+  // Status
+  status AssessmentStatus @default(DRAFT)
+  
+  // 🆕 NEW FIELD - Assessment Type
+  assessmentType AssessmentType @default(LANGUAGE)
+
+  // Audit
+  createdById String // Which admin created this
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  // Relationships
+  createdBy          SuperAdmin            @relation("CreatedBy", fields: [createdById], references: [id])
+  sections           Section[] // Assessment has multiple sections
+  attempts           CandidateAssessment[] // All candidate attempts
+  proctoringSessions ProctoringSession[] // All test sessions
+
+  @@index([status])
+  @@index([assessmentType])
+  @@index([createdById])
+  @@map("assessments")
+}
+
+
+// Section - Assessment is divided into sections (Listening, Speaking, etc.)
+model Section {
+  id           String @id @default(uuid())
+  assessmentId String // Which assessment this belongs to
+
+  // Section details
+  name            String // "Listening Comprehension", "Speaking", etc.
+  description     String? // Section instructions
+  orderIndex      Int // Display order (1, 2, 3...)
+  durationMinutes Int // Time limit for this section
+
+  // Question selection
+  totalQuestions Int // How many questions to display
+  randomize      Boolean @default(true) // Randomize question order?
+
+  // Navigation rules
+  allowSkip      Boolean @default(true) // Can skip questions?
+  allowReview    Boolean @default(true) // Can mark for review?
+  lockOnComplete Boolean @default(true) // Lock section after completion?
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  // Relationships
+  assessment Assessment        @relation(fields: [assessmentId], references: [id], onDelete: Cascade)
+  questions  QuestionSection[] // Questions in this section
+  answers    Answer[] // Answers submitted for this section
+
+  @@unique([assessmentId, orderIndex]) // Each section has unique order in assessment
+  @@index([assessmentId])
+  @@map("sections")
+}
+// Question Bank - Stores all questions
+model Question {
+  id String @id @default(uuid())
+
+  // Question content
+  questionType QuestionType // Audio MCQ, Speaking, Reading, Writing
+  questionText String // Main question text
+
+  // For audio questions (Listening Comprehension)
+  audioFilePath String? // Path to audio file in storage
+  audioFileName String? // Original filename
+  audioFileSize Int? // File size in bytes
+  audioDuration Int? // Duration in seconds
+
+  // For reading questions
+  readingPassage String? // Text passage for reading comprehension
+
+  // For MCQ questions (both audio and reading)
+  options       Json? // Array of options: ["Option A", "Option B", ...]
+  correctAnswer String? // Correct answer (for auto-grading)
+
+  // For writing questions
+  wordCountMin Int? // Minimum word count
+  wordCountMax Int? // Maximum word count
+
+  // For speaking questions
+  speakingPrompt   String? // Speaking task instructions
+  speakingDuration Int? // Expected speaking duration in seconds
+
+  // CEFR classification
+  cefrLevel CEFRLevel // Which CEFR level this question tests
+
+  // 🆕 NEW FIELDS - Task Classification
+  taskLevel TaskLevel? // Level 1, 2, or 3 (A1-A2, B1-B2, C1-C2)
+  sectionType String? // "WRITING" or "SPEAKING"
+  assessmentType AssessmentType? // "LANGUAGE" or "SKILL"
+
+  // Question metadata
+  skillTested     String? // "Grammar", "Vocabulary", "Fluency", etc.
+  difficultyScore Float? // Optional difficulty rating (1-10)
+
+  // Usage tracking
+  timesUsed Int    @default(0) // How many times used in assessments
+  avgScore  Float? // Average score on this question
+
+  // Status
+  isActive Boolean @default(true) // Can be used in assessments?
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  // Relationships
+  sections QuestionSection[] // Which sections include this question
+  answers  Answer[] // All answers submitted for this question
+
+  @@index([questionType])
+  @@index([cefrLevel])
+  @@index([taskLevel])
+  @@index([sectionType])
+  @@index([assessmentType])
+  @@index([isActive])
+  @@map("questions")
+}
+
+
+// Junction table - Maps questions to sections (many-to-many)
+model QuestionSection {
+  id         String @id @default(uuid())
+  sectionId  String // Which section
+  questionId String // Which question
+
+  orderIndex Int? // Order within section (if not randomized)
+  isRequired Boolean @default(true) // Must be answered?
+  points     Float   @default(1.0) // Points for correct answer
+
+  createdAt DateTime @default(now())
+
+  // Relationships
+  section  Section  @relation(fields: [sectionId], references: [id], onDelete: Cascade)
+  question Question @relation(fields: [questionId], references: [id], onDelete: Cascade)
+
+  @@unique([sectionId, questionId]) // Each question appears once per section
+  @@index([sectionId])
+  @@index([questionId])
+  @@map("question_sections")
+}
+
+// ============================================================================
+// CANDIDATE ASSESSMENT ATTEMPTS
+// ============================================================================
+
+// Candidate Assessment - Tracks each attempt
+model CandidateAssessment {
+  id           String @id @default(uuid())
+  candidateId  String // Which candidate
+  assessmentId String // Which assessment
+
+  // Attempt tracking
+  attemptNumber Int // 1st attempt, 2nd attempt, etc.
+
+  // Timing
+  startedAt      DateTime? // When test started
+  completedAt    DateTime? // When test finished
+  submittedAt    DateTime? // When answers submitted
+  totalTimeSpent Int? // Total time in seconds
+
+  // Scoring
+  totalScore Float? // Final score
+  maxScore   Float? // Maximum possible score
+  percentage Float? // Score percentage
+  passed     Boolean? // Did candidate pass?
+
+  // CEFR results (overall and per section)
+  overallCEFRLevel CEFRLevel? // Overall CEFR level achieved
+  cefrResults      Json? // Per-section CEFR: {"listening": "B1", "speaking": "B2"}
+
+  // Verification status
+  verificationStatus VerificationStatus @default(NOT_STARTED)
+  systemCheckStatus  CheckStatus        @default(PENDING)
+
+  // Violations and flags
+  violationCount  Int     @default(0) // Total violations
+  graceViolations Int     @default(0) // Violations that were warnings
+  isFlagged       Boolean @default(false) // Flagged for review?
+  flagReason      String? // Why flagged?
+
+  // Session status
+  sessionStatus SessionStatus @default(NOT_STARTED)
+
+  // Reconnection tracking
+  reconnectCount  Int @default(0) // How many times reconnected
+  disconnectCount Int @default(0) // How many times disconnected
+
+  // Auto-submission reason
+  autoSubmitReason String? // "Time up", "Violation threshold", "Max reconnects"
+  
+  fullscreenEntered Boolean @default(false) // Was fullscreen entered?
+  fullscreenEnteredAt DateTime? // When fullscreen was first entered
+  fullscreenExitCount Int @default(0) // How many times fullscreen was exited
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  // Relationships
+  candidate            Candidate             @relation(fields: [candidateId], references: [id], onDelete: Cascade)
+  assessment           Assessment            @relation(fields: [assessmentId], references: [id], onDelete: Cascade)
+  systemCheck          SystemCheck? // One system check per attempt
+  identityVerification IdentityVerification? // One identity verification per attempt
+  proctoringSession    ProctoringSession? // One proctoring session per attempt
+  answers              Answer[] // All answers for this attempt
+
+  @@unique([candidateId, assessmentId, attemptNumber]) // Unique attempt number per candidate per assessment
+  @@index([candidateId])
+  @@index([assessmentId])
+  @@index([sessionStatus])
+  @@index([isFlagged])
+  @@map("candidate_assessments")
+}
+
+// ============================================================================
+// STEP 1: SYSTEM CHECKS (Environment Validation)
+// ============================================================================
+
+// System Check - Stores all Step 1 validation results
+model SystemCheck {
+  id          String  @id @default(uuid())
+  candidateId String // Which candidate
+  attemptId   String? @unique // Which assessment attempt (one check per attempt)
+
+  // Device information
+  browserName     String? // "Chrome", "Firefox", "Safari"
+  browserVersion  String? // "120.0.6099.109"
+  operatingSystem String? // "Windows 10", "macOS 14.0"
+  deviceType      String? // "desktop", "mobile", "tablet"
+  userAgent       String? // Full user agent string
+
+  // Screen information
+  screenWidth      Int? // Screen resolution width
+  screenHeight     Int? // Screen resolution height
+  viewportWidth    Int? // Browser viewport width
+  viewportHeight   Int? // Browser viewport height
+  devicePixelRatio Float? // For retina displays
+
+  // Permission checks (CRITICAL)
+  cameraPermission CheckStatus @default(PENDING)
+  micPermission    CheckStatus @default(PENDING)
+  screenPermission CheckStatus @default(PENDING)
+
+  // Device functionality checks (CRITICAL)
+  cameraWorking CheckStatus @default(PENDING) // Camera produces video?
+  micWorking    CheckStatus @default(PENDING) // Mic detects audio?
+  faceDetected  CheckStatus @default(PENDING) // Face visible in camera?
+
+  // Network checks (CRITICAL)
+  networkLatency Int? // Ping time in milliseconds
+  downloadSpeed  Float? // Mbps (optional)
+  uploadSpeed    Float? // Mbps (optional)
+  networkStatus  CheckStatus @default(PENDING)
+
+  // Security checks (WARNING level)
+  ipAddress      String? // Candidate's IP address
+  ipCountry      String? // Country from IP
+  ipCity         String? // City from IP
+  ipASN          String? // Autonomous System Number
+  ipOrganization String? // ISP/Organization name
+  isVpnDetected  Boolean     @default(false) // VPN/Proxy detected?
+  vpnCheckStatus CheckStatus @default(PENDING)
+
+  // Multiple monitor detection (WARNING level)
+  multipleMonitors Boolean @default(false) // Multiple monitors suspected?
+  monitorCount     Int     @default(1) // Estimated number of monitors
+
+  // Overall result
+  allChecksPassed  Boolean @default(false) // All critical checks passed?
+  criticalFailures Json? // Array of failed critical checks
+  warnings         Json? // Array of warnings
+
+  // Raw data for debugging
+  rawCheckData Json? // Store complete system info
+
+  // Retry tracking
+  retryCount Int @default(0) // How many times retried
+
+  // Timestamps
+  checkStartedAt   DateTime  @default(now())
+  checkCompletedAt DateTime? // When all checks completed
+  createdAt        DateTime  @default(now())
+  updatedAt        DateTime  @updatedAt
+
+  // Relationships
+  candidate Candidate            @relation(fields: [candidateId], references: [id], onDelete: Cascade)
+  attempt   CandidateAssessment? @relation(fields: [attemptId], references: [id], onDelete: Cascade)
+
+  @@index([candidateId])
+  @@index([attemptId])
+  @@index([allChecksPassed])
+  @@map("system_checks")
+}
+
+// ============================================================================
+// STEP 2: IDENTITY VERIFICATION (Face Matching)
+// ============================================================================
+
+// Identity Verification - Face capture and continuous verification
+model IdentityVerification {
+  id          String @id @default(uuid())
+  candidateId String // Which candidate
+  attemptId   String @unique // Which assessment attempt
+
+  // Initial face capture (at verification step)
+  faceImagePath      String? // Path to stored face image
+  faceImageBase64    String? // Base64 fallback (for MVP)
+  audioRecordingPath String? // Path to stored audio recording
+  audioTranscription String? // What ASR heard
+  audioOriginalText  String? // Original sentence displayed
+  audioMatchScore    Float? // Similarity % (0-100)
+  audioVerified      Boolean @default(false)
+  audioAttemptCount  Int     @default(0) // Track retake count
+
+  // Face embedding for matching (from face-api.js)
+  faceEmbedding      Json? // Face descriptor array (128-dim vector)
+  faceDescriptorHash String? // Hash for quick comparison
+
+  // Initial verification result
+  faceDetectedInitial Boolean @default(false) // Was face detected in initial capture?
+  faceQualityScore    Float? // Face quality (0-1, higher is better)
+
+  // Verification status
+  verificationStatus VerificationStatus @default(NOT_STARTED)
+  verificationMethod String? // "face-api.js", "manual", etc.
+
+  // Continuous verification stats (during test)
+  totalFramesChecked      Int    @default(0) // How many frames analyzed during test
+  framesWithFace          Int    @default(0) // Frames where face was detected
+  framesWithMultipleFaces Int    @default(0) // Frames with multiple faces
+  framesWithMismatch      Int    @default(0) // Frames with different person
+  avgMatchScore           Float? // Average face match score across test
+
+  // Flags
+  requiresManualReview Boolean   @default(false) // Flag for human review
+  reviewNotes          String? // Notes from manual reviewer
+  reviewedBy           String? // Admin ID who reviewed
+  reviewedAt           DateTime? // When reviewed
+
+  // Metadata
+  verifiedAt DateTime? // When initial verification completed
+  ipAddress  String? // IP at verification time
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  // Relationships
+  candidate          Candidate           @relation(fields: [candidateId], references: [id], onDelete: Cascade)
+  attempt            CandidateAssessment @relation(fields: [attemptId], references: [id], onDelete: Cascade)
+  violationSnapshots ViolationSnapshot[] // Flagged violation frames
+
+  @@index([candidateId])
+  @@index([attemptId])
+  @@index([verificationStatus])
+  @@map("identity_verifications")
+}
+
+// Violation Snapshot - Stores flagged frames during test
+model ViolationSnapshot {
+  id             String @id @default(uuid())
+  verificationId String // Which identity verification session
+  candidateId    String // Which candidate
+  sessionId      String // Which proctoring session
+
+  // Snapshot details
+  snapshotPath   String? // Path to image file
+  snapshotBase64 String? // Base64 image (fallback)
+
+  // Detection results
+  faceDetected   Boolean // Was face detected?
+  faceCount      Int     @default(0) // Number of faces
+  faceMatchScore Float? // Match score with original face
+
+  // Violation context
+  violationType     ViolationType? // What violation occurred
+  violationSeverity ViolationSeverity @default(MEDIUM)
+
+  // Metadata
+  capturedAt DateTime @default(now()) // When frame was captured
+
+  // Relationships
+  verification IdentityVerification @relation(fields: [verificationId], references: [id], onDelete: Cascade)
+  candidate    Candidate            @relation(fields: [candidateId], references: [id], onDelete: Cascade)
+  session      ProctoringSession    @relation(fields: [sessionId], references: [id], onDelete: Cascade)
+
+  @@index([verificationId])
+  @@index([candidateId])
+  @@index([sessionId])
+  @@index([capturedAt])
+  @@map("violation_snapshots")
+}
+
+// ============================================================================
+// REAL-TIME PROCTORING & VIOLATION TRACKING
+// ============================================================================
+
+// Proctoring Session - Tracks entire test session
+model ProctoringSession {
+  id           String @id @default(uuid())
+  candidateId  String // Which candidate
+  assessmentId String // Which assessment
+  attemptId    String @unique // Which attempt (one session per attempt)
+
+  // Session metadata
+  sessionToken String @unique // Unique token for WebSocket auth
+
+  // Timing
+  sessionStartedAt DateTime? // When session started
+  sessionEndedAt   DateTime? // When session ended
+  lastHeartbeatAt  DateTime? // Last keep-alive ping
+
+  // Status
+  sessionStatus SessionStatus @default(NOT_STARTED)
+
+  // Proctoring stats
+  totalViolations    Int @default(0) // Total violations detected
+  graceViolations    Int @default(0) // Violations that were warnings
+  criticalViolations Int @default(0) // Critical violations
+
+  // Recording metadata (if enabled)
+  screenRecordingPath String? // Path to screen recording
+  audioRecordingPath  String? // Path to audio recording
+  recordingStartedAt  DateTime? // When recording started
+  recordingEndedAt    DateTime? // When recording ended
+  recordingFileSize   Int? // File size in bytes
+
+  // Session termination
+  terminatedReason String? // Why session ended
+  isAutoSubmitted  Boolean @default(false) // Was test auto-submitted?
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  // Relationships
+  candidate          Candidate           @relation(fields: [candidateId], references: [id], onDelete: Cascade)
+  assessment         Assessment          @relation(fields: [assessmentId], references: [id], onDelete: Cascade)
+  attempt            CandidateAssessment @relation(fields: [attemptId], references: [id], onDelete: Cascade)
+  proctoringLogs     ProctoringLog[] // All proctoring events
+  violationSnapshots ViolationSnapshot[] // Flagged frames
+
+  @@index([candidateId])
+  @@index([assessmentId])
+  @@index([sessionStatus])
+  @@index([sessionToken])
+  @@map("proctoring_sessions")
+}
+
+// Proctoring Log - Records every proctoring event
+model ProctoringLog {
+  id          String @id @default(uuid())
+  sessionId   String // Which proctoring session
+  candidateId String // Which candidate
+
+  // Event details
+  eventType        String // General event type
+  violationType    ViolationType? // Specific violation type
+  eventDescription String? // Human-readable description
+
+  // Severity
+  severity          ViolationSeverity @default(INFO)
+  isViolation       Boolean           @default(false) // Is this a rule violation?
+  countsTowardLimit Boolean           @default(false) // Does this count toward auto-submit threshold?
+
+  // Face detection data (if applicable)
+  faceDetected   Boolean? // Was face detected?
+  faceCount      Int? // Number of faces
+  faceMatchScore Float? // Match score with original
+
+  // Browser activity (if applicable)
+  tabVisible    Boolean? // Is tab visible?
+  windowFocused Boolean? // Is window focused?
+  isFullscreen  Boolean? // Is fullscreen active?
+
+  // Additional context
+  metadata   Json? // Any additional data
+  userAction String? // What user did (if any)
+
+  // Timestamp
+  timestamp DateTime @default(now()) // When event occurred
+
+  // Relationships
+  session   ProctoringSession @relation(fields: [sessionId], references: [id], onDelete: Cascade)
+  candidate Candidate         @relation(fields: [candidateId], references: [id], onDelete: Cascade)
+
+  @@index([sessionId, timestamp]) // Efficient time-range queries
+  @@index([candidateId])
+  @@index([violationType])
+  @@index([severity])
+  @@index([isViolation])
+  @@map("proctoring_logs")
+}
+
+// ============================================================================
+// SESSION RECOVERY & RECONNECTION TRACKING
+// ============================================================================
+
+// Reconnection Log - Tracks disconnections and reconnections
+model ReconnectionLog {
+  id          String @id @default(uuid())
+  candidateId String // Which candidate
+  attemptId   String // Which attempt
+
+  // Event type
+  eventType String // "DISCONNECTED" or "RECONNECTED"
+
+  // Disconnect details
+  disconnectReason   String? // "network_error", "browser_closed", etc.
+  disconnectDuration Int? // Seconds offline (calculated on reconnect)
+
+  // Network info
+  ipAddress String? // IP at time of event
+  userAgent String? // Browser info
+
+  // Timestamp
+  timestamp DateTime @default(now()) // When event occurred
+
+  // Relationships
+  candidate Candidate @relation(fields: [candidateId], references: [id], onDelete: Cascade)
+
+  @@index([candidateId])
+  @@index([attemptId])
+  @@index([eventType])
+  @@map("reconnection_logs")
+}
+
+// ============================================================================
+// ANSWERS & RESPONSES
+// ============================================================================
+
+// Answer - Stores candidate's answers to questions
+model Answer {
+  id          String @id @default(uuid())
+  candidateId String // Which candidate
+  attemptId   String // Which attempt
+  sectionId   String // Which section
+  questionId  String // Which question
+
+  // Answer content (varies by question type)
+  answerText    String? // For MCQ, Writing, Fill-in-blank
+  audioFilePath String? // For Speaking questions (temporary)
+
+  // For writing questions
+  wordCount      Int? // Actual word count
+  characterCount Int? // Character count
+
+  // Scoring (auto or manual)
+  isCorrect Boolean? // For MCQ (auto-graded)
+  score     Float? // Points earned
+  maxScore  Float? // Maximum possible points
+
+  // Grammar checking results (for writing)
+  grammarErrors Json? // Array of grammar errors detected
+  grammarScore  Float? // Grammar score (0-100)
+
+  // Metadata
+  isSkipped         Boolean @default(false) // Was question skipped?
+  isMarkedForReview Boolean @default(false) // Marked for review?
+  revisionCount     Int     @default(0) // How many times answer changed
+
+  // Copy-paste detection
+  copyPasteDetected Boolean @default(false) // Was copy-paste detected?
+  pasteCount        Int     @default(0) // Number of paste attempts
+
+  // Timing
+  timeSpentSeconds Int? // Time spent on this question
+  firstViewedAt    DateTime? // When first viewed
+  lastModifiedAt   DateTime? // When last changed
+  submittedAt      DateTime? // When submitted
+
+  createdAt DateTime @default(now()) // When answer record created
+  updatedAt DateTime @updatedAt // Auto-updates on change
+
+  // Relationships
+  candidate          Candidate           @relation(fields: [candidateId], references: [id], onDelete: Cascade)
+  attempt            CandidateAssessment @relation(fields: [attemptId], references: [id], onDelete: Cascade)
+  section            Section             @relation(fields: [sectionId], references: [id], onDelete: Cascade)
+  question           Question            @relation(fields: [questionId], references: [id], onDelete: Cascade)
+  speakingEvaluation SpeakingEvaluation? // If speaking question
+
+  @@unique([attemptId, questionId]) // One answer per question per attempt
+  @@index([candidateId])
+  @@index([attemptId])
+  @@index([questionId])
+  @@map("answers")
+}
+
+// ============================================================================
+// SPEAKING ASSESSMENT - ASR EVALUATION
+// ============================================================================
+
+// Speaking Evaluation - Stores ASR analysis results
+model SpeakingEvaluation {
+  id          String @id @default(uuid())
+  candidateId String // Which candidate
+  answerId    String @unique // Which answer (one evaluation per answer)
+
+  // Audio metadata
+  audioFilePath String? // Path to audio file (temporary)
+  audioDuration Int? // Duration in seconds
+  audioFileSize Int? // File size in bytes
+
+  // ASR Scores (0-100)
+  fluencyScore       Float? // Fluency rating
+  pronunciationScore Float? // Pronunciation rating
+  grammarScore       Float? // Grammar correctness
+  vocabularyScore    Float? // Vocabulary usage
+  coherenceScore     Float? // Coherence and structure
+
+  // Overall speaking score
+  overallScore Float? // Average of all scores
+  cefrLevel    CEFRLevel? // CEFR level for this response
+
+  // Speech analysis
+  wordsPerMinute   Float? // Speaking pace
+  totalWords       Int? // Total words spoken
+  uniqueWords      Int? // Vocabulary diversity
+  fillerWords      Int? // "um", "uh", etc.
+  pauseCount       Int? // Number of pauses
+  avgPauseDuration Float? // Average pause length
+
+  // Transcription
+  transcription String? // Speech-to-text output
+
+  // Grammar errors detected
+  grammarErrors Json? // Array of grammar issues
+
+  // Processing metadata
+  asrProvider     String? // Which ASR service used
+  processingTime  Int? // Time to process (ms)
+  confidenceScore Float? // ASR confidence (0-1)
+
+  // Audio deletion tracking
+  audioDeleted   Boolean   @default(false) // Has audio file been deleted?
+  audioDeletedAt DateTime? // When audio was deleted
+
+  evaluatedAt DateTime? // When evaluation completed
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+
+  // Relationships
+  candidate Candidate @relation(fields: [candidateId], references: [id], onDelete: Cascade)
+  answer    Answer    @relation(fields: [answerId], references: [id], onDelete: Cascade)
+
+  @@index([candidateId])
+  @@index([answerId])
+  @@map("speaking_evaluations")
+}
+
+// ============================================================================
+// BLACKLIST MANAGEMENT
+// ============================================================================
+
+// Blacklist - Banned candidates
+model Blacklist {
+  id          String @id @default(uuid())
+  candidateId String // Which candidate is blacklisted
+
+  // Blacklist details
+  reason            BlacklistReason // Why blacklisted
+  reasonDescription String // Detailed explanation
+
+  // Related data
+  relatedAttemptId String? // Which attempt triggered blacklist
+  violationCount   Int? // Total violations that led to ban
+
+  // Ban duration
+  isPermanent Boolean   @default(true) // Is ban permanent?
+  bannedUntil DateTime? // If temporary, when does ban end?
+
+  // Status
+  isActive     Boolean   @default(true) // Is blacklist currently active?
+  revokedAt    DateTime? // If unbanned, when?
+  revokedBy    String? // Admin who revoked
+  revokeReason String? // Why was ban lifted?
+
+  // Audit
+  blacklistedBy String // Admin who blacklisted
+  blacklistedAt DateTime @default(now()) // When blacklisted
+  updatedAt     DateTime @updatedAt
+
+  // Relationships
+  candidate Candidate  @relation(fields: [candidateId], references: [id], onDelete: Cascade)
+  admin     SuperAdmin @relation("BlacklistedBy", fields: [blacklistedBy], references: [id])
+
+  @@index([candidateId])
+  @@index([isActive])
+  @@index([reason])
+  @@map("blacklist")
+}
+
+// ============================================================================
+// EXTERNAL API ACCESS
+// ============================================================================
+
+// API Key - For external systems to access results
+model APIKey {
+  id String @id @default(uuid())
+
+  // Key details
+  keyName   String // Descriptive name
+  apiKey    String @unique // The actual API key (hashed)
+  keyPrefix String // First few chars (visible)
+
+  // Permissions
+  canReadResults Boolean @default(true) // Can fetch candidate results?
+  canReadReports Boolean @default(false) // Can access full reports?
+  canWebhook     Boolean @default(true) // Can receive webhooks?
+
+  // Webhook configuration
+  webhookUrl    String? // URL to send webhooks
+  webhookEvents Json? // Array of events to notify
+
+  // Usage tracking
+  lastUsedAt    DateTime? // Last API call
+  totalRequests Int       @default(0) // Total API calls made
+
+  // Rate limiting
+  rateLimit       Int @default(1000) // Requests per hour
+  rateLimitWindow Int @default(3600) // Window in seconds
+
+  // Status
+  isActive  Boolean   @default(true) // Is key active?
+  expiresAt DateTime? // Optional expiration
+
+  // Audit
+  createdBy String // Admin who created key
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+  revokedAt DateTime? // If revoked, when?
+  revokedBy String? // Admin who revoked
+
+  @@index([apiKey])
+  @@index([isActive])
+  @@map("api_keys")
+}
+
+// ============================================================================
+// AUDIT LOG (Optional - for comprehensive tracking)
+// ============================================================================
+
+// Audit Log - Tracks all system actions for compliance
+model AuditLog {
+  id String @id @default(uuid())
+
+  // Who performed the action
+  actorType  String // "SuperAdmin", "Candidate", "System"
+  actorId    String? // ID of actor
+  actorEmail String? // Email of actor
+
+  // What action was performed
+  actionType String // "CREATE", "UPDATE", "DELETE", "LOGIN", etc.
+  entityType String // "Assessment", "Question", "Candidate", etc.
+  entityId   String? // ID of affected entity
+
+  // Action details
+  actionDescription String // Human-readable description
+  oldValues         Json? // Previous state (for updates)
+  newValues         Json? // New state (for updates)
+
+  // Context
+  ipAddress String? // IP address of actor
+  userAgent String? // Browser/device info
+
+  // Timestamp
+  timestamp DateTime @default(now()) // When action occurred
+
+  @@index([actorType, actorId])
+  @@index([actionType])
+  @@index([entityType, entityId])
+  @@index([timestamp])
+  @@map("audit_logs")
+}
+
+// ============================================================================
+// LISTENING COMPREHENSION - AUDIO CLIP TRACKING (Optional Enhancement)
+// ============================================================================
+
+// Audio Clip Usage - Track which audio clips were played for each candidate
+model AudioClipUsage {
+  id          String @id @default(uuid())
+  candidateId String // Which candidate
+  attemptId   String // Which attempt
+  questionId  String // Which question
+
+  // Audio details
+  audioFilePath String // Path to audio clip
+  audioDuration Int // Duration in seconds
+
+  // Playback tracking
+  playCount     Int       @default(0) // How many times played
+  firstPlayedAt DateTime? // When first played
+  lastPlayedAt  DateTime? // When last played
+
+  // Completion tracking
+  wasCompleted      Boolean @default(false) // Did they listen to full audio?
+  completionPercent Float? // % of audio listened to
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@unique([attemptId, questionId]) // One record per question per attempt
+  @@index([candidateId])
+  @@index([attemptId])
+  @@map("audio_clip_usage")
+}
