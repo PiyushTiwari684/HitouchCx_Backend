@@ -1,7 +1,18 @@
 import { PrismaClient} from '@prisma/client';
 const prisma = new PrismaClient();
 
+/*
+  Weights (total ≈ 100)
+*/
+const WEIGHTS = {
+  skills: 35,
+  qualifications: 20,
+  experience: 30,        // split into years + domain (industry/vertical)
+  languageLevel: 10,     // derived from test results or heuristic
+  languages: 5
+};
 
+<<<<<<< HEAD
 /*
   Weights (total ≈ 100)
 */
@@ -15,6 +26,10 @@ const WEIGHTS = {
 
 const LANGUAGE_LEVEL_MAP = { A1:1, A2:2, B1:3, B2:4, C1:5, C2:6 };
 
+=======
+const LANGUAGE_LEVEL_MAP = { A1:1, A2:2, B1:3, B2:4, C1:5, C2:6 };
+
+>>>>>>> dummy-merge
 /*
   Try to fetch language test results if future model exists.
   (Placeholder: adapt after you add LanguageProficiencyTest model.)

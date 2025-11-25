@@ -7,12 +7,21 @@
   "scripts": {
     "start": "nodemon server.js",
     "dev": "nodemon server.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "seed": "node prisma/seed.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
+      "@ffmpeg-installer/ffmpeg": "^1.1.0",
+    "assemblyai": "^4.18.5",
+    "express-validator": "^7.3.0",
+    "fluent-ffmpeg": "^2.1.3",
+    "prisma": "^6.18.0",
+    "socket.io": "^4.8.1",
+    "uuid": "^13.0.0",
+    "winston": "^3.18.3",
     "@google/genai": "^1.25.0",
     "@huggingface/inference": "^4.13.3",
     "@prisma/client": "^6.19.0",
@@ -51,5 +60,6 @@
     "prettier": "^3.6.2",
     "prisma": "^6.19.0",
     "supertest": "^7.1.4"
+    
   }
 }
