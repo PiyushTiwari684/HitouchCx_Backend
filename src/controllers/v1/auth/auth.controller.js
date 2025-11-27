@@ -1,8 +1,7 @@
-import { PrismaClient } from '@prisma/client'
+import prisma from '../../../config/db.js'; 
 import {generateToken,verifyToken} from "../../../utils/token.js"
 import validator from 'validator';
 import bcrypt from 'bcrypt';
-const prisma = new PrismaClient();
 
 
 //Sign Up Controller
@@ -53,7 +52,6 @@ const signUp = async (req, res) => {
         res.status(500).json({ error: "Error Occured while Sign Up", error: err.message });
     }
 }
-
 
 //Log In Controller
 const logIn = async(req,res)=>{

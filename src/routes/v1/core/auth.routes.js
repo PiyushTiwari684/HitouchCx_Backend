@@ -1,13 +1,10 @@
 import express from 'express';
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken'
-import { PrismaClient } from '@prisma/client';
-import { generateToken } from '../../../utils/token.js';
 import {signUp,logIn} from "../../../controllers/v1/auth/auth.controller.js"
 import passport from '../../../config/passport.js';
 
 
-const prisma = new PrismaClient();
 const router = express.Router();
 
 //To Review with Frontend Team

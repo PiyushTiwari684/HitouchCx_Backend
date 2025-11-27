@@ -1,6 +1,5 @@
 import express from 'express';
-import { PrismaClient } from '@prisma/client';
-const prisma = new PrismaClient();
+import prisma from '../../../config/db.js'; 
 
 
 // POST an Application when Agent applies for an Opportunity
@@ -40,13 +39,6 @@ const gigApplication = async (req, res) => {
             agentsHired: true,
             hoursCompleted: true
           }
-        },
-        selectedGigs: {
-          select: {
-            id: true,
-            totalMinutesWorked: true,
-            status: true
-          }
         }
       }
     });
@@ -67,26 +59,7 @@ const gigApplication = async (req, res) => {
       });
     }
 
-    // Calculate total hours worked across all selected gigs for this opportunity
-    const totalMinutesWorked = existingOpportunity.selectedGigs.reduce(
-      (sum, gig) => sum + (gig.totalMinutesWorked || 0), 
-      0
-    );
-    const totalHoursWorked = totalMinutesWorked / 60;
 
-    const project = existingOpportunity.project;
-
-    // Check if hours limit is reached
-    if (totalHoursWorked >= project.totalHoursNeeded) {
-      return res.status(400).json({
-        success: false,
-        message: `Required hours (${project.totalHoursNeeded}) already completed for this opportunity`,
-        data: {
-          totalHoursNeeded: project.totalHoursNeeded,
-          hoursCompleted: totalHoursWorked.toFixed(2)
-        }
-      });
-    }
 
     // Check if agent has already applied for this opportunity
     const existingApplication = await prisma.gigApplication.findFirst({
@@ -126,19 +99,6 @@ const gigApplication = async (req, res) => {
             title: true,
             category: true,
             status: true,
-            project: {
-              select: {
-                id: true,
-                title: true,
-                client: {
-                  select: {
-                    id: true,
-                    name: true,
-                    companyName: true
-                  }
-                }
-              }
-            }
           }
         }
       }
