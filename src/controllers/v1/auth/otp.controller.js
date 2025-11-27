@@ -1,8 +1,7 @@
 import { sendEmailOTP, sendPhoneOTP, verifyPhoneOTP } from "../../../services/otp.service.js"
-import { PrismaClient } from '@prisma/client';
+import prisma from '../../../config/db.js';
 import validator from 'validator';
 
-const prisma = new PrismaClient();
 const MAX_REQUESTS = 100000;
 const WINDOW_MINUTES = 10;
 
@@ -53,7 +52,6 @@ const requestOtp = async (req, res) => {
                 type: email ? "EMAIL" : "PHONE",
             },
         });
-        console.log(recentCount)
         //Counting the number of OTPS
         if (recentCount >= MAX_REQUESTS) {
             return res.status(429).json({ message: `Max ${MAX_REQUESTS} OTPs Allowed.` })

@@ -2,9 +2,7 @@ import "dotenv/config"
 import twilio from 'twilio';
 import crypto from "crypto"
 import nodemailer from "nodemailer"
-import { PrismaClient } from "@prisma/client"
-
-const prisma = new PrismaClient();
+import prisma from "../config/db.js"
 
 //OTP Service for Email
 
@@ -40,7 +38,7 @@ async function sendEmailOTP(user,WINDOW_MINUTES) {
         await transporter.sendMail({
             from: process.env.SMTP_USER, // business email used as sender
             to: user.email, // recipient email
-            subject: 'Your verification code for HiTouch CX',
+            subject: 'Your verification code for reboo8',
             text: `Your OTP is ${otpCode}. It expires in 10 minutes.`
         });
     }
