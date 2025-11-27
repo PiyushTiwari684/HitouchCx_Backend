@@ -31,7 +31,7 @@ const requestOtp = async (req, res) => {
         else if (email && phone) {
 
             const otpStatus = await sendPhoneOTP(phone)
-            if (otpStatus.sent) {
+            if (otpStatus.sent){
                 const user = await prisma.user.update({
                     where: { email },
                     data: { phone }
@@ -64,15 +64,11 @@ const requestOtp = async (req, res) => {
             await sendEmailOTP(user, WINDOW_MINUTES);
             res.json({ message: "OTP Sent To Email", user: user })
         }
-
-
-
+        
     }
     catch (error) {
         res.status(500).json({ message: "Cannot send the otp", error })
     }
-
-
 }
 
 //Verifying OTP

@@ -1,6 +1,6 @@
 import express from "express";
-import { createSystemCheck } from "../controllers/systemCheckController.js";
-import { authenticateCandidate } from "../middlewares/auth.js";
+import { createSystemCheck } from "../../../controllers/v1/proctoring-assessment/systemCheck.controller.js";
+import { authenticateCandidate } from "../../../middlewares/authMiddleware.js";
 
 const router = express.Router();
 

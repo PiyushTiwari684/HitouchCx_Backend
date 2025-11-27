@@ -1,8 +1,8 @@
-import express from 'express';
+import express from "express";
 const router = express.Router();
-import authMiddleware, { requireRole } from "../../../middleware/authMiddleware.js"
-import {createPlatformReview} from "../../../controllers/v1/platform/review.controller.js"
+import authMiddleware, { requireRole } from "../../../middlewares/authMiddleware.js";
+import { createPlatformReview } from "../../../controllers/v1/platform/review.controller.js";
 
-router.post("/agent-rates",authMiddleware,createPlatformReview)
+router.post("/agent-rates", authMiddleware, createPlatformReview);
 
 export default router;

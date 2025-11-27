@@ -1,19 +1,19 @@
 import dotenv from "dotenv";
 dotenv.config();
-
 import app from './app.js'
 import db from "./src/config/prismaClient.js";
+import { APP_CONFIG } from "./src/config/constants.js";
 
-const PORT = process.env.PORT || 5000
 
+const {PORT} = APP_CONFIG;
 
 async function startServer(){
     try {
-        // connect to database
+        //connect to database
         await db.$connect();
         console.log('Connect to supabase PostgreSQL');
         
-        // Server listening at port 
+        //Server listening at port 
         const server = app.listen(PORT,()=>{
             console.log(`Server running at https://localhost:${PORT}`);
         })

@@ -151,9 +151,7 @@ function validateCreds(email, phone, password) {
 // Option 2: Return boolean and check
 const isValid = validateCreds(email, phone, password);
 if (!isValid) return;
-```
 
----
 
 ### Issue #4: Undefined Variable in Agent Opportunities
 
@@ -174,7 +172,7 @@ const scored = opportunities.map((o) => {
   const breakdown = scoreOpportunity(agent, o, agentLanguageLevel); // ❌ UNDEFINED!
   // ...
 });
-```
+
 
 **Problem:** Variable `agentLanguageLevel` is used but never defined
 

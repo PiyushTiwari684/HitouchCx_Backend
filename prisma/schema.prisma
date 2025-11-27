@@ -10,11 +10,7 @@ generator client {
 
 datasource db {
   provider  = "postgresql"
-<<<<<<< HEAD
-  url       = env("DUMMY_DB_URL")
-=======
   url       = env("DATABASE_URL")
->>>>>>> dummy-merge
 }
 //ctrl + G to go to a particular line
 //~~~~~~ Proctoring and Assessment starts at line 891 ~~~~~~~~
@@ -138,6 +134,7 @@ enum WorkShift {
   FLEXIBLE // Any time (agent decides)
   CUSTOM // Custom hours (to be specified separately)
 }
+
 
 model Qualification {
   id        String            @id @default(cuid())

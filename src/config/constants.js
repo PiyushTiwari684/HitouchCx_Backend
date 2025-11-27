@@ -11,7 +11,7 @@ export const JWT_CONFIG = {
   REFRESH_TOKEN_SECRET: process.env.JWT_REFRESH_SECRET || 'csantoresbooshneelugastyahitouchx',
   ACCESS_TOKEN_EXPIRY: '1h',
   REFRESH_TOKEN_EXPIRY: '7d',
-  SESSION_TOKEN_EXPIRY: '4h', // For proctoring sessions
+  SESSION_TOKEN_EXPIRY: '4h',// For proctoring sessions
 };
 
 // Proctoring Configuration

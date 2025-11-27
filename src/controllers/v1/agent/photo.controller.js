@@ -8,12 +8,9 @@ const prisma = new PrismaClient();
  * Upload and process agent profile photo
  * @param {Object} req - Express request object
  * @param {Object} res - Express response object
- */
+*/  
 const uploadAgentPhoto = async (req, res) => {
   try {
-
-    
-
     const { agentId } = req.params;
 
     // Check if file was uploaded
@@ -90,7 +87,7 @@ const uploadAgentPhoto = async (req, res) => {
  * Delete agent profile photo
  * @param {Object} req - Express request object
  * @param {Object} res - Express response object
- */
+*/
 const deleteAgentPhoto = async (req, res) => {
   try {
     const { agentId } = req.params;

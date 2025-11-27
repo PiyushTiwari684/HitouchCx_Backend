@@ -1,49 +1,31 @@
-import express from "express";
+import express from 'express';
+import systemCheckRoutes from './systemCheckRoutes.js';
+import identityVerificationRoutes from './identityVerificationRoutes.js';
+import assessmentRoutes from './assessmentRoutes.js';
+import instructionRoutes from './instructionRoutes.js';
+import pingRoutes from './pingRoutes.js';
 
 const router = express.Router();
 
-// Test endpoints
-router.get("/test", (req, res) => {
-  res.json({
-    success: true,
-    message: "API is working correctly",
-    data: {
-      timestamp: new Date().toISOString(),
-      environment: process.env.NODE_ENV || "development",
-      nodeVersion: process.version,
-    },
-  });
-});
+// Instructions & Device Validation
+// Final path: /api/v1/proctoring/instructions/*
+router.use('/instructions', instructionRoutes);
 
-router.get("/test-error", (req, res, next) => {
-  const error = new Error("This is a test error");
-  error.statusCode = 400;
-  next(error);
-});
+// System Check Routes (Permissions & Device Info)
+// Final path: /api/v1/proctoring/system-check/*
+router.use('/system-check', systemCheckRoutes);
 
-router.get("/test-async-error", async (req, res) => {
-  throw new Error("This is a test async error");
-});
+// Identity Verification Routes (Face & Voice)
+// Final path: /api/v1/proctoring/identity-verification/*
+router.use('/identity-verification', identityVerificationRoutes);
 
-// Import route modules
-import systemCheckRoutes from "./systemCheckRoutes.js";
-import authRoutes from "./authRoutes.js";
-import pingRoutes from "./pingRoutes.js";
-import VerificationRoutes from "./identityVerificationRoutes.js"
-import instructionRoutes from "./instructionRoutes.js";
-import assessmentRoutes from "./assessmentRoutes.js";
+// Assessment Routes (Questions & Answers)
+// Final path: /api/v1/proctoring/assessment/*
+router.use('/assessment', assessmentRoutes);
 
+// Health Check / Ping Routes
+// Final path: /api/v1/proctoring/ping
+router.use('/ping', pingRoutes);
 
-
-// Mount routes
-router.use("/system-checks", systemCheckRoutes);
-router.use("/auth", authRoutes);
-router.use("/ping", pingRoutes);
-router.use("/instructions", instructionRoutes);
-router.use("/assessments", assessmentRoutes);
-router.use("/identity-verification", VerificationRoutes);
-
-
-// Future routes will be mounted here:
 
 export default router;

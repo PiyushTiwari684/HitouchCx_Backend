@@ -4,65 +4,44 @@ import {
   uploadAudioRecording,
   getReferenceDescriptor,
   logFaceComparison,
-} from "../controllers/identityVerificationController.js";
-import { uploadFaceImage, uploadAudio } from "../config/multer.config.js";
-import { authenticateCandidate } from "../middlewares/auth.js";
+} from "../../../controllers/v1/proctoring-assessment/identityVerification.controller.js";
+import { uploadFaceImage, uploadAudio } from "../../../config/multer.config.js";
+import { authenticateCandidate } from "../../../middlewares/authMiddleware.js";
 
 const router = express.Router();
 
-/**
- * Identity Verification Routes
- * All routes require candidate authentication
- */
-
-// ============================================================
-// FACE CAPTURE ENDPOINT
-// ============================================================
 // POST /api/v1/identity-verification/:attemptId/face-capture
 // Upload face image for identity verification
 router.post(
   "/:attemptId/face-capture",
   authenticateCandidate, // Requires valid JWT token
   uploadFaceImage.single("faceImage"), // Multer middleware (accepts single file named "faceImage")
-  uploadFaceCapture // Controller function
+  uploadFaceCapture, // Controller function
 );
 
-// ============================================================
-// AUDIO RECORDING ENDPOINT
-// ============================================================
 // POST /api/v1/identity-verification/:attemptId/audio-recording
 // Upload audio recording for voice verification
 router.post(
   "/:attemptId/audio-recording",
   authenticateCandidate, // Requires valid JWT token
   uploadAudio.single("audioFile"), // Multer middleware (accepts single file named "audioFile")
-  uploadAudioRecording // Controller function
+  uploadAudioRecording, // Controller function
 );
 
-// ============================================================
-// GET REFERENCE FACE DESCRIPTOR ENDPOINT
-// ============================================================
 // GET /api/v1/identity-verification/:attemptId/descriptor
 // Retrieve stored face descriptor for live comparison during assessment
 router.get(
   "/:attemptId/descriptor",
   authenticateCandidate, // Requires valid JWT token
-  getReferenceDescriptor // Controller function
+  getReferenceDescriptor, // Controller function
 );
 
-// ============================================================
-// LOG FACE COMPARISON ENDPOINT
-// ============================================================
 // POST /api/v1/identity-verification/:attemptId/comparison-log
 // Log face comparison results during assessment
 router.post(
   "/:attemptId/comparison-log",
   // authenticateCandidate, // Requires valid JWT token
-  logFaceComparison // Controller function
+  logFaceComparison, // Controller function
 );
 
-
 export default router;
-
-
-

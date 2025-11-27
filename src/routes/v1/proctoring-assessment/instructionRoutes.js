@@ -1,5 +1,5 @@
 import express from "express";
-import { validateDevice } from "../controllers/instructionController.js";
+import { validateDevice } from "../../../controllers/v1/proctoring-assessment/instruction.controller.js";
 
 const router = express.Router();
 
