@@ -10,8 +10,7 @@ import {
   getBankDetails,
 } from "../../../controllers/v1/agent/bankDetails.controller.js";
 import { getAgentById } from "../../../controllers/v1/agent/getAgent.controller.js";
-import upload from "../../../middlewares/imageUpload.js"; // ← Add this line!
-import uploadResume from "../../../middlewares/multer.middleware.js";
+import { uploadProfilePhoto,uploadResume } from "../../../config/upload.config.js";
 import { extractResume } from "../../../controllers/v1/resume/resume.controller.js";
 
 const router = express.Router();
@@ -32,7 +31,7 @@ router.get("/:agentId", getAgentById);
 //Add Agent's Profile Photo
 router.post(
   "/:agentId/upload-photo",
-  upload.single("profilePhoto"), // Middleware
+  uploadProfilePhoto.single("profilePhoto"), // Middleware
   uploadAgentPhoto,
 );
 

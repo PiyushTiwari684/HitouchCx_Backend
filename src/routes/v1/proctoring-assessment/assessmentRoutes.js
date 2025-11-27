@@ -6,14 +6,14 @@ import {
   getAttemptDetails,
   logViolation,
 } from "../../../controllers/v1/proctoring-assessment/assessment.controller.js";
-import { authenticateCandidate } from "../../../middlewares/authMiddleware.js";
+import authMiddleware from "../../../middlewares/authMiddleware.js";
 
 const router = express.Router();
 
-router.post("/start", authenticateCandidate, startAssessment);
-router.post("/generate", authenticateCandidate, generateAssessment);
-router.get("/attempt/:attemptId", authenticateCandidate, getAttemptDetails);
-router.get("/:assessmentId/attempt/:attemptId", authenticateCandidate, getAssessmentForAttempt);
-router.post("/:assessmentId/attempt/:attemptId/violations", authenticateCandidate, logViolation);
+router.post("/start", authMiddleware, startAssessment);
+router.post("/generate", authMiddleware, generateAssessment);
+router.get("/attempt/:attemptId", authMiddleware, getAttemptDetails);
+router.get("/:assessmentId/attempt/:attemptId", authMiddleware, getAssessmentForAttempt);
+router.post("/:assessmentId/attempt/:attemptId/violations", authMiddleware, logViolation);
 
 export default router;

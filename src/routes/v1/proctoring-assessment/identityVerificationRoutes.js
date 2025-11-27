@@ -5,8 +5,8 @@ import {
   getReferenceDescriptor,
   logFaceComparison,
 } from "../../../controllers/v1/proctoring-assessment/identityVerification.controller.js";
-import { uploadFaceImage, uploadAudio } from "../../../config/multer.config.js";
-import { authenticateCandidate } from "../../../middlewares/authMiddleware.js";
+import { uploadFaceImage, uploadAudio } from "../../../config/upload.config.js";
+import authMiddleware from "../../../middlewares/authMiddleware.js";
 
 const router = express.Router();
 
@@ -14,7 +14,7 @@ const router = express.Router();
 // Upload face image for identity verification
 router.post(
   "/:attemptId/face-capture",
-  authenticateCandidate, // Requires valid JWT token
+  authMiddleware, // Requires valid JWT token
   uploadFaceImage.single("faceImage"), // Multer middleware (accepts single file named "faceImage")
   uploadFaceCapture, // Controller function
 );
@@ -23,7 +23,7 @@ router.post(
 // Upload audio recording for voice verification
 router.post(
   "/:attemptId/audio-recording",
-  authenticateCandidate, // Requires valid JWT token
+  authMiddleware, // Requires valid JWT token
   uploadAudio.single("audioFile"), // Multer middleware (accepts single file named "audioFile")
   uploadAudioRecording, // Controller function
 );
@@ -32,7 +32,7 @@ router.post(
 // Retrieve stored face descriptor for live comparison during assessment
 router.get(
   "/:attemptId/descriptor",
-  authenticateCandidate, // Requires valid JWT token
+  authMiddleware, // Requires valid JWT token
   getReferenceDescriptor, // Controller function
 );
 
@@ -40,7 +40,7 @@ router.get(
 // Log face comparison results during assessment
 router.post(
   "/:attemptId/comparison-log",
-  // authenticateCandidate, // Requires valid JWT token
+  // authMiddleware, // Requires valid JWT token
   logFaceComparison, // Controller function
 );
 

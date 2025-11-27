@@ -1,7 +1,7 @@
 import prisma from "../../../config/db.js";
-import { sendSuccess, sendError } from "../../../utils/proctoring-assessment/response.js";
+import { sendSuccess, sendError } from "../../../utils/ApiResponse.js";
 import asyncHandler from "express-async-handler";
-import assessmentConfig from "../config/assessmentConfig.js";
+import assessmentConfig from "../../../config/assessmentConfig.js";
 
 /**
  * Background job to generate sections and questions for an assessment
@@ -105,11 +105,31 @@ async function generateAssessmentContent(assessmentId, assessmentType) {
 */
 export const generateAssessment = asyncHandler(async (req, res) => {
   const { assessmentType = "LANGUAGE" } = req.body;
-  const candidateId = req.candidate.id; // From JWT token via authenticateCandidate middleware
+  const agentId = req.user.agentId; // From authMiddleware
 
-  // Validate candidate
-  const candidate = await prisma.candidate.findUnique({ where: { id: candidateId } });
-  if (!candidate) return sendError(res, "Candidate not found", 404);
+  // Check if candidate exists (if agent has already started assessment before)
+  let candidate = await prisma.candidate.findUnique({ where: { agentId } });
+
+  // If no candidate yet, create one (Agent → Candidate transition)
+  if (!candidate) {
+    const agent = await prisma.agent.findUnique({
+      where: { id: agentId },
+      include: { user: { select: { email: true, firstName: true, lastName: true } } }
+    });
+
+    if (!agent) return sendError(res, "Agent profile not found", 404);
+
+    candidate = await prisma.candidate.create({
+      data: {
+        agentId,
+        email: agent.user.email,
+        firstName: agent.user.firstName,
+        lastName: agent.user.lastName,
+      }
+    });
+  }
+
+  const candidateId = candidate.id;
 
   const config = assessmentConfig[assessmentType];
   if (!config) return sendError(res, "Invalid assessmentType", 400);
@@ -160,34 +180,87 @@ export const generateAssessment = asyncHandler(async (req, res) => {
  */
 export const startAssessment = asyncHandler(async (req, res) => {
   const { assessmentId } = req.body;
-  const candidateId = req.candidate.id; // From JWT token
+  const agentId = req.user.agentId; // ✅ CHANGED: From req.user (authMiddleware), not req.candidate
 
+  // VALIDATION: Check if assessmentId provided
   if (!assessmentId) return sendError(res, "assessmentId is required", 400);
 
-  // 1. CHECK IF ASSESSMENT EXISTS
+  // This is where the Agent → Candidate transition happens
+  // First time: Creates candidate. Retry: Uses existing candidate.
+
+  let candidate = await prisma.candidate.findUnique({
+    where: { agentId },
+  });
+
+  if (!candidate) {
+    // 🆕 FIRST TIME - Create candidate from agent
+    console.log(`[startAssessment] Creating candidate for agentId: ${agentId}`);
+
+    // Get agent details with user info
+    const agent = await prisma.agent.findUnique({
+      where: { id: agentId },
+      include: {
+        user: {
+          select: {
+            email: true,
+            firstName: true,
+            lastName: true,
+          },
+        },
+      },
+    });
+
+    if (!agent) {
+      return sendError(res, "Agent profile not found. Please complete registration first.", 404);
+    }
+
+    // Create candidate record (Agent → Candidate transition)
+    candidate = await prisma.candidate.create({
+      data: {
+        agentId: agentId,
+        email: agent.user.email,
+        firstName: agent.user.firstName,
+        lastName: agent.user.lastName,
+      },
+    });
+
+    console.log(`✅ Candidate created: ${candidate.id} (from Agent: ${agentId})`);
+  } else {
+    // ♻️ RETRY - Candidate already exists
+    console.log(`[startAssessment] Using existing candidate: ${candidate.id}`);
+  }
+
+  // Now we have candidateId for sure
+  const candidateId = candidate.id;
+
   const assessment = await prisma.assessment.findUnique({
     where: { id: assessmentId },
   });
-  if (!assessment) return sendError(res, "Assessment not found", 404);
 
-  // 2. CHECK MAX ATTEMPTS NOT EXCEEDED
+  if (!assessment) {
+    return sendError(res, "Assessment not found", 404);
+  }
+
+  // Get all previous attempts for this candidate + assessment
   const existingAttempts = await prisma.candidateAssessment.findMany({
-    where: { candidateId, assessmentId },
+    where: {
+      candidateId: candidateId, // ✅ NOW DEFINED
+      assessmentId: assessmentId,
+    },
   });
 
   if (existingAttempts.length >= assessment.maxAttempts) {
     return sendError(
       res,
       `Maximum attempts (${assessment.maxAttempts}) exceeded for this assessment`,
-      400
+      400,
     );
   }
 
-  // 3. CREATE NEW CANDIDATE ASSESSMENT
   const attempt = await prisma.candidateAssessment.create({
     data: {
-      candidateId,
-      assessmentId,
+      candidateId: candidateId,
+      assessmentId: assessmentId,
       attemptNumber: existingAttempts.length + 1,
       sessionStatus: "NOT_STARTED",
       verificationStatus: "NOT_STARTED",
@@ -195,18 +268,21 @@ export const startAssessment = asyncHandler(async (req, res) => {
     },
   });
 
-  // 4. RESPOND
+  console.log(`✅ Assessment attempt created: ${attempt.id} (attempt #${attempt.attemptNumber})`);
+
   return sendSuccess(
     res,
     {
+      candidateId: attempt.candidateId,
       attemptId: attempt.id,
       assessmentId: attempt.assessmentId,
-      candidateId: attempt.candidateId,
       attemptNumber: attempt.attemptNumber,
       sessionStatus: attempt.sessionStatus,
+      maxAttempts: assessment.maxAttempts,
+      attemptsRemaining: assessment.maxAttempts - attempt.attemptNumber,
     },
     "Assessment started successfully",
-    201
+    201,
   );
 });
 
@@ -217,13 +293,12 @@ export const startAssessment = asyncHandler(async (req, res) => {
  */
 export const getAssessmentForAttempt = asyncHandler(async (req, res) => {
   const { assessmentId, attemptId } = req.params;
-  const candidateId = req.candidate.id; // From JWT token
 
   if (!assessmentId || !attemptId) {
     return sendError(res, "assessmentId and attemptId are required", 400);
   }
 
-  // 1. Verify candidate attempt exists and belongs to this candidate
+  // 1. Verify candidate attempt exists and get candidateId
   const attempt = await prisma.candidateAssessment.findUnique({
     where: { id: attemptId },
     include: {
@@ -248,7 +323,16 @@ export const getAssessmentForAttempt = asyncHandler(async (req, res) => {
     return sendError(res, "Assessment attempt not found", 404);
   }
 
-  if (attempt.candidateId !== candidateId) {
+  const candidateId = attempt.candidateId;
+
+  // 2. Verify this attempt belongs to the authenticated user's agent
+  const agentId = req.user.agentId;
+  const candidate = await prisma.candidate.findUnique({
+    where: { id: candidateId },
+    select: { agentId: true }
+  });
+
+  if (!candidate || candidate.agentId !== agentId) {
     return sendError(res, "Unauthorized access to this assessment", 403);
   }
 
@@ -256,7 +340,7 @@ export const getAssessmentForAttempt = asyncHandler(async (req, res) => {
     return sendError(res, "Assessment ID mismatch", 400);
   }
 
-  // 2. Transform data for frontend
+  // 3. Transform data for frontend
   const sections = attempt.assessment.sections.map((section) => ({
     id: section.id,
     name: section.name,
@@ -299,7 +383,6 @@ export const getAssessmentForAttempt = asyncHandler(async (req, res) => {
  */
 export const getAttemptDetails = asyncHandler(async (req, res) => {
   const { attemptId } = req.params;
-  const candidateId = req.candidate.id; // From JWT token
 
   if (!attemptId) {
     return sendError(res, "attemptId is required", 400);
@@ -322,8 +405,14 @@ export const getAttemptDetails = asyncHandler(async (req, res) => {
     return sendError(res, "Assessment attempt not found", 404);
   }
 
-  // Verify the attempt belongs to the authenticated candidate
-  if (attempt.candidateId !== candidateId) {
+  // Verify this attempt belongs to the authenticated user's agent
+  const agentId = req.user.agentId;
+  const candidate = await prisma.candidate.findUnique({
+    where: { id: attempt.candidateId },
+    select: { agentId: true }
+  });
+
+  if (!candidate || candidate.agentId !== agentId) {
     return sendError(res, "Unauthorized access to this assessment attempt", 403);
   }
 
@@ -345,6 +434,18 @@ export const logViolation = asyncHandler(async (req, res) => {
   });
 
   try {
+    // Get candidateId from attemptId
+    const attempt = await prisma.candidateAssessment.findUnique({
+      where: { id: attemptId },
+      select: { candidateId: true },
+    });
+
+    if (!attempt) {
+      return sendError(res, "Assessment attempt not found", 404);
+    }
+
+    const candidateId = attempt.candidateId;
+
     // Get the proctoring session
     const session = await prisma.proctoringSession.findFirst({
       where: { attemptId },
@@ -359,7 +460,7 @@ export const logViolation = asyncHandler(async (req, res) => {
     const violation = await prisma.proctoringLog.create({
       data: {
         sessionId: session.id,
-        candidateId: req.candidate.id,
+        candidateId: candidateId,
         eventType: "VIOLATION",
         violationType: type,
         severity: severity || "MEDIUM",

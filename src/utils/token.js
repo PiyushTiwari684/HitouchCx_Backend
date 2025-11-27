@@ -9,5 +9,4 @@ import jwt from 'jsonwebtoken';
   return jwt.verify(token, secret);
 }
 
-
 export {generateToken,verifyToken}

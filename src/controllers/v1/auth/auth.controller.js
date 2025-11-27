@@ -29,7 +29,7 @@ const signUp = async (req, res) => {
                 return res.status(400).json({ error: "Password is not strong enough" })
             }
         }
-        validateCreds(email,phone,password)
+        validateCreds(email,phone,password);
 
         //Creating Hash Password and updating fields
         const hashedPassword = await bcrypt.hash(password,10);
@@ -54,6 +54,8 @@ const signUp = async (req, res) => {
     }
 }
 
+
+//cookies // res object 
 
 //Log In Controller
 const logIn = async(req,res)=>{

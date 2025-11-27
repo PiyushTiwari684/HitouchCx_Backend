@@ -1,38 +1,48 @@
-import { verifyToken } from '../utils/token.js';
+import { verifyToken } from "../utils/token.js";
+import prisma from "../config/db.js";
 
-function authMiddleware(req, res, next) {
+async function authMiddleware(req, res, next) {
   const header = req.headers.authorization;
-  if (!header) return res.status(401).json({ message: 'Authorization header missing' });
+  if (!header) return res.status(401).json({ message: "Authorization header missing" });
 
-  const [, token] = header.split(' ');
-  if (!token) return res.status(401).json({ message: 'Bearer token missing' });
+  const [, token] = header.split(" ");
+  if (!token) return res.status(401).json({ message: "Bearer token missing" });
 
   try {
     const decoded = verifyToken(token);
-    console.log(decoded.status)
-    if (decoded.status !== 'ACTIVE') {
-      return res.status(403).json({ message: 'Account inactive' });
+    console.log(decoded.status);
+
+    if (decoded.status !== "ACTIVE") {
+      return res.status(403).json({ message: "Account inactive" });
     }
+
+    // Fetch agentId from database (always fresh)
+    const user = await prisma.user.findUnique({
+      where: { id: decoded.id },
+      include: { agent: true },
+    });
 
     req.user = {
       id: decoded.id,
       role: decoded.role,
-      status: decoded.status
+      status: decoded.status,
+      agentId: user?.agent?.id || null, // ✅ Always fetches latest agentId
     };
+
     next();
   } catch (err) {
-    return res.status(403).json({ message: 'Invalid or expired token' });
+    return res.status(403).json({ message: "Invalid or expired token" });
   }
 }
 
 export function requireRole(...allowedRoles) {
   return function roleMiddleware(req, res, next) {
     if (!req.user) {
-      return res.status(500).json({ message: 'User context missing' });
+      return res.status(500).json({ message: "User context missing" });
     }
 
     if (!allowedRoles.includes(req.user.role)) {
-      return res.status(403).json({ message: 'Forbidden' });
+      return res.status(403).json({ message: "Forbidden" });
     }
 
     next();

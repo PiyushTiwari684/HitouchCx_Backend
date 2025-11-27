@@ -2,7 +2,7 @@
 // This catches ALL errors in the application and formats them consistently
 // Without this: Every endpoint would need its own try-catch and error handling
 
-import { sendError } from '../utils/response.js';
+import { sendError } from '../utils/ApiResponse.js';
 import logger from '../utils/logger.js';
 
 /**
