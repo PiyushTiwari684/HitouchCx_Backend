@@ -1,7 +1,7 @@
 import dotenv from "dotenv";
 dotenv.config();
 import app from './app.js'
-import db from "./src/config/prismaClient.js";
+import db from "./src/config/db.js";
 import { APP_CONFIG } from "./src/config/constants.js";
 
 
