@@ -1,6 +1,7 @@
 import express from 'express';
 import coreRouter from './v1/core/index.js';
 import proctoringRouter from './v1/proctoring-assessment/index.js';
+import chatbotRouter from './v1/chatbot/index.js';
 
 const router = express.Router();
 
@@ -11,5 +12,9 @@ router.use('/', coreRouter);
 // Proctoring & Assessment Routes
 
 router.use('/proctoring', proctoringRouter);
+
+// Chatbot Routes
+
+router.use('/chatbot', chatbotRouter);
 
 export default router;
