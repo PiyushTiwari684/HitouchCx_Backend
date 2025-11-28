@@ -10,7 +10,7 @@ import {
   getBankDetails,
 } from "../../../controllers/v1/agent/bankDetails.controller.js";
 import { getAgentById } from "../../../controllers/v1/agent/getAgent.controller.js";
-import { uploadProfilePhoto,uploadResume } from "../../../config/upload.config.js";
+import { uploadProfilePhoto, uploadResume } from "../../../config/upload.config.js";
 import { extractResume } from "../../../controllers/v1/resume/resume.controller.js";
 
 const router = express.Router();

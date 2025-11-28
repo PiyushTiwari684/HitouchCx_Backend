@@ -1,5 +1,8 @@
 node_modules/
 .env
 coverage/
+uploads/
+!uploads/.gitkeep
 
 /src/generated/prisma
+/docs/sam-merge.md
