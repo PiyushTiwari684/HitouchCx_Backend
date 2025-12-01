@@ -45,6 +45,10 @@ model User {
   role          Role    @default(AGENT)
   status        Status  @default(PENDING)
 
+  // Registration tracking fields
+  profileCompleted Boolean @default(false)
+  agreementSigned  Boolean @default(false)
+
   googleId       String?      @unique //oAuth Google Id
   profilePicture String? //Profile Picture received from Google
   provider       AuthProvider @default(LOCAL) // Authentication done through Local/Google etc

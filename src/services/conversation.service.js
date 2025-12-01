@@ -2,8 +2,21 @@ import prisma from "../config/db.js";
 import { v4 as uuidv4 } from "uuid";
 
 // Start a new conversation
-export async function startConversation(sessionId, agentId) {
+export async function startConversation(sessionId, userIdOrAgentId) {
   try {
+    // First, try to find the agent by userId (in case userIdOrAgentId is actually userId)
+    let agentId = userIdOrAgentId;
+
+    const agent = await prisma.agent.findUnique({
+      where: { userId: userIdOrAgentId },
+    });
+
+    // If agent found by userId, use the agent's ID
+    if (agent) {
+      agentId = agent.id;
+    }
+    // Otherwise, assume userIdOrAgentId is already an agentId
+
     // Check if there's an active conversation for this session
     const existingConversation = await prisma.conversation.findFirst({
       where: {

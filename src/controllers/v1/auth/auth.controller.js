@@ -2,6 +2,10 @@ import prisma from "../../../config/db.js";
 import { generateToken, verifyToken } from "../../../utils/token.js";
 import validator from "validator";
 import bcrypt from "bcrypt";
+import {
+  calculateNextStep,
+  getAssessmentStatusSummary
+} from "../../../utils/assessmentHelpers.js";
 
 //Sign Up Controller
 const signUp = async (req, res) => {
@@ -12,7 +16,7 @@ const signUp = async (req, res) => {
     if (!email || !phone || !password) {
       return res.status(400).json({ error: "Enter All required fields." });
     }
-
+     
     //Validation all the credentials
     function validateCreds(email, phone, password) {
       if (!validator.isEmail(email)) {
@@ -28,7 +32,7 @@ const signUp = async (req, res) => {
       }
     }
     validateCreds(email, phone, password);
-
+  
     //Creating Hash Password and updating fields
     const hashedPassword = await bcrypt.hash(password, 10);
     const now = new Date();
@@ -82,8 +86,60 @@ const logIn = async (req, res) => {
         const valid = await bcrypt.compare(password, user.passwordHash);
 
         if (valid && user.status == "ACTIVE") {
+          // Generate JWT token
           const token = generateToken({ id: user.id, role: user.role, status: user.status });
-          return res.json({ message: "User Authenticated", token: token });
+
+          // Fetch Agent data (for KYC status)
+          const agent = await prisma.agent.findUnique({
+            where: { userId: user.id }
+          });
+
+          // Fetch Candidate data (linked to Agent)
+          let assessment = null;
+          if (agent) {
+            const candidate = await prisma.candidate.findFirst({
+              where: { agentId: agent.id }
+            });
+
+            // Fetch latest CandidateAssessment (for assessment status)
+            if (candidate) {
+              assessment = await prisma.candidateAssessment.findFirst({
+                where: { candidateId: candidate.id },
+                orderBy: { createdAt: 'desc' } // Get most recent assessment
+              });
+            }
+          }
+
+          // Calculate next step using our helper function
+          const nextStep = calculateNextStep(user, agent, assessment);
+
+          // Get assessment status summary
+          const assessmentStatus = getAssessmentStatusSummary(assessment);
+
+          // Build registration status object
+          const registrationStatus = {
+            emailVerified: user.emailVerified,
+            phoneVerified: user.phoneVerified,
+            profileCompleted: user.profileCompleted,
+            kycStatus: agent?.kycStatus || 'PENDING',
+            assessmentStatus: assessmentStatus,
+            agreementSigned: user.agreementSigned,
+            nextStep: nextStep
+          };
+
+          // Return token + user object with registration status
+          return res.json({
+            message: "User Authenticated",
+            token: token,
+            user: {
+              id: user.id,
+              email: user.email,
+              phone: user.phone,
+              role: user.role,
+              status: user.status,
+              registrationStatus: registrationStatus
+            }
+          });
         } else {
           return res.json({ error: "Error in Token/Status" });
         }

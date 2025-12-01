@@ -585,3 +585,35 @@ Unique constraint failed on the fields: (`attemptId`)
     at trimPrefix (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:342:13)
     at C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:297:9
     at processParams (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:582:12)
+2025-12-01 16:27:40 [error]: Error: Failed to start conversation: 
+[31mInvalid [1m`prisma.conversation.create()`[22m invocation:[39m
+
+
+Foreign key constraint violated on the constraint: `conversations_agentId_fkey`
+    at Module.startConversation (file:///C:/Users/tiwar/Desktop/HitouchCX_Projects/Hitouch_Project/HitouchCx_Backend/src/services/conversation.service.js:38:11)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async startConversation (file:///C:/Users/tiwar/Desktop/HitouchCX_Projects/Hitouch_Project/HitouchCx_Backend/src/controllers/v1/chatbot/conversation.controller.js:16:26)
+2025-12-01 16:28:05 [error]: Error: Failed to start conversation: 
+[31mInvalid [1m`prisma.conversation.create()`[22m invocation:[39m
+
+
+Foreign key constraint violated on the constraint: `conversations_agentId_fkey`
+    at Module.startConversation (file:///C:/Users/tiwar/Desktop/HitouchCX_Projects/Hitouch_Project/HitouchCx_Backend/src/services/conversation.service.js:38:11)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async startConversation (file:///C:/Users/tiwar/Desktop/HitouchCX_Projects/Hitouch_Project/HitouchCx_Backend/src/controllers/v1/chatbot/conversation.controller.js:16:26)
+2025-12-01 16:28:05 [error]: Error: Failed to start conversation: 
+[31mInvalid [1m`prisma.conversation.create()`[22m invocation:[39m
+
+
+Foreign key constraint violated on the constraint: `conversations_agentId_fkey`
+    at Module.startConversation (file:///C:/Users/tiwar/Desktop/HitouchCX_Projects/Hitouch_Project/HitouchCx_Backend/src/services/conversation.service.js:38:11)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async startConversation (file:///C:/Users/tiwar/Desktop/HitouchCX_Projects/Hitouch_Project/HitouchCx_Backend/src/controllers/v1/chatbot/conversation.controller.js:16:26)
+2025-12-01 16:28:10 [error]: Error: Failed to start conversation: 
+[31mInvalid [1m`prisma.conversation.create()`[22m invocation:[39m
+
+
+Foreign key constraint violated on the constraint: `conversations_agentId_fkey`
+    at Module.startConversation (file:///C:/Users/tiwar/Desktop/HitouchCX_Projects/Hitouch_Project/HitouchCx_Backend/src/services/conversation.service.js:38:11)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async startConversation (file:///C:/Users/tiwar/Desktop/HitouchCX_Projects/Hitouch_Project/HitouchCx_Backend/src/controllers/v1/chatbot/conversation.controller.js:16:26)
