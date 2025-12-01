@@ -8,10 +8,17 @@ generator client {
   provider = "prisma-client-js"
 }
 
+// datasource db {
+//   provider  = "postgresql"
+//   url       = env("DATABASE_URL")
+// }
+
 datasource db {
   provider  = "postgresql"
   url       = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
 }
+
 //ctrl + G to go to a particular line
 //~~~~~~ Proctoring and Assessment starts at line 891 ~~~~~~~~
 //~~~~~~ Client and Project starts at line 301 ~~~~~~~

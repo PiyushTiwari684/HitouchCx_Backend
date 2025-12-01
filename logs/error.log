@@ -1,0 +1,587 @@
+2025-11-29 14:55:52 [error]: Error: Route not found: /api/v1/auth/sign-in
+    at notFoundHandler (file:///C:/Users/tiwar/Desktop/HitouchCX_Projects/Hitouch_Project/HitouchCx_Backend/src/middlewares/errorHandler.js:137:17)
+    at Layer.handleRequest (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:342:13)
+    at C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:297:9
+    at processParams (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:582:12)
+    at next (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:291:5)
+    at C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:688:15
+    at next (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:276:14)
+    at C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:688:15
+    at next (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:276:14)
+    at C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:688:15
+    at next (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:276:14)
+    at Function.handle (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:186:3)
+    at router (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:60:12)
+    at Layer.handleRequest (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:342:13)
+2025-11-29 15:02:38 [error]: Error: Route not found: /api/v1/instructions/validate-device
+    at notFoundHandler (file:///C:/Users/tiwar/Desktop/HitouchCX_Projects/Hitouch_Project/HitouchCx_Backend/src/middlewares/errorHandler.js:137:17)
+    at Layer.handleRequest (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:342:13)
+    at C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:297:9
+    at processParams (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:582:12)
+    at next (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:291:5)
+    at C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:688:15
+    at next (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:276:14)
+    at C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:688:15
+    at next (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:276:14)
+    at Function.handle (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:186:3)
+    at router (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:60:12)
+    at Layer.handleRequest (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:342:13)
+    at C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:297:9
+    at processParams (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:582:12)
+2025-11-29 15:02:38 [error]: Error: Route not found: /api/v1/instructions/validate-device
+    at notFoundHandler (file:///C:/Users/tiwar/Desktop/HitouchCX_Projects/Hitouch_Project/HitouchCx_Backend/src/middlewares/errorHandler.js:137:17)
+    at Layer.handleRequest (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:342:13)
+    at C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:297:9
+    at processParams (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:582:12)
+    at next (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:291:5)
+    at C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:688:15
+    at next (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:276:14)
+    at C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:688:15
+    at next (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:276:14)
+    at Function.handle (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:186:3)
+    at router (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:60:12)
+    at Layer.handleRequest (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:342:13)
+    at C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:297:9
+    at processParams (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:582:12)
+2025-11-29 23:57:27 [error]: Error: Route not found: /api/v1/instructions/validate-device
+    at notFoundHandler (file:///C:/Users/tiwar/Desktop/HitouchCX_Projects/Hitouch_Project/HitouchCx_Backend/src/middlewares/errorHandler.js:137:17)
+    at Layer.handleRequest (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:342:13)
+    at C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:297:9
+    at processParams (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:582:12)
+    at next (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:291:5)
+    at C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:688:15
+    at next (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:276:14)
+    at C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:688:15
+    at next (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:276:14)
+    at Function.handle (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:186:3)
+    at router (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:60:12)
+    at Layer.handleRequest (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:342:13)
+    at C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:297:9
+    at processParams (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:582:12)
+2025-11-29 23:57:27 [error]: Error: Route not found: /api/v1/instructions/validate-device
+    at notFoundHandler (file:///C:/Users/tiwar/Desktop/HitouchCX_Projects/Hitouch_Project/HitouchCx_Backend/src/middlewares/errorHandler.js:137:17)
+    at Layer.handleRequest (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:342:13)
+    at C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:297:9
+    at processParams (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:582:12)
+    at next (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:291:5)
+    at C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:688:15
+    at next (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:276:14)
+    at C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:688:15
+    at next (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:276:14)
+    at Function.handle (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:186:3)
+    at router (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:60:12)
+    at Layer.handleRequest (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:342:13)
+    at C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:297:9
+    at processParams (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:582:12)
+2025-11-30 09:53:22 [error]: Error: Route not found: /api/v1/instructions/validate-device
+    at notFoundHandler (file:///C:/Users/tiwar/Desktop/HitouchCX_Projects/Hitouch_Project/HitouchCx_Backend/src/middlewares/errorHandler.js:137:17)
+    at Layer.handleRequest (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:342:13)
+    at C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:297:9
+    at processParams (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:582:12)
+    at next (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:291:5)
+    at C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:688:15
+    at next (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:276:14)
+    at C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:688:15
+    at next (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:276:14)
+    at Function.handle (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:186:3)
+    at router (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:60:12)
+    at Layer.handleRequest (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:342:13)
+    at C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:297:9
+    at processParams (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:582:12)
+2025-11-30 09:53:22 [error]: Error: Route not found: /api/v1/instructions/validate-device
+    at notFoundHandler (file:///C:/Users/tiwar/Desktop/HitouchCX_Projects/Hitouch_Project/HitouchCx_Backend/src/middlewares/errorHandler.js:137:17)
+    at Layer.handleRequest (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:342:13)
+    at C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:297:9
+    at processParams (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:582:12)
+    at next (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:291:5)
+    at C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:688:15
+    at next (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:276:14)
+    at C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:688:15
+    at next (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:276:14)
+    at Function.handle (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:186:3)
+    at router (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:60:12)
+    at Layer.handleRequest (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:342:13)
+    at C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:297:9
+    at processParams (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:582:12)
+2025-11-30 11:06:53 [error]: Error: Route not found: /api/v1/assessments/generate
+    at notFoundHandler (file:///C:/Users/tiwar/Desktop/HitouchCX_Projects/Hitouch_Project/HitouchCx_Backend/src/middlewares/errorHandler.js:137:17)
+    at Layer.handleRequest (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:342:13)
+    at C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:297:9
+    at processParams (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:582:12)
+    at next (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:291:5)
+    at C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:688:15
+    at next (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:276:14)
+    at C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:688:15
+    at next (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:276:14)
+    at Function.handle (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:186:3)
+    at router (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:60:12)
+    at Layer.handleRequest (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:342:13)
+    at C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:297:9
+    at processParams (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:582:12)
+2025-11-30 11:09:27 [error]: PrismaClientValidationError: 
+[31mInvalid [1m`prisma.candidate.findUnique()`[22m invocation:[39m
+
+{
+  where: {
+    agentId: null,
+[32m?[39m   [32mid[39m[32m?[39m[32m: [39m[32mString[39m,
+[32m?[39m   [32memail[39m[32m?[39m[32m: [39m[32mString[39m,
+[32m?[39m   [32mAND[39m[32m?[39m[32m: [39m[32mCandidateWhereInput | CandidateWhereInput[][39m,
+[32m?[39m   [32mOR[39m[32m?[39m[32m: [39m[32mCandidateWhereInput[][39m,
+[32m?[39m   [32mNOT[39m[32m?[39m[32m: [39m[32mCandidateWhereInput | CandidateWhereInput[][39m,
+[32m?[39m   [32mfirstName[39m[32m?[39m[32m: [39m[32mStringFilter | String[39m,
+[32m?[39m   [32mlastName[39m[32m?[39m[32m: [39m[32mStringFilter | String[39m,
+[32m?[39m   [32mphone[39m[32m?[39m[32m: [39m[32mStringNullableFilter | String | Null[39m,
+[32m?[39m   [32moverallCEFRLevel[39m[32m?[39m[32m: [39m[32mEnumCEFRLevelNullableFilter | CEFRLevel | Null[39m,
+[32m?[39m   [32misBlacklisted[39m[32m?[39m[32m: [39m[32mBoolFilter | Boolean[39m,
+[32m?[39m   [32misActive[39m[32m?[39m[32m: [39m[32mBoolFilter | Boolean[39m,
+[32m?[39m   [32mcreatedAt[39m[32m?[39m[32m: [39m[32mDateTimeFilter | DateTime[39m,
+[32m?[39m   [32mupdatedAt[39m[32m?[39m[32m: [39m[32mDateTimeFilter | DateTime[39m,
+[32m?[39m   [32magent[39m[32m?[39m[32m: [39m[32mAgentNullableScalarRelationFilter | AgentWhereInput | Null[39m,
+[32m?[39m   [32msystemChecks[39m[32m?[39m[32m: [39m[32mSystemCheckListRelationFilter[39m,
+[32m?[39m   [32midentityVerifications[39m[32m?[39m[32m: [39m[32mIdentityVerificationListRelationFilter[39m,
+[32m?[39m   [32massessmentAttempts[39m[32m?[39m[32m: [39m[32mCandidateAssessmentListRelationFilter[39m,
+[32m?[39m   [32mproctoringLogs[39m[32m?[39m[32m: [39m[32mProctoringLogListRelationFilter[39m,
+[32m?[39m   [32mproctoringSessions[39m[32m?[39m[32m: [39m[32mProctoringSessionListRelationFilter[39m,
+[32m?[39m   [32manswers[39m[32m?[39m[32m: [39m[32mAnswerListRelationFilter[39m,
+[32m?[39m   [32mspeakingEvaluations[39m[32m?[39m[32m: [39m[32mSpeakingEvaluationListRelationFilter[39m,
+[32m?[39m   [32mreconnectionLogs[39m[32m?[39m[32m: [39m[32mReconnectionLogListRelationFilter[39m,
+[32m?[39m   [32mblacklistEntries[39m[32m?[39m[32m: [39m[32mBlacklistListRelationFilter[39m,
+[32m?[39m   [32mViolationSnapshot[39m[32m?[39m[32m: [39m[32mViolationSnapshotListRelationFilter[39m
+  }
+}
+
+Argument `[1mwhere[22m` of type [1mCandidateWhereUniqueInput[22m needs [32mat least one of[39m `[1mid[22m` or `[1memail[22m` arguments. Available options are listed in [32mgreen[39m.
+    at oa (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\@prisma\client\runtime\binary.js:156:1375)
+    at bl.handleRequestError (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\@prisma\client\runtime\binary.js:258:6913)
+    at bl.handleAndLogRequestError (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\@prisma\client\runtime\binary.js:258:6594)
+    at bl.request (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\@prisma\client\runtime\binary.js:258:6301)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async o (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\@prisma\client\runtime\binary.js:267:9560)
+    at async file:///C:/Users/tiwar/Desktop/HitouchCX_Projects/Hitouch_Project/HitouchCx_Backend/src/controllers/v1/proctoring-assessment/assessment.controller.js:111:19
+2025-11-30 11:10:31 [error]: PrismaClientValidationError: 
+[31mInvalid [1m`prisma.candidate.findUnique()`[22m invocation:[39m
+
+{
+  where: {
+    agentId: null,
+[32m?[39m   [32mid[39m[32m?[39m[32m: [39m[32mString[39m,
+[32m?[39m   [32memail[39m[32m?[39m[32m: [39m[32mString[39m,
+[32m?[39m   [32mAND[39m[32m?[39m[32m: [39m[32mCandidateWhereInput | CandidateWhereInput[][39m,
+[32m?[39m   [32mOR[39m[32m?[39m[32m: [39m[32mCandidateWhereInput[][39m,
+[32m?[39m   [32mNOT[39m[32m?[39m[32m: [39m[32mCandidateWhereInput | CandidateWhereInput[][39m,
+[32m?[39m   [32mfirstName[39m[32m?[39m[32m: [39m[32mStringFilter | String[39m,
+[32m?[39m   [32mlastName[39m[32m?[39m[32m: [39m[32mStringFilter | String[39m,
+[32m?[39m   [32mphone[39m[32m?[39m[32m: [39m[32mStringNullableFilter | String | Null[39m,
+[32m?[39m   [32moverallCEFRLevel[39m[32m?[39m[32m: [39m[32mEnumCEFRLevelNullableFilter | CEFRLevel | Null[39m,
+[32m?[39m   [32misBlacklisted[39m[32m?[39m[32m: [39m[32mBoolFilter | Boolean[39m,
+[32m?[39m   [32misActive[39m[32m?[39m[32m: [39m[32mBoolFilter | Boolean[39m,
+[32m?[39m   [32mcreatedAt[39m[32m?[39m[32m: [39m[32mDateTimeFilter | DateTime[39m,
+[32m?[39m   [32mupdatedAt[39m[32m?[39m[32m: [39m[32mDateTimeFilter | DateTime[39m,
+[32m?[39m   [32magent[39m[32m?[39m[32m: [39m[32mAgentNullableScalarRelationFilter | AgentWhereInput | Null[39m,
+[32m?[39m   [32msystemChecks[39m[32m?[39m[32m: [39m[32mSystemCheckListRelationFilter[39m,
+[32m?[39m   [32midentityVerifications[39m[32m?[39m[32m: [39m[32mIdentityVerificationListRelationFilter[39m,
+[32m?[39m   [32massessmentAttempts[39m[32m?[39m[32m: [39m[32mCandidateAssessmentListRelationFilter[39m,
+[32m?[39m   [32mproctoringLogs[39m[32m?[39m[32m: [39m[32mProctoringLogListRelationFilter[39m,
+[32m?[39m   [32mproctoringSessions[39m[32m?[39m[32m: [39m[32mProctoringSessionListRelationFilter[39m,
+[32m?[39m   [32manswers[39m[32m?[39m[32m: [39m[32mAnswerListRelationFilter[39m,
+[32m?[39m   [32mspeakingEvaluations[39m[32m?[39m[32m: [39m[32mSpeakingEvaluationListRelationFilter[39m,
+[32m?[39m   [32mreconnectionLogs[39m[32m?[39m[32m: [39m[32mReconnectionLogListRelationFilter[39m,
+[32m?[39m   [32mblacklistEntries[39m[32m?[39m[32m: [39m[32mBlacklistListRelationFilter[39m,
+[32m?[39m   [32mViolationSnapshot[39m[32m?[39m[32m: [39m[32mViolationSnapshotListRelationFilter[39m
+  }
+}
+
+Argument `[1mwhere[22m` of type [1mCandidateWhereUniqueInput[22m needs [32mat least one of[39m `[1mid[22m` or `[1memail[22m` arguments. Available options are listed in [32mgreen[39m.
+    at oa (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\@prisma\client\runtime\binary.js:156:1375)
+    at bl.handleRequestError (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\@prisma\client\runtime\binary.js:258:6913)
+    at bl.handleAndLogRequestError (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\@prisma\client\runtime\binary.js:258:6594)
+    at bl.request (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\@prisma\client\runtime\binary.js:258:6301)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async o (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\@prisma\client\runtime\binary.js:267:9560)
+    at async file:///C:/Users/tiwar/Desktop/HitouchCX_Projects/Hitouch_Project/HitouchCx_Backend/src/controllers/v1/proctoring-assessment/assessment.controller.js:111:19
+2025-11-30 11:22:24 [error]: PrismaClientValidationError: 
+[31mInvalid [1m`prisma.agent.create()`[22m invocation:[39m
+
+{
+  data: {
+    userId: "cmijzdswm00000igob9lh59xh",
+[32m+[39m   [32mfirstName[39m[32m: [39m[32mString[39m
+  }
+}
+
+Argument `[32mfirstName[39m` is missing.
+    at oa (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\@prisma\client\runtime\binary.js:156:1375)
+    at bl.handleRequestError (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\@prisma\client\runtime\binary.js:258:6913)
+    at bl.handleAndLogRequestError (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\@prisma\client\runtime\binary.js:258:6594)
+    at bl.request (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\@prisma\client\runtime\binary.js:258:6301)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async o (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\@prisma\client\runtime\binary.js:267:9560)
+    at async file:///C:/Users/tiwar/Desktop/HitouchCX_Projects/Hitouch_Project/HitouchCx_Backend/src/controllers/v1/proctoring-assessment/assessment.controller.js:125:24
+2025-11-30 11:29:39 [error]: PrismaClientValidationError: 
+[31mInvalid [1m`prisma.candidate.findUnique()`[22m invocation:[39m
+
+{
+  where: {
+    agentId: "cmilb910t00010ilgome545o5",
+[32m?[39m   [32mid[39m[32m?[39m[32m: [39m[32mString[39m,
+[32m?[39m   [32memail[39m[32m?[39m[32m: [39m[32mString[39m,
+[32m?[39m   [32mAND[39m[32m?[39m[32m: [39m[32mCandidateWhereInput | CandidateWhereInput[][39m,
+[32m?[39m   [32mOR[39m[32m?[39m[32m: [39m[32mCandidateWhereInput[][39m,
+[32m?[39m   [32mNOT[39m[32m?[39m[32m: [39m[32mCandidateWhereInput | CandidateWhereInput[][39m,
+[32m?[39m   [32mfirstName[39m[32m?[39m[32m: [39m[32mStringFilter | String[39m,
+[32m?[39m   [32mlastName[39m[32m?[39m[32m: [39m[32mStringFilter | String[39m,
+[32m?[39m   [32mphone[39m[32m?[39m[32m: [39m[32mStringNullableFilter | String | Null[39m,
+[32m?[39m   [32moverallCEFRLevel[39m[32m?[39m[32m: [39m[32mEnumCEFRLevelNullableFilter | CEFRLevel | Null[39m,
+[32m?[39m   [32misBlacklisted[39m[32m?[39m[32m: [39m[32mBoolFilter | Boolean[39m,
+[32m?[39m   [32misActive[39m[32m?[39m[32m: [39m[32mBoolFilter | Boolean[39m,
+[32m?[39m   [32mcreatedAt[39m[32m?[39m[32m: [39m[32mDateTimeFilter | DateTime[39m,
+[32m?[39m   [32mupdatedAt[39m[32m?[39m[32m: [39m[32mDateTimeFilter | DateTime[39m,
+[32m?[39m   [32magent[39m[32m?[39m[32m: [39m[32mAgentNullableScalarRelationFilter | AgentWhereInput | Null[39m,
+[32m?[39m   [32msystemChecks[39m[32m?[39m[32m: [39m[32mSystemCheckListRelationFilter[39m,
+[32m?[39m   [32midentityVerifications[39m[32m?[39m[32m: [39m[32mIdentityVerificationListRelationFilter[39m,
+[32m?[39m   [32massessmentAttempts[39m[32m?[39m[32m: [39m[32mCandidateAssessmentListRelationFilter[39m,
+[32m?[39m   [32mproctoringLogs[39m[32m?[39m[32m: [39m[32mProctoringLogListRelationFilter[39m,
+[32m?[39m   [32mproctoringSessions[39m[32m?[39m[32m: [39m[32mProctoringSessionListRelationFilter[39m,
+[32m?[39m   [32manswers[39m[32m?[39m[32m: [39m[32mAnswerListRelationFilter[39m,
+[32m?[39m   [32mspeakingEvaluations[39m[32m?[39m[32m: [39m[32mSpeakingEvaluationListRelationFilter[39m,
+[32m?[39m   [32mreconnectionLogs[39m[32m?[39m[32m: [39m[32mReconnectionLogListRelationFilter[39m,
+[32m?[39m   [32mblacklistEntries[39m[32m?[39m[32m: [39m[32mBlacklistListRelationFilter[39m,
+[32m?[39m   [32mViolationSnapshot[39m[32m?[39m[32m: [39m[32mViolationSnapshotListRelationFilter[39m
+  }
+}
+
+Argument `[1mwhere[22m` of type [1mCandidateWhereUniqueInput[22m needs [32mat least one of[39m `[1mid[22m` or `[1memail[22m` arguments. Available options are listed in [32mgreen[39m.
+    at oa (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\@prisma\client\runtime\binary.js:156:1375)
+    at bl.handleRequestError (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\@prisma\client\runtime\binary.js:258:6913)
+    at bl.handleAndLogRequestError (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\@prisma\client\runtime\binary.js:258:6594)
+    at bl.request (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\@prisma\client\runtime\binary.js:258:6301)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async o (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\@prisma\client\runtime\binary.js:267:9560)
+    at async file:///C:/Users/tiwar/Desktop/HitouchCX_Projects/Hitouch_Project/HitouchCx_Backend/src/controllers/v1/proctoring-assessment/assessment.controller.js:140:19
+2025-11-30 11:34:40 [error]: PrismaClientValidationError: 
+[31mInvalid [1m`prisma.agent.findUnique()`[22m invocation:[39m
+
+{
+  where: {
+    id: "cmilb910t00010ilgome545o5"
+  },
+  include: {
+    user: {
+      select: {
+        email: true,
+        [31mfirstName[39m: true,
+        [31m~~~~~~~~~[39m
+        lastName: true,
+[32m?[39m       [32mid[39m[32m?[39m[32m: [39m[32mtrue[39m,
+[32m?[39m       [32memailVerified[39m[32m?[39m[32m: [39m[32mtrue[39m,
+[32m?[39m       [32mphone[39m[32m?[39m[32m: [39m[32mtrue[39m,
+[32m?[39m       [32mphoneVerified[39m[32m?[39m[32m: [39m[32mtrue[39m,
+[32m?[39m       [32mpasswordHash[39m[32m?[39m[32m: [39m[32mtrue[39m,
+[32m?[39m       [32mrole[39m[32m?[39m[32m: [39m[32mtrue[39m,
+[32m?[39m       [32mstatus[39m[32m?[39m[32m: [39m[32mtrue[39m,
+[32m?[39m       [32mgoogleId[39m[32m?[39m[32m: [39m[32mtrue[39m,
+[32m?[39m       [32mprofilePicture[39m[32m?[39m[32m: [39m[32mtrue[39m,
+[32m?[39m       [32mprovider[39m[32m?[39m[32m: [39m[32mtrue[39m,
+[32m?[39m       [32mcreatedAt[39m[32m?[39m[32m: [39m[32mtrue[39m,
+[32m?[39m       [32mupdatedAt[39m[32m?[39m[32m: [39m[32mtrue[39m,
+[32m?[39m       [32motps[39m[32m?[39m[32m: [39m[32mtrue[39m,
+[32m?[39m       [32magent[39m[32m?[39m[32m: [39m[32mtrue[39m,
+[32m?[39m       [32m_count[39m[32m?[39m[32m: [39m[32mtrue[39m
+      }
+    }
+  }
+}
+
+Unknown field [31m`firstName`[39m for [1mselect[22m statement on model [1m`User`[22m. Available options are listed in [32mgreen[39m.
+    at oa (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\@prisma\client\runtime\binary.js:156:1375)
+    at bl.handleRequestError (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\@prisma\client\runtime\binary.js:258:6913)
+    at bl.handleAndLogRequestError (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\@prisma\client\runtime\binary.js:258:6594)
+    at bl.request (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\@prisma\client\runtime\binary.js:258:6301)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async o (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\@prisma\client\runtime\binary.js:267:9560)
+    at async file:///C:/Users/tiwar/Desktop/HitouchCX_Projects/Hitouch_Project/HitouchCx_Backend/src/controllers/v1/proctoring-assessment/assessment.controller.js:144:19
+2025-11-30 11:37:02 [error]: PrismaClientKnownRequestError: 
+[31mInvalid [1m`prisma.assessment.create()`[22m invocation:[39m
+
+
+Foreign key constraint violated on the constraint: `assessments_createdById_fkey`
+    at bl.handleRequestError (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\@prisma\client\runtime\binary.js:258:7270)
+    at bl.handleAndLogRequestError (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\@prisma\client\runtime\binary.js:258:6594)
+    at bl.request (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\@prisma\client\runtime\binary.js:258:6301)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async o (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\@prisma\client\runtime\binary.js:267:9560)
+    at async file:///C:/Users/tiwar/Desktop/HitouchCX_Projects/Hitouch_Project/HitouchCx_Backend/src/controllers/v1/proctoring-assessment/assessment.controller.js:167:22
+2025-11-30 12:47:54 [error]: PrismaClientKnownRequestError: 
+[31mInvalid [1m`prisma.assessment.create()`[22m invocation:[39m
+
+
+Foreign key constraint violated on the constraint: `assessments_createdById_fkey`
+    at bl.handleRequestError (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\@prisma\client\runtime\binary.js:258:7270)
+    at bl.handleAndLogRequestError (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\@prisma\client\runtime\binary.js:258:6594)
+    at bl.request (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\@prisma\client\runtime\binary.js:258:6301)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async o (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\@prisma\client\runtime\binary.js:267:9560)
+    at async file:///C:/Users/tiwar/Desktop/HitouchCX_Projects/Hitouch_Project/HitouchCx_Backend/src/controllers/v1/proctoring-assessment/assessment.controller.js:167:22
+2025-11-30 14:47:29 [error]: Error: Route not found: /api/v1/system-checks
+    at notFoundHandler (file:///C:/Users/tiwar/Desktop/HitouchCX_Projects/Hitouch_Project/HitouchCx_Backend/src/middlewares/errorHandler.js:137:17)
+    at Layer.handleRequest (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:342:13)
+    at C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:297:9
+    at processParams (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:582:12)
+    at next (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:291:5)
+    at C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:688:15
+    at next (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:276:14)
+    at C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:688:15
+    at next (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:276:14)
+    at Function.handle (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:186:3)
+    at router (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:60:12)
+    at Layer.handleRequest (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:342:13)
+    at C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:297:9
+    at processParams (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:582:12)
+2025-11-30 14:49:30 [error]: PrismaClientValidationError: 
+[31mInvalid [1m`prisma.candidateAssessment.findUnique()`[22m invocation:[39m
+
+{
+  where: {
+    id: undefined,
+[32m?[39m   [32mcandidateId_assessmentId_attemptNumber[39m[32m?[39m[32m: [39m[32mCandidateAssessmentCandidateIdAssessmentIdAttemptNumberCompoundUniqueInput[39m,
+[32m?[39m   [32mAND[39m[32m?[39m[32m: [39m[32mCandidateAssessmentWhereInput | CandidateAssessmentWhereInput[][39m,
+[32m?[39m   [32mOR[39m[32m?[39m[32m: [39m[32mCandidateAssessmentWhereInput[][39m,
+[32m?[39m   [32mNOT[39m[32m?[39m[32m: [39m[32mCandidateAssessmentWhereInput | CandidateAssessmentWhereInput[][39m,
+[32m?[39m   [32mcandidateId[39m[32m?[39m[32m: [39m[32mStringFilter | String[39m,
+[32m?[39m   [32massessmentId[39m[32m?[39m[32m: [39m[32mStringFilter | String[39m,
+[32m?[39m   [32mattemptNumber[39m[32m?[39m[32m: [39m[32mIntFilter | Int[39m,
+[32m?[39m   [32mstartedAt[39m[32m?[39m[32m: [39m[32mDateTimeNullableFilter | DateTime | Null[39m,
+[32m?[39m   [32mcompletedAt[39m[32m?[39m[32m: [39m[32mDateTimeNullableFilter | DateTime | Null[39m,
+[32m?[39m   [32msubmittedAt[39m[32m?[39m[32m: [39m[32mDateTimeNullableFilter | DateTime | Null[39m,
+[32m?[39m   [32mtotalTimeSpent[39m[32m?[39m[32m: [39m[32mIntNullableFilter | Int | Null[39m,
+[32m?[39m   [32mtotalScore[39m[32m?[39m[32m: [39m[32mFloatNullableFilter | Float | Null[39m,
+[32m?[39m   [32mmaxScore[39m[32m?[39m[32m: [39m[32mFloatNullableFilter | Float | Null[39m,
+[32m?[39m   [32mpercentage[39m[32m?[39m[32m: [39m[32mFloatNullableFilter | Float | Null[39m,
+[32m?[39m   [32mpassed[39m[32m?[39m[32m: [39m[32mBoolNullableFilter | Boolean | Null[39m,
+[32m?[39m   [32moverallCEFRLevel[39m[32m?[39m[32m: [39m[32mEnumCEFRLevelNullableFilter | CEFRLevel | Null[39m,
+[32m?[39m   [32mcefrResults[39m[32m?[39m[32m: [39m[32mJsonNullableFilter[39m,
+[32m?[39m   [32mverificationStatus[39m[32m?[39m[32m: [39m[32mEnumVerificationStatusFilter | VerificationStatus[39m,
+[32m?[39m   [32msystemCheckStatus[39m[32m?[39m[32m: [39m[32mEnumCheckStatusFilter | CheckStatus[39m,
+[32m?[39m   [32mviolationCount[39m[32m?[39m[32m: [39m[32mIntFilter | Int[39m,
+[32m?[39m   [32mgraceViolations[39m[32m?[39m[32m: [39m[32mIntFilter | Int[39m,
+[32m?[39m   [32misFlagged[39m[32m?[39m[32m: [39m[32mBoolFilter | Boolean[39m,
+[32m?[39m   [32mflagReason[39m[32m?[39m[32m: [39m[32mStringNullableFilter | String | Null[39m,
+[32m?[39m   [32msessionStatus[39m[32m?[39m[32m: [39m[32mEnumSessionStatusFilter | SessionStatus[39m,
+[32m?[39m   [32mreconnectCount[39m[32m?[39m[32m: [39m[32mIntFilter | Int[39m,
+[32m?[39m   [32mdisconnectCount[39m[32m?[39m[32m: [39m[32mIntFilter | Int[39m,
+[32m?[39m   [32mautoSubmitReason[39m[32m?[39m[32m: [39m[32mStringNullableFilter | String | Null[39m,
+[32m?[39m   [32mfullscreenEntered[39m[32m?[39m[32m: [39m[32mBoolFilter | Boolean[39m,
+[32m?[39m   [32mfullscreenEnteredAt[39m[32m?[39m[32m: [39m[32mDateTimeNullableFilter | DateTime | Null[39m,
+[32m?[39m   [32mfullscreenExitCount[39m[32m?[39m[32m: [39m[32mIntFilter | Int[39m,
+[32m?[39m   [32mcreatedAt[39m[32m?[39m[32m: [39m[32mDateTimeFilter | DateTime[39m,
+[32m?[39m   [32mupdatedAt[39m[32m?[39m[32m: [39m[32mDateTimeFilter | DateTime[39m,
+[32m?[39m   [32mcandidate[39m[32m?[39m[32m: [39m[32mCandidateScalarRelationFilter | CandidateWhereInput[39m,
+[32m?[39m   [32massessment[39m[32m?[39m[32m: [39m[32mAssessmentScalarRelationFilter | AssessmentWhereInput[39m,
+[32m?[39m   [32msystemCheck[39m[32m?[39m[32m: [39m[32mSystemCheckNullableScalarRelationFilter | SystemCheckWhereInput | Null[39m,
+[32m?[39m   [32midentityVerification[39m[32m?[39m[32m: [39m[32mIdentityVerificationNullableScalarRelationFilter | IdentityVerificationWhereInput | Null[39m,
+[32m?[39m   [32mproctoringSession[39m[32m?[39m[32m: [39m[32mProctoringSessionNullableScalarRelationFilter | ProctoringSessionWhereInput | Null[39m,
+[32m?[39m   [32manswers[39m[32m?[39m[32m: [39m[32mAnswerListRelationFilter[39m
+  },
+  select: {
+    candidateId: true
+  }
+}
+
+Argument `[1mwhere[22m` of type [1mCandidateAssessmentWhereUniqueInput[22m needs [32mat least one of[39m `[1mid[22m` or `[1mcandidateId_assessmentId_attemptNumber[22m` arguments. Available options are listed in [32mgreen[39m.
+    at oa (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\@prisma\client\runtime\binary.js:156:1375)
+    at bl.handleRequestError (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\@prisma\client\runtime\binary.js:258:6913)
+    at bl.handleAndLogRequestError (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\@prisma\client\runtime\binary.js:258:6594)
+    at bl.request (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\@prisma\client\runtime\binary.js:258:6301)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async o (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\@prisma\client\runtime\binary.js:267:9560)
+    at async file:///C:/Users/tiwar/Desktop/HitouchCX_Projects/Hitouch_Project/HitouchCx_Backend/src/controllers/v1/proctoring-assessment/systemCheck.controller.js:13:19
+2025-11-30 14:49:49 [error]: PrismaClientValidationError: 
+[31mInvalid [1m`prisma.candidateAssessment.findUnique()`[22m invocation:[39m
+
+{
+  where: {
+    id: undefined,
+[32m?[39m   [32mcandidateId_assessmentId_attemptNumber[39m[32m?[39m[32m: [39m[32mCandidateAssessmentCandidateIdAssessmentIdAttemptNumberCompoundUniqueInput[39m,
+[32m?[39m   [32mAND[39m[32m?[39m[32m: [39m[32mCandidateAssessmentWhereInput | CandidateAssessmentWhereInput[][39m,
+[32m?[39m   [32mOR[39m[32m?[39m[32m: [39m[32mCandidateAssessmentWhereInput[][39m,
+[32m?[39m   [32mNOT[39m[32m?[39m[32m: [39m[32mCandidateAssessmentWhereInput | CandidateAssessmentWhereInput[][39m,
+[32m?[39m   [32mcandidateId[39m[32m?[39m[32m: [39m[32mStringFilter | String[39m,
+[32m?[39m   [32massessmentId[39m[32m?[39m[32m: [39m[32mStringFilter | String[39m,
+[32m?[39m   [32mattemptNumber[39m[32m?[39m[32m: [39m[32mIntFilter | Int[39m,
+[32m?[39m   [32mstartedAt[39m[32m?[39m[32m: [39m[32mDateTimeNullableFilter | DateTime | Null[39m,
+[32m?[39m   [32mcompletedAt[39m[32m?[39m[32m: [39m[32mDateTimeNullableFilter | DateTime | Null[39m,
+[32m?[39m   [32msubmittedAt[39m[32m?[39m[32m: [39m[32mDateTimeNullableFilter | DateTime | Null[39m,
+[32m?[39m   [32mtotalTimeSpent[39m[32m?[39m[32m: [39m[32mIntNullableFilter | Int | Null[39m,
+[32m?[39m   [32mtotalScore[39m[32m?[39m[32m: [39m[32mFloatNullableFilter | Float | Null[39m,
+[32m?[39m   [32mmaxScore[39m[32m?[39m[32m: [39m[32mFloatNullableFilter | Float | Null[39m,
+[32m?[39m   [32mpercentage[39m[32m?[39m[32m: [39m[32mFloatNullableFilter | Float | Null[39m,
+[32m?[39m   [32mpassed[39m[32m?[39m[32m: [39m[32mBoolNullableFilter | Boolean | Null[39m,
+[32m?[39m   [32moverallCEFRLevel[39m[32m?[39m[32m: [39m[32mEnumCEFRLevelNullableFilter | CEFRLevel | Null[39m,
+[32m?[39m   [32mcefrResults[39m[32m?[39m[32m: [39m[32mJsonNullableFilter[39m,
+[32m?[39m   [32mverificationStatus[39m[32m?[39m[32m: [39m[32mEnumVerificationStatusFilter | VerificationStatus[39m,
+[32m?[39m   [32msystemCheckStatus[39m[32m?[39m[32m: [39m[32mEnumCheckStatusFilter | CheckStatus[39m,
+[32m?[39m   [32mviolationCount[39m[32m?[39m[32m: [39m[32mIntFilter | Int[39m,
+[32m?[39m   [32mgraceViolations[39m[32m?[39m[32m: [39m[32mIntFilter | Int[39m,
+[32m?[39m   [32misFlagged[39m[32m?[39m[32m: [39m[32mBoolFilter | Boolean[39m,
+[32m?[39m   [32mflagReason[39m[32m?[39m[32m: [39m[32mStringNullableFilter | String | Null[39m,
+[32m?[39m   [32msessionStatus[39m[32m?[39m[32m: [39m[32mEnumSessionStatusFilter | SessionStatus[39m,
+[32m?[39m   [32mreconnectCount[39m[32m?[39m[32m: [39m[32mIntFilter | Int[39m,
+[32m?[39m   [32mdisconnectCount[39m[32m?[39m[32m: [39m[32mIntFilter | Int[39m,
+[32m?[39m   [32mautoSubmitReason[39m[32m?[39m[32m: [39m[32mStringNullableFilter | String | Null[39m,
+[32m?[39m   [32mfullscreenEntered[39m[32m?[39m[32m: [39m[32mBoolFilter | Boolean[39m,
+[32m?[39m   [32mfullscreenEnteredAt[39m[32m?[39m[32m: [39m[32mDateTimeNullableFilter | DateTime | Null[39m,
+[32m?[39m   [32mfullscreenExitCount[39m[32m?[39m[32m: [39m[32mIntFilter | Int[39m,
+[32m?[39m   [32mcreatedAt[39m[32m?[39m[32m: [39m[32mDateTimeFilter | DateTime[39m,
+[32m?[39m   [32mupdatedAt[39m[32m?[39m[32m: [39m[32mDateTimeFilter | DateTime[39m,
+[32m?[39m   [32mcandidate[39m[32m?[39m[32m: [39m[32mCandidateScalarRelationFilter | CandidateWhereInput[39m,
+[32m?[39m   [32massessment[39m[32m?[39m[32m: [39m[32mAssessmentScalarRelationFilter | AssessmentWhereInput[39m,
+[32m?[39m   [32msystemCheck[39m[32m?[39m[32m: [39m[32mSystemCheckNullableScalarRelationFilter | SystemCheckWhereInput | Null[39m,
+[32m?[39m   [32midentityVerification[39m[32m?[39m[32m: [39m[32mIdentityVerificationNullableScalarRelationFilter | IdentityVerificationWhereInput | Null[39m,
+[32m?[39m   [32mproctoringSession[39m[32m?[39m[32m: [39m[32mProctoringSessionNullableScalarRelationFilter | ProctoringSessionWhereInput | Null[39m,
+[32m?[39m   [32manswers[39m[32m?[39m[32m: [39m[32mAnswerListRelationFilter[39m
+  },
+  select: {
+    candidateId: true
+  }
+}
+
+Argument `[1mwhere[22m` of type [1mCandidateAssessmentWhereUniqueInput[22m needs [32mat least one of[39m `[1mid[22m` or `[1mcandidateId_assessmentId_attemptNumber[22m` arguments. Available options are listed in [32mgreen[39m.
+    at oa (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\@prisma\client\runtime\binary.js:156:1375)
+    at bl.handleRequestError (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\@prisma\client\runtime\binary.js:258:6913)
+    at bl.handleAndLogRequestError (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\@prisma\client\runtime\binary.js:258:6594)
+    at bl.request (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\@prisma\client\runtime\binary.js:258:6301)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async o (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\@prisma\client\runtime\binary.js:267:9560)
+    at async file:///C:/Users/tiwar/Desktop/HitouchCX_Projects/Hitouch_Project/HitouchCx_Backend/src/controllers/v1/proctoring-assessment/systemCheck.controller.js:13:19
+2025-11-30 15:41:00 [error]: Error: Route not found: /api/v1/assessments/attempt/e3b75230-72f2-4e9b-857d-1b844808fb83
+    at notFoundHandler (file:///C:/Users/tiwar/Desktop/HitouchCX_Projects/Hitouch_Project/HitouchCx_Backend/src/middlewares/errorHandler.js:137:17)
+    at Layer.handleRequest (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:342:13)
+    at C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:297:9
+    at processParams (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:582:12)
+    at next (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:291:5)
+    at C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:688:15
+    at next (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:276:14)
+    at C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:688:15
+    at next (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:276:14)
+    at Function.handle (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:186:3)
+    at router (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:60:12)
+    at Layer.handleRequest (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:342:13)
+    at C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:297:9
+    at processParams (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:582:12)
+2025-11-30 16:09:22 [error]: PrismaClientKnownRequestError: 
+[31mInvalid [1m`prisma.systemCheck.create()`[22m invocation:[39m
+
+
+Unique constraint failed on the fields: (`attemptId`)
+    at bl.handleRequestError (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\@prisma\client\runtime\binary.js:258:7270)
+    at bl.handleAndLogRequestError (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\@prisma\client\runtime\binary.js:258:6594)
+    at bl.request (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\@prisma\client\runtime\binary.js:258:6301)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async o (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\@prisma\client\runtime\binary.js:267:9560)
+    at async file:///C:/Users/tiwar/Desktop/HitouchCX_Projects/Hitouch_Project/HitouchCx_Backend/src/controllers/v1/proctoring-assessment/systemCheck.controller.js:70:23
+2025-11-30 16:15:17 [error]: Error: Route not found: /api/v1/assessments/f1dd004e-6609-4229-96fd-976e262db50d/attempt/545c7479-21f0-4972-a622-0a88d238fe03
+    at notFoundHandler (file:///C:/Users/tiwar/Desktop/HitouchCX_Projects/Hitouch_Project/HitouchCx_Backend/src/middlewares/errorHandler.js:137:17)
+    at Layer.handleRequest (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:342:13)
+    at C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:297:9
+    at processParams (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:582:12)
+    at next (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:291:5)
+    at C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:688:15
+    at next (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:276:14)
+    at C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:688:15
+    at next (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:276:14)
+    at Function.handle (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:186:3)
+    at router (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:60:12)
+    at Layer.handleRequest (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:342:13)
+    at C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:297:9
+    at processParams (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:582:12)
+2025-11-30 16:15:17 [error]: Error: Route not found: /api/v1/assessments/f1dd004e-6609-4229-96fd-976e262db50d/attempt/545c7479-21f0-4972-a622-0a88d238fe03
+    at notFoundHandler (file:///C:/Users/tiwar/Desktop/HitouchCX_Projects/Hitouch_Project/HitouchCx_Backend/src/middlewares/errorHandler.js:137:17)
+    at Layer.handleRequest (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:342:13)
+    at C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:297:9
+    at processParams (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:582:12)
+    at next (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:291:5)
+    at C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:688:15
+    at next (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:276:14)
+    at C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:688:15
+    at next (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:276:14)
+    at Function.handle (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:186:3)
+    at router (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:60:12)
+    at Layer.handleRequest (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:342:13)
+    at C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:297:9
+    at processParams (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:582:12)
+2025-11-30 16:15:28 [error]: Error: Route not found: /api/v1/assessments/f1dd004e-6609-4229-96fd-976e262db50d/attempt/545c7479-21f0-4972-a622-0a88d238fe03
+    at notFoundHandler (file:///C:/Users/tiwar/Desktop/HitouchCX_Projects/Hitouch_Project/HitouchCx_Backend/src/middlewares/errorHandler.js:137:17)
+    at Layer.handleRequest (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:342:13)
+    at C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:297:9
+    at processParams (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:582:12)
+    at next (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:291:5)
+    at C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:688:15
+    at next (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:276:14)
+    at C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:688:15
+    at next (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:276:14)
+    at Function.handle (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:186:3)
+    at router (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:60:12)
+    at Layer.handleRequest (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:342:13)
+    at C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:297:9
+    at processParams (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:582:12)
+2025-11-30 16:15:44 [error]: Error: Route not found: /api/v1/assessments/f1dd004e-6609-4229-96fd-976e262db50d/attempt/545c7479-21f0-4972-a622-0a88d238fe03
+    at notFoundHandler (file:///C:/Users/tiwar/Desktop/HitouchCX_Projects/Hitouch_Project/HitouchCx_Backend/src/middlewares/errorHandler.js:137:17)
+    at Layer.handleRequest (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:342:13)
+    at C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:297:9
+    at processParams (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:582:12)
+    at next (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:291:5)
+    at C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:688:15
+    at next (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:276:14)
+    at C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:688:15
+    at next (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:276:14)
+    at Function.handle (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:186:3)
+    at router (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:60:12)
+    at Layer.handleRequest (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:342:13)
+    at C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:297:9
+    at processParams (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:582:12)
+2025-11-30 16:15:44 [error]: Error: Route not found: /api/v1/assessments/f1dd004e-6609-4229-96fd-976e262db50d/attempt/545c7479-21f0-4972-a622-0a88d238fe03
+    at notFoundHandler (file:///C:/Users/tiwar/Desktop/HitouchCX_Projects/Hitouch_Project/HitouchCx_Backend/src/middlewares/errorHandler.js:137:17)
+    at Layer.handleRequest (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:342:13)
+    at C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:297:9
+    at processParams (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:582:12)
+    at next (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:291:5)
+    at C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:688:15
+    at next (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:276:14)
+    at C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:688:15
+    at next (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:276:14)
+    at Function.handle (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:186:3)
+    at router (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:60:12)
+    at Layer.handleRequest (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:342:13)
+    at C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:297:9
+    at processParams (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:582:12)

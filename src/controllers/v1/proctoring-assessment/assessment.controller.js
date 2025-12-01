@@ -32,7 +32,7 @@ async function generateAssessmentContent(assessmentId, assessmentType) {
           orderIndex: sectionsWithQuestions.length + 1,
           durationMinutes: sectionConf.durationMinutes || 15,
           totalQuestions,
-        }
+        },
       });
 
       let allQuestions = [];
@@ -42,46 +42,48 @@ async function generateAssessmentContent(assessmentId, assessmentType) {
             questionType: sectionConf.type,
             cefrLevel: { in: rule.cefrLevels },
             assessmentType: assessmentType,
-            isActive: true
+            isActive: true,
           },
-          take: rule.count
+          take: rule.count,
         });
 
         if (questions.length < rule.count) {
           warnings.push(
-            `Not enough questions for section "${sectionConf.name}" and CEFR [${rule.cefrLevels}]: found ${questions.length}, required ${rule.count}`
+            `Not enough questions for section "${sectionConf.name}" and CEFR [${rule.cefrLevels}]: found ${questions.length}, required ${rule.count}`,
           );
         }
 
         // Batch insert mapping - only if questions exist
         if (questions.length > 0) {
           await prisma.$transaction(
-            questions.map(q =>
+            questions.map((q) =>
               prisma.questionSection.create({
-                data: { sectionId: section.id, questionId: q.id }
-              })
-            )
+                data: { sectionId: section.id, questionId: q.id },
+              }),
+            ),
           );
         }
-        allQuestions.push(...questions.map(q => ({
-          id: q.id,
-          questionType: q.questionType,
-          cefrLevel: q.cefrLevel,
-          questionText: q.questionText,
-        })));
+        allQuestions.push(
+          ...questions.map((q) => ({
+            id: q.id,
+            questionType: q.questionType,
+            cefrLevel: q.cefrLevel,
+            questionText: q.questionText,
+          })),
+        );
       }
       sectionsWithQuestions.push({
         id: section.id,
         name: section.name,
         orderIndex: section.orderIndex,
-        questions: allQuestions
+        questions: allQuestions,
       });
     }
 
     // Update assessment status to ACTIVE when content is ready
     await prisma.assessment.update({
       where: { id: assessmentId },
-      data: { status: "ACTIVE" }
+      data: { status: "ACTIVE" },
     });
 
     console.log(`[Background] Assessment content generation completed for ${assessmentId}`);
@@ -91,10 +93,12 @@ async function generateAssessmentContent(assessmentId, assessmentType) {
   } catch (error) {
     console.error(`[Background] Error generating assessment content:`, error);
     // Update assessment status to indicate failure
-    await prisma.assessment.update({
-      where: { id: assessmentId },
-      data: { status: "DRAFT" }
-    }).catch(err => console.error('[Background] Failed to update assessment status:', err));
+    await prisma.assessment
+      .update({
+        where: { id: assessmentId },
+        data: { status: "DRAFT" },
+      })
+      .catch((err) => console.error("[Background] Failed to update assessment status:", err));
   }
 }
 
@@ -102,19 +106,49 @@ async function generateAssessmentContent(assessmentId, assessmentType) {
  * POST /api/v1/assessments/generate
  * Creates assessment and attempt record immediately, generates content in background
  * Protected route - requires authentication
-*/
+ */
 export const generateAssessment = asyncHandler(async (req, res) => {
   const { assessmentType = "LANGUAGE" } = req.body;
-  const agentId = req.user.agentId; // From authMiddleware
+  let agentId = req.user.agentId; // From authMiddleware
+
+  console.log("🔍 [generateAssessment] req.user:", req.user);
+  console.log("🔍 [generateAssessment] agentId:", agentId);
+
+  // If no agentId, create an Agent profile for this user
+  if (!agentId) {
+    console.log("⚠️ No agentId, looking up user:", req.user.id);
+    const user = await prisma.user.findUnique({
+      where: { id: req.user.id },
+      include: { agent: true },
+    });
+
+    console.log("🔍 User lookup result:", user ? "Found" : "Not found");
+    if (!user) return sendError(res, "User not found", 404);
+
+    // Create agent if doesn't exist
+    if (!user.agent) {
+      const newAgent = await prisma.agent.create({
+        data: {
+          userId: user.id,
+          firstName: user.firstName || "User",
+          lastName: user.lastName || "",
+          dob: new Date("2000-01-01"), // Default DOB, can be updated later
+        },
+      });
+      agentId = newAgent.id;
+    } else {
+      agentId = user.agent.id;
+    }
+  }
 
   // Check if candidate exists (if agent has already started assessment before)
-  let candidate = await prisma.candidate.findUnique({ where: { agentId } });
+  let candidate = await prisma.candidate.findFirst({ where: { agentId } });
 
   // If no candidate yet, create one (Agent → Candidate transition)
   if (!candidate) {
     const agent = await prisma.agent.findUnique({
       where: { id: agentId },
-      include: { user: { select: { email: true, firstName: true, lastName: true } } }
+      include: { user: { select: { email: true } } },
     });
 
     if (!agent) return sendError(res, "Agent profile not found", 404);
@@ -123,9 +157,9 @@ export const generateAssessment = asyncHandler(async (req, res) => {
       data: {
         agentId,
         email: agent.user.email,
-        firstName: agent.user.firstName,
-        lastName: agent.user.lastName,
-      }
+        firstName: agent.firstName,
+        lastName: agent.lastName || "",
+      },
     });
   }
 
@@ -142,7 +176,7 @@ export const generateAssessment = asyncHandler(async (req, res) => {
       status: "DRAFT", // Will be updated to ACTIVE when content generation completes
       createdById: "admin-001",
       totalDuration: config.totalDuration || 45,
-    }
+    },
   });
 
   // 2. Create CandidateAssessment record immediately
@@ -153,7 +187,7 @@ export const generateAssessment = asyncHandler(async (req, res) => {
       attemptNumber: 1,
       sessionStatus: "NOT_STARTED",
       verificationStatus: "NOT_STARTED",
-    }
+    },
   });
 
   // 3. Respond immediately with attemptId (non-blocking)
@@ -163,14 +197,13 @@ export const generateAssessment = asyncHandler(async (req, res) => {
       assessmentId: assessment.id,
       attemptId: attempt.id,
     },
-    "Assessment generation started"
+    "Assessment generation started",
   );
 
   // 4. Generate sections and questions in background (fire-and-forget)
-  generateAssessmentContent(assessment.id, assessmentType)
-    .catch(error => {
-      console.error('[Background] Unhandled error in assessment generation:', error);
-    });
+  generateAssessmentContent(assessment.id, assessmentType).catch((error) => {
+    console.error("[Background] Unhandled error in assessment generation:", error);
+  });
 });
 
 /**
@@ -329,7 +362,7 @@ export const getAssessmentForAttempt = asyncHandler(async (req, res) => {
   const agentId = req.user.agentId;
   const candidate = await prisma.candidate.findUnique({
     where: { id: candidateId },
-    select: { agentId: true }
+    select: { agentId: true },
   });
 
   if (!candidate || candidate.agentId !== agentId) {
@@ -372,7 +405,7 @@ export const getAssessmentForAttempt = asyncHandler(async (req, res) => {
       sessionStatus: attempt.sessionStatus,
       sections,
     },
-    "Assessment fetched successfully"
+    "Assessment fetched successfully",
   );
 });
 
@@ -409,7 +442,7 @@ export const getAttemptDetails = asyncHandler(async (req, res) => {
   const agentId = req.user.agentId;
   const candidate = await prisma.candidate.findUnique({
     where: { id: attempt.candidateId },
-    select: { agentId: true }
+    select: { agentId: true },
   });
 
   if (!candidate || candidate.agentId !== agentId) {
@@ -418,7 +451,6 @@ export const getAttemptDetails = asyncHandler(async (req, res) => {
 
   return sendSuccess(res, attempt, "Attempt details fetched successfully");
 });
-
 
 // log violation controller function
 
@@ -479,8 +511,7 @@ export const logViolation = asyncHandler(async (req, res) => {
       where: { id: session.id },
       data: {
         totalViolations: { increment: 1 },
-        criticalViolations:
-          severity === "CRITICAL" ? { increment: 1 } : undefined,
+        criticalViolations: severity === "CRITICAL" ? { increment: 1 } : undefined,
       },
     });
 

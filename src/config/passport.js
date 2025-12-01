@@ -1,6 +1,6 @@
 import passport from 'passport';
 import { Strategy as GoogleStrategy } from 'passport-google-oauth20';
-import db from './db.js';           // correct relative path within src/config
+import prisma from './db.js';           // correct relative path within src/config
 
 passport.use(
   new GoogleStrategy(
@@ -36,6 +36,23 @@ passport.use(
               provider: 'google',
             },
           });
+
+          // Ensure Agent profile exists for this user
+          const existingAgent = await prisma.agent.findUnique({
+            where: { userId: user.id },
+          });
+
+          if (!existingAgent && user.status === 'ACTIVE') {
+            await prisma.agent.create({
+              data: {
+                userId: user.id,
+                firstName: profile.name?.givenName || profile.displayName || 'User',
+                lastName: profile.name?.familyName || '',
+                dob: new Date('2000-01-01'), // Default DOB, can be updated later
+              },
+            });
+          }
+
           return done(null, user);
         }
 
@@ -51,6 +68,18 @@ passport.use(
             // password is null for OAuth users
           },
         });
+
+        // Create Agent profile automatically for the new user
+        if (user && user.status === 'ACTIVE') {
+          await prisma.agent.create({
+            data: {
+              userId: user.id,
+              firstName: profile.name?.givenName || profile.displayName || 'User',
+              lastName: profile.name?.familyName || '',
+              dob: new Date('2000-01-01'), // Default DOB, can be updated later
+            },
+          });
+        }
 
         return done(null, user);
       } catch (error) {

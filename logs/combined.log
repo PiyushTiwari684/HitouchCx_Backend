@@ -1,1 +1,1004 @@
 2025-11-28 12:25:10 [info]: ::1 - - [28/Nov/2025:06:55:10 +0000] "POST /api/v1/agent/resume-upload HTTP/1.1" 200 - "-" "PostmanRuntime/7.39.1"
+2025-11-29 13:09:39 [info]: ::1 - - [29/Nov/2025:07:39:39 +0000] "OPTIONS /api/v1/otp/request-otp HTTP/1.1" 204 0 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-29 13:09:45 [info]: ::1 - - [29/Nov/2025:07:39:45 +0000] "POST /api/v1/otp/request-otp HTTP/1.1" 200 357 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-29 13:11:04 [info]: ::1 - - [29/Nov/2025:07:41:04 +0000] "OPTIONS /api/v1/otp/request-otp HTTP/1.1" 204 0 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-29 13:11:04 [info]: ::1 - - [29/Nov/2025:07:41:04 +0000] "POST /api/v1/otp/request-otp HTTP/1.1" 400 40 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-29 13:14:33 [info]: ::1 - - [29/Nov/2025:07:44:33 +0000] "OPTIONS /api/v1/otp/verify-otp HTTP/1.1" 204 0 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-29 13:14:35 [info]: ::1 - - [29/Nov/2025:07:44:35 +0000] "POST /api/v1/otp/verify-otp HTTP/1.1" 401 25 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-29 13:16:44 [info]: ::1 - - [29/Nov/2025:07:46:44 +0000] "OPTIONS /api/v1/otp/verify-otp HTTP/1.1" 204 0 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-29 13:16:45 [info]: ::1 - - [29/Nov/2025:07:46:45 +0000] "POST /api/v1/otp/verify-otp HTTP/1.1" 200 39 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-29 13:17:16 [info]: ::1 - - [29/Nov/2025:07:47:16 +0000] "OPTIONS /api/v1/otp/request-otp HTTP/1.1" 204 0 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-29 13:17:16 [info]: ::1 - - [29/Nov/2025:07:47:16 +0000] "POST /api/v1/otp/request-otp HTTP/1.1" 400 40 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-29 13:17:45 [info]: ::1 - - [29/Nov/2025:07:47:45 +0000] "OPTIONS /api/v1/otp/request-otp HTTP/1.1" 204 0 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-29 13:17:50 [info]: ::1 - - [29/Nov/2025:07:47:50 +0000] "POST /api/v1/otp/request-otp HTTP/1.1" 200 356 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-29 13:18:19 [info]: ::1 - - [29/Nov/2025:07:48:19 +0000] "OPTIONS /api/v1/otp/verify-otp HTTP/1.1" 204 0 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-29 13:18:19 [info]: ::1 - - [29/Nov/2025:07:48:19 +0000] "POST /api/v1/otp/verify-otp HTTP/1.1" 200 39 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-29 13:18:24 [info]: ::1 - - [29/Nov/2025:07:48:24 +0000] "OPTIONS /api/v1/otp/request-otp HTTP/1.1" 204 0 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-29 13:18:24 [info]: ::1 - - [29/Nov/2025:07:48:24 +0000] "POST /api/v1/otp/request-otp HTTP/1.1" 400 40 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-29 13:18:30 [info]: ::1 - - [29/Nov/2025:07:48:30 +0000] "OPTIONS /api/v1/otp/request-otp HTTP/1.1" 204 0 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-29 13:18:30 [info]: ::1 - - [29/Nov/2025:07:48:30 +0000] "POST /api/v1/otp/request-otp HTTP/1.1" 400 40 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-29 13:21:57 [info]: ::1 - - [29/Nov/2025:07:51:57 +0000] "OPTIONS /api/v1/otp/request-otp HTTP/1.1" 204 0 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-29 13:21:58 [info]: ::1 - - [29/Nov/2025:07:51:58 +0000] "POST /api/v1/otp/request-otp HTTP/1.1" 200 39 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-29 13:55:46 [info]: ::1 - - [29/Nov/2025:08:25:46 +0000] "OPTIONS /api/v1/otp/request-otp HTTP/1.1" 204 0 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-29 13:55:53 [info]: ::1 - - [29/Nov/2025:08:25:53 +0000] "POST /api/v1/otp/request-otp HTTP/1.1" 200 356 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-29 13:56:25 [info]: ::1 - - [29/Nov/2025:08:26:25 +0000] "OPTIONS /api/v1/otp/verify-otp HTTP/1.1" 204 0 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-29 13:56:27 [info]: ::1 - - [29/Nov/2025:08:26:27 +0000] "POST /api/v1/otp/verify-otp HTTP/1.1" 200 39 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-29 13:56:28 [info]: ::1 - - [29/Nov/2025:08:26:28 +0000] "OPTIONS /api/v1/otp/request-otp HTTP/1.1" 204 0 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-29 13:56:29 [info]: ::1 - - [29/Nov/2025:08:26:29 +0000] "POST /api/v1/otp/request-otp HTTP/1.1" 200 39 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-29 14:01:07 [info]: ::1 - - [29/Nov/2025:08:31:07 +0000] "OPTIONS /api/v1/otp/request-otp HTTP/1.1" 204 0 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-29 14:01:11 [info]: ::1 - - [29/Nov/2025:08:31:11 +0000] "POST /api/v1/otp/request-otp HTTP/1.1" 200 39 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-29 14:01:14 [info]: ::1 - - [29/Nov/2025:08:31:14 +0000] "POST /api/v1/otp/request-otp HTTP/1.1" 200 356 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-29 14:02:50 [info]: ::1 - - [29/Nov/2025:08:32:50 +0000] "OPTIONS /api/v1/otp/request-otp HTTP/1.1" 204 0 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-29 14:02:56 [info]: ::1 - - [29/Nov/2025:08:32:56 +0000] "POST /api/v1/otp/request-otp HTTP/1.1" 200 356 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-29 14:03:00 [info]: ::1 - - [29/Nov/2025:08:33:00 +0000] "OPTIONS /api/v1/otp/request-otp HTTP/1.1" 204 0 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-29 14:03:02 [info]: ::1 - - [29/Nov/2025:08:33:02 +0000] "POST /api/v1/otp/request-otp HTTP/1.1" 200 39 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-29 14:05:40 [info]: ::1 - - [29/Nov/2025:08:35:40 +0000] "OPTIONS /api/v1/otp/request-otp HTTP/1.1" 204 0 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-29 14:05:45 [info]: ::1 - - [29/Nov/2025:08:35:45 +0000] "POST /api/v1/otp/request-otp HTTP/1.1" 200 356 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-29 14:05:57 [info]: ::1 - - [29/Nov/2025:08:35:57 +0000] "OPTIONS /api/v1/otp/verify-otp HTTP/1.1" 204 0 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-29 14:05:59 [info]: ::1 - - [29/Nov/2025:08:35:59 +0000] "POST /api/v1/otp/verify-otp HTTP/1.1" 200 39 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-29 14:06:01 [info]: ::1 - - [29/Nov/2025:08:36:01 +0000] "OPTIONS /api/v1/otp/request-otp HTTP/1.1" 204 0 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-29 14:06:02 [info]: ::1 - - [29/Nov/2025:08:36:02 +0000] "POST /api/v1/otp/request-otp HTTP/1.1" 200 39 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-29 14:33:36 [info]: ::1 - - [29/Nov/2025:09:03:36 +0000] "OPTIONS /api/v1/otp/request-otp HTTP/1.1" 204 0 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-29 14:33:42 [info]: ::1 - - [29/Nov/2025:09:03:42 +0000] "POST /api/v1/otp/request-otp HTTP/1.1" 200 356 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-29 14:33:46 [info]: ::1 - - [29/Nov/2025:09:03:46 +0000] "OPTIONS /api/v1/otp/request-otp HTTP/1.1" 204 0 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-29 14:33:47 [info]: ::1 - - [29/Nov/2025:09:03:47 +0000] "POST /api/v1/otp/request-otp HTTP/1.1" 200 39 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-29 14:35:23 [info]: ::1 - - [29/Nov/2025:09:05:23 +0000] "OPTIONS /api/v1/otp/request-otp HTTP/1.1" 204 0 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-29 14:35:24 [info]: ::1 - - [29/Nov/2025:09:05:24 +0000] "POST /api/v1/otp/request-otp HTTP/1.1" 200 39 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-29 14:41:40 [info]: ::1 - - [29/Nov/2025:09:11:40 +0000] "OPTIONS /api/v1/otp/request-otp HTTP/1.1" 204 0 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-29 14:41:41 [info]: ::1 - - [29/Nov/2025:09:11:41 +0000] "POST /api/v1/otp/request-otp HTTP/1.1" 200 136 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-29 14:42:15 [info]: ::1 - - [29/Nov/2025:09:12:15 +0000] "OPTIONS /api/v1/otp/verify-otp HTTP/1.1" 204 0 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-29 14:42:16 [info]: ::1 - - [29/Nov/2025:09:12:16 +0000] "POST /api/v1/otp/verify-otp HTTP/1.1" 401 33 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-29 14:44:19 [info]: ::1 - - [29/Nov/2025:09:14:19 +0000] "OPTIONS /api/v1/otp/request-otp HTTP/1.1" 204 0 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-29 14:44:24 [info]: ::1 - - [29/Nov/2025:09:14:24 +0000] "POST /api/v1/otp/request-otp HTTP/1.1" 200 136 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-29 14:44:25 [info]: ::1 - - [29/Nov/2025:09:14:25 +0000] "POST /api/v1/otp/request-otp HTTP/1.1" 200 367 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-29 14:44:51 [info]: ::1 - - [29/Nov/2025:09:14:51 +0000] "OPTIONS /api/v1/otp/verify-otp HTTP/1.1" 204 0 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-29 14:44:52 [info]: ::1 - - [29/Nov/2025:09:14:52 +0000] "POST /api/v1/otp/verify-otp HTTP/1.1" 200 39 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-29 14:46:00 [info]: ::1 - - [29/Nov/2025:09:16:00 +0000] "OPTIONS /api/v1/otp/verify-otp HTTP/1.1" 204 0 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-29 14:46:02 [info]: ::1 - - [29/Nov/2025:09:16:02 +0000] "POST /api/v1/otp/verify-otp HTTP/1.1" 200 70 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-29 14:50:40 [info]: ::1 - - [29/Nov/2025:09:20:40 +0000] "OPTIONS /api/v1/otp/request-otp HTTP/1.1" 204 0 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-29 14:50:45 [info]: ::1 - - [29/Nov/2025:09:20:45 +0000] "POST /api/v1/otp/request-otp HTTP/1.1" 200 136 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-29 14:50:47 [info]: ::1 - - [29/Nov/2025:09:20:47 +0000] "POST /api/v1/otp/request-otp HTTP/1.1" 200 366 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-29 14:51:06 [info]: ::1 - - [29/Nov/2025:09:21:06 +0000] "OPTIONS /api/v1/otp/verify-otp HTTP/1.1" 204 0 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-29 14:51:08 [info]: ::1 - - [29/Nov/2025:09:21:08 +0000] "POST /api/v1/otp/verify-otp HTTP/1.1" 200 70 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-29 14:51:24 [info]: ::1 - - [29/Nov/2025:09:21:24 +0000] "OPTIONS /api/v1/otp/verify-otp HTTP/1.1" 204 0 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-29 14:51:25 [info]: ::1 - - [29/Nov/2025:09:21:25 +0000] "POST /api/v1/otp/verify-otp HTTP/1.1" 200 39 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-29 14:51:39 [info]: ::1 - - [29/Nov/2025:09:21:39 +0000] "OPTIONS /api/v1/auth/sign-up HTTP/1.1" 204 0 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-29 14:51:40 [info]: ::1 - - [29/Nov/2025:09:21:40 +0000] "POST /api/v1/auth/sign-up HTTP/1.1" 200 280 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-29 14:55:52 [info]: ::1 - - [29/Nov/2025:09:25:52 +0000] "OPTIONS /api/v1/auth/sign-in HTTP/1.1" 204 0 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-29 14:55:52 [error]: Error: Route not found: /api/v1/auth/sign-in
+    at notFoundHandler (file:///C:/Users/tiwar/Desktop/HitouchCX_Projects/Hitouch_Project/HitouchCx_Backend/src/middlewares/errorHandler.js:137:17)
+    at Layer.handleRequest (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:342:13)
+    at C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:297:9
+    at processParams (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:582:12)
+    at next (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:291:5)
+    at C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:688:15
+    at next (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:276:14)
+    at C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:688:15
+    at next (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:276:14)
+    at C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:688:15
+    at next (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:276:14)
+    at Function.handle (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:186:3)
+    at router (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:60:12)
+    at Layer.handleRequest (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:342:13)
+2025-11-29 14:55:52 [info]: ::1 - - [29/Nov/2025:09:25:52 +0000] "POST /api/v1/auth/sign-in HTTP/1.1" 404 67 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-29 14:57:04 [info]: ::1 - - [29/Nov/2025:09:27:04 +0000] "OPTIONS /api/v1/auth/log-in HTTP/1.1" 204 0 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-29 14:57:06 [info]: ::1 - - [29/Nov/2025:09:27:06 +0000] "POST /api/v1/auth/log-in HTTP/1.1" 200 259 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-29 15:00:32 [info]: ::1 - - [29/Nov/2025:09:30:32 +0000] "OPTIONS /api/v1/auth/log-in HTTP/1.1" 204 0 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-29 15:00:33 [info]: ::1 - - [29/Nov/2025:09:30:33 +0000] "POST /api/v1/auth/log-in HTTP/1.1" 200 259 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-29 15:02:35 [info]: ::1 - - [29/Nov/2025:09:32:35 +0000] "OPTIONS /api/v1/auth/log-in HTTP/1.1" 204 0 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-29 15:02:37 [info]: ::1 - - [29/Nov/2025:09:32:37 +0000] "POST /api/v1/auth/log-in HTTP/1.1" 200 259 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-29 15:02:38 [info]: ::1 - - [29/Nov/2025:09:32:38 +0000] "OPTIONS /api/v1/instructions/validate-device HTTP/1.1" 204 0 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-29 15:02:38 [info]: ::1 - - [29/Nov/2025:09:32:38 +0000] "OPTIONS /api/v1/instructions/validate-device HTTP/1.1" 204 0 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-29 15:02:38 [error]: Error: Route not found: /api/v1/instructions/validate-device
+    at notFoundHandler (file:///C:/Users/tiwar/Desktop/HitouchCX_Projects/Hitouch_Project/HitouchCx_Backend/src/middlewares/errorHandler.js:137:17)
+    at Layer.handleRequest (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:342:13)
+    at C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:297:9
+    at processParams (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:582:12)
+    at next (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:291:5)
+    at C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:688:15
+    at next (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:276:14)
+    at C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:688:15
+    at next (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:276:14)
+    at Function.handle (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:186:3)
+    at router (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:60:12)
+    at Layer.handleRequest (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:342:13)
+    at C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:297:9
+    at processParams (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:582:12)
+2025-11-29 15:02:38 [info]: ::1 - - [29/Nov/2025:09:32:38 +0000] "POST /api/v1/instructions/validate-device HTTP/1.1" 404 83 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-29 15:02:38 [error]: Error: Route not found: /api/v1/instructions/validate-device
+    at notFoundHandler (file:///C:/Users/tiwar/Desktop/HitouchCX_Projects/Hitouch_Project/HitouchCx_Backend/src/middlewares/errorHandler.js:137:17)
+    at Layer.handleRequest (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:342:13)
+    at C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:297:9
+    at processParams (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:582:12)
+    at next (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:291:5)
+    at C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:688:15
+    at next (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:276:14)
+    at C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:688:15
+    at next (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:276:14)
+    at Function.handle (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:186:3)
+    at router (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:60:12)
+    at Layer.handleRequest (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:342:13)
+    at C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:297:9
+    at processParams (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:582:12)
+2025-11-29 15:02:38 [info]: ::1 - - [29/Nov/2025:09:32:38 +0000] "POST /api/v1/instructions/validate-device HTTP/1.1" 404 83 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-29 23:57:26 [info]: ::1 - - [29/Nov/2025:18:27:26 +0000] "OPTIONS /api/v1/auth/log-in HTTP/1.1" 204 0 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-29 23:57:27 [info]: ::1 - - [29/Nov/2025:18:27:27 +0000] "POST /api/v1/auth/log-in HTTP/1.1" 200 259 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-29 23:57:27 [info]: ::1 - - [29/Nov/2025:18:27:27 +0000] "OPTIONS /api/v1/instructions/validate-device HTTP/1.1" 204 0 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-29 23:57:27 [info]: ::1 - - [29/Nov/2025:18:27:27 +0000] "OPTIONS /api/v1/instructions/validate-device HTTP/1.1" 204 0 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-29 23:57:27 [error]: Error: Route not found: /api/v1/instructions/validate-device
+    at notFoundHandler (file:///C:/Users/tiwar/Desktop/HitouchCX_Projects/Hitouch_Project/HitouchCx_Backend/src/middlewares/errorHandler.js:137:17)
+    at Layer.handleRequest (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:342:13)
+    at C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:297:9
+    at processParams (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:582:12)
+    at next (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:291:5)
+    at C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:688:15
+    at next (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:276:14)
+    at C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:688:15
+    at next (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:276:14)
+    at Function.handle (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:186:3)
+    at router (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:60:12)
+    at Layer.handleRequest (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:342:13)
+    at C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:297:9
+    at processParams (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:582:12)
+2025-11-29 23:57:27 [info]: ::1 - - [29/Nov/2025:18:27:27 +0000] "POST /api/v1/instructions/validate-device HTTP/1.1" 404 83 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-29 23:57:27 [error]: Error: Route not found: /api/v1/instructions/validate-device
+    at notFoundHandler (file:///C:/Users/tiwar/Desktop/HitouchCX_Projects/Hitouch_Project/HitouchCx_Backend/src/middlewares/errorHandler.js:137:17)
+    at Layer.handleRequest (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:342:13)
+    at C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:297:9
+    at processParams (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:582:12)
+    at next (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:291:5)
+    at C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:688:15
+    at next (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:276:14)
+    at C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:688:15
+    at next (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:276:14)
+    at Function.handle (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:186:3)
+    at router (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:60:12)
+    at Layer.handleRequest (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:342:13)
+    at C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:297:9
+    at processParams (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:582:12)
+2025-11-29 23:57:27 [info]: ::1 - - [29/Nov/2025:18:27:27 +0000] "POST /api/v1/instructions/validate-device HTTP/1.1" 404 83 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-30 09:53:22 [info]: ::1 - - [30/Nov/2025:04:23:22 +0000] "OPTIONS /api/v1/instructions/validate-device HTTP/1.1" 204 0 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-30 09:53:22 [error]: Error: Route not found: /api/v1/instructions/validate-device
+    at notFoundHandler (file:///C:/Users/tiwar/Desktop/HitouchCX_Projects/Hitouch_Project/HitouchCx_Backend/src/middlewares/errorHandler.js:137:17)
+    at Layer.handleRequest (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:342:13)
+    at C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:297:9
+    at processParams (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:582:12)
+    at next (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:291:5)
+    at C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:688:15
+    at next (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:276:14)
+    at C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:688:15
+    at next (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:276:14)
+    at Function.handle (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:186:3)
+    at router (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:60:12)
+    at Layer.handleRequest (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:342:13)
+    at C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:297:9
+    at processParams (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:582:12)
+2025-11-30 09:53:22 [info]: ::1 - - [30/Nov/2025:04:23:22 +0000] "POST /api/v1/instructions/validate-device HTTP/1.1" 404 83 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-30 09:53:22 [info]: ::1 - - [30/Nov/2025:04:23:22 +0000] "OPTIONS /api/v1/instructions/validate-device HTTP/1.1" 204 0 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-30 09:53:22 [error]: Error: Route not found: /api/v1/instructions/validate-device
+    at notFoundHandler (file:///C:/Users/tiwar/Desktop/HitouchCX_Projects/Hitouch_Project/HitouchCx_Backend/src/middlewares/errorHandler.js:137:17)
+    at Layer.handleRequest (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:342:13)
+    at C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:297:9
+    at processParams (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:582:12)
+    at next (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:291:5)
+    at C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:688:15
+    at next (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:276:14)
+    at C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:688:15
+    at next (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:276:14)
+    at Function.handle (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:186:3)
+    at router (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:60:12)
+    at Layer.handleRequest (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:342:13)
+    at C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:297:9
+    at processParams (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:582:12)
+2025-11-30 09:53:22 [info]: ::1 - - [30/Nov/2025:04:23:22 +0000] "POST /api/v1/instructions/validate-device HTTP/1.1" 404 83 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-30 10:56:14 [info]: ::1 - - [30/Nov/2025:05:26:14 +0000] "OPTIONS /api/v1/proctoring/instructions/validate-device HTTP/1.1" 204 0 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-30 10:56:14 [info]: ::1 - - [30/Nov/2025:05:26:14 +0000] "POST /api/v1/proctoring/instructions/validate-device HTTP/1.1" 200 366 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-30 10:56:14 [info]: ::1 - - [30/Nov/2025:05:26:14 +0000] "OPTIONS /api/v1/proctoring/instructions/validate-device HTTP/1.1" 204 0 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-30 10:56:14 [info]: ::1 - - [30/Nov/2025:05:26:14 +0000] "POST /api/v1/proctoring/instructions/validate-device HTTP/1.1" 200 366 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-30 10:56:21 [info]: ::1 - - [30/Nov/2025:05:26:21 +0000] "OPTIONS /api/v1/proctoring/instructions/validate-device HTTP/1.1" 204 0 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-30 10:56:21 [info]: ::1 - - [30/Nov/2025:05:26:21 +0000] "OPTIONS /api/v1/proctoring/instructions/validate-device HTTP/1.1" 204 0 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-30 10:56:21 [info]: ::1 - - [30/Nov/2025:05:26:21 +0000] "POST /api/v1/proctoring/instructions/validate-device HTTP/1.1" 200 366 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-30 10:56:21 [info]: ::1 - - [30/Nov/2025:05:26:21 +0000] "POST /api/v1/proctoring/instructions/validate-device HTTP/1.1" 200 366 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-30 10:57:12 [info]: ::1 - - [30/Nov/2025:05:27:12 +0000] "OPTIONS /api/v1/auth/log-in HTTP/1.1" 204 0 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-30 10:57:13 [info]: ::1 - - [30/Nov/2025:05:27:13 +0000] "POST /api/v1/auth/log-in HTTP/1.1" 200 259 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-30 10:57:14 [info]: ::1 - - [30/Nov/2025:05:27:14 +0000] "OPTIONS /api/v1/proctoring/instructions/validate-device HTTP/1.1" 204 0 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-30 10:57:14 [info]: ::1 - - [30/Nov/2025:05:27:14 +0000] "OPTIONS /api/v1/proctoring/instructions/validate-device HTTP/1.1" 204 0 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-30 10:57:14 [info]: ::1 - - [30/Nov/2025:05:27:14 +0000] "POST /api/v1/proctoring/instructions/validate-device HTTP/1.1" 200 366 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-30 10:57:14 [info]: ::1 - - [30/Nov/2025:05:27:14 +0000] "POST /api/v1/proctoring/instructions/validate-device HTTP/1.1" 200 366 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-30 11:02:58 [info]: ::1 - - [30/Nov/2025:05:32:58 +0000] "OPTIONS /api/v1/proctoring/instructions/validate-device HTTP/1.1" 204 0 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-30 11:02:58 [info]: ::1 - - [30/Nov/2025:05:32:58 +0000] "OPTIONS /api/v1/proctoring/instructions/validate-device HTTP/1.1" 204 0 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-30 11:02:58 [info]: ::1 - - [30/Nov/2025:05:32:58 +0000] "POST /api/v1/proctoring/instructions/validate-device HTTP/1.1" 200 366 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-30 11:02:58 [info]: ::1 - - [30/Nov/2025:05:32:58 +0000] "POST /api/v1/proctoring/instructions/validate-device HTTP/1.1" 200 366 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-30 11:05:15 [info]: ::1 - - [30/Nov/2025:05:35:15 +0000] "OPTIONS /api/v1/proctoring/instructions/validate-device HTTP/1.1" 204 0 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-30 11:05:15 [info]: ::1 - - [30/Nov/2025:05:35:15 +0000] "OPTIONS /api/v1/proctoring/instructions/validate-device HTTP/1.1" 204 0 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-30 11:05:15 [info]: ::1 - - [30/Nov/2025:05:35:15 +0000] "POST /api/v1/proctoring/instructions/validate-device HTTP/1.1" 200 366 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-30 11:05:15 [info]: ::1 - - [30/Nov/2025:05:35:15 +0000] "POST /api/v1/proctoring/instructions/validate-device HTTP/1.1" 200 366 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-30 11:05:58 [info]: ::1 - - [30/Nov/2025:05:35:58 +0000] "OPTIONS /api/v1/auth/log-in HTTP/1.1" 204 0 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-30 11:06:00 [info]: ::1 - - [30/Nov/2025:05:36:00 +0000] "POST /api/v1/auth/log-in HTTP/1.1" 200 259 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-30 11:06:00 [info]: ::1 - - [30/Nov/2025:05:36:00 +0000] "OPTIONS /api/v1/proctoring/instructions/validate-device HTTP/1.1" 204 0 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-30 11:06:00 [info]: ::1 - - [30/Nov/2025:05:36:00 +0000] "OPTIONS /api/v1/proctoring/instructions/validate-device HTTP/1.1" 204 0 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-30 11:06:00 [info]: ::1 - - [30/Nov/2025:05:36:00 +0000] "POST /api/v1/proctoring/instructions/validate-device HTTP/1.1" 200 366 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-30 11:06:00 [info]: ::1 - - [30/Nov/2025:05:36:00 +0000] "POST /api/v1/proctoring/instructions/validate-device HTTP/1.1" 200 366 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-30 11:06:53 [info]: ::1 - - [30/Nov/2025:05:36:53 +0000] "OPTIONS /api/v1/assessments/generate HTTP/1.1" 204 0 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-30 11:06:53 [error]: Error: Route not found: /api/v1/assessments/generate
+    at notFoundHandler (file:///C:/Users/tiwar/Desktop/HitouchCX_Projects/Hitouch_Project/HitouchCx_Backend/src/middlewares/errorHandler.js:137:17)
+    at Layer.handleRequest (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:342:13)
+    at C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:297:9
+    at processParams (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:582:12)
+    at next (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:291:5)
+    at C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:688:15
+    at next (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:276:14)
+    at C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:688:15
+    at next (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:276:14)
+    at Function.handle (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:186:3)
+    at router (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:60:12)
+    at Layer.handleRequest (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:342:13)
+    at C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:297:9
+    at processParams (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:582:12)
+2025-11-30 11:06:53 [info]: ::1 - - [30/Nov/2025:05:36:53 +0000] "POST /api/v1/assessments/generate HTTP/1.1" 404 75 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-30 11:09:23 [info]: ::1 - - [30/Nov/2025:05:39:23 +0000] "OPTIONS /api/v1/proctoring/instructions/validate-device HTTP/1.1" 204 0 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-30 11:09:23 [info]: ::1 - - [30/Nov/2025:05:39:23 +0000] "OPTIONS /api/v1/proctoring/instructions/validate-device HTTP/1.1" 204 0 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-30 11:09:23 [info]: ::1 - - [30/Nov/2025:05:39:23 +0000] "POST /api/v1/proctoring/instructions/validate-device HTTP/1.1" 200 366 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-30 11:09:23 [info]: ::1 - - [30/Nov/2025:05:39:23 +0000] "POST /api/v1/proctoring/instructions/validate-device HTTP/1.1" 200 366 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-30 11:09:26 [info]: ::1 - - [30/Nov/2025:05:39:26 +0000] "OPTIONS /api/v1/proctoring/assessment/generate HTTP/1.1" 204 0 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-30 11:09:27 [error]: PrismaClientValidationError: 
+[31mInvalid [1m`prisma.candidate.findUnique()`[22m invocation:[39m
+
+{
+  where: {
+    agentId: null,
+[32m?[39m   [32mid[39m[32m?[39m[32m: [39m[32mString[39m,
+[32m?[39m   [32memail[39m[32m?[39m[32m: [39m[32mString[39m,
+[32m?[39m   [32mAND[39m[32m?[39m[32m: [39m[32mCandidateWhereInput | CandidateWhereInput[][39m,
+[32m?[39m   [32mOR[39m[32m?[39m[32m: [39m[32mCandidateWhereInput[][39m,
+[32m?[39m   [32mNOT[39m[32m?[39m[32m: [39m[32mCandidateWhereInput | CandidateWhereInput[][39m,
+[32m?[39m   [32mfirstName[39m[32m?[39m[32m: [39m[32mStringFilter | String[39m,
+[32m?[39m   [32mlastName[39m[32m?[39m[32m: [39m[32mStringFilter | String[39m,
+[32m?[39m   [32mphone[39m[32m?[39m[32m: [39m[32mStringNullableFilter | String | Null[39m,
+[32m?[39m   [32moverallCEFRLevel[39m[32m?[39m[32m: [39m[32mEnumCEFRLevelNullableFilter | CEFRLevel | Null[39m,
+[32m?[39m   [32misBlacklisted[39m[32m?[39m[32m: [39m[32mBoolFilter | Boolean[39m,
+[32m?[39m   [32misActive[39m[32m?[39m[32m: [39m[32mBoolFilter | Boolean[39m,
+[32m?[39m   [32mcreatedAt[39m[32m?[39m[32m: [39m[32mDateTimeFilter | DateTime[39m,
+[32m?[39m   [32mupdatedAt[39m[32m?[39m[32m: [39m[32mDateTimeFilter | DateTime[39m,
+[32m?[39m   [32magent[39m[32m?[39m[32m: [39m[32mAgentNullableScalarRelationFilter | AgentWhereInput | Null[39m,
+[32m?[39m   [32msystemChecks[39m[32m?[39m[32m: [39m[32mSystemCheckListRelationFilter[39m,
+[32m?[39m   [32midentityVerifications[39m[32m?[39m[32m: [39m[32mIdentityVerificationListRelationFilter[39m,
+[32m?[39m   [32massessmentAttempts[39m[32m?[39m[32m: [39m[32mCandidateAssessmentListRelationFilter[39m,
+[32m?[39m   [32mproctoringLogs[39m[32m?[39m[32m: [39m[32mProctoringLogListRelationFilter[39m,
+[32m?[39m   [32mproctoringSessions[39m[32m?[39m[32m: [39m[32mProctoringSessionListRelationFilter[39m,
+[32m?[39m   [32manswers[39m[32m?[39m[32m: [39m[32mAnswerListRelationFilter[39m,
+[32m?[39m   [32mspeakingEvaluations[39m[32m?[39m[32m: [39m[32mSpeakingEvaluationListRelationFilter[39m,
+[32m?[39m   [32mreconnectionLogs[39m[32m?[39m[32m: [39m[32mReconnectionLogListRelationFilter[39m,
+[32m?[39m   [32mblacklistEntries[39m[32m?[39m[32m: [39m[32mBlacklistListRelationFilter[39m,
+[32m?[39m   [32mViolationSnapshot[39m[32m?[39m[32m: [39m[32mViolationSnapshotListRelationFilter[39m
+  }
+}
+
+Argument `[1mwhere[22m` of type [1mCandidateWhereUniqueInput[22m needs [32mat least one of[39m `[1mid[22m` or `[1memail[22m` arguments. Available options are listed in [32mgreen[39m.
+    at oa (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\@prisma\client\runtime\binary.js:156:1375)
+    at bl.handleRequestError (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\@prisma\client\runtime\binary.js:258:6913)
+    at bl.handleAndLogRequestError (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\@prisma\client\runtime\binary.js:258:6594)
+    at bl.request (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\@prisma\client\runtime\binary.js:258:6301)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async o (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\@prisma\client\runtime\binary.js:267:9560)
+    at async file:///C:/Users/tiwar/Desktop/HitouchCX_Projects/Hitouch_Project/HitouchCx_Backend/src/controllers/v1/proctoring-assessment/assessment.controller.js:111:19
+2025-11-30 11:09:27 [info]: ::1 - - [30/Nov/2025:05:39:27 +0000] "POST /api/v1/proctoring/assessment/generate HTTP/1.1" 500 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-30 11:10:28 [info]: ::1 - - [30/Nov/2025:05:40:28 +0000] "OPTIONS /api/v1/proctoring/instructions/validate-device HTTP/1.1" 204 0 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-30 11:10:28 [info]: ::1 - - [30/Nov/2025:05:40:28 +0000] "OPTIONS /api/v1/proctoring/instructions/validate-device HTTP/1.1" 204 0 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-30 11:10:28 [info]: ::1 - - [30/Nov/2025:05:40:28 +0000] "POST /api/v1/proctoring/instructions/validate-device HTTP/1.1" 200 366 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-30 11:10:28 [info]: ::1 - - [30/Nov/2025:05:40:28 +0000] "POST /api/v1/proctoring/instructions/validate-device HTTP/1.1" 200 366 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-30 11:10:30 [info]: ::1 - - [30/Nov/2025:05:40:30 +0000] "OPTIONS /api/v1/proctoring/assessment/generate HTTP/1.1" 204 0 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-30 11:10:31 [error]: PrismaClientValidationError: 
+[31mInvalid [1m`prisma.candidate.findUnique()`[22m invocation:[39m
+
+{
+  where: {
+    agentId: null,
+[32m?[39m   [32mid[39m[32m?[39m[32m: [39m[32mString[39m,
+[32m?[39m   [32memail[39m[32m?[39m[32m: [39m[32mString[39m,
+[32m?[39m   [32mAND[39m[32m?[39m[32m: [39m[32mCandidateWhereInput | CandidateWhereInput[][39m,
+[32m?[39m   [32mOR[39m[32m?[39m[32m: [39m[32mCandidateWhereInput[][39m,
+[32m?[39m   [32mNOT[39m[32m?[39m[32m: [39m[32mCandidateWhereInput | CandidateWhereInput[][39m,
+[32m?[39m   [32mfirstName[39m[32m?[39m[32m: [39m[32mStringFilter | String[39m,
+[32m?[39m   [32mlastName[39m[32m?[39m[32m: [39m[32mStringFilter | String[39m,
+[32m?[39m   [32mphone[39m[32m?[39m[32m: [39m[32mStringNullableFilter | String | Null[39m,
+[32m?[39m   [32moverallCEFRLevel[39m[32m?[39m[32m: [39m[32mEnumCEFRLevelNullableFilter | CEFRLevel | Null[39m,
+[32m?[39m   [32misBlacklisted[39m[32m?[39m[32m: [39m[32mBoolFilter | Boolean[39m,
+[32m?[39m   [32misActive[39m[32m?[39m[32m: [39m[32mBoolFilter | Boolean[39m,
+[32m?[39m   [32mcreatedAt[39m[32m?[39m[32m: [39m[32mDateTimeFilter | DateTime[39m,
+[32m?[39m   [32mupdatedAt[39m[32m?[39m[32m: [39m[32mDateTimeFilter | DateTime[39m,
+[32m?[39m   [32magent[39m[32m?[39m[32m: [39m[32mAgentNullableScalarRelationFilter | AgentWhereInput | Null[39m,
+[32m?[39m   [32msystemChecks[39m[32m?[39m[32m: [39m[32mSystemCheckListRelationFilter[39m,
+[32m?[39m   [32midentityVerifications[39m[32m?[39m[32m: [39m[32mIdentityVerificationListRelationFilter[39m,
+[32m?[39m   [32massessmentAttempts[39m[32m?[39m[32m: [39m[32mCandidateAssessmentListRelationFilter[39m,
+[32m?[39m   [32mproctoringLogs[39m[32m?[39m[32m: [39m[32mProctoringLogListRelationFilter[39m,
+[32m?[39m   [32mproctoringSessions[39m[32m?[39m[32m: [39m[32mProctoringSessionListRelationFilter[39m,
+[32m?[39m   [32manswers[39m[32m?[39m[32m: [39m[32mAnswerListRelationFilter[39m,
+[32m?[39m   [32mspeakingEvaluations[39m[32m?[39m[32m: [39m[32mSpeakingEvaluationListRelationFilter[39m,
+[32m?[39m   [32mreconnectionLogs[39m[32m?[39m[32m: [39m[32mReconnectionLogListRelationFilter[39m,
+[32m?[39m   [32mblacklistEntries[39m[32m?[39m[32m: [39m[32mBlacklistListRelationFilter[39m,
+[32m?[39m   [32mViolationSnapshot[39m[32m?[39m[32m: [39m[32mViolationSnapshotListRelationFilter[39m
+  }
+}
+
+Argument `[1mwhere[22m` of type [1mCandidateWhereUniqueInput[22m needs [32mat least one of[39m `[1mid[22m` or `[1memail[22m` arguments. Available options are listed in [32mgreen[39m.
+    at oa (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\@prisma\client\runtime\binary.js:156:1375)
+    at bl.handleRequestError (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\@prisma\client\runtime\binary.js:258:6913)
+    at bl.handleAndLogRequestError (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\@prisma\client\runtime\binary.js:258:6594)
+    at bl.request (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\@prisma\client\runtime\binary.js:258:6301)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async o (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\@prisma\client\runtime\binary.js:267:9560)
+    at async file:///C:/Users/tiwar/Desktop/HitouchCX_Projects/Hitouch_Project/HitouchCx_Backend/src/controllers/v1/proctoring-assessment/assessment.controller.js:111:19
+2025-11-30 11:10:31 [info]: ::1 - - [30/Nov/2025:05:40:31 +0000] "POST /api/v1/proctoring/assessment/generate HTTP/1.1" 500 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-30 11:22:19 [info]: ::1 - - [30/Nov/2025:05:52:19 +0000] "OPTIONS /api/v1/proctoring/instructions/validate-device HTTP/1.1" 204 0 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-30 11:22:19 [info]: ::1 - - [30/Nov/2025:05:52:19 +0000] "POST /api/v1/proctoring/instructions/validate-device HTTP/1.1" 200 366 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-30 11:22:20 [info]: ::1 - - [30/Nov/2025:05:52:20 +0000] "OPTIONS /api/v1/proctoring/instructions/validate-device HTTP/1.1" 204 0 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-30 11:22:20 [info]: ::1 - - [30/Nov/2025:05:52:20 +0000] "POST /api/v1/proctoring/instructions/validate-device HTTP/1.1" 200 366 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-30 11:22:22 [info]: ::1 - - [30/Nov/2025:05:52:22 +0000] "OPTIONS /api/v1/proctoring/assessment/generate HTTP/1.1" 204 0 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-30 11:22:24 [error]: PrismaClientValidationError: 
+[31mInvalid [1m`prisma.agent.create()`[22m invocation:[39m
+
+{
+  data: {
+    userId: "cmijzdswm00000igob9lh59xh",
+[32m+[39m   [32mfirstName[39m[32m: [39m[32mString[39m
+  }
+}
+
+Argument `[32mfirstName[39m` is missing.
+    at oa (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\@prisma\client\runtime\binary.js:156:1375)
+    at bl.handleRequestError (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\@prisma\client\runtime\binary.js:258:6913)
+    at bl.handleAndLogRequestError (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\@prisma\client\runtime\binary.js:258:6594)
+    at bl.request (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\@prisma\client\runtime\binary.js:258:6301)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async o (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\@prisma\client\runtime\binary.js:267:9560)
+    at async file:///C:/Users/tiwar/Desktop/HitouchCX_Projects/Hitouch_Project/HitouchCx_Backend/src/controllers/v1/proctoring-assessment/assessment.controller.js:125:24
+2025-11-30 11:22:24 [info]: ::1 - - [30/Nov/2025:05:52:24 +0000] "POST /api/v1/proctoring/assessment/generate HTTP/1.1" 500 341 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-30 11:29:33 [info]: ::1 - - [30/Nov/2025:05:59:33 +0000] "OPTIONS /api/v1/proctoring/instructions/validate-device HTTP/1.1" 204 0 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-30 11:29:33 [info]: ::1 - - [30/Nov/2025:05:59:33 +0000] "POST /api/v1/proctoring/instructions/validate-device HTTP/1.1" 200 366 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-30 11:29:33 [info]: ::1 - - [30/Nov/2025:05:59:33 +0000] "OPTIONS /api/v1/proctoring/instructions/validate-device HTTP/1.1" 204 0 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-30 11:29:33 [info]: ::1 - - [30/Nov/2025:05:59:33 +0000] "POST /api/v1/proctoring/instructions/validate-device HTTP/1.1" 200 366 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-30 11:29:37 [info]: ::1 - - [30/Nov/2025:05:59:37 +0000] "OPTIONS /api/v1/proctoring/assessment/generate HTTP/1.1" 204 0 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-30 11:29:39 [error]: PrismaClientValidationError: 
+[31mInvalid [1m`prisma.candidate.findUnique()`[22m invocation:[39m
+
+{
+  where: {
+    agentId: "cmilb910t00010ilgome545o5",
+[32m?[39m   [32mid[39m[32m?[39m[32m: [39m[32mString[39m,
+[32m?[39m   [32memail[39m[32m?[39m[32m: [39m[32mString[39m,
+[32m?[39m   [32mAND[39m[32m?[39m[32m: [39m[32mCandidateWhereInput | CandidateWhereInput[][39m,
+[32m?[39m   [32mOR[39m[32m?[39m[32m: [39m[32mCandidateWhereInput[][39m,
+[32m?[39m   [32mNOT[39m[32m?[39m[32m: [39m[32mCandidateWhereInput | CandidateWhereInput[][39m,
+[32m?[39m   [32mfirstName[39m[32m?[39m[32m: [39m[32mStringFilter | String[39m,
+[32m?[39m   [32mlastName[39m[32m?[39m[32m: [39m[32mStringFilter | String[39m,
+[32m?[39m   [32mphone[39m[32m?[39m[32m: [39m[32mStringNullableFilter | String | Null[39m,
+[32m?[39m   [32moverallCEFRLevel[39m[32m?[39m[32m: [39m[32mEnumCEFRLevelNullableFilter | CEFRLevel | Null[39m,
+[32m?[39m   [32misBlacklisted[39m[32m?[39m[32m: [39m[32mBoolFilter | Boolean[39m,
+[32m?[39m   [32misActive[39m[32m?[39m[32m: [39m[32mBoolFilter | Boolean[39m,
+[32m?[39m   [32mcreatedAt[39m[32m?[39m[32m: [39m[32mDateTimeFilter | DateTime[39m,
+[32m?[39m   [32mupdatedAt[39m[32m?[39m[32m: [39m[32mDateTimeFilter | DateTime[39m,
+[32m?[39m   [32magent[39m[32m?[39m[32m: [39m[32mAgentNullableScalarRelationFilter | AgentWhereInput | Null[39m,
+[32m?[39m   [32msystemChecks[39m[32m?[39m[32m: [39m[32mSystemCheckListRelationFilter[39m,
+[32m?[39m   [32midentityVerifications[39m[32m?[39m[32m: [39m[32mIdentityVerificationListRelationFilter[39m,
+[32m?[39m   [32massessmentAttempts[39m[32m?[39m[32m: [39m[32mCandidateAssessmentListRelationFilter[39m,
+[32m?[39m   [32mproctoringLogs[39m[32m?[39m[32m: [39m[32mProctoringLogListRelationFilter[39m,
+[32m?[39m   [32mproctoringSessions[39m[32m?[39m[32m: [39m[32mProctoringSessionListRelationFilter[39m,
+[32m?[39m   [32manswers[39m[32m?[39m[32m: [39m[32mAnswerListRelationFilter[39m,
+[32m?[39m   [32mspeakingEvaluations[39m[32m?[39m[32m: [39m[32mSpeakingEvaluationListRelationFilter[39m,
+[32m?[39m   [32mreconnectionLogs[39m[32m?[39m[32m: [39m[32mReconnectionLogListRelationFilter[39m,
+[32m?[39m   [32mblacklistEntries[39m[32m?[39m[32m: [39m[32mBlacklistListRelationFilter[39m,
+[32m?[39m   [32mViolationSnapshot[39m[32m?[39m[32m: [39m[32mViolationSnapshotListRelationFilter[39m
+  }
+}
+
+Argument `[1mwhere[22m` of type [1mCandidateWhereUniqueInput[22m needs [32mat least one of[39m `[1mid[22m` or `[1memail[22m` arguments. Available options are listed in [32mgreen[39m.
+    at oa (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\@prisma\client\runtime\binary.js:156:1375)
+    at bl.handleRequestError (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\@prisma\client\runtime\binary.js:258:6913)
+    at bl.handleAndLogRequestError (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\@prisma\client\runtime\binary.js:258:6594)
+    at bl.request (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\@prisma\client\runtime\binary.js:258:6301)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async o (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\@prisma\client\runtime\binary.js:267:9560)
+    at async file:///C:/Users/tiwar/Desktop/HitouchCX_Projects/Hitouch_Project/HitouchCx_Backend/src/controllers/v1/proctoring-assessment/assessment.controller.js:140:19
+2025-11-30 11:29:39 [info]: ::1 - - [30/Nov/2025:05:59:39 +0000] "POST /api/v1/proctoring/assessment/generate HTTP/1.1" 500 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-30 11:34:34 [info]: ::1 - - [30/Nov/2025:06:04:34 +0000] "OPTIONS /api/v1/proctoring/instructions/validate-device HTTP/1.1" 204 0 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-30 11:34:34 [info]: ::1 - - [30/Nov/2025:06:04:34 +0000] "POST /api/v1/proctoring/instructions/validate-device HTTP/1.1" 200 366 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-30 11:34:34 [info]: ::1 - - [30/Nov/2025:06:04:34 +0000] "OPTIONS /api/v1/proctoring/instructions/validate-device HTTP/1.1" 204 0 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-30 11:34:34 [info]: ::1 - - [30/Nov/2025:06:04:34 +0000] "POST /api/v1/proctoring/instructions/validate-device HTTP/1.1" 200 366 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-30 11:34:38 [info]: ::1 - - [30/Nov/2025:06:04:38 +0000] "OPTIONS /api/v1/proctoring/assessment/generate HTTP/1.1" 204 0 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-30 11:34:40 [error]: PrismaClientValidationError: 
+[31mInvalid [1m`prisma.agent.findUnique()`[22m invocation:[39m
+
+{
+  where: {
+    id: "cmilb910t00010ilgome545o5"
+  },
+  include: {
+    user: {
+      select: {
+        email: true,
+        [31mfirstName[39m: true,
+        [31m~~~~~~~~~[39m
+        lastName: true,
+[32m?[39m       [32mid[39m[32m?[39m[32m: [39m[32mtrue[39m,
+[32m?[39m       [32memailVerified[39m[32m?[39m[32m: [39m[32mtrue[39m,
+[32m?[39m       [32mphone[39m[32m?[39m[32m: [39m[32mtrue[39m,
+[32m?[39m       [32mphoneVerified[39m[32m?[39m[32m: [39m[32mtrue[39m,
+[32m?[39m       [32mpasswordHash[39m[32m?[39m[32m: [39m[32mtrue[39m,
+[32m?[39m       [32mrole[39m[32m?[39m[32m: [39m[32mtrue[39m,
+[32m?[39m       [32mstatus[39m[32m?[39m[32m: [39m[32mtrue[39m,
+[32m?[39m       [32mgoogleId[39m[32m?[39m[32m: [39m[32mtrue[39m,
+[32m?[39m       [32mprofilePicture[39m[32m?[39m[32m: [39m[32mtrue[39m,
+[32m?[39m       [32mprovider[39m[32m?[39m[32m: [39m[32mtrue[39m,
+[32m?[39m       [32mcreatedAt[39m[32m?[39m[32m: [39m[32mtrue[39m,
+[32m?[39m       [32mupdatedAt[39m[32m?[39m[32m: [39m[32mtrue[39m,
+[32m?[39m       [32motps[39m[32m?[39m[32m: [39m[32mtrue[39m,
+[32m?[39m       [32magent[39m[32m?[39m[32m: [39m[32mtrue[39m,
+[32m?[39m       [32m_count[39m[32m?[39m[32m: [39m[32mtrue[39m
+      }
+    }
+  }
+}
+
+Unknown field [31m`firstName`[39m for [1mselect[22m statement on model [1m`User`[22m. Available options are listed in [32mgreen[39m.
+    at oa (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\@prisma\client\runtime\binary.js:156:1375)
+    at bl.handleRequestError (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\@prisma\client\runtime\binary.js:258:6913)
+    at bl.handleAndLogRequestError (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\@prisma\client\runtime\binary.js:258:6594)
+    at bl.request (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\@prisma\client\runtime\binary.js:258:6301)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async o (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\@prisma\client\runtime\binary.js:267:9560)
+    at async file:///C:/Users/tiwar/Desktop/HitouchCX_Projects/Hitouch_Project/HitouchCx_Backend/src/controllers/v1/proctoring-assessment/assessment.controller.js:144:19
+2025-11-30 11:34:40 [info]: ::1 - - [30/Nov/2025:06:04:40 +0000] "POST /api/v1/proctoring/assessment/generate HTTP/1.1" 500 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-30 11:36:52 [info]: ::1 - - [30/Nov/2025:06:06:52 +0000] "OPTIONS /api/v1/proctoring/instructions/validate-device HTTP/1.1" 204 0 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-30 11:36:52 [info]: ::1 - - [30/Nov/2025:06:06:52 +0000] "POST /api/v1/proctoring/instructions/validate-device HTTP/1.1" 200 366 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-30 11:36:52 [info]: ::1 - - [30/Nov/2025:06:06:52 +0000] "OPTIONS /api/v1/proctoring/instructions/validate-device HTTP/1.1" 204 0 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-30 11:36:52 [info]: ::1 - - [30/Nov/2025:06:06:52 +0000] "POST /api/v1/proctoring/instructions/validate-device HTTP/1.1" 200 366 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-30 11:36:59 [info]: ::1 - - [30/Nov/2025:06:06:59 +0000] "OPTIONS /api/v1/proctoring/assessment/generate HTTP/1.1" 204 0 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-30 11:37:02 [error]: PrismaClientKnownRequestError: 
+[31mInvalid [1m`prisma.assessment.create()`[22m invocation:[39m
+
+
+Foreign key constraint violated on the constraint: `assessments_createdById_fkey`
+    at bl.handleRequestError (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\@prisma\client\runtime\binary.js:258:7270)
+    at bl.handleAndLogRequestError (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\@prisma\client\runtime\binary.js:258:6594)
+    at bl.request (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\@prisma\client\runtime\binary.js:258:6301)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async o (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\@prisma\client\runtime\binary.js:267:9560)
+    at async file:///C:/Users/tiwar/Desktop/HitouchCX_Projects/Hitouch_Project/HitouchCx_Backend/src/controllers/v1/proctoring-assessment/assessment.controller.js:167:22
+2025-11-30 11:37:02 [info]: ::1 - - [30/Nov/2025:06:07:02 +0000] "POST /api/v1/proctoring/assessment/generate HTTP/1.1" 400 55 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-30 12:31:02 [info]: ::1 - - [30/Nov/2025:07:01:02 +0000] "OPTIONS /api/v1/proctoring/instructions/validate-device HTTP/1.1" 204 0 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-30 12:31:02 [info]: ::1 - - [30/Nov/2025:07:01:02 +0000] "POST /api/v1/proctoring/instructions/validate-device HTTP/1.1" 200 366 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-30 12:31:02 [info]: ::1 - - [30/Nov/2025:07:01:02 +0000] "OPTIONS /api/v1/proctoring/instructions/validate-device HTTP/1.1" 204 0 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-30 12:31:02 [info]: ::1 - - [30/Nov/2025:07:01:02 +0000] "POST /api/v1/proctoring/instructions/validate-device HTTP/1.1" 200 366 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-30 12:47:51 [info]: ::1 - - [30/Nov/2025:07:17:51 +0000] "OPTIONS /api/v1/proctoring/assessment/generate HTTP/1.1" 204 0 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-30 12:47:54 [error]: PrismaClientKnownRequestError: 
+[31mInvalid [1m`prisma.assessment.create()`[22m invocation:[39m
+
+
+Foreign key constraint violated on the constraint: `assessments_createdById_fkey`
+    at bl.handleRequestError (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\@prisma\client\runtime\binary.js:258:7270)
+    at bl.handleAndLogRequestError (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\@prisma\client\runtime\binary.js:258:6594)
+    at bl.request (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\@prisma\client\runtime\binary.js:258:6301)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async o (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\@prisma\client\runtime\binary.js:267:9560)
+    at async file:///C:/Users/tiwar/Desktop/HitouchCX_Projects/Hitouch_Project/HitouchCx_Backend/src/controllers/v1/proctoring-assessment/assessment.controller.js:167:22
+2025-11-30 12:47:54 [info]: ::1 - - [30/Nov/2025:07:17:54 +0000] "POST /api/v1/proctoring/assessment/generate HTTP/1.1" 400 55 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-30 12:53:41 [info]: ::1 - - [30/Nov/2025:07:23:41 +0000] "OPTIONS /api/v1/proctoring/instructions/validate-device HTTP/1.1" 204 0 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-30 12:53:41 [info]: ::1 - - [30/Nov/2025:07:23:41 +0000] "POST /api/v1/proctoring/instructions/validate-device HTTP/1.1" 200 366 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-30 12:53:41 [info]: ::1 - - [30/Nov/2025:07:23:41 +0000] "OPTIONS /api/v1/proctoring/instructions/validate-device HTTP/1.1" 204 0 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-30 12:53:41 [info]: ::1 - - [30/Nov/2025:07:23:41 +0000] "POST /api/v1/proctoring/instructions/validate-device HTTP/1.1" 200 366 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-30 12:53:48 [info]: ::1 - - [30/Nov/2025:07:23:48 +0000] "OPTIONS /api/v1/proctoring/assessment/generate HTTP/1.1" 204 0 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-30 12:53:49 [info]: ::1 - - [30/Nov/2025:07:23:49 +0000] "POST /api/v1/proctoring/assessment/generate HTTP/1.1" 404 44 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-30 12:55:31 [info]: ::1 - - [30/Nov/2025:07:25:31 +0000] "OPTIONS /api/v1/auth/log-in HTTP/1.1" 204 0 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-30 12:56:18 [info]: ::1 - - [30/Nov/2025:07:26:18 +0000] "POST /api/v1/auth/log-in HTTP/1.1" - - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-30 12:56:30 [info]: ::1 - - [30/Nov/2025:07:26:30 +0000] "OPTIONS /api/v1/otp/request-otp HTTP/1.1" 204 0 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-30 12:56:34 [info]: ::1 - - [30/Nov/2025:07:26:34 +0000] "POST /api/v1/otp/request-otp HTTP/1.1" 200 136 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-30 12:56:35 [info]: ::1 - - [30/Nov/2025:07:26:35 +0000] "POST /api/v1/otp/request-otp HTTP/1.1" 200 357 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-30 12:56:53 [info]: ::1 - - [30/Nov/2025:07:26:53 +0000] "OPTIONS /api/v1/otp/verify-otp HTTP/1.1" 204 0 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-30 12:56:54 [info]: ::1 - - [30/Nov/2025:07:26:54 +0000] "POST /api/v1/otp/verify-otp HTTP/1.1" 200 70 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-30 12:57:11 [info]: ::1 - - [30/Nov/2025:07:27:11 +0000] "OPTIONS /api/v1/otp/verify-otp HTTP/1.1" 204 0 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-30 12:57:12 [info]: ::1 - - [30/Nov/2025:07:27:12 +0000] "POST /api/v1/otp/verify-otp HTTP/1.1" 200 39 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-30 12:57:25 [info]: ::1 - - [30/Nov/2025:07:27:25 +0000] "OPTIONS /api/v1/auth/sign-up HTTP/1.1" 204 0 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-30 12:57:27 [info]: ::1 - - [30/Nov/2025:07:27:27 +0000] "POST /api/v1/auth/sign-up HTTP/1.1" 200 280 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-30 12:59:42 [info]: ::1 - - [30/Nov/2025:07:29:42 +0000] "OPTIONS /api/v1/proctoring/instructions/validate-device HTTP/1.1" 204 0 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-30 12:59:42 [info]: ::1 - - [30/Nov/2025:07:29:42 +0000] "OPTIONS /api/v1/proctoring/instructions/validate-device HTTP/1.1" 204 0 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-30 12:59:42 [info]: ::1 - - [30/Nov/2025:07:29:42 +0000] "POST /api/v1/proctoring/instructions/validate-device HTTP/1.1" 200 366 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-30 12:59:42 [info]: ::1 - - [30/Nov/2025:07:29:42 +0000] "POST /api/v1/proctoring/instructions/validate-device HTTP/1.1" 200 366 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-30 12:59:45 [info]: ::1 - - [30/Nov/2025:07:29:45 +0000] "OPTIONS /api/v1/proctoring/assessment/generate HTTP/1.1" 204 0 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-30 12:59:46 [info]: ::1 - - [30/Nov/2025:07:29:46 +0000] "POST /api/v1/proctoring/assessment/generate HTTP/1.1" 404 44 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-30 13:10:07 [info]: ::1 - - [30/Nov/2025:07:40:07 +0000] "OPTIONS /api/v1/proctoring/instructions/validate-device HTTP/1.1" 204 0 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-30 13:10:07 [info]: ::1 - - [30/Nov/2025:07:40:07 +0000] "OPTIONS /api/v1/proctoring/instructions/validate-device HTTP/1.1" 204 0 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-30 13:10:07 [info]: ::1 - - [30/Nov/2025:07:40:07 +0000] "POST /api/v1/proctoring/instructions/validate-device HTTP/1.1" 200 366 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-30 13:10:07 [info]: ::1 - - [30/Nov/2025:07:40:07 +0000] "POST /api/v1/proctoring/instructions/validate-device HTTP/1.1" 200 366 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-30 13:10:15 [info]: ::1 - - [30/Nov/2025:07:40:15 +0000] "OPTIONS /api/v1/proctoring/assessment/generate HTTP/1.1" 204 0 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-30 13:10:17 [info]: ::1 - - [30/Nov/2025:07:40:17 +0000] "POST /api/v1/proctoring/assessment/generate HTTP/1.1" 404 44 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-30 13:13:13 [info]: ::1 - - [30/Nov/2025:07:43:13 +0000] "OPTIONS /api/v1/proctoring/instructions/validate-device HTTP/1.1" 204 0 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-30 13:13:13 [info]: ::1 - - [30/Nov/2025:07:43:13 +0000] "OPTIONS /api/v1/proctoring/instructions/validate-device HTTP/1.1" 204 0 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-30 13:13:13 [info]: ::1 - - [30/Nov/2025:07:43:13 +0000] "POST /api/v1/proctoring/instructions/validate-device HTTP/1.1" 200 366 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-30 13:13:13 [info]: ::1 - - [30/Nov/2025:07:43:13 +0000] "POST /api/v1/proctoring/instructions/validate-device HTTP/1.1" 200 366 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-30 13:13:17 [info]: ::1 - - [30/Nov/2025:07:43:17 +0000] "OPTIONS /api/v1/proctoring/assessment/generate HTTP/1.1" 204 0 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-30 13:13:18 [info]: ::1 - - [30/Nov/2025:07:43:18 +0000] "POST /api/v1/proctoring/assessment/generate HTTP/1.1" 404 44 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-30 13:14:55 [info]: ::1 - - [30/Nov/2025:07:44:55 +0000] "OPTIONS /api/v1/proctoring/instructions/validate-device HTTP/1.1" 204 0 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-30 13:14:56 [info]: ::1 - - [30/Nov/2025:07:44:56 +0000] "POST /api/v1/proctoring/instructions/validate-device HTTP/1.1" 200 366 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-30 13:14:56 [info]: ::1 - - [30/Nov/2025:07:44:56 +0000] "OPTIONS /api/v1/proctoring/instructions/validate-device HTTP/1.1" 204 0 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-30 13:14:56 [info]: ::1 - - [30/Nov/2025:07:44:56 +0000] "POST /api/v1/proctoring/instructions/validate-device HTTP/1.1" 200 366 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-30 13:14:58 [info]: ::1 - - [30/Nov/2025:07:44:58 +0000] "OPTIONS /api/v1/proctoring/assessment/generate HTTP/1.1" 204 0 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-30 13:14:59 [info]: ::1 - - [30/Nov/2025:07:44:59 +0000] "POST /api/v1/proctoring/assessment/generate HTTP/1.1" 404 44 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-30 14:36:31 [info]: ::1 - - [30/Nov/2025:09:06:31 +0000] "OPTIONS /api/v1/otp/request-otp HTTP/1.1" 204 0 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-30 14:36:38 [info]: ::1 - - [30/Nov/2025:09:06:38 +0000] "POST /api/v1/otp/request-otp HTTP/1.1" 200 352 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-30 14:36:46 [info]: ::1 - - [30/Nov/2025:09:06:46 +0000] "OPTIONS /api/v1/otp/request-otp HTTP/1.1" 204 0 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-30 14:36:48 [info]: ::1 - - [30/Nov/2025:09:06:48 +0000] "POST /api/v1/otp/request-otp HTTP/1.1" 500 182 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-30 14:41:19 [info]: ::1 - - [30/Nov/2025:09:11:19 +0000] "OPTIONS /api/v1/otp/request-otp HTTP/1.1" 204 0 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-30 14:41:22 [info]: ::1 - - [30/Nov/2025:09:11:22 +0000] "POST /api/v1/otp/request-otp HTTP/1.1" 200 136 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-30 14:41:25 [info]: ::1 - - [30/Nov/2025:09:11:25 +0000] "POST /api/v1/otp/request-otp HTTP/1.1" 200 357 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-30 14:41:49 [info]: ::1 - - [30/Nov/2025:09:11:49 +0000] "OPTIONS /api/v1/otp/verify-otp HTTP/1.1" 204 0 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-30 14:41:51 [info]: ::1 - - [30/Nov/2025:09:11:51 +0000] "POST /api/v1/otp/verify-otp HTTP/1.1" 200 70 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-30 14:42:04 [info]: ::1 - - [30/Nov/2025:09:12:04 +0000] "OPTIONS /api/v1/otp/verify-otp HTTP/1.1" 204 0 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-30 14:42:05 [info]: ::1 - - [30/Nov/2025:09:12:05 +0000] "POST /api/v1/otp/verify-otp HTTP/1.1" 401 25 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-30 14:42:11 [info]: ::1 - - [30/Nov/2025:09:12:11 +0000] "OPTIONS /api/v1/otp/verify-otp HTTP/1.1" 204 0 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-30 14:42:12 [info]: ::1 - - [30/Nov/2025:09:12:12 +0000] "POST /api/v1/otp/verify-otp HTTP/1.1" 401 25 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-30 14:42:34 [info]: ::1 - - [30/Nov/2025:09:12:34 +0000] "OPTIONS /api/v1/otp/request-otp HTTP/1.1" 204 0 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-30 14:42:40 [info]: ::1 - - [30/Nov/2025:09:12:40 +0000] "POST /api/v1/otp/request-otp HTTP/1.1" 200 367 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-30 14:43:14 [info]: ::1 - - [30/Nov/2025:09:13:14 +0000] "OPTIONS /api/v1/otp/verify-otp HTTP/1.1" 204 0 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-30 14:43:16 [info]: ::1 - - [30/Nov/2025:09:13:16 +0000] "POST /api/v1/otp/verify-otp HTTP/1.1" 200 39 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-30 14:43:17 [info]: ::1 - - [30/Nov/2025:09:13:17 +0000] "OPTIONS /api/v1/otp/request-otp HTTP/1.1" 204 0 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-30 14:43:19 [info]: ::1 - - [30/Nov/2025:09:13:19 +0000] "POST /api/v1/otp/request-otp HTTP/1.1" 200 136 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-30 14:43:33 [info]: ::1 - - [30/Nov/2025:09:13:33 +0000] "OPTIONS /api/v1/otp/verify-otp HTTP/1.1" 204 0 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-30 14:43:34 [info]: ::1 - - [30/Nov/2025:09:13:34 +0000] "POST /api/v1/otp/verify-otp HTTP/1.1" 200 70 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-30 14:43:49 [info]: ::1 - - [30/Nov/2025:09:13:49 +0000] "OPTIONS /api/v1/auth/sign-up HTTP/1.1" 204 0 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-30 14:43:50 [info]: ::1 - - [30/Nov/2025:09:13:50 +0000] "POST /api/v1/auth/sign-up HTTP/1.1" 200 280 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-30 14:44:01 [info]: ::1 - - [30/Nov/2025:09:14:01 +0000] "OPTIONS /api/v1/auth/log-in HTTP/1.1" 204 0 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-30 14:44:02 [info]: ::1 - - [30/Nov/2025:09:14:02 +0000] "POST /api/v1/auth/log-in HTTP/1.1" 200 259 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-30 14:44:02 [info]: ::1 - - [30/Nov/2025:09:14:02 +0000] "OPTIONS /api/v1/proctoring/instructions/validate-device HTTP/1.1" 204 0 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-30 14:44:02 [info]: ::1 - - [30/Nov/2025:09:14:02 +0000] "OPTIONS /api/v1/proctoring/instructions/validate-device HTTP/1.1" 204 0 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-30 14:44:02 [info]: ::1 - - [30/Nov/2025:09:14:02 +0000] "POST /api/v1/proctoring/instructions/validate-device HTTP/1.1" 200 366 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-30 14:44:02 [info]: ::1 - - [30/Nov/2025:09:14:02 +0000] "POST /api/v1/proctoring/instructions/validate-device HTTP/1.1" 200 366 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-30 14:44:06 [info]: ::1 - - [30/Nov/2025:09:14:06 +0000] "OPTIONS /api/v1/proctoring/assessment/generate HTTP/1.1" 204 0 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-30 14:44:09 [info]: ::1 - - [30/Nov/2025:09:14:09 +0000] "POST /api/v1/proctoring/assessment/generate HTTP/1.1" 200 172 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-30 14:47:29 [info]: ::1 - - [30/Nov/2025:09:17:29 +0000] "OPTIONS /api/v1/system-checks HTTP/1.1" 204 0 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-30 14:47:29 [error]: Error: Route not found: /api/v1/system-checks
+    at notFoundHandler (file:///C:/Users/tiwar/Desktop/HitouchCX_Projects/Hitouch_Project/HitouchCx_Backend/src/middlewares/errorHandler.js:137:17)
+    at Layer.handleRequest (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:342:13)
+    at C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:297:9
+    at processParams (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:582:12)
+    at next (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:291:5)
+    at C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:688:15
+    at next (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:276:14)
+    at C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:688:15
+    at next (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:276:14)
+    at Function.handle (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:186:3)
+    at router (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:60:12)
+    at Layer.handleRequest (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:342:13)
+    at C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:297:9
+    at processParams (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:582:12)
+2025-11-30 14:47:29 [info]: ::1 - - [30/Nov/2025:09:17:29 +0000] "POST /api/v1/system-checks HTTP/1.1" 404 68 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-30 14:49:28 [info]: ::1 - - [30/Nov/2025:09:19:28 +0000] "OPTIONS /api/v1/proctoring/system-check HTTP/1.1" 204 0 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-30 14:49:30 [error]: PrismaClientValidationError: 
+[31mInvalid [1m`prisma.candidateAssessment.findUnique()`[22m invocation:[39m
+
+{
+  where: {
+    id: undefined,
+[32m?[39m   [32mcandidateId_assessmentId_attemptNumber[39m[32m?[39m[32m: [39m[32mCandidateAssessmentCandidateIdAssessmentIdAttemptNumberCompoundUniqueInput[39m,
+[32m?[39m   [32mAND[39m[32m?[39m[32m: [39m[32mCandidateAssessmentWhereInput | CandidateAssessmentWhereInput[][39m,
+[32m?[39m   [32mOR[39m[32m?[39m[32m: [39m[32mCandidateAssessmentWhereInput[][39m,
+[32m?[39m   [32mNOT[39m[32m?[39m[32m: [39m[32mCandidateAssessmentWhereInput | CandidateAssessmentWhereInput[][39m,
+[32m?[39m   [32mcandidateId[39m[32m?[39m[32m: [39m[32mStringFilter | String[39m,
+[32m?[39m   [32massessmentId[39m[32m?[39m[32m: [39m[32mStringFilter | String[39m,
+[32m?[39m   [32mattemptNumber[39m[32m?[39m[32m: [39m[32mIntFilter | Int[39m,
+[32m?[39m   [32mstartedAt[39m[32m?[39m[32m: [39m[32mDateTimeNullableFilter | DateTime | Null[39m,
+[32m?[39m   [32mcompletedAt[39m[32m?[39m[32m: [39m[32mDateTimeNullableFilter | DateTime | Null[39m,
+[32m?[39m   [32msubmittedAt[39m[32m?[39m[32m: [39m[32mDateTimeNullableFilter | DateTime | Null[39m,
+[32m?[39m   [32mtotalTimeSpent[39m[32m?[39m[32m: [39m[32mIntNullableFilter | Int | Null[39m,
+[32m?[39m   [32mtotalScore[39m[32m?[39m[32m: [39m[32mFloatNullableFilter | Float | Null[39m,
+[32m?[39m   [32mmaxScore[39m[32m?[39m[32m: [39m[32mFloatNullableFilter | Float | Null[39m,
+[32m?[39m   [32mpercentage[39m[32m?[39m[32m: [39m[32mFloatNullableFilter | Float | Null[39m,
+[32m?[39m   [32mpassed[39m[32m?[39m[32m: [39m[32mBoolNullableFilter | Boolean | Null[39m,
+[32m?[39m   [32moverallCEFRLevel[39m[32m?[39m[32m: [39m[32mEnumCEFRLevelNullableFilter | CEFRLevel | Null[39m,
+[32m?[39m   [32mcefrResults[39m[32m?[39m[32m: [39m[32mJsonNullableFilter[39m,
+[32m?[39m   [32mverificationStatus[39m[32m?[39m[32m: [39m[32mEnumVerificationStatusFilter | VerificationStatus[39m,
+[32m?[39m   [32msystemCheckStatus[39m[32m?[39m[32m: [39m[32mEnumCheckStatusFilter | CheckStatus[39m,
+[32m?[39m   [32mviolationCount[39m[32m?[39m[32m: [39m[32mIntFilter | Int[39m,
+[32m?[39m   [32mgraceViolations[39m[32m?[39m[32m: [39m[32mIntFilter | Int[39m,
+[32m?[39m   [32misFlagged[39m[32m?[39m[32m: [39m[32mBoolFilter | Boolean[39m,
+[32m?[39m   [32mflagReason[39m[32m?[39m[32m: [39m[32mStringNullableFilter | String | Null[39m,
+[32m?[39m   [32msessionStatus[39m[32m?[39m[32m: [39m[32mEnumSessionStatusFilter | SessionStatus[39m,
+[32m?[39m   [32mreconnectCount[39m[32m?[39m[32m: [39m[32mIntFilter | Int[39m,
+[32m?[39m   [32mdisconnectCount[39m[32m?[39m[32m: [39m[32mIntFilter | Int[39m,
+[32m?[39m   [32mautoSubmitReason[39m[32m?[39m[32m: [39m[32mStringNullableFilter | String | Null[39m,
+[32m?[39m   [32mfullscreenEntered[39m[32m?[39m[32m: [39m[32mBoolFilter | Boolean[39m,
+[32m?[39m   [32mfullscreenEnteredAt[39m[32m?[39m[32m: [39m[32mDateTimeNullableFilter | DateTime | Null[39m,
+[32m?[39m   [32mfullscreenExitCount[39m[32m?[39m[32m: [39m[32mIntFilter | Int[39m,
+[32m?[39m   [32mcreatedAt[39m[32m?[39m[32m: [39m[32mDateTimeFilter | DateTime[39m,
+[32m?[39m   [32mupdatedAt[39m[32m?[39m[32m: [39m[32mDateTimeFilter | DateTime[39m,
+[32m?[39m   [32mcandidate[39m[32m?[39m[32m: [39m[32mCandidateScalarRelationFilter | CandidateWhereInput[39m,
+[32m?[39m   [32massessment[39m[32m?[39m[32m: [39m[32mAssessmentScalarRelationFilter | AssessmentWhereInput[39m,
+[32m?[39m   [32msystemCheck[39m[32m?[39m[32m: [39m[32mSystemCheckNullableScalarRelationFilter | SystemCheckWhereInput | Null[39m,
+[32m?[39m   [32midentityVerification[39m[32m?[39m[32m: [39m[32mIdentityVerificationNullableScalarRelationFilter | IdentityVerificationWhereInput | Null[39m,
+[32m?[39m   [32mproctoringSession[39m[32m?[39m[32m: [39m[32mProctoringSessionNullableScalarRelationFilter | ProctoringSessionWhereInput | Null[39m,
+[32m?[39m   [32manswers[39m[32m?[39m[32m: [39m[32mAnswerListRelationFilter[39m
+  },
+  select: {
+    candidateId: true
+  }
+}
+
+Argument `[1mwhere[22m` of type [1mCandidateAssessmentWhereUniqueInput[22m needs [32mat least one of[39m `[1mid[22m` or `[1mcandidateId_assessmentId_attemptNumber[22m` arguments. Available options are listed in [32mgreen[39m.
+    at oa (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\@prisma\client\runtime\binary.js:156:1375)
+    at bl.handleRequestError (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\@prisma\client\runtime\binary.js:258:6913)
+    at bl.handleAndLogRequestError (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\@prisma\client\runtime\binary.js:258:6594)
+    at bl.request (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\@prisma\client\runtime\binary.js:258:6301)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async o (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\@prisma\client\runtime\binary.js:267:9560)
+    at async file:///C:/Users/tiwar/Desktop/HitouchCX_Projects/Hitouch_Project/HitouchCx_Backend/src/controllers/v1/proctoring-assessment/systemCheck.controller.js:13:19
+2025-11-30 14:49:30 [info]: ::1 - - [30/Nov/2025:09:19:30 +0000] "POST /api/v1/proctoring/system-check HTTP/1.1" 500 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-30 14:49:48 [info]: ::1 - - [30/Nov/2025:09:19:48 +0000] "OPTIONS /api/v1/proctoring/system-check HTTP/1.1" 204 0 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-30 14:49:49 [error]: PrismaClientValidationError: 
+[31mInvalid [1m`prisma.candidateAssessment.findUnique()`[22m invocation:[39m
+
+{
+  where: {
+    id: undefined,
+[32m?[39m   [32mcandidateId_assessmentId_attemptNumber[39m[32m?[39m[32m: [39m[32mCandidateAssessmentCandidateIdAssessmentIdAttemptNumberCompoundUniqueInput[39m,
+[32m?[39m   [32mAND[39m[32m?[39m[32m: [39m[32mCandidateAssessmentWhereInput | CandidateAssessmentWhereInput[][39m,
+[32m?[39m   [32mOR[39m[32m?[39m[32m: [39m[32mCandidateAssessmentWhereInput[][39m,
+[32m?[39m   [32mNOT[39m[32m?[39m[32m: [39m[32mCandidateAssessmentWhereInput | CandidateAssessmentWhereInput[][39m,
+[32m?[39m   [32mcandidateId[39m[32m?[39m[32m: [39m[32mStringFilter | String[39m,
+[32m?[39m   [32massessmentId[39m[32m?[39m[32m: [39m[32mStringFilter | String[39m,
+[32m?[39m   [32mattemptNumber[39m[32m?[39m[32m: [39m[32mIntFilter | Int[39m,
+[32m?[39m   [32mstartedAt[39m[32m?[39m[32m: [39m[32mDateTimeNullableFilter | DateTime | Null[39m,
+[32m?[39m   [32mcompletedAt[39m[32m?[39m[32m: [39m[32mDateTimeNullableFilter | DateTime | Null[39m,
+[32m?[39m   [32msubmittedAt[39m[32m?[39m[32m: [39m[32mDateTimeNullableFilter | DateTime | Null[39m,
+[32m?[39m   [32mtotalTimeSpent[39m[32m?[39m[32m: [39m[32mIntNullableFilter | Int | Null[39m,
+[32m?[39m   [32mtotalScore[39m[32m?[39m[32m: [39m[32mFloatNullableFilter | Float | Null[39m,
+[32m?[39m   [32mmaxScore[39m[32m?[39m[32m: [39m[32mFloatNullableFilter | Float | Null[39m,
+[32m?[39m   [32mpercentage[39m[32m?[39m[32m: [39m[32mFloatNullableFilter | Float | Null[39m,
+[32m?[39m   [32mpassed[39m[32m?[39m[32m: [39m[32mBoolNullableFilter | Boolean | Null[39m,
+[32m?[39m   [32moverallCEFRLevel[39m[32m?[39m[32m: [39m[32mEnumCEFRLevelNullableFilter | CEFRLevel | Null[39m,
+[32m?[39m   [32mcefrResults[39m[32m?[39m[32m: [39m[32mJsonNullableFilter[39m,
+[32m?[39m   [32mverificationStatus[39m[32m?[39m[32m: [39m[32mEnumVerificationStatusFilter | VerificationStatus[39m,
+[32m?[39m   [32msystemCheckStatus[39m[32m?[39m[32m: [39m[32mEnumCheckStatusFilter | CheckStatus[39m,
+[32m?[39m   [32mviolationCount[39m[32m?[39m[32m: [39m[32mIntFilter | Int[39m,
+[32m?[39m   [32mgraceViolations[39m[32m?[39m[32m: [39m[32mIntFilter | Int[39m,
+[32m?[39m   [32misFlagged[39m[32m?[39m[32m: [39m[32mBoolFilter | Boolean[39m,
+[32m?[39m   [32mflagReason[39m[32m?[39m[32m: [39m[32mStringNullableFilter | String | Null[39m,
+[32m?[39m   [32msessionStatus[39m[32m?[39m[32m: [39m[32mEnumSessionStatusFilter | SessionStatus[39m,
+[32m?[39m   [32mreconnectCount[39m[32m?[39m[32m: [39m[32mIntFilter | Int[39m,
+[32m?[39m   [32mdisconnectCount[39m[32m?[39m[32m: [39m[32mIntFilter | Int[39m,
+[32m?[39m   [32mautoSubmitReason[39m[32m?[39m[32m: [39m[32mStringNullableFilter | String | Null[39m,
+[32m?[39m   [32mfullscreenEntered[39m[32m?[39m[32m: [39m[32mBoolFilter | Boolean[39m,
+[32m?[39m   [32mfullscreenEnteredAt[39m[32m?[39m[32m: [39m[32mDateTimeNullableFilter | DateTime | Null[39m,
+[32m?[39m   [32mfullscreenExitCount[39m[32m?[39m[32m: [39m[32mIntFilter | Int[39m,
+[32m?[39m   [32mcreatedAt[39m[32m?[39m[32m: [39m[32mDateTimeFilter | DateTime[39m,
+[32m?[39m   [32mupdatedAt[39m[32m?[39m[32m: [39m[32mDateTimeFilter | DateTime[39m,
+[32m?[39m   [32mcandidate[39m[32m?[39m[32m: [39m[32mCandidateScalarRelationFilter | CandidateWhereInput[39m,
+[32m?[39m   [32massessment[39m[32m?[39m[32m: [39m[32mAssessmentScalarRelationFilter | AssessmentWhereInput[39m,
+[32m?[39m   [32msystemCheck[39m[32m?[39m[32m: [39m[32mSystemCheckNullableScalarRelationFilter | SystemCheckWhereInput | Null[39m,
+[32m?[39m   [32midentityVerification[39m[32m?[39m[32m: [39m[32mIdentityVerificationNullableScalarRelationFilter | IdentityVerificationWhereInput | Null[39m,
+[32m?[39m   [32mproctoringSession[39m[32m?[39m[32m: [39m[32mProctoringSessionNullableScalarRelationFilter | ProctoringSessionWhereInput | Null[39m,
+[32m?[39m   [32manswers[39m[32m?[39m[32m: [39m[32mAnswerListRelationFilter[39m
+  },
+  select: {
+    candidateId: true
+  }
+}
+
+Argument `[1mwhere[22m` of type [1mCandidateAssessmentWhereUniqueInput[22m needs [32mat least one of[39m `[1mid[22m` or `[1mcandidateId_assessmentId_attemptNumber[22m` arguments. Available options are listed in [32mgreen[39m.
+    at oa (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\@prisma\client\runtime\binary.js:156:1375)
+    at bl.handleRequestError (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\@prisma\client\runtime\binary.js:258:6913)
+    at bl.handleAndLogRequestError (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\@prisma\client\runtime\binary.js:258:6594)
+    at bl.request (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\@prisma\client\runtime\binary.js:258:6301)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async o (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\@prisma\client\runtime\binary.js:267:9560)
+    at async file:///C:/Users/tiwar/Desktop/HitouchCX_Projects/Hitouch_Project/HitouchCx_Backend/src/controllers/v1/proctoring-assessment/systemCheck.controller.js:13:19
+2025-11-30 14:49:49 [info]: ::1 - - [30/Nov/2025:09:19:49 +0000] "POST /api/v1/proctoring/system-check HTTP/1.1" 500 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-30 14:57:44 [info]: ::1 - - [30/Nov/2025:09:27:44 +0000] "OPTIONS /api/v1/proctoring/system-check HTTP/1.1" 204 0 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-30 14:57:47 [info]: System check created for candidate: 5ead9fbf-5fe3-4dd2-8567-4ae80ed9490f, allChecksPassed=false
+2025-11-30 14:57:47 [info]: ::1 - - [30/Nov/2025:09:27:47 +0000] "POST /api/v1/proctoring/system-check HTTP/1.1" 200 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-30 15:30:33 [info]: ::1 - - [30/Nov/2025:10:00:33 +0000] "OPTIONS /api/v1/auth/log-in HTTP/1.1" 204 0 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-30 15:30:34 [info]: ::1 - - [30/Nov/2025:10:00:34 +0000] "POST /api/v1/auth/log-in HTTP/1.1" 200 259 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-30 15:30:34 [info]: ::1 - - [30/Nov/2025:10:00:34 +0000] "OPTIONS /api/v1/proctoring/instructions/validate-device HTTP/1.1" 204 0 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-30 15:30:34 [info]: ::1 - - [30/Nov/2025:10:00:34 +0000] "OPTIONS /api/v1/proctoring/instructions/validate-device HTTP/1.1" 204 0 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-30 15:30:34 [info]: ::1 - - [30/Nov/2025:10:00:34 +0000] "POST /api/v1/proctoring/instructions/validate-device HTTP/1.1" 200 366 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-30 15:30:34 [info]: ::1 - - [30/Nov/2025:10:00:34 +0000] "POST /api/v1/proctoring/instructions/validate-device HTTP/1.1" 200 366 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-30 15:30:43 [info]: ::1 - - [30/Nov/2025:10:00:43 +0000] "OPTIONS /api/v1/proctoring/assessment/generate HTTP/1.1" 204 0 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-30 15:30:45 [info]: ::1 - - [30/Nov/2025:10:00:45 +0000] "POST /api/v1/proctoring/assessment/generate HTTP/1.1" 200 172 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-30 15:30:58 [info]: ::1 - - [30/Nov/2025:10:00:58 +0000] "OPTIONS /api/v1/proctoring/system-check HTTP/1.1" 204 0 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-30 15:31:00 [info]: System check created for candidate: 5ead9fbf-5fe3-4dd2-8567-4ae80ed9490f, allChecksPassed=false
+2025-11-30 15:31:00 [info]: ::1 - - [30/Nov/2025:10:01:00 +0000] "POST /api/v1/proctoring/system-check HTTP/1.1" 200 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-30 15:35:35 [info]: ::1 - - [30/Nov/2025:10:05:35 +0000] "OPTIONS /api/v1/proctoring/identity-verification/e3b75230-72f2-4e9b-857d-1b844808fb83/face-capture HTTP/1.1" 204 0 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-30 15:35:39 [info]: ::1 - - [30/Nov/2025:10:05:39 +0000] "POST /api/v1/proctoring/identity-verification/e3b75230-72f2-4e9b-857d-1b844808fb83/face-capture HTTP/1.1" 200 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-30 15:35:53 [info]: ::1 - - [30/Nov/2025:10:05:53 +0000] "OPTIONS /api/v1/proctoring/identity-verification/e3b75230-72f2-4e9b-857d-1b844808fb83/face-capture HTTP/1.1" 204 0 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-30 15:35:57 [info]: ::1 - - [30/Nov/2025:10:05:57 +0000] "POST /api/v1/proctoring/identity-verification/e3b75230-72f2-4e9b-857d-1b844808fb83/face-capture HTTP/1.1" 200 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-30 15:36:21 [info]: ::1 - - [30/Nov/2025:10:06:21 +0000] "OPTIONS /api/v1/proctoring/identity-verification/e3b75230-72f2-4e9b-857d-1b844808fb83/audio-recording HTTP/1.1" 204 0 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-30 15:36:24 [info]: ::1 - - [30/Nov/2025:10:06:24 +0000] "POST /api/v1/proctoring/identity-verification/e3b75230-72f2-4e9b-857d-1b844808fb83/audio-recording HTTP/1.1" 200 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-30 15:40:38 [info]: ::1 - - [30/Nov/2025:10:10:38 +0000] "OPTIONS /api/v1/proctoring/identity-verification/e3b75230-72f2-4e9b-857d-1b844808fb83/face-capture HTTP/1.1" 204 0 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-30 15:40:42 [info]: ::1 - - [30/Nov/2025:10:10:42 +0000] "POST /api/v1/proctoring/identity-verification/e3b75230-72f2-4e9b-857d-1b844808fb83/face-capture HTTP/1.1" 200 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-30 15:40:47 [info]: ::1 - - [30/Nov/2025:10:10:47 +0000] "OPTIONS /api/v1/proctoring/identity-verification/e3b75230-72f2-4e9b-857d-1b844808fb83/audio-recording HTTP/1.1" 204 0 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-30 15:40:51 [info]: ::1 - - [30/Nov/2025:10:10:51 +0000] "POST /api/v1/proctoring/identity-verification/e3b75230-72f2-4e9b-857d-1b844808fb83/audio-recording HTTP/1.1" 200 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-30 15:41:00 [info]: ::1 - - [30/Nov/2025:10:11:00 +0000] "OPTIONS /api/v1/assessments/attempt/e3b75230-72f2-4e9b-857d-1b844808fb83 HTTP/1.1" 204 0 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-30 15:41:00 [error]: Error: Route not found: /api/v1/assessments/attempt/e3b75230-72f2-4e9b-857d-1b844808fb83
+    at notFoundHandler (file:///C:/Users/tiwar/Desktop/HitouchCX_Projects/Hitouch_Project/HitouchCx_Backend/src/middlewares/errorHandler.js:137:17)
+    at Layer.handleRequest (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:342:13)
+    at C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:297:9
+    at processParams (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:582:12)
+    at next (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:291:5)
+    at C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:688:15
+    at next (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:276:14)
+    at C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:688:15
+    at next (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:276:14)
+    at Function.handle (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:186:3)
+    at router (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:60:12)
+    at Layer.handleRequest (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:342:13)
+    at C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:297:9
+    at processParams (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:582:12)
+2025-11-30 15:41:00 [info]: ::1 - - [30/Nov/2025:10:11:00 +0000] "GET /api/v1/assessments/attempt/e3b75230-72f2-4e9b-857d-1b844808fb83 HTTP/1.1" 404 111 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-30 15:44:06 [info]: ::1 - - [30/Nov/2025:10:14:06 +0000] "OPTIONS /api/v1/proctoring/assessment/attempt/e3b75230-72f2-4e9b-857d-1b844808fb83 HTTP/1.1" 204 0 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-30 15:44:09 [info]: ::1 - - [30/Nov/2025:10:14:09 +0000] "GET /api/v1/proctoring/assessment/attempt/e3b75230-72f2-4e9b-857d-1b844808fb83 HTTP/1.1" 200 308 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-30 16:06:24 [info]: ::1 - - [30/Nov/2025:10:36:24 +0000] "OPTIONS /api/v1/proctoring/assessment/attempt/e3b75230-72f2-4e9b-857d-1b844808fb83 HTTP/1.1" 204 0 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-30 16:06:27 [info]: ::1 - - [30/Nov/2025:10:36:27 +0000] "GET /api/v1/proctoring/assessment/attempt/e3b75230-72f2-4e9b-857d-1b844808fb83 HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-30 16:08:50 [info]: ::1 - - [30/Nov/2025:10:38:50 +0000] "OPTIONS /api/v1/proctoring/identity-verification/e3b75230-72f2-4e9b-857d-1b844808fb83/face-capture HTTP/1.1" 204 0 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-30 16:08:55 [info]: ::1 - - [30/Nov/2025:10:38:55 +0000] "POST /api/v1/proctoring/identity-verification/e3b75230-72f2-4e9b-857d-1b844808fb83/face-capture HTTP/1.1" 200 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-30 16:09:20 [info]: ::1 - - [30/Nov/2025:10:39:20 +0000] "OPTIONS /api/v1/proctoring/system-check HTTP/1.1" 204 0 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-30 16:09:22 [error]: PrismaClientKnownRequestError: 
+[31mInvalid [1m`prisma.systemCheck.create()`[22m invocation:[39m
+
+
+Unique constraint failed on the fields: (`attemptId`)
+    at bl.handleRequestError (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\@prisma\client\runtime\binary.js:258:7270)
+    at bl.handleAndLogRequestError (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\@prisma\client\runtime\binary.js:258:6594)
+    at bl.request (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\@prisma\client\runtime\binary.js:258:6301)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async o (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\@prisma\client\runtime\binary.js:267:9560)
+    at async file:///C:/Users/tiwar/Desktop/HitouchCX_Projects/Hitouch_Project/HitouchCx_Backend/src/controllers/v1/proctoring-assessment/systemCheck.controller.js:70:23
+2025-11-30 16:09:22 [info]: ::1 - - [30/Nov/2025:10:39:22 +0000] "POST /api/v1/proctoring/system-check HTTP/1.1" 409 54 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-30 16:10:13 [info]: ::1 - - [30/Nov/2025:10:40:13 +0000] "OPTIONS /api/v1/auth/log-in HTTP/1.1" 204 0 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-30 16:10:14 [info]: ::1 - - [30/Nov/2025:10:40:14 +0000] "POST /api/v1/auth/log-in HTTP/1.1" 200 259 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-30 16:10:14 [info]: ::1 - - [30/Nov/2025:10:40:14 +0000] "OPTIONS /api/v1/proctoring/instructions/validate-device HTTP/1.1" 204 0 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-30 16:10:14 [info]: ::1 - - [30/Nov/2025:10:40:14 +0000] "OPTIONS /api/v1/proctoring/instructions/validate-device HTTP/1.1" 204 0 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-30 16:10:14 [info]: ::1 - - [30/Nov/2025:10:40:14 +0000] "POST /api/v1/proctoring/instructions/validate-device HTTP/1.1" 200 366 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-30 16:10:14 [info]: ::1 - - [30/Nov/2025:10:40:14 +0000] "POST /api/v1/proctoring/instructions/validate-device HTTP/1.1" 200 366 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-30 16:10:18 [info]: ::1 - - [30/Nov/2025:10:40:18 +0000] "OPTIONS /api/v1/proctoring/assessment/generate HTTP/1.1" 204 0 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-30 16:10:21 [info]: ::1 - - [30/Nov/2025:10:40:21 +0000] "POST /api/v1/proctoring/assessment/generate HTTP/1.1" 200 172 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-30 16:10:34 [info]: ::1 - - [30/Nov/2025:10:40:34 +0000] "OPTIONS /api/v1/proctoring/system-check HTTP/1.1" 204 0 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-30 16:10:36 [info]: System check created for candidate: 5ead9fbf-5fe3-4dd2-8567-4ae80ed9490f, allChecksPassed=false
+2025-11-30 16:10:36 [info]: ::1 - - [30/Nov/2025:10:40:36 +0000] "POST /api/v1/proctoring/system-check HTTP/1.1" 200 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-30 16:10:42 [info]: ::1 - - [30/Nov/2025:10:40:42 +0000] "OPTIONS /api/v1/proctoring/identity-verification/545c7479-21f0-4972-a622-0a88d238fe03/face-capture HTTP/1.1" 204 0 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-30 16:10:44 [info]: ::1 - - [30/Nov/2025:10:40:44 +0000] "POST /api/v1/proctoring/identity-verification/545c7479-21f0-4972-a622-0a88d238fe03/face-capture HTTP/1.1" 200 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-30 16:10:49 [info]: ::1 - - [30/Nov/2025:10:40:49 +0000] "OPTIONS /api/v1/proctoring/identity-verification/545c7479-21f0-4972-a622-0a88d238fe03/audio-recording HTTP/1.1" 204 0 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-30 16:10:53 [info]: ::1 - - [30/Nov/2025:10:40:53 +0000] "POST /api/v1/proctoring/identity-verification/545c7479-21f0-4972-a622-0a88d238fe03/audio-recording HTTP/1.1" 200 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-30 16:10:55 [info]: ::1 - - [30/Nov/2025:10:40:55 +0000] "OPTIONS /api/v1/proctoring/assessment/attempt/545c7479-21f0-4972-a622-0a88d238fe03 HTTP/1.1" 204 0 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-30 16:10:57 [info]: ::1 - - [30/Nov/2025:10:40:57 +0000] "GET /api/v1/proctoring/assessment/attempt/545c7479-21f0-4972-a622-0a88d238fe03 HTTP/1.1" 200 308 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-30 16:15:17 [info]: ::1 - - [30/Nov/2025:10:45:17 +0000] "OPTIONS /api/v1/assessments/f1dd004e-6609-4229-96fd-976e262db50d/attempt/545c7479-21f0-4972-a622-0a88d238fe03 HTTP/1.1" 204 0 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-30 16:15:17 [info]: ::1 - - [30/Nov/2025:10:45:17 +0000] "OPTIONS /api/v1/assessments/f1dd004e-6609-4229-96fd-976e262db50d/attempt/545c7479-21f0-4972-a622-0a88d238fe03 HTTP/1.1" 204 0 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-30 16:15:17 [error]: Error: Route not found: /api/v1/assessments/f1dd004e-6609-4229-96fd-976e262db50d/attempt/545c7479-21f0-4972-a622-0a88d238fe03
+    at notFoundHandler (file:///C:/Users/tiwar/Desktop/HitouchCX_Projects/Hitouch_Project/HitouchCx_Backend/src/middlewares/errorHandler.js:137:17)
+    at Layer.handleRequest (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:342:13)
+    at C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:297:9
+    at processParams (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:582:12)
+    at next (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:291:5)
+    at C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:688:15
+    at next (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:276:14)
+    at C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:688:15
+    at next (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:276:14)
+    at Function.handle (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:186:3)
+    at router (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:60:12)
+    at Layer.handleRequest (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:342:13)
+    at C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:297:9
+    at processParams (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:582:12)
+2025-11-30 16:15:17 [info]: ::1 - - [30/Nov/2025:10:45:17 +0000] "GET /api/v1/assessments/f1dd004e-6609-4229-96fd-976e262db50d/attempt/545c7479-21f0-4972-a622-0a88d238fe03 HTTP/1.1" 404 148 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-30 16:15:17 [error]: Error: Route not found: /api/v1/assessments/f1dd004e-6609-4229-96fd-976e262db50d/attempt/545c7479-21f0-4972-a622-0a88d238fe03
+    at notFoundHandler (file:///C:/Users/tiwar/Desktop/HitouchCX_Projects/Hitouch_Project/HitouchCx_Backend/src/middlewares/errorHandler.js:137:17)
+    at Layer.handleRequest (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:342:13)
+    at C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:297:9
+    at processParams (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:582:12)
+    at next (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:291:5)
+    at C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:688:15
+    at next (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:276:14)
+    at C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:688:15
+    at next (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:276:14)
+    at Function.handle (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:186:3)
+    at router (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:60:12)
+    at Layer.handleRequest (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:342:13)
+    at C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:297:9
+    at processParams (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:582:12)
+2025-11-30 16:15:17 [info]: ::1 - - [30/Nov/2025:10:45:17 +0000] "GET /api/v1/assessments/f1dd004e-6609-4229-96fd-976e262db50d/attempt/545c7479-21f0-4972-a622-0a88d238fe03 HTTP/1.1" 404 148 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-30 16:15:28 [info]: ::1 - - [30/Nov/2025:10:45:28 +0000] "OPTIONS /api/v1/assessments/f1dd004e-6609-4229-96fd-976e262db50d/attempt/545c7479-21f0-4972-a622-0a88d238fe03 HTTP/1.1" 204 0 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-30 16:15:28 [error]: Error: Route not found: /api/v1/assessments/f1dd004e-6609-4229-96fd-976e262db50d/attempt/545c7479-21f0-4972-a622-0a88d238fe03
+    at notFoundHandler (file:///C:/Users/tiwar/Desktop/HitouchCX_Projects/Hitouch_Project/HitouchCx_Backend/src/middlewares/errorHandler.js:137:17)
+    at Layer.handleRequest (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:342:13)
+    at C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:297:9
+    at processParams (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:582:12)
+    at next (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:291:5)
+    at C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:688:15
+    at next (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:276:14)
+    at C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:688:15
+    at next (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:276:14)
+    at Function.handle (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:186:3)
+    at router (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:60:12)
+    at Layer.handleRequest (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:342:13)
+    at C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:297:9
+    at processParams (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:582:12)
+2025-11-30 16:15:28 [info]: ::1 - - [30/Nov/2025:10:45:28 +0000] "GET /api/v1/assessments/f1dd004e-6609-4229-96fd-976e262db50d/attempt/545c7479-21f0-4972-a622-0a88d238fe03 HTTP/1.1" 404 148 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-30 16:15:44 [info]: ::1 - - [30/Nov/2025:10:45:44 +0000] "OPTIONS /api/v1/assessments/f1dd004e-6609-4229-96fd-976e262db50d/attempt/545c7479-21f0-4972-a622-0a88d238fe03 HTTP/1.1" 204 0 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-30 16:15:44 [info]: ::1 - - [30/Nov/2025:10:45:44 +0000] "OPTIONS /api/v1/assessments/f1dd004e-6609-4229-96fd-976e262db50d/attempt/545c7479-21f0-4972-a622-0a88d238fe03 HTTP/1.1" 204 0 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-30 16:15:44 [error]: Error: Route not found: /api/v1/assessments/f1dd004e-6609-4229-96fd-976e262db50d/attempt/545c7479-21f0-4972-a622-0a88d238fe03
+    at notFoundHandler (file:///C:/Users/tiwar/Desktop/HitouchCX_Projects/Hitouch_Project/HitouchCx_Backend/src/middlewares/errorHandler.js:137:17)
+    at Layer.handleRequest (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:342:13)
+    at C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:297:9
+    at processParams (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:582:12)
+    at next (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:291:5)
+    at C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:688:15
+    at next (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:276:14)
+    at C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:688:15
+    at next (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:276:14)
+    at Function.handle (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:186:3)
+    at router (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:60:12)
+    at Layer.handleRequest (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:342:13)
+    at C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:297:9
+    at processParams (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:582:12)
+2025-11-30 16:15:44 [info]: ::1 - - [30/Nov/2025:10:45:44 +0000] "GET /api/v1/assessments/f1dd004e-6609-4229-96fd-976e262db50d/attempt/545c7479-21f0-4972-a622-0a88d238fe03 HTTP/1.1" 404 148 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-30 16:15:44 [error]: Error: Route not found: /api/v1/assessments/f1dd004e-6609-4229-96fd-976e262db50d/attempt/545c7479-21f0-4972-a622-0a88d238fe03
+    at notFoundHandler (file:///C:/Users/tiwar/Desktop/HitouchCX_Projects/Hitouch_Project/HitouchCx_Backend/src/middlewares/errorHandler.js:137:17)
+    at Layer.handleRequest (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:342:13)
+    at C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:297:9
+    at processParams (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:582:12)
+    at next (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:291:5)
+    at C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:688:15
+    at next (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:276:14)
+    at C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:688:15
+    at next (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:276:14)
+    at Function.handle (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:186:3)
+    at router (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:60:12)
+    at Layer.handleRequest (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:342:13)
+    at C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:297:9
+    at processParams (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:582:12)
+2025-11-30 16:15:44 [info]: ::1 - - [30/Nov/2025:10:45:44 +0000] "GET /api/v1/assessments/f1dd004e-6609-4229-96fd-976e262db50d/attempt/545c7479-21f0-4972-a622-0a88d238fe03 HTTP/1.1" 404 148 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-30 16:16:36 [info]: ::1 - - [30/Nov/2025:10:46:36 +0000] "OPTIONS /api/v1/proctoring/assessment/f1dd004e-6609-4229-96fd-976e262db50d/attempt/545c7479-21f0-4972-a622-0a88d238fe03 HTTP/1.1" 204 0 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-30 16:16:41 [info]: ::1 - - [30/Nov/2025:10:46:41 +0000] "GET /api/v1/proctoring/assessment/f1dd004e-6609-4229-96fd-976e262db50d/attempt/545c7479-21f0-4972-a622-0a88d238fe03 HTTP/1.1" 200 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-30 16:17:31 [info]: ::1 - - [30/Nov/2025:10:47:31 +0000] "OPTIONS /api/v1/proctoring/assessment/f1dd004e-6609-4229-96fd-976e262db50d/attempt/545c7479-21f0-4972-a622-0a88d238fe03 HTTP/1.1" 204 0 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-30 16:17:35 [info]: ::1 - - [30/Nov/2025:10:47:35 +0000] "GET /api/v1/proctoring/assessment/f1dd004e-6609-4229-96fd-976e262db50d/attempt/545c7479-21f0-4972-a622-0a88d238fe03 HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-30 16:17:42 [info]: ::1 - - [30/Nov/2025:10:47:42 +0000] "OPTIONS /api/v1/proctoring/assessment/f1dd004e-6609-4229-96fd-976e262db50d/attempt/545c7479-21f0-4972-a622-0a88d238fe03 HTTP/1.1" 204 0 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-30 16:17:42 [info]: ::1 - - [30/Nov/2025:10:47:42 +0000] "OPTIONS /api/v1/proctoring/assessment/f1dd004e-6609-4229-96fd-976e262db50d/attempt/545c7479-21f0-4972-a622-0a88d238fe03 HTTP/1.1" 204 0 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-30 16:17:45 [info]: ::1 - - [30/Nov/2025:10:47:45 +0000] "GET /api/v1/proctoring/assessment/f1dd004e-6609-4229-96fd-976e262db50d/attempt/545c7479-21f0-4972-a622-0a88d238fe03 HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-30 16:17:48 [info]: ::1 - - [30/Nov/2025:10:47:48 +0000] "GET /api/v1/proctoring/assessment/f1dd004e-6609-4229-96fd-976e262db50d/attempt/545c7479-21f0-4972-a622-0a88d238fe03 HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-30 18:41:16 [info]: ::1 - - [30/Nov/2025:13:11:16 +0000] "OPTIONS /api/v1/proctoring/assessment/f1dd004e-6609-4229-96fd-976e262db50d/attempt/545c7479-21f0-4972-a622-0a88d238fe03 HTTP/1.1" 204 0 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-30 18:41:16 [info]: ::1 - - [30/Nov/2025:13:11:16 +0000] "OPTIONS /api/v1/proctoring/assessment/f1dd004e-6609-4229-96fd-976e262db50d/attempt/545c7479-21f0-4972-a622-0a88d238fe03 HTTP/1.1" 204 0 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-30 18:41:20 [info]: ::1 - - [30/Nov/2025:13:11:20 +0000] "GET /api/v1/proctoring/assessment/f1dd004e-6609-4229-96fd-976e262db50d/attempt/545c7479-21f0-4972-a622-0a88d238fe03 HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-30 18:41:22 [info]: ::1 - - [30/Nov/2025:13:11:22 +0000] "GET /api/v1/proctoring/assessment/f1dd004e-6609-4229-96fd-976e262db50d/attempt/545c7479-21f0-4972-a622-0a88d238fe03 HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-30 18:42:53 [info]: ::1 - - [30/Nov/2025:13:12:53 +0000] "OPTIONS /api/v1/proctoring/assessment/f1dd004e-6609-4229-96fd-976e262db50d/attempt/545c7479-21f0-4972-a622-0a88d238fe03 HTTP/1.1" 204 0 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-30 18:42:55 [info]: ::1 - - [30/Nov/2025:13:12:55 +0000] "GET /api/v1/proctoring/assessment/f1dd004e-6609-4229-96fd-976e262db50d/attempt/545c7479-21f0-4972-a622-0a88d238fe03 HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-30 18:42:55 [info]: ::1 - - [30/Nov/2025:13:12:55 +0000] "OPTIONS /api/v1/proctoring/identity-verification/545c7479-21f0-4972-a622-0a88d238fe03/descriptor HTTP/1.1" 204 0 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-30 18:42:57 [info]: ::1 - - [30/Nov/2025:13:12:57 +0000] "GET /api/v1/proctoring/identity-verification/545c7479-21f0-4972-a622-0a88d238fe03/descriptor HTTP/1.1" 200 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-30 18:43:26 [info]: ::1 - - [30/Nov/2025:13:13:26 +0000] "OPTIONS /api/v1/proctoring/assessment/f1dd004e-6609-4229-96fd-976e262db50d/attempt/545c7479-21f0-4972-a622-0a88d238fe03 HTTP/1.1" 204 0 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-30 18:43:28 [info]: ::1 - - [30/Nov/2025:13:13:28 +0000] "GET /api/v1/proctoring/assessment/f1dd004e-6609-4229-96fd-976e262db50d/attempt/545c7479-21f0-4972-a622-0a88d238fe03 HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-30 18:43:33 [info]: ::1 - - [30/Nov/2025:13:13:33 +0000] "OPTIONS /api/v1/proctoring/assessment/f1dd004e-6609-4229-96fd-976e262db50d/attempt/545c7479-21f0-4972-a622-0a88d238fe03 HTTP/1.1" 204 0 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-30 18:43:33 [info]: ::1 - - [30/Nov/2025:13:13:33 +0000] "OPTIONS /api/v1/proctoring/assessment/f1dd004e-6609-4229-96fd-976e262db50d/attempt/545c7479-21f0-4972-a622-0a88d238fe03 HTTP/1.1" 204 0 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-30 18:43:35 [info]: ::1 - - [30/Nov/2025:13:13:35 +0000] "GET /api/v1/proctoring/assessment/f1dd004e-6609-4229-96fd-976e262db50d/attempt/545c7479-21f0-4972-a622-0a88d238fe03 HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-30 18:43:35 [info]: ::1 - - [30/Nov/2025:13:13:35 +0000] "OPTIONS /api/v1/proctoring/identity-verification/545c7479-21f0-4972-a622-0a88d238fe03/descriptor HTTP/1.1" 204 0 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-30 18:43:37 [info]: ::1 - - [30/Nov/2025:13:13:37 +0000] "GET /api/v1/proctoring/assessment/f1dd004e-6609-4229-96fd-976e262db50d/attempt/545c7479-21f0-4972-a622-0a88d238fe03 HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-30 18:43:37 [info]: ::1 - - [30/Nov/2025:13:13:37 +0000] "GET /api/v1/proctoring/identity-verification/545c7479-21f0-4972-a622-0a88d238fe03/descriptor HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-30 18:45:09 [info]: ::1 - - [30/Nov/2025:13:15:09 +0000] "OPTIONS /api/v1/auth/log-in HTTP/1.1" 204 0 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-30 18:45:09 [info]: ::1 - - [30/Nov/2025:13:15:09 +0000] "POST /api/v1/auth/log-in HTTP/1.1" 200 259 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-30 18:45:09 [info]: ::1 - - [30/Nov/2025:13:15:09 +0000] "OPTIONS /api/v1/proctoring/instructions/validate-device HTTP/1.1" 204 0 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-30 18:45:09 [info]: ::1 - - [30/Nov/2025:13:15:09 +0000] "OPTIONS /api/v1/proctoring/instructions/validate-device HTTP/1.1" 204 0 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-30 18:45:09 [info]: ::1 - - [30/Nov/2025:13:15:09 +0000] "POST /api/v1/proctoring/instructions/validate-device HTTP/1.1" 200 366 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-30 18:45:09 [info]: ::1 - - [30/Nov/2025:13:15:09 +0000] "POST /api/v1/proctoring/instructions/validate-device HTTP/1.1" 200 366 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-30 18:45:28 [info]: ::1 - - [30/Nov/2025:13:15:28 +0000] "OPTIONS /api/v1/proctoring/assessment/generate HTTP/1.1" 204 0 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-30 18:45:31 [info]: ::1 - - [30/Nov/2025:13:15:31 +0000] "POST /api/v1/proctoring/assessment/generate HTTP/1.1" 200 172 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-30 18:45:45 [info]: ::1 - - [30/Nov/2025:13:15:45 +0000] "OPTIONS /api/v1/proctoring/system-check HTTP/1.1" 204 0 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-30 18:45:47 [info]: System check created for candidate: 5ead9fbf-5fe3-4dd2-8567-4ae80ed9490f, allChecksPassed=false
+2025-11-30 18:45:47 [info]: ::1 - - [30/Nov/2025:13:15:47 +0000] "POST /api/v1/proctoring/system-check HTTP/1.1" 200 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-30 18:46:00 [info]: ::1 - - [30/Nov/2025:13:16:00 +0000] "OPTIONS /api/v1/proctoring/identity-verification/3ee6ebd1-b418-43cc-9957-eff76f53c4d9/face-capture HTTP/1.1" 204 0 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-30 18:46:03 [info]: ::1 - - [30/Nov/2025:13:16:03 +0000] "POST /api/v1/proctoring/identity-verification/3ee6ebd1-b418-43cc-9957-eff76f53c4d9/face-capture HTTP/1.1" 200 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-30 18:46:08 [info]: ::1 - - [30/Nov/2025:13:16:08 +0000] "OPTIONS /api/v1/proctoring/identity-verification/3ee6ebd1-b418-43cc-9957-eff76f53c4d9/audio-recording HTTP/1.1" 204 0 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-30 18:46:10 [info]: ::1 - - [30/Nov/2025:13:16:10 +0000] "POST /api/v1/proctoring/identity-verification/3ee6ebd1-b418-43cc-9957-eff76f53c4d9/audio-recording HTTP/1.1" 200 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-30 18:46:12 [info]: ::1 - - [30/Nov/2025:13:16:12 +0000] "OPTIONS /api/v1/proctoring/assessment/attempt/3ee6ebd1-b418-43cc-9957-eff76f53c4d9 HTTP/1.1" 204 0 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-30 18:46:14 [info]: ::1 - - [30/Nov/2025:13:16:14 +0000] "GET /api/v1/proctoring/assessment/attempt/3ee6ebd1-b418-43cc-9957-eff76f53c4d9 HTTP/1.1" 200 308 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-30 18:46:19 [info]: ::1 - - [30/Nov/2025:13:16:19 +0000] "OPTIONS /api/v1/proctoring/assessment/6fd52ba5-c198-4968-bdd2-3f4b043a7b52/attempt/3ee6ebd1-b418-43cc-9957-eff76f53c4d9 HTTP/1.1" 204 0 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-30 18:46:19 [info]: ::1 - - [30/Nov/2025:13:16:19 +0000] "OPTIONS /api/v1/proctoring/assessment/6fd52ba5-c198-4968-bdd2-3f4b043a7b52/attempt/3ee6ebd1-b418-43cc-9957-eff76f53c4d9 HTTP/1.1" 204 0 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-30 18:46:22 [info]: ::1 - - [30/Nov/2025:13:16:22 +0000] "GET /api/v1/proctoring/assessment/6fd52ba5-c198-4968-bdd2-3f4b043a7b52/attempt/3ee6ebd1-b418-43cc-9957-eff76f53c4d9 HTTP/1.1" 200 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-30 18:46:22 [info]: ::1 - - [30/Nov/2025:13:16:22 +0000] "OPTIONS /api/v1/proctoring/identity-verification/3ee6ebd1-b418-43cc-9957-eff76f53c4d9/descriptor HTTP/1.1" 204 0 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-30 18:46:24 [info]: ::1 - - [30/Nov/2025:13:16:24 +0000] "GET /api/v1/proctoring/identity-verification/3ee6ebd1-b418-43cc-9957-eff76f53c4d9/descriptor HTTP/1.1" 200 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-30 18:46:24 [info]: ::1 - - [30/Nov/2025:13:16:24 +0000] "GET /api/v1/proctoring/assessment/6fd52ba5-c198-4968-bdd2-3f4b043a7b52/attempt/3ee6ebd1-b418-43cc-9957-eff76f53c4d9 HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-30 21:08:31 [info]: ::1 - - [30/Nov/2025:15:38:31 +0000] "OPTIONS /api/v1/auth/log-in HTTP/1.1" 204 0 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-30 21:08:33 [info]: ::1 - - [30/Nov/2025:15:38:33 +0000] "POST /api/v1/auth/log-in HTTP/1.1" 200 259 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-30 21:08:33 [info]: ::1 - - [30/Nov/2025:15:38:33 +0000] "OPTIONS /api/v1/proctoring/instructions/validate-device HTTP/1.1" 204 0 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-30 21:08:33 [info]: ::1 - - [30/Nov/2025:15:38:33 +0000] "OPTIONS /api/v1/proctoring/instructions/validate-device HTTP/1.1" 204 0 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-30 21:08:33 [info]: ::1 - - [30/Nov/2025:15:38:33 +0000] "POST /api/v1/proctoring/instructions/validate-device HTTP/1.1" 200 366 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-30 21:08:33 [info]: ::1 - - [30/Nov/2025:15:38:33 +0000] "POST /api/v1/proctoring/instructions/validate-device HTTP/1.1" 200 366 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-30 21:08:36 [info]: ::1 - - [30/Nov/2025:15:38:36 +0000] "OPTIONS /api/v1/proctoring/assessment/generate HTTP/1.1" 204 0 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-30 21:08:39 [info]: ::1 - - [30/Nov/2025:15:38:39 +0000] "POST /api/v1/proctoring/assessment/generate HTTP/1.1" 200 172 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-30 21:08:52 [info]: ::1 - - [30/Nov/2025:15:38:52 +0000] "OPTIONS /api/v1/proctoring/system-check HTTP/1.1" 204 0 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-30 21:08:54 [info]: System check created for candidate: 5ead9fbf-5fe3-4dd2-8567-4ae80ed9490f, allChecksPassed=false
+2025-11-30 21:08:54 [info]: ::1 - - [30/Nov/2025:15:38:54 +0000] "POST /api/v1/proctoring/system-check HTTP/1.1" 200 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-30 21:08:59 [info]: ::1 - - [30/Nov/2025:15:38:59 +0000] "OPTIONS /api/v1/proctoring/identity-verification/738ffd69-ca67-4457-a83a-a5839bc7fcb6/face-capture HTTP/1.1" 204 0 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-30 21:09:02 [info]: ::1 - - [30/Nov/2025:15:39:02 +0000] "POST /api/v1/proctoring/identity-verification/738ffd69-ca67-4457-a83a-a5839bc7fcb6/face-capture HTTP/1.1" 200 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-30 21:09:09 [info]: ::1 - - [30/Nov/2025:15:39:09 +0000] "OPTIONS /api/v1/proctoring/identity-verification/738ffd69-ca67-4457-a83a-a5839bc7fcb6/audio-recording HTTP/1.1" 204 0 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-30 21:09:12 [info]: ::1 - - [30/Nov/2025:15:39:12 +0000] "POST /api/v1/proctoring/identity-verification/738ffd69-ca67-4457-a83a-a5839bc7fcb6/audio-recording HTTP/1.1" 200 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-30 21:09:14 [info]: ::1 - - [30/Nov/2025:15:39:14 +0000] "OPTIONS /api/v1/proctoring/assessment/attempt/738ffd69-ca67-4457-a83a-a5839bc7fcb6 HTTP/1.1" 204 0 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-30 21:09:16 [info]: ::1 - - [30/Nov/2025:15:39:16 +0000] "GET /api/v1/proctoring/assessment/attempt/738ffd69-ca67-4457-a83a-a5839bc7fcb6 HTTP/1.1" 200 308 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-30 21:09:25 [info]: ::1 - - [30/Nov/2025:15:39:25 +0000] "OPTIONS /api/v1/proctoring/assessment/45176e65-4a1d-4708-89d3-87154c675177/attempt/738ffd69-ca67-4457-a83a-a5839bc7fcb6 HTTP/1.1" 204 0 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-30 21:09:25 [info]: ::1 - - [30/Nov/2025:15:39:25 +0000] "OPTIONS /api/v1/proctoring/assessment/45176e65-4a1d-4708-89d3-87154c675177/attempt/738ffd69-ca67-4457-a83a-a5839bc7fcb6 HTTP/1.1" 204 0 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-30 21:09:27 [info]: ::1 - - [30/Nov/2025:15:39:27 +0000] "GET /api/v1/proctoring/assessment/45176e65-4a1d-4708-89d3-87154c675177/attempt/738ffd69-ca67-4457-a83a-a5839bc7fcb6 HTTP/1.1" 200 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-11-30 21:09:30 [info]: ::1 - - [30/Nov/2025:15:39:30 +0000] "GET /api/v1/proctoring/assessment/45176e65-4a1d-4708-89d3-87154c675177/attempt/738ffd69-ca67-4457-a83a-a5839bc7fcb6 HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-12-01 10:09:59 [info]: ::1 - - [01/Dec/2025:04:39:59 +0000] "OPTIONS /api/v1/auth/log-in HTTP/1.1" 204 0 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-12-01 10:10:00 [info]: ::1 - - [01/Dec/2025:04:40:00 +0000] "POST /api/v1/auth/log-in HTTP/1.1" 200 259 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-12-01 10:10:01 [info]: ::1 - - [01/Dec/2025:04:40:01 +0000] "OPTIONS /api/v1/proctoring/instructions/validate-device HTTP/1.1" 204 0 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-12-01 10:10:01 [info]: ::1 - - [01/Dec/2025:04:40:01 +0000] "OPTIONS /api/v1/proctoring/instructions/validate-device HTTP/1.1" 204 0 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-12-01 10:10:01 [info]: ::1 - - [01/Dec/2025:04:40:01 +0000] "POST /api/v1/proctoring/instructions/validate-device HTTP/1.1" 200 366 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-12-01 10:10:01 [info]: ::1 - - [01/Dec/2025:04:40:01 +0000] "POST /api/v1/proctoring/instructions/validate-device HTTP/1.1" 200 366 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-12-01 10:11:46 [info]: ::1 - - [01/Dec/2025:04:41:46 +0000] "OPTIONS /api/v1/proctoring/assessment/generate HTTP/1.1" 204 0 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-12-01 10:11:48 [info]: ::1 - - [01/Dec/2025:04:41:48 +0000] "POST /api/v1/proctoring/assessment/generate HTTP/1.1" 200 172 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-12-01 10:12:00 [info]: ::1 - - [01/Dec/2025:04:42:00 +0000] "OPTIONS /api/v1/proctoring/system-check HTTP/1.1" 204 0 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-12-01 10:12:02 [info]: System check created for candidate: 5ead9fbf-5fe3-4dd2-8567-4ae80ed9490f, allChecksPassed=false
+2025-12-01 10:12:02 [info]: ::1 - - [01/Dec/2025:04:42:02 +0000] "POST /api/v1/proctoring/system-check HTTP/1.1" 200 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-12-01 10:12:10 [info]: ::1 - - [01/Dec/2025:04:42:10 +0000] "OPTIONS /api/v1/proctoring/identity-verification/c366bf96-3b22-4e29-b785-60e6da159594/face-capture HTTP/1.1" 204 0 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-12-01 10:12:12 [info]: ::1 - - [01/Dec/2025:04:42:12 +0000] "POST /api/v1/proctoring/identity-verification/c366bf96-3b22-4e29-b785-60e6da159594/face-capture HTTP/1.1" 200 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-12-01 10:12:19 [info]: ::1 - - [01/Dec/2025:04:42:19 +0000] "OPTIONS /api/v1/proctoring/identity-verification/c366bf96-3b22-4e29-b785-60e6da159594/audio-recording HTTP/1.1" 204 0 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-12-01 10:12:21 [info]: ::1 - - [01/Dec/2025:04:42:21 +0000] "POST /api/v1/proctoring/identity-verification/c366bf96-3b22-4e29-b785-60e6da159594/audio-recording HTTP/1.1" 200 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-12-01 10:12:24 [info]: ::1 - - [01/Dec/2025:04:42:24 +0000] "OPTIONS /api/v1/proctoring/assessment/attempt/c366bf96-3b22-4e29-b785-60e6da159594 HTTP/1.1" 204 0 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-12-01 10:12:25 [info]: ::1 - - [01/Dec/2025:04:42:25 +0000] "GET /api/v1/proctoring/assessment/attempt/c366bf96-3b22-4e29-b785-60e6da159594 HTTP/1.1" 200 308 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-12-01 10:12:27 [info]: ::1 - - [01/Dec/2025:04:42:27 +0000] "OPTIONS /api/v1/proctoring/assessment/aeecf1bd-73f1-4949-ae1a-56eb40a7e760/attempt/c366bf96-3b22-4e29-b785-60e6da159594 HTTP/1.1" 204 0 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-12-01 10:12:27 [info]: ::1 - - [01/Dec/2025:04:42:27 +0000] "OPTIONS /api/v1/proctoring/assessment/aeecf1bd-73f1-4949-ae1a-56eb40a7e760/attempt/c366bf96-3b22-4e29-b785-60e6da159594 HTTP/1.1" 204 0 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-12-01 10:12:29 [info]: ::1 - - [01/Dec/2025:04:42:29 +0000] "GET /api/v1/proctoring/assessment/aeecf1bd-73f1-4949-ae1a-56eb40a7e760/attempt/c366bf96-3b22-4e29-b785-60e6da159594 HTTP/1.1" 200 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-12-01 10:12:29 [info]: ::1 - - [01/Dec/2025:04:42:29 +0000] "OPTIONS /api/v1/proctoring/identity-verification/c366bf96-3b22-4e29-b785-60e6da159594/descriptor HTTP/1.1" 204 0 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-12-01 10:12:31 [info]: ::1 - - [01/Dec/2025:04:42:31 +0000] "GET /api/v1/proctoring/assessment/aeecf1bd-73f1-4949-ae1a-56eb40a7e760/attempt/c366bf96-3b22-4e29-b785-60e6da159594 HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-12-01 10:12:32 [info]: ::1 - - [01/Dec/2025:04:42:32 +0000] "GET /api/v1/proctoring/identity-verification/c366bf96-3b22-4e29-b785-60e6da159594/descriptor HTTP/1.1" 200 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-12-01 10:23:59 [info]: ::1 - - [01/Dec/2025:04:53:59 +0000] "OPTIONS /api/v1/otp/request-otp HTTP/1.1" 204 0 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-12-01 10:24:05 [info]: ::1 - - [01/Dec/2025:04:54:05 +0000] "POST /api/v1/otp/request-otp HTTP/1.1" 200 351 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-12-01 10:24:15 [info]: ::1 - - [01/Dec/2025:04:54:15 +0000] "OPTIONS /api/v1/otp/request-otp HTTP/1.1" 204 0 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-12-01 10:24:16 [info]: ::1 - - [01/Dec/2025:04:54:16 +0000] "POST /api/v1/otp/request-otp HTTP/1.1" 200 39 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-12-01 10:24:25 [info]: ::1 - - [01/Dec/2025:04:54:25 +0000] "OPTIONS /api/v1/otp/verify-otp HTTP/1.1" 204 0 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-12-01 10:24:27 [info]: ::1 - - [01/Dec/2025:04:54:27 +0000] "POST /api/v1/otp/verify-otp HTTP/1.1" 200 39 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-12-01 10:26:39 [info]: ::1 - - [01/Dec/2025:04:56:39 +0000] "OPTIONS /api/v1/auth/log-in HTTP/1.1" 204 0 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-12-01 10:26:40 [info]: ::1 - - [01/Dec/2025:04:56:40 +0000] "POST /api/v1/auth/log-in HTTP/1.1" 200 259 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-12-01 10:26:40 [info]: ::1 - - [01/Dec/2025:04:56:40 +0000] "OPTIONS /api/v1/proctoring/instructions/validate-device HTTP/1.1" 204 0 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-12-01 10:26:40 [info]: ::1 - - [01/Dec/2025:04:56:40 +0000] "OPTIONS /api/v1/proctoring/instructions/validate-device HTTP/1.1" 204 0 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-12-01 10:26:40 [info]: ::1 - - [01/Dec/2025:04:56:40 +0000] "POST /api/v1/proctoring/instructions/validate-device HTTP/1.1" 200 366 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-12-01 10:26:40 [info]: ::1 - - [01/Dec/2025:04:56:40 +0000] "POST /api/v1/proctoring/instructions/validate-device HTTP/1.1" 200 366 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-12-01 10:36:35 [info]: ::1 - - [01/Dec/2025:05:06:35 +0000] "OPTIONS /api/v1/otp/request-otp HTTP/1.1" 204 0 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-12-01 10:36:42 [info]: ::1 - - [01/Dec/2025:05:06:42 +0000] "POST /api/v1/otp/request-otp HTTP/1.1" 200 350 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-12-01 10:38:09 [info]: ::1 - - [01/Dec/2025:05:08:09 +0000] "OPTIONS /api/v1/otp/request-otp HTTP/1.1" 204 0 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-12-01 10:38:09 [info]: ::1 - - [01/Dec/2025:05:08:09 +0000] "OPTIONS /api/v1/otp/request-otp HTTP/1.1" 204 0 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-12-01 10:38:15 [info]: ::1 - - [01/Dec/2025:05:08:15 +0000] "POST /api/v1/otp/request-otp HTTP/1.1" 200 350 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-12-01 10:38:19 [info]: ::1 - - [01/Dec/2025:05:08:19 +0000] "POST /api/v1/otp/request-otp HTTP/1.1" 200 350 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-12-01 10:38:27 [info]: ::1 - - [01/Dec/2025:05:08:27 +0000] "OPTIONS /api/v1/otp/request-otp HTTP/1.1" 204 0 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-12-01 10:38:27 [info]: ::1 - - [01/Dec/2025:05:08:27 +0000] "POST /api/v1/otp/request-otp HTTP/1.1" 200 39 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-12-01 10:38:33 [info]: ::1 - - [01/Dec/2025:05:08:33 +0000] "OPTIONS /api/v1/otp/verify-otp HTTP/1.1" 204 0 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-12-01 10:38:34 [info]: ::1 - - [01/Dec/2025:05:08:34 +0000] "POST /api/v1/otp/verify-otp HTTP/1.1" 200 39 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-12-01 10:45:39 [info]: ::1 - - [01/Dec/2025:05:15:39 +0000] "OPTIONS /api/v1/otp/request-otp HTTP/1.1" 204 0 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-12-01 10:45:44 [info]: ::1 - - [01/Dec/2025:05:15:44 +0000] "POST /api/v1/otp/request-otp HTTP/1.1" 200 423 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-12-01 10:45:48 [info]: ::1 - - [01/Dec/2025:05:15:48 +0000] "POST /api/v1/otp/request-otp HTTP/1.1" 200 423 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-12-01 10:46:21 [info]: ::1 - - [01/Dec/2025:05:16:21 +0000] "OPTIONS /api/v1/otp/request-otp HTTP/1.1" 204 0 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+2025-12-01 10:46:22 [info]: ::1 - - [01/Dec/2025:05:16:22 +0000] "POST /api/v1/otp/request-otp HTTP/1.1" 200 136 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"

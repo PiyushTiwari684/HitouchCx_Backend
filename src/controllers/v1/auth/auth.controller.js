@@ -37,6 +37,24 @@ const signUp = async (req, res) => {
       data: { passwordHash: hashedPassword, status: "ACTIVE", createdAt: now },
     });
 
+    // Create Agent profile automatically for the new user
+    if (user && user.status === "ACTIVE") {
+      const existingAgent = await prisma.agent.findUnique({
+        where: { userId: user.id },
+      });
+
+      if (!existingAgent) {
+        await prisma.agent.create({
+          data: {
+            userId: user.id,
+            firstName: user.firstName || "User",
+            lastName: user.lastName || "",
+            dob: new Date("2000-01-01"), // Default DOB, can be updated later
+          },
+        });
+      }
+    }
+
     //Sending Response if User Updated
     console.log(user.status);
     if (user && user.status == "ACTIVE") {
