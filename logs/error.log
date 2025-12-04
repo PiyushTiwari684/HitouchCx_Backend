@@ -617,3 +617,92 @@ Foreign key constraint violated on the constraint: `conversations_agentId_fkey`
     at Module.startConversation (file:///C:/Users/tiwar/Desktop/HitouchCX_Projects/Hitouch_Project/HitouchCx_Backend/src/services/conversation.service.js:38:11)
     at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
     at async startConversation (file:///C:/Users/tiwar/Desktop/HitouchCX_Projects/Hitouch_Project/HitouchCx_Backend/src/controllers/v1/chatbot/conversation.controller.js:16:26)
+2025-12-03 15:25:58 [error]: PrismaClientKnownRequestError: 
+[31mInvalid [1m`prisma.systemCheck.create()`[22m invocation:[39m
+
+
+Unique constraint failed on the fields: (`attemptId`)
+    at bl.handleRequestError (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\@prisma\client\runtime\binary.js:258:7270)
+    at bl.handleAndLogRequestError (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\@prisma\client\runtime\binary.js:258:6594)
+    at bl.request (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\@prisma\client\runtime\binary.js:258:6301)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async o (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\@prisma\client\runtime\binary.js:267:9560)
+    at async file:///C:/Users/tiwar/Desktop/HitouchCX_Projects/Hitouch_Project/HitouchCx_Backend/src/controllers/v1/proctoring-assessment/systemCheck.controller.js:70:23
+2025-12-03 16:55:27 [error]: PrismaClientKnownRequestError: 
+[31mInvalid [1m`prisma.systemCheck.create()`[22m invocation:[39m
+
+
+Unique constraint failed on the fields: (`attemptId`)
+    at bl.handleRequestError (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\@prisma\client\runtime\binary.js:258:7270)
+    at bl.handleAndLogRequestError (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\@prisma\client\runtime\binary.js:258:6594)
+    at bl.request (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\@prisma\client\runtime\binary.js:258:6301)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async o (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\@prisma\client\runtime\binary.js:267:9560)
+    at async file:///C:/Users/tiwar/Desktop/HitouchCX_Projects/Hitouch_Project/HitouchCx_Backend/src/controllers/v1/proctoring-assessment/systemCheck.controller.js:70:23
+2025-12-03 16:55:48 [error]: PrismaClientKnownRequestError: 
+[31mInvalid [1m`prisma.systemCheck.create()`[22m invocation:[39m
+
+
+Unique constraint failed on the fields: (`attemptId`)
+    at bl.handleRequestError (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\@prisma\client\runtime\binary.js:258:7270)
+    at bl.handleAndLogRequestError (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\@prisma\client\runtime\binary.js:258:6594)
+    at bl.request (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\@prisma\client\runtime\binary.js:258:6301)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async o (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\@prisma\client\runtime\binary.js:267:9560)
+    at async file:///C:/Users/tiwar/Desktop/HitouchCX_Projects/Hitouch_Project/HitouchCx_Backend/src/controllers/v1/proctoring-assessment/systemCheck.controller.js:70:23
+2025-12-03 17:05:17 [error]: PrismaClientKnownRequestError: 
+[31mInvalid [1m`prisma.systemCheck.create()`[22m invocation:[39m
+
+
+Unique constraint failed on the fields: (`attemptId`)
+    at bl.handleRequestError (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\@prisma\client\runtime\binary.js:258:7270)
+    at bl.handleAndLogRequestError (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\@prisma\client\runtime\binary.js:258:6594)
+    at bl.request (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\@prisma\client\runtime\binary.js:258:6301)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async o (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\@prisma\client\runtime\binary.js:267:9560)
+    at async file:///C:/Users/tiwar/Desktop/HitouchCX_Projects/Hitouch_Project/HitouchCx_Backend/src/controllers/v1/proctoring-assessment/systemCheck.controller.js:70:23
+2025-12-03 17:35:23 [error]: PrismaClientKnownRequestError: 
+[31mInvalid [1m`prisma.systemCheck.create()`[22m invocation:[39m
+
+
+Unique constraint failed on the fields: (`attemptId`)
+    at bl.handleRequestError (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\@prisma\client\runtime\binary.js:258:7270)
+    at bl.handleAndLogRequestError (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\@prisma\client\runtime\binary.js:258:6594)
+    at bl.request (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\@prisma\client\runtime\binary.js:258:6301)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async o (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\@prisma\client\runtime\binary.js:267:9560)
+    at async file:///C:/Users/tiwar/Desktop/HitouchCX_Projects/Hitouch_Project/HitouchCx_Backend/src/controllers/v1/proctoring-assessment/systemCheck.controller.js:70:23
+2025-12-04 10:14:50 [error]: Error: Route not found: /
+    at notFoundHandler (file:///C:/Users/tiwar/Desktop/HitouchCX_Projects/Hitouch_Project/HitouchCx_Backend/src/middlewares/errorHandler.js:137:17)
+    at Layer.handleRequest (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:342:13)
+    at C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:297:9
+    at processParams (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:582:12)
+    at next (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:291:5)
+    at initialize (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\passport\lib\middleware\initialize.js:98:5)
+    at Layer.handleRequest (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:342:13)
+    at C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:297:9
+    at processParams (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:582:12)
+    at next (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:291:5)
+    at urlencodedParser (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\body-parser\lib\types\urlencoded.js:68:7)
+    at Layer.handleRequest (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:342:13)
+    at C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:297:9
+2025-12-04 10:14:51 [error]: Error: Route not found: /favicon.ico
+    at notFoundHandler (file:///C:/Users/tiwar/Desktop/HitouchCX_Projects/Hitouch_Project/HitouchCx_Backend/src/middlewares/errorHandler.js:137:17)
+    at Layer.handleRequest (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:342:13)
+    at C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:297:9
+    at processParams (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:582:12)
+    at next (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:291:5)
+    at initialize (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\passport\lib\middleware\initialize.js:98:5)
+    at Layer.handleRequest (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:342:13)
+    at C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:297:9
+    at processParams (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:582:12)
+    at next (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:291:5)
+    at urlencodedParser (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\body-parser\lib\types\urlencoded.js:68:7)
+    at Layer.handleRequest (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:342:13)
+    at C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:297:9

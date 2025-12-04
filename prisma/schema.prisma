@@ -147,14 +147,13 @@ enum WorkShift {
   CUSTOM // Custom hours (to be specified separately)
 }
 
-
 model Qualification {
-  id        String            @id @default(cuid())
-  agentId   String
-  agent     Agent             @relation(fields: [agentId], references: [id], onDelete: Cascade)
-  type      QualificationType 
-  degree    String?
-  field     QualificationField?
+  id          String              @id @default(cuid())
+  agentId     String
+  agent       Agent               @relation(fields: [agentId], references: [id], onDelete: Cascade)
+  type        QualificationType
+  degree      String?
+  field       QualificationField?
   institution String?
   startYear   Int?
   endYear     Int?
@@ -239,12 +238,12 @@ model Experience {
   agentId String
   agent   Agent  @relation(fields: [agentId], references: [id], onDelete: Cascade)
 
-  experienceMin Int?  //Lower value of a range eg. 5 in (5-10) experience
+  experienceMin Int? //Lower value of a range eg. 5 in (5-10) experience
   experienceMax Int? //Higher value of a range eg. 10 in (5-10) experience
   jobTitle      String?
   industry      Industry? //To have a fixed set of industry data for better recommendations
   vertical      Vertical? //To have a fixed set of vertical data for better recommendations
-  companyName   String?   
+  companyName   String?
 
   startDate DateTime
   endDate   DateTime
@@ -894,7 +893,6 @@ model Payment {
   updatedAt DateTime @updatedAt
 }
 
-
 //~~~~~~~~~~~~~~~~~~~~~~~Proctoring + Assessment Schema~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 // Status of an assessment (Draft → Scheduled → Active → Completed)
@@ -909,7 +907,7 @@ enum AssessmentStatus {
 // Assessment Type (Language Proficiency vs Skill-Based)
 enum AssessmentType {
   LANGUAGE // Language proficiency test
-  SKILL    // Skill-based assessment (Sales, Marketing, etc.)
+  SKILL // Skill-based assessment (Sales, Marketing, etc.)
 }
 
 // Task Level within a question type
@@ -1046,8 +1044,8 @@ model Candidate {
   phone     String? // Optional phone number
 
   //Agent which became the candidate and gave test
-  agentId   String?
-  agent     Agent?   @relation(fields: [agentId], references: [id], onDelete: SetNull)
+  agentId String?
+  agent   Agent?  @relation(fields: [agentId], references: [id], onDelete: SetNull)
 
   // CEFR proficiency tracking (updated after each assessment)
   overallCEFRLevel CEFRLevel? // Latest overall CEFR level
@@ -1111,7 +1109,7 @@ model Assessment {
 
   // Status
   status AssessmentStatus @default(DRAFT)
-  
+
   // 🆕 NEW FIELD - Assessment Type
   assessmentType AssessmentType @default(LANGUAGE)
 
@@ -1131,7 +1129,6 @@ model Assessment {
   @@index([createdById])
   @@map("assessments")
 }
-
 
 // Section - Assessment is divided into sections (Listening, Speaking, etc.)
 model Section {
@@ -1165,6 +1162,7 @@ model Section {
   @@index([assessmentId])
   @@map("sections")
 }
+
 // Question Bank - Stores all questions
 model Question {
   id String @id @default(uuid())
@@ -1198,8 +1196,8 @@ model Question {
   cefrLevel CEFRLevel // Which CEFR level this question tests
 
   // 🆕 NEW FIELDS - Task Classification
-  taskLevel TaskLevel? // Level 1, 2, or 3 (A1-A2, B1-B2, C1-C2)
-  sectionType String? // "WRITING" or "SPEAKING"
+  taskLevel      TaskLevel? // Level 1, 2, or 3 (A1-A2, B1-B2, C1-C2)
+  sectionType    String? // "WRITING" or "SPEAKING"
   assessmentType AssessmentType? // "LANGUAGE" or "SKILL"
 
   // Question metadata
@@ -1228,7 +1226,6 @@ model Question {
   @@index([isActive])
   @@map("questions")
 }
-
 
 // Junction table - Maps questions to sections (many-to-many)
 model QuestionSection {
@@ -1300,10 +1297,10 @@ model CandidateAssessment {
 
   // Auto-submission reason
   autoSubmitReason String? // "Time up", "Violation threshold", "Max reconnects"
-  
-  fullscreenEntered Boolean @default(false) // Was fullscreen entered?
+
+  fullscreenEntered   Boolean   @default(false) // Was fullscreen entered?
   fullscreenEnteredAt DateTime? // When fullscreen was first entered
-  fullscreenExitCount Int @default(0) // How many times fullscreen was exited
+  fullscreenExitCount Int       @default(0) // How many times fullscreen was exited
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
@@ -1524,10 +1521,12 @@ model ProctoringSession {
   // Status
   sessionStatus SessionStatus @default(NOT_STARTED)
 
-  // Proctoring stats
-  totalViolations    Int @default(0) // Total violations detected
-  graceViolations    Int @default(0) // Violations that were warnings
-  criticalViolations Int @default(0) // Critical violations
+  // Proctoring stats - Violation counts by severity
+  totalViolations  Int @default(0) // Total violations detected
+  lowViolations    Int @default(0) // LOW severity violations
+  mediumViolations Int @default(0) // MEDIUM severity violations
+  highViolations   Int @default(0) // HIGH severity violations
+  graceViolations  Int @default(0) // Violations that were warnings
 
   // Recording metadata (if enabled)
   screenRecordingPath String? // Path to screen recording
@@ -1916,17 +1915,14 @@ model AudioClipUsage {
   @@map("audio_clip_usage")
 }
 
-
-
 //~~~~~~~~~~~~~~~~~~~ Chatbot Schema ~~~~~~~~~~~~~~~~~~~~~~~~~~
-
 
 // ==================== Table 1: FAQ Categories ====================
 
 model FaqCategory {
   id        String        @id @default(uuid())
   name      String        @unique // e.g., "Password & Login"
-  emoji     String        // e.g., "🔐"
+  emoji     String // e.g., "🔐"
   order     Int           @unique // Display order (1, 2, 3...)
   isActive  Boolean       @default(true) // Can be disabled without deleting
   questions FaqQuestion[] // One category has many questions
@@ -1942,49 +1938,49 @@ model FaqQuestion {
   id         String      @id @default(uuid())
   categoryId String
   category   FaqCategory @relation(fields: [categoryId], references: [id], onDelete: Cascade)
-  question   String      // e.g., "How to reset my password?"
+  question   String // e.g., "How to reset my password?"
   answer     String      @db.Text // Long text answer
-  order      Int         // Display order within category
+  order      Int // Display order within category
   isActive   Boolean     @default(true) // Can be disabled
-  
-  // Analytics tracking
-  viewCount  Int         @default(0) // How many times viewed
-  helpfulYes Int         @default(0) // "Was helpful" count
-  helpfulNo  Int         @default(0) // "Not helpful" count
-  
-  createdAt  DateTime    @default(now())
-  updatedAt  DateTime    @updatedAt
 
-  @@map("faq_questions")
+  // Analytics tracking
+  viewCount  Int @default(0) // How many times viewed
+  helpfulYes Int @default(0) // "Was helpful" count
+  helpfulNo  Int @default(0) // "Not helpful" count
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
   @@index([categoryId]) // Fast lookup by category
+  @@map("faq_questions")
 }
 
 // ==================== Table 3: Conversations ====================
 
 model Conversation {
-  id             String          @id @default(uuid())
-  sessionId      String          @unique // Anonymous session identifier
-  currentTier    Int             @default(1) // 1=FAQ, 2=AI (MVP uses 2 tiers only)
-  isResolved     Boolean         @default(false)
-  isClosed       Boolean         @default(false)
-  agentId        String
-  agent          Agent          @relation(fields: [agentId], references: [id], onDelete: Cascade)
-  
-  // Timestamps for session management
-  lastActivityAt DateTime        @default(now()) // Updated on each message
-  closedAt       DateTime?       // When conversation was closed
-  
-  // Relationships
-  messages       Message[]       // One conversation has many messages
-  customQuestions CustomQuestion[] // Questions asked via "Other"
-  supportTicket  SupportTicket?  // One conversation can have one ticket
-  
-  createdAt      DateTime        @default(now())
-  updatedAt      DateTime        @updatedAt
+  id          String  @id @default(uuid())
+  sessionId   String  @unique // Anonymous session identifier
+  currentTier Int     @default(1) // 1=FAQ, 2=AI (MVP uses 2 tiers only)
+  isResolved  Boolean @default(false)
+  isClosed    Boolean @default(false)
+  agentId     String
+  agent       Agent   @relation(fields: [agentId], references: [id], onDelete: Cascade)
 
-  @@map("conversations")
+  // Timestamps for session management
+  lastActivityAt DateTime  @default(now()) // Updated on each message
+  closedAt       DateTime? // When conversation was closed
+
+  // Relationships
+  messages        Message[] // One conversation has many messages
+  customQuestions CustomQuestion[] // Questions asked via "Other"
+  supportTicket   SupportTicket? // One conversation can have one ticket
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
   @@index([sessionId])
   @@index([isClosed, closedAt]) // For auto-deletion query
+  @@map("conversations")
 }
 
 // ==================== Table 4: Messages ====================
@@ -1993,18 +1989,18 @@ model Message {
   id             String       @id @default(uuid())
   conversationId String
   conversation   Conversation @relation(fields: [conversationId], references: [id], onDelete: Cascade)
-  
-  role           String       // "user" or "assistant"
-  content        String       @db.Text // Message content
-  tier           Int          // Which tier answered (1=FAQ, 2=AI)
-  
-  // Optional: reference to FAQ question if Tier 1
-  faqQuestionId  String?
-  
-  createdAt      DateTime     @default(now())
 
-  @@map("messages")
+  role    String // "user" or "assistant"
+  content String @db.Text // Message content
+  tier    Int // Which tier answered (1=FAQ, 2=AI)
+
+  // Optional: reference to FAQ question if Tier 1
+  faqQuestionId String?
+
+  createdAt DateTime @default(now())
+
   @@index([conversationId])
+  @@map("messages")
 }
 
 // ==================== Table 5: Custom Questions ====================
@@ -2013,22 +2009,22 @@ model CustomQuestion {
   id             String       @id @default(uuid())
   conversationId String
   conversation   Conversation @relation(fields: [conversationId], references: [id], onDelete: Cascade)
-  
-  question       String       @db.Text // Agent's typed question
-  answer         String?      @db.Text // AI-generated answer
-  
-  // Feedback
-  isHelpful      Boolean?     // null=no feedback, true=helpful, false=not helpful
-  
-  // Frequency tracking (for identifying common questions)
-  similarCount   Int          @default(1) // How many times similar question asked
-  flaggedForFaq  Boolean      @default(false) // Should be added to FAQ?
-  
-  createdAt      DateTime     @default(now())
-  updatedAt      DateTime     @updatedAt
 
-  @@map("custom_questions")
+  question String  @db.Text // Agent's typed question
+  answer   String? @db.Text // AI-generated answer
+
+  // Feedback
+  isHelpful Boolean? // null=no feedback, true=helpful, false=not helpful
+
+  // Frequency tracking (for identifying common questions)
+  similarCount  Int     @default(1) // How many times similar question asked
+  flaggedForFaq Boolean @default(false) // Should be added to FAQ?
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
   @@index([flaggedForFaq])
+  @@map("custom_questions")
 }
 
 // ==================== Table 6: Support Tickets ====================
@@ -2037,57 +2033,55 @@ model SupportTicket {
   id             String       @id @default(uuid())
   conversationId String       @unique
   conversation   Conversation @relation(fields: [conversationId], references: [id], onDelete: Cascade)
-  
-  // Ticket details - auto-populated from conversation
-  issueDescription String     @db.Text // Auto-filled from user's question
-  category       String       @default("AI Unresolved") // Auto-set category
-  
-  // Status management
-  status         String       @default("open")
-  priority       String       @default("normal")
-  
-  // Assignment
-  assignedTo     String?
-  resolutionNotes String?     @db.Text
-  
-  // Timestamps
-  createdAt      DateTime     @default(now())
-  updatedAt      DateTime     @updatedAt
-  resolvedAt     DateTime?
 
-  @@map("support_tickets")
+  // Ticket details - auto-populated from conversation
+  issueDescription String @db.Text // Auto-filled from user's question
+  category         String @default("AI Unresolved") // Auto-set category
+
+  // Status management
+  status   String @default("open")
+  priority String @default("normal")
+
+  // Assignment
+  assignedTo      String?
+  resolutionNotes String? @db.Text
+
+  // Timestamps
+  createdAt  DateTime  @default(now())
+  updatedAt  DateTime  @updatedAt
+  resolvedAt DateTime?
+
   @@index([status])
   @@index([assignedTo])
   @@index([category])
+  @@map("support_tickets")
 }
 
 // ==================== Table 7: Analytics Summary ====================
 
 model AnalyticsSummary {
-  id             String   @id @default(uuid())
-  date           DateTime @unique @db.Date // One record per day
-  
+  id   String   @id @default(uuid())
+  date DateTime @unique @db.Date // One record per day
+
   // Conversation metrics
-  totalConversations    Int @default(0)
-  tier1Resolved         Int @default(0) // FAQ solved
-  tier2Resolved         Int @default(0) // AI solved
-  ticketCreated         Int @default(0) // Tickets created
-  
+  totalConversations Int @default(0)
+  tier1Resolved      Int @default(0) // FAQ solved
+  tier2Resolved      Int @default(0) // AI solved
+  ticketCreated      Int @default(0) // Tickets created
+
   // Time metrics (in seconds)
   avgResolutionTimeTier1 Int? // Average time for FAQ resolution
   avgResolutionTimeTier2 Int? // Average time for AI resolution
-  
-  
+
   // Top FAQs (stored as JSON array of question IDs)
   topFaqQuestions String? @db.Text // JSON: ["id1", "id2", "id3"]
-  
+
   // Top custom questions (stored as JSON array)
   topCustomQuestions String? @db.Text // JSON: ["question1", "question2"]
-  
-  createdAt      DateTime @default(now())
-  updatedAt      DateTime @updatedAt
 
-  @@map("analytics_summary")
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
   @@index([date])
+  @@map("analytics_summary")
 }
-
