@@ -150,6 +150,8 @@ export async function getAssessmentForAttempt(assessmentId, attemptId, agentId) 
       questionText: qs.question.questionText,
       options: qs.question.options, // For MCQ
       mediaUrl: qs.question.mediaUrl, // If any
+      speakingDuration: qs.question.speakingDuration, // For SPEAKING questions
+      speakingPrompt: qs.question.speakingPrompt, // For SPEAKING questions
     })),
   }));
 
