@@ -1,5 +1,5 @@
 import prisma from '../../../config/db.js'; 
-import { generateAccessToken, generateRefreshTokenValue, hashRefreshToken } from "../../utils/token.js"
+import { generateAccessToken, generateRefreshTokenValue, hashRefreshToken } from "../../../utils/token.js"
 import validator from 'validator';
 import bcrypt from 'bcrypt';
 import {
