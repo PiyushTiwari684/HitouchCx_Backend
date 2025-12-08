@@ -1,6 +1,12 @@
 import bcrypt from 'bcrypt'; 
 import prisma from '../../../config/db.js'; 
 
+
+async function updateEmailPhone(email,phone){
+
+
+}
+
 //Updating basic profile info of an agent
  const updateAgentProfile = async (req, res) => {
   try {

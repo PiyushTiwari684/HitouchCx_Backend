@@ -169,7 +169,6 @@ const getDashboardInfo = async (req, res) => {
         };
       });
 
-    console.log(gigsInProgress)
 
     return res.status(200).json({
       success: true,
