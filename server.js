@@ -1,43 +1,39 @@
 import dotenv from "dotenv";
 dotenv.config();
-import app from './app.js'
-import db from "./src/config/prismaClient.js";
+import app from "./app.js";
+import db from "./src/config/db.js";
 import { APP_CONFIG } from "./src/config/constants.js";
 
+const { PORT } = APP_CONFIG;
 
-const {PORT} = APP_CONFIG;
+async function startServer() {
+  try {
+    //connect to database
+    await db.$connect();
+    console.log("Connect to supabase PostgreSQL");
 
-async function startServer(){
-    try {
-        //connect to database
-        await db.$connect();
-        console.log('Connect to supabase PostgreSQL');
-        
-        //Server listening at port 
-        const server = app.listen(PORT,()=>{
-            console.log(`Server running at https://localhost:${PORT}`);
-        })
-        
-        //SIGINT -> IT catches when we stop the server 
-        //SIGTERM -> It catches when the system or cloud asks your to stop
-        //Prevents data loss, broken connections, or unfinished API requests during shutdown
-        process.on('SIGINT',async() =>{
-            console.log('Shutting down...');
-            await db.$disconnect();
-            server.close(()=>process.exit(0));
-        });
-        process.on('SIGTERM',async() =>{
-            console.log('Recieved a termination Signal...');
-            await db.$disconnect();
-            server.close(()=>process.exit(0));
-        });
+    //Server listening at port
+    const server = app.listen(PORT, () => {
+      console.log(`Server running at https://localhost:${PORT}`);
+    });
 
-
-    } catch (error) {
-        console.log('Database Connection failed',error);
-        process.exit(1);
-    }
+    //SIGINT -> IT catches when we stop the server
+    //SIGTERM -> It catches when the system or cloud asks your to stop
+    //Prevents data loss, broken connections, or unfinished API requests during shutdown
+    process.on("SIGINT", async () => {
+      console.log("Shutting down...");
+      await db.$disconnect();
+      server.close(() => process.exit(0));
+    });
+    process.on("SIGTERM", async () => {
+      console.log("Recieved a termination Signal...");
+      await db.$disconnect();
+      server.close(() => process.exit(0));
+    });
+  } catch (error) {
+    console.log("Database Connection failed", error);
+    process.exit(1);
+  }
 }
 
 startServer();
-
