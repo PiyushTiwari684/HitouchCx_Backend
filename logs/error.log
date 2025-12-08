@@ -774,20 +774,36 @@ Unique constraint failed on the fields: (`attemptId`)
     at router (C:\Users\shama\HitouchCx_Backend\node_modules\router\index.js:60:12)
     at Layer.handleRequest (C:\Users\shama\HitouchCx_Backend\node_modules\router\lib\layer.js:152:17)
     at trimPrefix (C:\Users\shama\HitouchCx_Backend\node_modules\router\index.js:342:13)
-2025-12-08 16:22:32 [error]: Error: Route not found: /api/v1/platform/dashboard-info/cmi5r3nu50000o4w81un9hjuf
-    at notFoundHandler (file:///C:/Users/shama/HitouchCx_Backend/src/middlewares/errorHandler.js:115:17)
-    at Layer.handleRequest (C:\Users\shama\HitouchCx_Backend\node_modules\router\lib\layer.js:152:17)
-    at trimPrefix (C:\Users\shama\HitouchCx_Backend\node_modules\router\index.js:342:13)
-    at C:\Users\shama\HitouchCx_Backend\node_modules\router\index.js:297:9
-    at processParams (C:\Users\shama\HitouchCx_Backend\node_modules\router\index.js:582:12)
-    at next (C:\Users\shama\HitouchCx_Backend\node_modules\router\index.js:291:5)
-    at C:\Users\shama\HitouchCx_Backend\node_modules\router\index.js:688:15
-    at next (C:\Users\shama\HitouchCx_Backend\node_modules\router\index.js:276:14)
-    at C:\Users\shama\HitouchCx_Backend\node_modules\router\index.js:688:15
-    at next (C:\Users\shama\HitouchCx_Backend\node_modules\router\index.js:276:14)
-    at C:\Users\shama\HitouchCx_Backend\node_modules\router\index.js:688:15
-    at next (C:\Users\shama\HitouchCx_Backend\node_modules\router\index.js:276:14)
-    at Function.handle (C:\Users\shama\HitouchCx_Backend\node_modules\router\index.js:186:3)
-    at router (C:\Users\shama\HitouchCx_Backend\node_modules\router\index.js:60:12)
-    at Layer.handleRequest (C:\Users\shama\HitouchCx_Backend\node_modules\router\lib\layer.js:152:17)
-    at trimPrefix (C:\Users\shama\HitouchCx_Backend\node_modules\router\index.js:342:13)
+2025-12-08 16:20:01 [error]: PrismaClientKnownRequestError: 
+[31mInvalid [1m`prisma.assessment.create()`[22m invocation:[39m
+
+
+Foreign key constraint violated on the constraint: `assessments_createdById_fkey`
+    at bl.handleRequestError (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\@prisma\client\runtime\binary.js:258:7270)
+    at bl.handleAndLogRequestError (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\@prisma\client\runtime\binary.js:258:6594)
+    at bl.request (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\@prisma\client\runtime\binary.js:258:6301)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async o (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\@prisma\client\runtime\binary.js:267:9560)
+    at async file:///C:/Users/tiwar/Desktop/HitouchCX_Projects/Hitouch_Project/HitouchCx_Backend/src/controllers/v1/proctoring-assessment/assessment.controller.js:45:22
+2025-12-08 16:22:37 [error]: PrismaClientKnownRequestError: 
+[31mInvalid [1m`prisma.assessment.create()`[22m invocation:[39m
+
+
+Foreign key constraint violated on the constraint: `assessments_createdById_fkey`
+    at bl.handleRequestError (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\@prisma\client\runtime\binary.js:258:7270)
+    at bl.handleAndLogRequestError (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\@prisma\client\runtime\binary.js:258:6594)
+    at bl.request (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\@prisma\client\runtime\binary.js:258:6301)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async o (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\@prisma\client\runtime\binary.js:267:9560)
+    at async file:///C:/Users/tiwar/Desktop/HitouchCX_Projects/Hitouch_Project/HitouchCx_Backend/src/controllers/v1/proctoring-assessment/assessment.controller.js:45:22
+2025-12-08 16:26:05 [error]: PrismaClientKnownRequestError: 
+[31mInvalid [1m`prisma.assessment.create()`[22m invocation:[39m
+
+
+Foreign key constraint violated on the constraint: `assessments_createdById_fkey`
+    at bl.handleRequestError (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\@prisma\client\runtime\binary.js:258:7270)
+    at bl.handleAndLogRequestError (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\@prisma\client\runtime\binary.js:258:6594)
+    at bl.request (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\@prisma\client\runtime\binary.js:258:6301)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async o (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\@prisma\client\runtime\binary.js:267:9560)
+    at async file:///C:/Users/tiwar/Desktop/HitouchCX_Projects/Hitouch_Project/HitouchCx_Backend/src/controllers/v1/proctoring-assessment/assessment.controller.js:47:22

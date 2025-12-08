@@ -16,7 +16,7 @@ async function sendEmailFromTwilio(otpCode,email,minutes) {
     from: 'noreply@hitouchcx.com', // Change to your verified sender
     subject: 'Your OTP for reboo8!',
     text: `OTP `,
-    html: `<p>TYour otp is ${otpCode} and valid for ${minutes}</p>`,
+    html: `<p>Your otp is ${otpCode} and valid for ${minutes}</p>`,
   }
 
   try {
@@ -124,4 +124,4 @@ async function verifyPhoneOTP(phoneNumber, code) {
 
 
 
-export { sendEmailOTP,sendPhoneOTP,verifyPhoneOTP }
+export { sendEmailOTP,sendPhoneOTP,verifyPhoneOTP,sendEmailFromTwilio }

@@ -41,13 +41,15 @@ export const generateAssessment = asyncHandler(async (req, res) => {
   const config = assessmentConfig[assessmentType];
   if (!config) return sendError(res, "Invalid assessmentType", 400);
 
+  console.log("🔍 [generateAssessment] Creating assessment with userId:", req.user.id);
+
   // 1. Create Assessment (minimal record)
   const assessment = await prisma.assessment.create({
     data: {
       title: `${assessmentType} Proficiency Test`,
       assessmentType,
       status: "DRAFT", // Will be updated to ACTIVE when content generation completes
-      createdById: "admin-001",
+      createdById: process.env.SYSTEM_ADMIN_ID, // System-generated assessment
       totalDuration: config.totalDuration || 45,
     },
   });
@@ -131,14 +133,13 @@ export const getAssessmentForAttempt = asyncHandler(async (req, res) => {
   // Get full assessment data using service
   let assessmentData;
   try {
-    assessmentData = await attemptService.getAssessmentForAttempt(
-      assessmentId,
-      attemptId,
-      agentId
-    );
+    assessmentData = await attemptService.getAssessmentForAttempt(assessmentId, attemptId, agentId);
   } catch (error) {
-    const statusCode = error.message.includes("not found") ? 404 :
-                       error.message.includes("Unauthorized") ? 403 : 400;
+    const statusCode = error.message.includes("not found")
+      ? 404
+      : error.message.includes("Unauthorized")
+        ? 403
+        : 400;
     return sendError(res, error.message, statusCode);
   }
 
@@ -164,8 +165,11 @@ export const getAttemptDetails = asyncHandler(async (req, res) => {
   try {
     attempt = await attemptService.getAttemptDetails(attemptId, agentId);
   } catch (error) {
-    const statusCode = error.message.includes("not found") ? 404 :
-                       error.message.includes("Unauthorized") ? 403 : 400;
+    const statusCode = error.message.includes("not found")
+      ? 404
+      : error.message.includes("Unauthorized")
+        ? 403
+        : 400;
     return sendError(res, error.message, statusCode);
   }
 
@@ -184,13 +188,16 @@ export const logViolation = asyncHandler(async (req, res) => {
       assessmentId,
       attemptId,
       violationData,
-      userId
+      userId,
     );
     return sendSuccess(res, result, "Violation logged successfully");
   } catch (error) {
     console.error("[logViolation] Error:", error);
-    const statusCode = error.message.includes("not found") ? 404 :
-                       error.message.includes("Unauthorized") ? 403 : 400;
+    const statusCode = error.message.includes("not found")
+      ? 404
+      : error.message.includes("Unauthorized")
+        ? 403
+        : 400;
     return sendError(res, error.message, statusCode);
   }
 });
@@ -204,12 +211,16 @@ export const getViolationSummary = asyncHandler(async (req, res) => {
 
   try {
     const summary = await violationService.getViolationSummary(attemptId, userId);
-    const message = summary.totalViolations === 0 ? "No violations yet" : "Violation summary retrieved";
+    const message =
+      summary.totalViolations === 0 ? "No violations yet" : "Violation summary retrieved";
     return sendSuccess(res, summary, message);
   } catch (error) {
     console.error("[getViolationSummary] Error:", error);
-    const statusCode = error.message.includes("not found") ? 404 :
-                       error.message.includes("Unauthorized") ? 403 : 400;
+    const statusCode = error.message.includes("not found")
+      ? 404
+      : error.message.includes("Unauthorized")
+        ? 403
+        : 400;
     return sendError(res, error.message, statusCode);
   }
 });
@@ -227,18 +238,22 @@ export const logViolationBatch = asyncHandler(async (req, res) => {
       assessmentId,
       attemptId,
       violations,
-      userId
+      userId,
     );
 
-    const message = result.logged === 0
-      ? "All violations were duplicates"
-      : `${result.logged} violations logged successfully`;
+    const message =
+      result.logged === 0
+        ? "All violations were duplicates"
+        : `${result.logged} violations logged successfully`;
 
     return sendSuccess(res, result, message);
   } catch (error) {
     console.error("[logViolationBatch] Error:", error);
-    const statusCode = error.message.includes("not found") ? 404 :
-                       error.message.includes("Unauthorized") ? 403 : 400;
+    const statusCode = error.message.includes("not found")
+      ? 404
+      : error.message.includes("Unauthorized")
+        ? 403
+        : 400;
     return sendError(res, error.message, statusCode);
   }
 });

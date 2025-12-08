@@ -12,10 +12,12 @@ import {
 import { getAgentById } from "../../../controllers/v1/agent/getAgent.controller.js";
 import { uploadProfilePhoto, uploadResume } from "../../../config/upload.config.js";
 import { extractResume } from "../../../controllers/v1/resume/resume.controller.js";
+import { updateAgentProfile,updateAgentPassword,requestEmailPhoneChange,updateEmailPhoneChange } from "../../../controllers/v1/agent/profile.controller.js";
+
 
 const router = express.Router();
 
-//Agent Information
+//~~~~~~Agent Information
 
 //Add Agent info
 router.post("/register", authMiddleware, registerAgent);
@@ -25,6 +27,22 @@ router.post("/bank-details", authMiddleware, addBankDetails);
 router.get("/bank-details", authMiddleware, getBankDetails);
 //Get Agent info
 router.get("/:agentId", getAgentById);
+
+//~~~~~~Edit Agent Profile
+
+//Update Agent Profile
+router.put("/profile", authMiddleware,updateAgentProfile);
+
+//Update Agent Password
+router.patch("/profile/password", authMiddleware, updateAgentPassword);
+
+//Request Email/Phone Changes
+router.post("/profile/contact/edit-request", authMiddleware, requestEmailPhoneChange);
+
+//Update Email/Phone Changes
+router.patch("/profile/contact/apply-update", authMiddleware, updateEmailPhoneChange);
+
+
 
 //Agent Media Files
 
