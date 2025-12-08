@@ -21,6 +21,14 @@ const requestOtp = async (req, res) => {
         //If Email present, Upsert the record
         if (email && !phone) {
 
+            //If Email already exists , send response 
+            // const emailExists = await prisma.user.findUnique({
+            //     where:{email}
+            // })
+            // if(emailExists){
+            //     return res.status(400).json({error:"Email already exists"})
+            // }
+
             user = await prisma.user.upsert({
                 where: { email },
                 update: {},
@@ -29,8 +37,18 @@ const requestOtp = async (req, res) => {
         }//If Phone Present(along with Email), Update the record with Phone
         else if (email && phone) {
 
+            //If Phone already exists, send error response
+
+            const phoneExists = await prisma.user.findUnique({
+                where:{phone}
+            })
+
+            if(phoneExists){
+                return res.status(400).json({error:"Phone already exists"})
+            }
+
             const otpStatus = await sendPhoneOTP(phone)
-            if (otpStatus.sent){
+            if (otpStatus.sent) {
                 const user = await prisma.user.update({
                     where: { email },
                     data: { phone }
@@ -52,6 +70,7 @@ const requestOtp = async (req, res) => {
                 type: email ? "EMAIL" : "PHONE",
             },
         });
+        console.log(recentCount)
         //Counting the number of OTPS
         if (recentCount >= MAX_REQUESTS) {
             return res.status(429).json({ message: `Max ${MAX_REQUESTS} OTPs Allowed.` })
@@ -62,11 +81,15 @@ const requestOtp = async (req, res) => {
             await sendEmailOTP(user, WINDOW_MINUTES);
             res.json({ message: "OTP Sent To Email", user: user })
         }
-        
+
+
+
     }
     catch (error) {
         res.status(500).json({ message: "Cannot send the otp", error })
     }
+
+
 }
 
 //Verifying OTP
@@ -77,7 +100,7 @@ const verifyOtp = async (req, res) => {
 
         //If both Email and Phone not provided
         if ((!email || !validator.isEmail(email)) && (!phone || !validator.isMobilePhone(phone))) {
-            res.status(400).json({ message: "Email/Phone required" })
+            return res.status(400).json({ message: "Email/Phone required" })
         }
 
         //If Email is being provided
@@ -109,8 +132,12 @@ const verifyOtp = async (req, res) => {
                 })
 
                 res.json({ message: "OTP Verified Successfully" })
-            } else {
-                res.status(401).json({ error: "cannot verify" })
+            } else if(presentTime > otp.expiresAt){
+                return res.status(401).json({ error: "OTP Expired" })
+
+            }
+            else{
+                return res.status(401).json({ error: "OTP Mismatched" })
             }
         } else {
 
@@ -124,16 +151,16 @@ const verifyOtp = async (req, res) => {
                     data: { phoneVerified: true }
                 })
 
-                res.json({ message: "Verified..", status: status })
+               return res.json({ message: "Verified..", status: status })
 
             } else {
-                res.status(401).json({ message: "Not able to verify." })
+                return res.status(401).json({ message: "Not able to verify." })
             }
 
         }
     }
     catch (error) {
-        res.json({ message: "Failed to verify Phone/Email OTP", error })
+       return res.json({ message: "Failed to verify Phone/Email OTP", error })
     }
 }
 

@@ -4,9 +4,9 @@
 
 ## in main-sam branch we transferred my app.js into my core index.js file
 
-## review apis once again in main-sam
+## review apis once again in main-sam *
 
-## change activity log schema in main-sam
+## change activity log schema in main-sam -> Done New Schema
 
 ## added seed.js in my branch and not in main-sam
 
