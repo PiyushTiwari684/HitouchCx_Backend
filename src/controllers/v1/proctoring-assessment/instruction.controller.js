@@ -1,11 +1,11 @@
-
-import { sendSuccess} from "../utils/response.js";
+import { sendSuccess} from "../../../utils/ApiResponse.js";
 import asyncHandler from "express-async-handler";
 
 /**
  * Validate device compatibility
  * Checks if device meets requirements for assessment
- */
+*/
+
 export const validateDevice = asyncHandler(async (req, res) => {
   const {
     browserName,
@@ -13,7 +13,7 @@ export const validateDevice = asyncHandler(async (req, res) => {
     screenHeight,
     deviceType,
     fullscreenSupported,
-  } = req.body;
+ } = req.body;
 
   try {
     // 1. DEFINE VALIDATION RULES

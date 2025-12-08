@@ -3,7 +3,9 @@ import systemCheckRoutes from './systemCheckRoutes.js';
 import identityVerificationRoutes from './identityVerificationRoutes.js';
 import assessmentRoutes from './assessmentRoutes.js';
 import instructionRoutes from './instructionRoutes.js';
-import pingRoutes from './pingRoutes.js';
+
+
+
 
 const router = express.Router();
 
@@ -23,9 +25,6 @@ router.use('/identity-verification', identityVerificationRoutes);
 // Final path: /api/v1/proctoring/assessment/*
 router.use('/assessment', assessmentRoutes);
 
-// Health Check / Ping Routes
-// Final path: /api/v1/proctoring/ping
-router.use('/ping', pingRoutes);
 
 
 export default router;

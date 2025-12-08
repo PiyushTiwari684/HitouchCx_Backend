@@ -1,26 +1,6 @@
-// Global error handler middleware
-// This catches ALL errors in the application and formats them consistently
-// Without this: Every endpoint would need its own try-catch and error handling
-
 import { sendError } from "../utils/ApiResponse.js";
 import logger from "../utils/logger.js";
 
-/**
- * GLOBAL ERROR HANDLER MIDDLEWARE
- *
- * Express automatically sends errors here when:
- * 1. You call next(error) in any route
- * 2. An async error occurs in any route (with express-async-errors)
- * 3. Any middleware throws an error
- *
- * This middleware MUST have 4 parameters (err, req, res, next)
- * Without 4 parameters: Express won't recognize it as error handler
- *
- * @param {Error} err - The error object
- * @param {Object} req - Express request object
- * @param {Object} res - Express response object
- * @param {Function} next - Express next function
- */
 const errorHandler = (err, req, res, next) => {
   // Log error details for debugging
   // Without this: Errors would be invisible in logs
@@ -139,20 +119,6 @@ export const notFoundHandler = (req, res, next) => {
   next(error);
 };
 
-/**
- * ASYNC ERROR WRAPPER
- *
- * Wraps async route handlers to catch errors automatically
- * Without this: Need to add try-catch to every async endpoint
- *
- * Usage:
- * app.get('/api/data', asyncHandler(async (req, res) => {
- *   const data = await prisma.data.findMany();
- *   res.json(data);
- * }));
- *
- * If prisma.data.findMany() fails, error automatically caught
- */
 export const asyncHandler = (fn) => (req, res, next) => {
   // Execute async function and catch any errors
   // Without .catch(next): Unhandled promise rejection, app crashes

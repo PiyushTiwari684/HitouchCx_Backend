@@ -1,8 +1,7 @@
-import { PrismaClient } from '@prisma/client';
+import prisma from '../../../config/db.js'; 
 import ImageProcessor from '../../../utils/imageProcessor.js';
 import fs from 'fs/promises';
 
-const prisma = new PrismaClient();
 
 /**
  * Upload and process agent profile photo

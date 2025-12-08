@@ -1,8 +1,7 @@
 import express from "express";
 import authMiddleware, { requireRole } from "../../../middlewares/authMiddleware.js";
-import { PrismaClient } from "@prisma/client";
+import prisma from "../../../config/db.js";
 
-const prisma = new PrismaClient();
 const router = express.Router();
 
 router.get("/profile", authMiddleware, requireRole("AGENT"), async (req, res) => {

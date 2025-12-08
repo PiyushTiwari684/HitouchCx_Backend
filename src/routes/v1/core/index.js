@@ -7,6 +7,7 @@ import platformRouter from './platform.routes.js';
 import clientRouter from './client.routes.js';
 import opportunityRouter from './opportunity.routes.js';
 import projectRouter from './project.routes.js';
+import kycRouter from './kyc.routes.js';
 
 const router = express.Router();
 
@@ -37,6 +38,10 @@ router.use('/project', projectRouter);
 // Opportunity Routes
 // Final path: /api/v1/opportunity/*
 router.use('/opportunity', opportunityRouter);
+
+// KYC Routes
+// Final path: /api/v1/kyc/*
+router.use('/kyc', kycRouter);
 
 // Protected User Routes
 // Final path: /api/v1/user/*

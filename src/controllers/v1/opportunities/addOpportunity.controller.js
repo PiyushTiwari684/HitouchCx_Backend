@@ -1,6 +1,7 @@
 import express from "express";
+import prisma from "../../../config/db.js"; 
+
 import {
-  PrismaClient,
   ServiceCategory,
   ProcessType,
   PaymentType,
@@ -11,7 +12,6 @@ import {
 } from "@prisma/client";
 
 
-const prisma = new PrismaClient();
 
 // Helper to safely create a Set from a Prisma enum (avoids crash if undefined)
 const toSet = (e) => (e ? new Set(Object.values(e)) : new Set());

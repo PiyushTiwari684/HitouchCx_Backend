@@ -1,5 +1,4 @@
 import express from 'express';
-import { PrismaClient } from '@prisma/client';
 import {addOpportunity} from "../../../controllers/v1/opportunities/addOpportunity.controller.js"
 import {gigApplication} from "../../../controllers/v1/opportunities/application.controller.js"
 import {agentOpportunities} from "../../../controllers/v1/opportunities/agentOpportunities.controller.js"

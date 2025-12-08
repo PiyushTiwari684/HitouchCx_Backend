@@ -1,115 +1,42 @@
 import prisma from "../../../config/db.js";
-import { sendSuccess, sendError } from "../../../utils/proctoring-assessment/response.js";
+import { sendSuccess, sendError } from "../../../utils/ApiResponse.js";
 import asyncHandler from "express-async-handler";
-import assessmentConfig from "../config/assessmentConfig.js";
-
-/**
- * Background job to generate sections and questions for an assessment
- * Runs asynchronously without blocking the response
- */
-async function generateAssessmentContent(assessmentId, assessmentType) {
-  try {
-    console.log(`[Background] Starting assessment content generation for ${assessmentId}`);
-
-    const config = assessmentConfig[assessmentType];
-    if (!config) {
-      console.error(`[Background] Invalid assessmentType: ${assessmentType}`);
-      return;
-    }
-
-    let sectionsWithQuestions = [];
-    let warnings = [];
-
-    // Create sections and map questions
-    for (const sectionConf of config.sections) {
-      const totalQuestions = sectionConf.rules.reduce((sum, r) => sum + r.count, 0);
-
-      const section = await prisma.section.create({
-        data: {
-          assessmentId: assessmentId,
-          name: sectionConf.name,
-          description: `Section for ${sectionConf.name}`,
-          orderIndex: sectionsWithQuestions.length + 1,
-          durationMinutes: sectionConf.durationMinutes || 15,
-          totalQuestions,
-        }
-      });
-
-      let allQuestions = [];
-      for (const rule of sectionConf.rules) {
-        const questions = await prisma.question.findMany({
-          where: {
-            questionType: sectionConf.type,
-            cefrLevel: { in: rule.cefrLevels },
-            assessmentType: assessmentType,
-            isActive: true
-          },
-          take: rule.count
-        });
-
-        if (questions.length < rule.count) {
-          warnings.push(
-            `Not enough questions for section "${sectionConf.name}" and CEFR [${rule.cefrLevels}]: found ${questions.length}, required ${rule.count}`
-          );
-        }
-
-        // Batch insert mapping - only if questions exist
-        if (questions.length > 0) {
-          await prisma.$transaction(
-            questions.map(q =>
-              prisma.questionSection.create({
-                data: { sectionId: section.id, questionId: q.id }
-              })
-            )
-          );
-        }
-        allQuestions.push(...questions.map(q => ({
-          id: q.id,
-          questionType: q.questionType,
-          cefrLevel: q.cefrLevel,
-          questionText: q.questionText,
-        })));
-      }
-      sectionsWithQuestions.push({
-        id: section.id,
-        name: section.name,
-        orderIndex: section.orderIndex,
-        questions: allQuestions
-      });
-    }
-
-    // Update assessment status to ACTIVE when content is ready
-    await prisma.assessment.update({
-      where: { id: assessmentId },
-      data: { status: "ACTIVE" }
-    });
-
-    console.log(`[Background] Assessment content generation completed for ${assessmentId}`);
-    if (warnings.length > 0) {
-      console.warn(`[Background] Warnings:`, warnings);
-    }
-  } catch (error) {
-    console.error(`[Background] Error generating assessment content:`, error);
-    // Update assessment status to indicate failure
-    await prisma.assessment.update({
-      where: { id: assessmentId },
-      data: { status: "DRAFT" }
-    }).catch(err => console.error('[Background] Failed to update assessment status:', err));
-  }
-}
+import assessmentConfig from "../../../config/assessmentConfig.js";
+import * as candidateService from "../../../services/proctoring-assessment/candidate.service.js";
+import * as attemptService from "../../../services/proctoring-assessment/attempt.service.js";
+import * as violationService from "../../../services/proctoring-assessment/violation.service.js";
+import { generateAssessmentContent } from "../../../jobs/assessmentContentGenerator.js";
 
 /**
  * POST /api/v1/assessments/generate
  * Creates assessment and attempt record immediately, generates content in background
  * Protected route - requires authentication
-*/
+ */
 export const generateAssessment = asyncHandler(async (req, res) => {
   const { assessmentType = "LANGUAGE" } = req.body;
-  const candidateId = req.candidate.id; // From JWT token via authenticateCandidate middleware
+  let agentId = req.user.agentId; // From authMiddleware
 
-  // Validate candidate
-  const candidate = await prisma.candidate.findUnique({ where: { id: candidateId } });
-  if (!candidate) return sendError(res, "Candidate not found", 404);
+  console.log("🔍 [generateAssessment] req.user:", req.user);
+  console.log("🔍 [generateAssessment] agentId:", agentId);
+
+  // If no agentId, create an Agent profile for this user
+  if (!agentId) {
+    try {
+      agentId = await candidateService.getOrCreateAgent(req.user.id);
+    } catch (error) {
+      return sendError(res, error.message, 404);
+    }
+  }
+
+  // Get or create candidate (Agent → Candidate transition)
+  let candidate;
+  try {
+    candidate = await candidateService.getOrCreateCandidate(agentId);
+  } catch (error) {
+    return sendError(res, error.message, 404);
+  }
+
+  const candidateId = candidate.id;
 
   const config = assessmentConfig[assessmentType];
   if (!config) return sendError(res, "Invalid assessmentType", 400);
@@ -122,7 +49,7 @@ export const generateAssessment = asyncHandler(async (req, res) => {
       status: "DRAFT", // Will be updated to ACTIVE when content generation completes
       createdById: "admin-001",
       totalDuration: config.totalDuration || 45,
-    }
+    },
   });
 
   // 2. Create CandidateAssessment record immediately
@@ -133,7 +60,7 @@ export const generateAssessment = asyncHandler(async (req, res) => {
       attemptNumber: 1,
       sessionStatus: "NOT_STARTED",
       verificationStatus: "NOT_STARTED",
-    }
+    },
   });
 
   // 3. Respond immediately with attemptId (non-blocking)
@@ -143,14 +70,13 @@ export const generateAssessment = asyncHandler(async (req, res) => {
       assessmentId: assessment.id,
       attemptId: attempt.id,
     },
-    "Assessment generation started"
+    "Assessment generation started",
   );
 
   // 4. Generate sections and questions in background (fire-and-forget)
-  generateAssessmentContent(assessment.id, assessmentType)
-    .catch(error => {
-      console.error('[Background] Unhandled error in assessment generation:', error);
-    });
+  generateAssessmentContent(assessment.id, assessmentType).catch((error) => {
+    console.error("[Background] Unhandled error in assessment generation:", error);
+  });
 });
 
 /**
@@ -160,54 +86,32 @@ export const generateAssessment = asyncHandler(async (req, res) => {
  */
 export const startAssessment = asyncHandler(async (req, res) => {
   const { assessmentId } = req.body;
-  const candidateId = req.candidate.id; // From JWT token
+  const agentId = req.user.agentId; // ✅ CHANGED: From req.user (authMiddleware), not req.candidate
 
+  // VALIDATION: Check if assessmentId provided
   if (!assessmentId) return sendError(res, "assessmentId is required", 400);
 
-  // 1. CHECK IF ASSESSMENT EXISTS
-  const assessment = await prisma.assessment.findUnique({
-    where: { id: assessmentId },
-  });
-  if (!assessment) return sendError(res, "Assessment not found", 404);
-
-  // 2. CHECK MAX ATTEMPTS NOT EXCEEDED
-  const existingAttempts = await prisma.candidateAssessment.findMany({
-    where: { candidateId, assessmentId },
-  });
-
-  if (existingAttempts.length >= assessment.maxAttempts) {
-    return sendError(
-      res,
-      `Maximum attempts (${assessment.maxAttempts}) exceeded for this assessment`,
-      400
-    );
+  // This is where the Agent → Candidate transition happens
+  // First time: Creates candidate. Retry: Uses existing candidate.
+  let candidate;
+  try {
+    candidate = await candidateService.getOrCreateCandidate(agentId);
+  } catch (error) {
+    return sendError(res, error.message, 404);
   }
 
-  // 3. CREATE NEW CANDIDATE ASSESSMENT
-  const attempt = await prisma.candidateAssessment.create({
-    data: {
-      candidateId,
-      assessmentId,
-      attemptNumber: existingAttempts.length + 1,
-      sessionStatus: "NOT_STARTED",
-      verificationStatus: "NOT_STARTED",
-      startedAt: new Date(),
-    },
-  });
+  const candidateId = candidate.id;
 
-  // 4. RESPOND
-  return sendSuccess(
-    res,
-    {
-      attemptId: attempt.id,
-      assessmentId: attempt.assessmentId,
-      candidateId: attempt.candidateId,
-      attemptNumber: attempt.attemptNumber,
-      sessionStatus: attempt.sessionStatus,
-    },
-    "Assessment started successfully",
-    201
-  );
+  // Create attempt using service
+  let attemptData;
+  try {
+    attemptData = await attemptService.createAttempt(candidateId, assessmentId);
+  } catch (error) {
+    const statusCode = error.message.includes("not found") ? 404 : 400;
+    return sendError(res, error.message, statusCode);
+  }
+
+  return sendSuccess(res, attemptData, "Assessment started successfully", 201);
 });
 
 /**
@@ -217,79 +121,28 @@ export const startAssessment = asyncHandler(async (req, res) => {
  */
 export const getAssessmentForAttempt = asyncHandler(async (req, res) => {
   const { assessmentId, attemptId } = req.params;
-  const candidateId = req.candidate.id; // From JWT token
 
   if (!assessmentId || !attemptId) {
     return sendError(res, "assessmentId and attemptId are required", 400);
   }
 
-  // 1. Verify candidate attempt exists and belongs to this candidate
-  const attempt = await prisma.candidateAssessment.findUnique({
-    where: { id: attemptId },
-    include: {
-      assessment: {
-        include: {
-          sections: {
-            orderBy: { orderIndex: "asc" },
-            include: {
-              questions: {
-                include: {
-                  question: true, // Include full question details
-                },
-              },
-            },
-          },
-        },
-      },
-    },
-  });
+  const agentId = req.user.agentId;
 
-  if (!attempt) {
-    return sendError(res, "Assessment attempt not found", 404);
+  // Get full assessment data using service
+  let assessmentData;
+  try {
+    assessmentData = await attemptService.getAssessmentForAttempt(
+      assessmentId,
+      attemptId,
+      agentId
+    );
+  } catch (error) {
+    const statusCode = error.message.includes("not found") ? 404 :
+                       error.message.includes("Unauthorized") ? 403 : 400;
+    return sendError(res, error.message, statusCode);
   }
 
-  if (attempt.candidateId !== candidateId) {
-    return sendError(res, "Unauthorized access to this assessment", 403);
-  }
-
-  if (attempt.assessmentId !== assessmentId) {
-    return sendError(res, "Assessment ID mismatch", 400);
-  }
-
-  // 2. Transform data for frontend
-  const sections = attempt.assessment.sections.map((section) => ({
-    id: section.id,
-    name: section.name,
-    description: section.description,
-    orderIndex: section.orderIndex,
-    durationMinutes: section.durationMinutes,
-    totalQuestions: section.totalQuestions,
-    questions: section.questions.map((qs) => ({
-      id: qs.question.id,
-      questionType: qs.question.questionType,
-      cefrLevel: qs.question.cefrLevel,
-      taskLevel: qs.question.taskLevel,
-      questionText: qs.question.questionText,
-      options: qs.question.options, // For MCQ
-      mediaUrl: qs.question.mediaUrl, // If any
-    })),
-  }));
-
-  // 3. Return assessment data
-  return sendSuccess(
-    res,
-    {
-      assessmentId: attempt.assessment.id,
-      attemptId: attempt.id,
-      title: attempt.assessment.title,
-      description: attempt.assessment.description,
-      totalDuration: attempt.assessment.totalDuration,
-      attemptNumber: attempt.attemptNumber,
-      sessionStatus: attempt.sessionStatus,
-      sections,
-    },
-    "Assessment fetched successfully"
-  );
+  return sendSuccess(res, assessmentData, "Assessment fetched successfully");
 });
 
 /**
@@ -299,93 +152,93 @@ export const getAssessmentForAttempt = asyncHandler(async (req, res) => {
  */
 export const getAttemptDetails = asyncHandler(async (req, res) => {
   const { attemptId } = req.params;
-  const candidateId = req.candidate.id; // From JWT token
 
   if (!attemptId) {
     return sendError(res, "attemptId is required", 400);
   }
 
-  // Fetch the attempt
-  const attempt = await prisma.candidateAssessment.findUnique({
-    where: { id: attemptId },
-    select: {
-      id: true,
-      assessmentId: true,
-      candidateId: true,
-      attemptNumber: true,
-      sessionStatus: true,
-      verificationStatus: true,
-    },
-  });
+  const agentId = req.user.agentId;
 
-  if (!attempt) {
-    return sendError(res, "Assessment attempt not found", 404);
-  }
-
-  // Verify the attempt belongs to the authenticated candidate
-  if (attempt.candidateId !== candidateId) {
-    return sendError(res, "Unauthorized access to this assessment attempt", 403);
+  // Get attempt details using service
+  let attempt;
+  try {
+    attempt = await attemptService.getAttemptDetails(attemptId, agentId);
+  } catch (error) {
+    const statusCode = error.message.includes("not found") ? 404 :
+                       error.message.includes("Unauthorized") ? 403 : 400;
+    return sendError(res, error.message, statusCode);
   }
 
   return sendSuccess(res, attempt, "Attempt details fetched successfully");
 });
 
-
 // log violation controller function
 
 export const logViolation = asyncHandler(async (req, res) => {
   const { assessmentId, attemptId } = req.params;
-  const { type, timestamp, details, severity, count } = req.body;
-
-  console.log("[logViolation] Logging violation:", {
-    attemptId,
-    type,
-    severity,
-    count,
-  });
+  const violationData = req.body;
+  const userId = req.user.id;
 
   try {
-    // Get the proctoring session
-    const session = await prisma.proctoringSession.findFirst({
-      where: { attemptId },
-      orderBy: { sessionStartedAt: "desc" },
-    });
-
-    if (!session) {
-      return sendError(res, "Proctoring session not found", 404);
-    }
-
-    // Create violation log
-    const violation = await prisma.proctoringLog.create({
-      data: {
-        sessionId: session.id,
-        candidateId: req.candidate.id,
-        eventType: "VIOLATION",
-        violationType: type,
-        severity: severity || "MEDIUM",
-        isViolation: true,
-        countsTowardLimit: severity === "CRITICAL" || severity === "HIGH",
-        timestamp: new Date(timestamp),
-        metadata: {
-          ...details,
-          violationNumber: count,
-        },
-      },
-    });
-
-    // Update session violation counts
-    await prisma.proctoringSession.update({
-      where: { id: session.id },
-      data: {
-        totalViolations: { increment: 1 },
-        criticalViolations:
-          severity === "CRITICAL" ? { increment: 1 } : undefined,
-      },
-    });
-
-    return sendSuccess(res, { violation }, "Violation logged successfully");
+    const result = await violationService.logSingleViolation(
+      assessmentId,
+      attemptId,
+      violationData,
+      userId
+    );
+    return sendSuccess(res, result, "Violation logged successfully");
   } catch (error) {
     console.error("[logViolation] Error:", error);
-    throw error;
+    const statusCode = error.message.includes("not found") ? 404 :
+                       error.message.includes("Unauthorized") ? 403 : 400;
+    return sendError(res, error.message, statusCode);
+  }
+});
+
+// ============================================
+// GET VIOLATION SUMMARY (For page load)
+// ============================================
+export const getViolationSummary = asyncHandler(async (req, res) => {
+  const { attemptId } = req.params;
+  const userId = req.user.id;
+
+  try {
+    const summary = await violationService.getViolationSummary(attemptId, userId);
+    const message = summary.totalViolations === 0 ? "No violations yet" : "Violation summary retrieved";
+    return sendSuccess(res, summary, message);
+  } catch (error) {
+    console.error("[getViolationSummary] Error:", error);
+    const statusCode = error.message.includes("not found") ? 404 :
+                       error.message.includes("Unauthorized") ? 403 : 400;
+    return sendError(res, error.message, statusCode);
+  }
+});
+
+// ============================================
+// LOG VIOLATION BATCH (For refresh/submit)
+// ============================================
+export const logViolationBatch = asyncHandler(async (req, res) => {
+  const { assessmentId, attemptId } = req.params;
+  const { violations } = req.body;
+  const userId = req.user.id;
+
+  try {
+    const result = await violationService.logViolationBatch(
+      assessmentId,
+      attemptId,
+      violations,
+      userId
+    );
+
+    const message = result.logged === 0
+      ? "All violations were duplicates"
+      : `${result.logged} violations logged successfully`;
+
+    return sendSuccess(res, result, message);
+  } catch (error) {
+    console.error("[logViolationBatch] Error:", error);
+    const statusCode = error.message.includes("not found") ? 404 :
+                       error.message.includes("Unauthorized") ? 403 : 400;
+    return sendError(res, error.message, statusCode);
   }
 });

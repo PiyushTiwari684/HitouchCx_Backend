@@ -1,17 +1,17 @@
-import prisma from "../config/db.js";
-import { asyncHandler } from "../middlewares/errorHandler.js";
-import { sendSuccess, sendError } from "../utils/response.js";
+import prisma from "../../../config/db.js";
+import asyncHandler from "express-async-handler";
+import { sendSuccess, sendError } from "../../../utils/ApiResponse.js";
 import {
   checkImageBlur,
   getImageMetadata,
   resizeImage,
-} from "../utils/imageProcessor.js";
-import { processAudio, getAudioDuration } from "../utils/audioProcessor.js";
+} from "../../../utils/imageProcessor.js";
+import { processAudio, getAudioDuration } from "../../../utils/audioProcessor.js";
 import {
   transcribeAudio,
   isAssemblyAIConfigured,
-} from "../services/assemblyAiServices.js";
-import { checkMatch } from "../utils/stringSimilarity.js";
+} from "../../../services/assemblyAi.service.js";
+import { checkMatch } from "../../../utils/stringSimilarity.js";
 import fs from "fs";
 import path from "path";
 import crypto from "crypto";
@@ -22,14 +22,25 @@ import { SessionStatus } from "@prisma/client";
 // ============================================================
 
 export const uploadFaceCapture = asyncHandler(async (req, res) => {
-  const { attemptId } = req.params;
-  const candidateId = req.candidate.id; // Get from JWT token via authenticateCandidate middleware
+  const { attemptId } = req.params; // ✅ Extract attemptId from URL params FIRST
   const { faceDescriptor } = req.body; // NEW: Face descriptor array from frontend
 
   // 1. Validate required fields
   if (!attemptId) {
     return sendError(res, "Attempt ID is required", 400);
   }
+
+  // 2. Get candidateId from attemptId (candidate was created in startAssessment)
+  const attempt = await prisma.candidateAssessment.findUnique({
+    where: { id: attemptId },
+    select: { candidateId: true },
+  });
+
+  if (!attempt) {
+    return sendError(res, "Assessment attempt not found", 404);
+  }
+
+  const candidateId = attempt.candidateId;
 
   // 2. Check if file was uploaded
   if (!req.file) {
@@ -157,15 +168,26 @@ export const uploadFaceCapture = asyncHandler(async (req, res) => {
 
 export const getReferenceDescriptor = asyncHandler(async (req, res) => {
   const { attemptId } = req.params;
-  const candidateId = req.candidate.id;
 
   // 1. Validate required fields
   if (!attemptId) {
     return sendError(res, "Attempt ID is required", 400);
   }
 
+  // 2. Get candidateId from attemptId (same pattern as previous functions)
+  const attempt = await prisma.candidateAssessment.findUnique({
+    where: { id: attemptId },
+    select: { candidateId: true },
+  });
+
+  if (!attempt) {
+    return sendError(res, "Assessment attempt not found", 404);
+  }
+
+  const candidateId = attempt.candidateId;
+
   try {
-    // 2. Get identity verification record
+    // 3. Get identity verification record
     const verification = await prisma.identityVerification.findUnique({
       where: { attemptId },
       select: {
@@ -212,315 +234,7 @@ export const getReferenceDescriptor = asyncHandler(async (req, res) => {
   }
 });
 
-// ============================================================
-// LOG FACE COMPARISON RESULT ENDPOINT
-// ============================================================
 
-// export const logFaceComparison = asyncHandler(async (req, res) => {
-//   const { attemptId } = req.params;
-//   const candidateId = req.candidate.id;
-//   const { matchScore, matched, faceDetected, faceCount, snapshotBase64 } =
-//     req.body;
-
-//   // 1. Validate required fields
-//   if (!attemptId) {
-//     return sendError(res, "Attempt ID is required", 400);
-//   }
-
-//   if (matchScore === undefined || matched === undefined) {
-//     return sendError(res, "Match score and matched status are required", 400);
-//   }
-
-//   try {
-//     // 2. Verify identity verification exists
-//     const verification = await prisma.identityVerification.findUnique({
-//       where: { attemptId },
-//       select: { candidateId: true },
-//     });
-
-//     if (!verification) {
-//       return sendError(res, "Identity verification not found", 404);
-//     }
-
-//     // 3. Verify ownership
-//     if (verification.candidateId !== candidateId) {
-//       return sendError(res, "Unauthorized access", 403);
-//     }
-
-//     // 4. Get proctoring session
-//     const session = await prisma.proctoringSession.findFirst({
-//       where: { attemptId },
-//       orderBy: { sessionStartedAt: "desc" },
-//     });
-
-//     if (!session) {
-//       return sendError(res, "Proctoring session not found", 404);
-//     }
-
-//     // 5. Create proctoring log entry
-//     const logEntry = await prisma.proctoringLog.create({
-//       data: {
-//         sessionId: session.id,
-//         timestamp: new Date(),
-//         violationType: matched ? null : "FACE_MISMATCH",
-//         severity: matched ? null : "CRITICAL",
-//         faceDetected: faceDetected ?? true,
-//         faceCount: faceCount ?? 1,
-//         faceMatchScore: matchScore,
-//         details: {
-//           matched,
-//           matchScore,
-//           threshold: 0.6,
-//         },
-//       },
-//     });
-
-//     // 6. Optional: Save snapshot if mismatch
-//     let snapshot = null;
-//     if (!matched && snapshotBase64) {
-//       try {
-//         // Save snapshot to violation snapshots table
-//         snapshot = await prisma.violationSnapshot.create({
-//           data: {
-//             sessionId: session.id,
-//             violationType: "FACE_MISMATCH",
-//             snapshotData: snapshotBase64, // Store as base64 in JSON field
-//             timestamp: new Date(),
-//           },
-//         });
-//       } catch (snapshotError) {
-//         console.error("Failed to save snapshot:", snapshotError.message);
-//         // Don't fail the request if snapshot save fails
-//       }
-//     }
-
-//     return sendSuccess(
-//       res,
-//       {
-//         logEntry,
-//         snapshot: snapshot ? { id: snapshot.id } : null,
-//       },
-//       "Face comparison logged successfully"
-//     );
-//   } catch (error) {
-//     throw error;
-//   }
-// });
-
-// export const logFaceComparison = asyncHandler(async (req, res) => {
-//   const { attemptId } = req.params;
-//   const { matchScore, matched, faceDetected, faceCount, snapshotBase64 } =
-//     req.body;
-
-//   console.log("[logFaceComparison] Request received:", {
-//     attemptId,
-//     matchScore,
-//     matched,
-//     faceDetected,
-//     faceCount,
-//   });
-
-//   // 1. Validate required fields
-//   if (!attemptId) {
-//     return sendError(res, "Attempt ID is required", 400);
-//   }
-
-//   if (matchScore === undefined || matched === undefined) {
-//     return sendError(res, "Match score and matched status are required", 400);
-//   }
-
-//   try {
-//     // 2. Get candidate ID safely (handle missing authentication)
-//     const candidateId = req.candidate?.id;
-
-//     if (!candidateId) {
-//       console.warn(
-//         "[logFaceComparison] No candidate ID - authentication middleware not active"
-//       );
-//       // Don't fail - just skip ownership check
-//     }
-
-//     // 3. Verify identity verification exists
-//     const verification = await prisma.identityVerification.findUnique({
-//       where: { attemptId },
-//       select: { candidateId: true },
-//     });
-
-//     // if (!verification) {
-//     //   console.warn(
-//     //     "[logFaceComparison] Identity verification not found for attemptId:",
-//     //     attemptId
-//     //   );
-//     //   return sendError(res, "Identity verification not found", 404);
-//     // }
-//        if (!verification) {
-//          console.log(
-//            "[logFaceComparison] No verification found, creating placeholder..."
-//          );
-
-//          // Get attempt to find candidateId
-//          const attempt = await prisma.candidateAssessment.findUnique({
-//            where: { id: attemptId },
-//            select: { candidateId: true },
-//          });
-
-//          if (!attempt) {
-//            return sendError(res, "Assessment attempt not found", 404);
-//          }
-
-//          // Create placeholder verification
-//          try {
-//            verification = await prisma.identityVerification.create({
-//              data: {
-//                candidateId: attempt.candidateId,
-//                attemptId: attemptId,
-//                verificationStatus: "NOT_STARTED",
-//                faceDetectedInitial: false,
-//                audioVerified: false,
-//                audioAttemptCount: 0,
-//              },
-//            });
-
-//            console.log(
-//              "[logFaceComparison] Placeholder verification created:",
-//              verification.id
-//            );
-//          } catch (createError) {
-//            console.error(
-//              "[logFaceComparison] Failed to create verification:",
-//              createError.message
-//            );
-//            return sendError(res, "Failed to create verification record", 500);
-//          }
-//        }
-
-//     // 4. Verify ownership (only if candidateId available)
-//     if (candidateId && verification.candidateId !== candidateId) {
-//       return sendError(res, "Unauthorized access", 403);
-//     }
-
-//     // 5. Get or create proctoring session
-//     let session = await prisma.proctoringSession.findFirst({
-//       where: { attemptId },
-//       orderBy: { sessionStartedAt: "desc" },
-//     });
-
-//     // FIXED: Auto-create session if it doesn't exist
-//     if (!session) {
-//       console.log("[logFaceComparison] No session found, creating one...");
-
-//       // Get attempt details
-//       const attempt = await prisma.candidateAssessment.findUnique({
-//         where: { id: attemptId },
-//         select: {
-//           candidateId: true,
-//           assessmentId: true,
-//         },
-//       });
-
-//       if (!attempt) {
-//         return sendError(res, "Assessment attempt not found", 404);
-//       }
-
-//       // Create new proctoring session
-//       try {
-//         session = await prisma.proctoringSession.create({
-//           data: {
-//             candidateId: attempt.candidateId,
-//             assessmentId: attempt.assessmentId,
-//             attemptId: attemptId,
-//             sessionToken: crypto.randomUUID(), // Generate unique token
-//             sessionStartedAt: new Date(),
-//             sessionStatus: SessionStatus.IN_PROGRESS,
-//             totalViolations: 0,
-//             graceViolations: 0,
-//             criticalViolations: 0,
-//             isAutoSubmitted: false,
-//           },
-//         });
-
-//         console.log(
-//           "[logFaceComparison] Session created successfully:",
-//           session.id
-//         );
-//       } catch (createError) {
-//         console.error(
-//           "[logFaceComparison] Failed to create session:",
-//           createError.message
-//         );
-//         return sendError(res, "Failed to create proctoring session", 500);
-//       }
-//     }
-
-//     // 6. Create proctoring log entry (now session definitely exists)
-//     const logEntry = await prisma.proctoringLog.create({
-//       data: {
-//         sessionId: session.id,
-//         candidateId: verification.candidateId, // ✅ ADDED - Required field
-//         eventType: "FACE_COMPARISON", // ✅ ADDED - Required field
-//         eventDescription: matched
-//           ? `Face verified (score: ${matchScore.toFixed(4)})`
-//           : `Face mismatch detected (score: ${matchScore.toFixed(4)})`, // ✅ ADDED
-//         timestamp: new Date(),
-//         violationType: matched ? null : "FACE_MISMATCH",
-//         severity: matched ? "INFO" : "CRITICAL", // ✅ FIXED - Can't be null
-//         isViolation: !matched, // ✅ ADDED - Required field
-//         countsTowardLimit: !matched, // ✅ ADDED - Required field
-//         faceDetected: faceDetected ?? true,
-//         faceCount: faceCount ?? 1,
-//         faceMatchScore: matchScore,
-//         metadata: {
-//           // ✅ FIXED - Changed from 'details' to 'metadata'
-//           matched,
-//           matchScore,
-//           threshold: 0.6,
-//           timestamp: new Date().toISOString(),
-//         },
-//       },
-//     });
-
-//     console.log("[logFaceComparison] Log entry created:", logEntry.id);
-
-//     // 7. Optional: Save snapshot if mismatch
-//     let snapshot = null;
-//     if (!matched && snapshotBase64) {
-//       try {
-//         snapshot = await prisma.violationSnapshot.create({
-//           data: {
-//             sessionId: session.id,
-//             violationType: "FACE_MISMATCH",
-//             snapshotData: snapshotBase64,
-//             timestamp: new Date(),
-//           },
-//         });
-//         console.log("[logFaceComparison] Snapshot saved:", snapshot.id);
-//       } catch (snapshotError) {
-//         console.error(
-//           "[logFaceComparison] Failed to save snapshot:",
-//           snapshotError.message
-//         );
-//         // Don't fail the request if snapshot save fails
-//       }
-//     }
-
-//     return sendSuccess(
-//       res,
-//       {
-//         logEntry: {
-//           id: logEntry.id,
-//           sessionId: logEntry.sessionId,
-//           matched: matched,
-//           matchScore: matchScore,
-//         },
-//         snapshot: snapshot ? { id: snapshot.id } : null,
-//       },
-//       "Face comparison logged successfully"
-//     );
-//   } catch (error) {
-//     console.error("[logFaceComparison] Error:", error);
-//     throw error; // asyncHandler will catch this
-//   }
-// });
 
 export const logFaceComparison = asyncHandler(async (req, res) => {
   const { attemptId } = req.params;
@@ -544,19 +258,23 @@ export const logFaceComparison = asyncHandler(async (req, res) => {
   }
 
   try {
-    const candidateId = req.candidate?.id;
+    // Get candidateId from attemptId (same pattern as other functions)
+    const attempt = await prisma.candidateAssessment.findUnique({
+      where: { id: attemptId },
+      select: { candidateId: true },
+    });
 
-    if (!candidateId) {
-      console.warn(
-        "[logFaceComparison] No candidate ID - authentication middleware not active"
-      );
+    if (!attempt) {
+      return sendError(res, "Assessment attempt not found", 404);
     }
 
-    // ✅ FIXED: Changed const to let
+    const candidateId = attempt.candidateId;
+
+    // Check if verification record exists
     let verification = await prisma.identityVerification.findUnique({
       where: { attemptId },
       select: {
-        id: true, // ✅ Added - needed for snapshot
+        id: true,
         candidateId: true,
       },
     });
@@ -566,19 +284,10 @@ export const logFaceComparison = asyncHandler(async (req, res) => {
         "[logFaceComparison] No verification found, creating placeholder..."
       );
 
-      const attempt = await prisma.candidateAssessment.findUnique({
-        where: { id: attemptId },
-        select: { candidateId: true },
-      });
-
-      if (!attempt) {
-        return sendError(res, "Assessment attempt not found", 404);
-      }
-
       try {
         verification = await prisma.identityVerification.create({
           data: {
-            candidateId: attempt.candidateId,
+            candidateId: candidateId,
             attemptId: attemptId,
             verificationStatus: "NOT_STARTED",
             faceDetectedInitial: false,
@@ -731,7 +440,6 @@ export const logFaceComparison = asyncHandler(async (req, res) => {
 
 export const uploadAudioRecording = asyncHandler(async (req, res) => {
   const { attemptId } = req.params;
-  const candidateId = req.candidate.id; // Get from JWT token via authenticateCandidate middleware
   const { originalText, transcription } = req.body;
 
   // 1. Validate required fields
@@ -744,8 +452,24 @@ export const uploadAudioRecording = asyncHandler(async (req, res) => {
     return sendError(res, "Audio file is required", 400);
   }
 
+  // 3. Get candidateId from attemptId (same pattern as other functions)
+  const attempt = await prisma.candidateAssessment.findUnique({
+    where: { id: attemptId },
+    select: { candidateId: true },
+  });
+
+  if (!attempt) {
+    // Clean up uploaded file
+    if (req.file && fs.existsSync(req.file.path)) {
+      fs.unlinkSync(req.file.path);
+    }
+    return sendError(res, "Assessment attempt not found", 404);
+  }
+
+  const candidateId = attempt.candidateId;
+
   try {
-    // 3. Check if candidate exists
+    // 4. Check if candidate exists
     const candidate = await prisma.candidate.findUnique({
       where: { id: candidateId },
     });

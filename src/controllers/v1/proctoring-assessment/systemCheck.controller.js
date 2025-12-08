@@ -1,15 +1,26 @@
-import prisma from "../config/db.js";
-import { sendError, sendSuccess } from "../utils/response.js";
-import logger from "../utils/logger.js";
-import { asyncHandler } from "../middlewares/errorHandler.js";
+import prisma from "../../../config/db.js";
+import { sendError, sendSuccess } from "../../../utils/ApiResponse.js";
+import logger from "../../../utils/logger.js";
+import asyncHandler from "express-async-handler";
 
 // controller to create system check record
 
 export const createSystemCheck = asyncHandler(async (req, res) => {
-  const candidateId = req.candidate.id;
   // Extract the following data from the req.body
   const { attemptId, deviceInfo, permissions, deviceTests } = req.body;
 
+  // Get candidateId from attemptId (candidate already exists from startAssessment)
+  const attempt = await prisma.candidateAssessment.findUnique({
+    where: { id: attemptId },
+    select: { candidateId: true },
+  });
+
+  if (!attempt) {
+    return sendError(res, "Assessment attempt not found", 404);
+  }
+
+  const candidateId = attempt.candidateId;
+  
   // Allowed CheckStatus values (kept in sync with Prisma enum)
   const ALLOWED_STATUSES = ["PENDING", "PASSED", "FAILED", "RETRY"];
 
@@ -41,10 +52,8 @@ export const createSystemCheck = asyncHandler(async (req, res) => {
 
   // Determine critical failures (these should block starting a session)
   const criticalFailures = [];
-  if (cameraPermission === "FAILED" || cameraWorking === "FAILED")
-    criticalFailures.push("camera");
-  if (micPermission === "FAILED" || micWorking === "FAILED")
-    criticalFailures.push("microphone");
+  if (cameraPermission === "FAILED" || cameraWorking === "FAILED") criticalFailures.push("camera");
+  if (micPermission === "FAILED" || micWorking === "FAILED") criticalFailures.push("microphone");
   if (screenPermission === "FAILED") criticalFailures.push("screenShare");
   if (faceDetected === "FAILED") criticalFailures.push("faceDetection");
   if (networkStatus === "FAILED") criticalFailures.push("network");
@@ -98,7 +107,7 @@ export const createSystemCheck = asyncHandler(async (req, res) => {
   });
 
   logger.info(
-    `System check created for candidate: ${candidateId}, allChecksPassed=${allChecksPassed}`
+    `System check created for candidate: ${candidateId}, allChecksPassed=${allChecksPassed}`,
   );
 
   return sendSuccess(res, systemCheck, "system check created successfully");

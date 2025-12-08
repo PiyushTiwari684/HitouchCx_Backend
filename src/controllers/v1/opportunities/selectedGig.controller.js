@@ -1,5 +1,4 @@
-import { PrismaClient } from '@prisma/client';
-const prisma = new PrismaClient();
+import { prisma } from '../../../utils/prismaClient.js';
     
 // After agent applies for opportunity and the gig is created where he will work
 //Time Slot Pending for this controller and model

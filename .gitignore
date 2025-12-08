@@ -5,3 +5,4 @@ uploads/
 !uploads/.gitkeep
 
 /src/generated/prisma
+/docs/sam-merge.md
