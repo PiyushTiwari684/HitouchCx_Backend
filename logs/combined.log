@@ -2048,3 +2048,7 @@ Unique constraint failed on the fields: (`attemptId`)
     at trimPrefix (C:\Users\shama\HitouchCx_Backend\node_modules\router\index.js:342:13)
 2025-12-08 14:41:57 [info]: ::1 - - [08/Dec/2025:09:11:57 +0000] "GET /api/v1/auth/log-in HTTP/1.1" 404 66 "-" "PostmanRuntime/7.49.1"
 2025-12-08 14:42:01 [info]: ::1 - - [08/Dec/2025:09:12:01 +0000] "POST /api/v1/auth/log-in HTTP/1.1" 200 444 "-" "PostmanRuntime/7.49.1"
+2025-12-08 14:52:14 [info]: ::1 - - [08/Dec/2025:09:22:14 +0000] "GET /api/v1/platform/dashboard-info/cmi5uzu8w0001o420uoclv9oz HTTP/1.1" 200 - "-" "PostmanRuntime/7.49.1"
+2025-12-08 14:55:16 [info]: ::1 - - [08/Dec/2025:09:25:16 +0000] "POST /api/v1/auth/log-in HTTP/1.1" 200 444 "-" "PostmanRuntime/7.49.1"
+2025-12-08 14:56:46 [info]: ::1 - - [08/Dec/2025:09:26:46 +0000] "POST /api/v1/platform/agent-rates HTTP/1.1" 400 51 "-" "PostmanRuntime/7.49.1"
+2025-12-08 14:56:53 [info]: ::1 - - [08/Dec/2025:09:26:53 +0000] "POST /api/v1/platform/agent-rates HTTP/1.1" 201 335 "-" "PostmanRuntime/7.49.1"
