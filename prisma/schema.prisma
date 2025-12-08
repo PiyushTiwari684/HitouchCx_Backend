@@ -47,6 +47,7 @@ model User {
 
   // Registration tracking fields
   profileCompleted Boolean @default(false)
+  kycCompleted     Boolean @default(false) // KYC verification completed
   agreementSigned  Boolean @default(false)
 
   googleId       String?      @unique //oAuth Google Id
@@ -56,8 +57,10 @@ model User {
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
-  otps  OTP[] //OTPs received for the user
-  agent Agent?
+  otps         OTP[] // OTPs received for the user
+  agent        Agent?
+  kycSessions  KYCSession[] // DigiLocker KYC sessions
+  kycAuditLogs KYCAuditLog[] // KYC audit trail
 }
 
 model OTP {
@@ -277,32 +280,88 @@ model KYCDocument {
   documentNumber String // AADHAR/PAN Number
   holderName     String? // Name mentioned in Aadhar/Pan
 
-  // File storage
-  documentUrl   String? // URL to encrypted document image
-  frontImageUrl String? // URL to front image of document 
-  backImageUrl  String? // URL to back image of document
+  // File storage (local filesystem paths)
+  documentUrl   String? // Path to PDF file
+  frontImageUrl String? // Not used for DigiLocker
+  backImageUrl  String? // Not used for DigiLocker
+  photoUrl      String? // Path to Aadhaar photo (extracted from XML)
+
+  // DigiLocker data
+  parsedData        Json? // Full Perfios API response
+  signatureVerified Boolean @default(false) // XML digital signature status
 
   // Verification
-  verificationStatus KycStatus @default(PENDING) // pending, verified, rejected
+  verificationStatus KycStatus @default(PENDING) // PENDING, PARTIAL, APPROVED, REJECTED, EXPIRED
   verifiedAt         DateTime?
 
   // Metadata for audit
   uploadedAt DateTime @default(now())
-  verifiedBy String? // Admin/API that verifies
+  verifiedBy String? // "DigiLocker" or admin ID
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 }
 
 enum KycStatus {
-  PENDING
-  APPROVED
-  REJECTED
+  PENDING // Not started or incomplete
+  PARTIAL // Only Aadhaar verified, PAN missing
+  APPROVED // Both Aadhaar and PAN verified
+  REJECTED // Name mismatch or validation failed
+  EXPIRED // Session expired before completion
 }
 
 enum KycType {
   AADHAR
   PAN
+}
+
+// KYC Session tracking for DigiLocker OAuth flow
+enum KYCSessionStatus {
+  PENDING // Link generated, waiting for user authentication
+  PROCESSING // User authenticated, downloading documents
+  COMPLETED // Successfully processed
+  FAILED // Error occurred
+  EXPIRED // Session timed out (>30 min)
+}
+
+model KYCSession {
+  id     String @id @default(cuid())
+  userId String
+  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  accessRequestId String // Perfios requestId from Step 1 (link generation)
+  oAuthState      String @unique // CSRF protection token (userId_timestamp_random)
+
+  status       KYCSessionStatus @default(PENDING)
+  errorMessage String? // Error details if status = FAILED
+
+  createdAt   DateTime  @default(now())
+  expiresAt   DateTime // createdAt + 30 minutes
+  completedAt DateTime? // When status changed to COMPLETED
+
+  @@index([userId])
+  @@index([oAuthState])
+  @@index([status])
+}
+
+// KYC Audit Log for compliance and debugging
+model KYCAuditLog {
+  id     String @id @default(cuid())
+  userId String
+  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  action   String // "LINK_GENERATED", "CALLBACK_RECEIVED", "DOCUMENTS_DOWNLOADED", "NAME_VALIDATION_SUCCESS", "NAME_VALIDATION_FAILED", "KYC_APPROVED", "KYC_REJECTED", etc.
+  status   String // "SUCCESS", "FAILED"
+  metadata Json? // Additional data: error messages, API responses, document details, etc.
+
+  ipAddress String? // User's IP address for security tracking
+  userAgent String? // Browser/device info
+
+  createdAt DateTime @default(now())
+
+  @@index([userId])
+  @@index([action])
+  @@index([createdAt])
 }
 
 //To be Reviewed with Piyush

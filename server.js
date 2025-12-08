@@ -3,6 +3,7 @@ dotenv.config();
 import app from './app.js'
 import db from './src/config/db.js';
 import { APP_CONFIG } from "./src/config/constants.js";
+import { initializeUploadDirectories } from './src/utils/file-storage.js';
 
 
 const {PORT} = APP_CONFIG;
@@ -12,8 +13,11 @@ async function startServer(){
         //connect to database
         await db.$connect();
         console.log('Connect to supabase PostgreSQL');
-        
-        //Server listening at port 
+
+        // Initialize KYC upload directories
+        initializeUploadDirectories();
+
+        //Server listening at port
         const server = app.listen(PORT,()=>{
             console.log(`Server running at https://localhost:${PORT}`);
         })
