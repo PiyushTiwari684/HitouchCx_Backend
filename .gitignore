@@ -6,3 +6,4 @@ uploads/
 
 /src/generated/prisma
 /docs/sam-merge.md
+sendgrid.env

@@ -20,6 +20,7 @@
     "@google/genai": "^1.25.0",
     "@huggingface/inference": "^4.13.3",
     "@prisma/client": "^6.19.0",
+    "@sendgrid/mail": "^8.1.6",
     "@vladmandic/face-api": "^1.7.15",
     "assemblyai": "^4.18.5",
     "axios": "^1.13.2",
