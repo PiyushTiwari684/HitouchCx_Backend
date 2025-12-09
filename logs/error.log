@@ -941,3 +941,99 @@ Argument `[32mcreatedBy[39m` is missing.
     at router (C:\Users\shama\HitouchCx_Backend\node_modules\router\index.js:60:12)
     at Layer.handleRequest (C:\Users\shama\HitouchCx_Backend\node_modules\router\lib\layer.js:152:17)
     at trimPrefix (C:\Users\shama\HitouchCx_Backend\node_modules\router\index.js:342:13)
+2025-12-09 13:33:48 [error]: SyntaxError: Expected ',' or '}' after property value in JSON at position 57 (line 1 column 58)
+    at JSON.parse (<anonymous>)
+    at parse (C:\Users\shama\HitouchCx_Backend\node_modules\body-parser\lib\types\json.js:77:19)
+    at C:\Users\shama\HitouchCx_Backend\node_modules\body-parser\lib\read.js:123:18
+    at AsyncResource.runInAsyncScope (node:async_hooks:214:14)
+    at invokeCallback (C:\Users\shama\HitouchCx_Backend\node_modules\raw-body\index.js:238:16)
+    at done (C:\Users\shama\HitouchCx_Backend\node_modules\raw-body\index.js:227:7)
+    at IncomingMessage.onEnd (C:\Users\shama\HitouchCx_Backend\node_modules\raw-body\index.js:287:7)
+    at IncomingMessage.emit (node:events:519:28)
+    at endReadableNT (node:internal/streams/readable:1698:12)
+    at process.processTicksAndRejections (node:internal/process/task_queues:90:21)
+2025-12-09 13:36:55 [error]: Error: Route not found: /api/v1/agent/cmi5uzu8w0001o420uoclv9oz/delete-photo
+    at notFoundHandler (file:///C:/Users/shama/HitouchCx_Backend/src/middlewares/errorHandler.js:115:17)
+    at Layer.handleRequest (C:\Users\shama\HitouchCx_Backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (C:\Users\shama\HitouchCx_Backend\node_modules\router\index.js:342:13)
+    at C:\Users\shama\HitouchCx_Backend\node_modules\router\index.js:297:9
+    at processParams (C:\Users\shama\HitouchCx_Backend\node_modules\router\index.js:582:12)
+    at next (C:\Users\shama\HitouchCx_Backend\node_modules\router\index.js:291:5)
+    at C:\Users\shama\HitouchCx_Backend\node_modules\router\index.js:688:15
+    at next (C:\Users\shama\HitouchCx_Backend\node_modules\router\index.js:276:14)
+    at C:\Users\shama\HitouchCx_Backend\node_modules\router\index.js:688:15
+    at next (C:\Users\shama\HitouchCx_Backend\node_modules\router\index.js:276:14)
+    at C:\Users\shama\HitouchCx_Backend\node_modules\router\index.js:688:15
+    at next (C:\Users\shama\HitouchCx_Backend\node_modules\router\index.js:276:14)
+    at Function.handle (C:\Users\shama\HitouchCx_Backend\node_modules\router\index.js:186:3)
+    at router (C:\Users\shama\HitouchCx_Backend\node_modules\router\index.js:60:12)
+    at Layer.handleRequest (C:\Users\shama\HitouchCx_Backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (C:\Users\shama\HitouchCx_Backend\node_modules\router\index.js:342:13)
+2025-12-09 14:09:16 [error]: Error: Route not found: /api/v1/agent/profile/contact/apply-update
+    at notFoundHandler (file:///C:/Users/shama/HitouchCx_Backend/src/middlewares/errorHandler.js:115:17)
+    at Layer.handleRequest (C:\Users\shama\HitouchCx_Backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (C:\Users\shama\HitouchCx_Backend\node_modules\router\index.js:342:13)
+    at C:\Users\shama\HitouchCx_Backend\node_modules\router\index.js:297:9
+    at processParams (C:\Users\shama\HitouchCx_Backend\node_modules\router\index.js:582:12)
+    at next (C:\Users\shama\HitouchCx_Backend\node_modules\router\index.js:291:5)
+    at C:\Users\shama\HitouchCx_Backend\node_modules\router\index.js:688:15
+    at next (C:\Users\shama\HitouchCx_Backend\node_modules\router\index.js:276:14)
+    at C:\Users\shama\HitouchCx_Backend\node_modules\router\index.js:688:15
+    at next (C:\Users\shama\HitouchCx_Backend\node_modules\router\index.js:276:14)
+    at C:\Users\shama\HitouchCx_Backend\node_modules\router\index.js:688:15
+    at next (C:\Users\shama\HitouchCx_Backend\node_modules\router\index.js:276:14)
+    at Function.handle (C:\Users\shama\HitouchCx_Backend\node_modules\router\index.js:186:3)
+    at router (C:\Users\shama\HitouchCx_Backend\node_modules\router\index.js:60:12)
+    at Layer.handleRequest (C:\Users\shama\HitouchCx_Backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (C:\Users\shama\HitouchCx_Backend\node_modules\router\index.js:342:13)
+2025-12-09 15:00:53 [error]: Error: Route not found: /api/v1/agent/agent-opportunities?agentId=cmi5uzu8w0001o420uoclv9oz&limit=10
+    at notFoundHandler (file:///C:/Users/shama/HitouchCx_Backend/src/middlewares/errorHandler.js:115:17)
+    at Layer.handleRequest (C:\Users\shama\HitouchCx_Backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (C:\Users\shama\HitouchCx_Backend\node_modules\router\index.js:342:13)
+    at C:\Users\shama\HitouchCx_Backend\node_modules\router\index.js:297:9
+    at processParams (C:\Users\shama\HitouchCx_Backend\node_modules\router\index.js:582:12)
+    at next (C:\Users\shama\HitouchCx_Backend\node_modules\router\index.js:291:5)
+    at C:\Users\shama\HitouchCx_Backend\node_modules\router\index.js:688:15
+    at next (C:\Users\shama\HitouchCx_Backend\node_modules\router\index.js:276:14)
+    at C:\Users\shama\HitouchCx_Backend\node_modules\router\index.js:688:15
+    at next (C:\Users\shama\HitouchCx_Backend\node_modules\router\index.js:276:14)
+    at C:\Users\shama\HitouchCx_Backend\node_modules\router\index.js:688:15
+    at next (C:\Users\shama\HitouchCx_Backend\node_modules\router\index.js:276:14)
+    at Function.handle (C:\Users\shama\HitouchCx_Backend\node_modules\router\index.js:186:3)
+    at router (C:\Users\shama\HitouchCx_Backend\node_modules\router\index.js:60:12)
+    at Layer.handleRequest (C:\Users\shama\HitouchCx_Backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (C:\Users\shama\HitouchCx_Backend\node_modules\router\index.js:342:13)
+2025-12-09 15:27:57 [error]: Error: Route not found: /api/v1/agent/cmi5uzu8w0001o420uoclv9oz
+    at notFoundHandler (file:///C:/Users/shama/HitouchCx_Backend/src/middlewares/errorHandler.js:115:17)
+    at Layer.handleRequest (C:\Users\shama\HitouchCx_Backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (C:\Users\shama\HitouchCx_Backend\node_modules\router\index.js:342:13)
+    at C:\Users\shama\HitouchCx_Backend\node_modules\router\index.js:297:9
+    at processParams (C:\Users\shama\HitouchCx_Backend\node_modules\router\index.js:582:12)
+    at next (C:\Users\shama\HitouchCx_Backend\node_modules\router\index.js:291:5)
+    at C:\Users\shama\HitouchCx_Backend\node_modules\router\index.js:688:15
+    at next (C:\Users\shama\HitouchCx_Backend\node_modules\router\index.js:276:14)
+    at C:\Users\shama\HitouchCx_Backend\node_modules\router\index.js:688:15
+    at next (C:\Users\shama\HitouchCx_Backend\node_modules\router\index.js:276:14)
+    at C:\Users\shama\HitouchCx_Backend\node_modules\router\index.js:688:15
+    at next (C:\Users\shama\HitouchCx_Backend\node_modules\router\index.js:276:14)
+    at Function.handle (C:\Users\shama\HitouchCx_Backend\node_modules\router\index.js:186:3)
+    at router (C:\Users\shama\HitouchCx_Backend\node_modules\router\index.js:60:12)
+    at Layer.handleRequest (C:\Users\shama\HitouchCx_Backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (C:\Users\shama\HitouchCx_Backend\node_modules\router\index.js:342:13)
+2025-12-09 15:40:11 [error]: Error: Route not found: /robots.txt
+    at notFoundHandler (file:///C:/Users/shama/HitouchCx_Backend/src/middlewares/errorHandler.js:115:17)
+    at Layer.handleRequest (C:\Users\shama\HitouchCx_Backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (C:\Users\shama\HitouchCx_Backend\node_modules\router\index.js:342:13)
+    at C:\Users\shama\HitouchCx_Backend\node_modules\router\index.js:297:9
+    at processParams (C:\Users\shama\HitouchCx_Backend\node_modules\router\index.js:582:12)
+    at next (C:\Users\shama\HitouchCx_Backend\node_modules\router\index.js:291:5)
+    at initialize (C:\Users\shama\HitouchCx_Backend\node_modules\passport\lib\middleware\initialize.js:98:5)
+    at Layer.handleRequest (C:\Users\shama\HitouchCx_Backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (C:\Users\shama\HitouchCx_Backend\node_modules\router\index.js:342:13)
+    at C:\Users\shama\HitouchCx_Backend\node_modules\router\index.js:297:9
+    at processParams (C:\Users\shama\HitouchCx_Backend\node_modules\router\index.js:582:12)
+    at next (C:\Users\shama\HitouchCx_Backend\node_modules\router\index.js:291:5)
+    at urlencodedParser (C:\Users\shama\HitouchCx_Backend\node_modules\body-parser\lib\types\urlencoded.js:68:7)
+    at Layer.handleRequest (C:\Users\shama\HitouchCx_Backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (C:\Users\shama\HitouchCx_Backend\node_modules\router\index.js:342:13)
+    at C:\Users\shama\HitouchCx_Backend\node_modules\router\index.js:297:9

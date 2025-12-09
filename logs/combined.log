@@ -2513,3 +2513,156 @@ Argument `[32mcreatedBy[39m` is missing.
 2025-12-09 12:44:08 [info]: ::1 - - [09/Dec/2025:07:14:08 +0000] "GET /api/v1/agent/agentInfo/cmi5uzu8w0001o420uoclv9oz HTTP/1.1" 400 45 "-" "PostmanRuntime/7.49.1"
 2025-12-09 12:44:48 [info]: ::1 - - [09/Dec/2025:07:14:48 +0000] "GET /api/v1/agent/agentInfo/cmi5uzu8w0001o420uoclv9oz HTTP/1.1" 200 826 "-" "PostmanRuntime/7.49.1"
 2025-12-09 12:46:38 [info]: ::1 - - [09/Dec/2025:07:16:38 +0000] "GET /api/v1/agent/agentInfo/cmi5uzu8w0001o420uoclv9oz HTTP/1.1" 200 826 "-" "PostmanRuntime/7.49.1"
+2025-12-09 13:33:48 [error]: SyntaxError: Expected ',' or '}' after property value in JSON at position 57 (line 1 column 58)
+    at JSON.parse (<anonymous>)
+    at parse (C:\Users\shama\HitouchCx_Backend\node_modules\body-parser\lib\types\json.js:77:19)
+    at C:\Users\shama\HitouchCx_Backend\node_modules\body-parser\lib\read.js:123:18
+    at AsyncResource.runInAsyncScope (node:async_hooks:214:14)
+    at invokeCallback (C:\Users\shama\HitouchCx_Backend\node_modules\raw-body\index.js:238:16)
+    at done (C:\Users\shama\HitouchCx_Backend\node_modules\raw-body\index.js:227:7)
+    at IncomingMessage.onEnd (C:\Users\shama\HitouchCx_Backend\node_modules\raw-body\index.js:287:7)
+    at IncomingMessage.emit (node:events:519:28)
+    at endReadableNT (node:internal/streams/readable:1698:12)
+    at process.processTicksAndRejections (node:internal/process/task_queues:90:21)
+2025-12-09 13:33:48 [info]: ::1 - - [09/Dec/2025:08:03:48 +0000] "POST /api/v1/auth/log-in HTTP/1.1" 400 65 "-" "PostmanRuntime/7.49.1"
+2025-12-09 13:33:55 [info]: ::1 - - [09/Dec/2025:08:03:55 +0000] "POST /api/v1/auth/log-in HTTP/1.1" 200 444 "-" "PostmanRuntime/7.49.1"
+2025-12-09 13:35:37 [info]: ::1 - - [09/Dec/2025:08:05:37 +0000] "POST /api/v1/agent/cmi5uzu8w0001o420uoclv9oz/upload-photo HTTP/1.1" 200 283 "-" "PostmanRuntime/7.49.1"
+2025-12-09 13:36:06 [info]: ::1 - - [09/Dec/2025:08:06:06 +0000] "POST /api/v1/agent/cmi5uzu8w0001o420uoclv9oz/upload-photo HTTP/1.1" 200 284 "-" "PostmanRuntime/7.49.1"
+2025-12-09 13:36:55 [error]: Error: Route not found: /api/v1/agent/cmi5uzu8w0001o420uoclv9oz/delete-photo
+    at notFoundHandler (file:///C:/Users/shama/HitouchCx_Backend/src/middlewares/errorHandler.js:115:17)
+    at Layer.handleRequest (C:\Users\shama\HitouchCx_Backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (C:\Users\shama\HitouchCx_Backend\node_modules\router\index.js:342:13)
+    at C:\Users\shama\HitouchCx_Backend\node_modules\router\index.js:297:9
+    at processParams (C:\Users\shama\HitouchCx_Backend\node_modules\router\index.js:582:12)
+    at next (C:\Users\shama\HitouchCx_Backend\node_modules\router\index.js:291:5)
+    at C:\Users\shama\HitouchCx_Backend\node_modules\router\index.js:688:15
+    at next (C:\Users\shama\HitouchCx_Backend\node_modules\router\index.js:276:14)
+    at C:\Users\shama\HitouchCx_Backend\node_modules\router\index.js:688:15
+    at next (C:\Users\shama\HitouchCx_Backend\node_modules\router\index.js:276:14)
+    at C:\Users\shama\HitouchCx_Backend\node_modules\router\index.js:688:15
+    at next (C:\Users\shama\HitouchCx_Backend\node_modules\router\index.js:276:14)
+    at Function.handle (C:\Users\shama\HitouchCx_Backend\node_modules\router\index.js:186:3)
+    at router (C:\Users\shama\HitouchCx_Backend\node_modules\router\index.js:60:12)
+    at Layer.handleRequest (C:\Users\shama\HitouchCx_Backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (C:\Users\shama\HitouchCx_Backend\node_modules\router\index.js:342:13)
+2025-12-09 13:36:55 [info]: ::1 - - [09/Dec/2025:08:06:55 +0000] "POST /api/v1/agent/cmi5uzu8w0001o420uoclv9oz/delete-photo HTTP/1.1" 404 99 "-" "PostmanRuntime/7.49.1"
+2025-12-09 13:37:06 [info]: ::1 - - [09/Dec/2025:08:07:06 +0000] "DELETE /api/v1/agent/cmi5uzu8w0001o420uoclv9oz/delete-photo HTTP/1.1" 200 63 "-" "PostmanRuntime/7.49.1"
+2025-12-09 13:47:05 [info]: 2401:4900:1c30:8fff::3f1:abf2 - - [09/Dec/2025:08:17:05 +0000] "POST /api/v1/auth/log-in HTTP/1.1" 200 444 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.0.0 Safari/537.36 Edg/143.0.0.0"
+2025-12-09 13:52:34 [info]: ::1 - - [09/Dec/2025:08:22:34 +0000] "POST /api/v1/agent/profile/contact/edit-request HTTP/1.1" 409 34 "-" "PostmanRuntime/7.49.1"
+2025-12-09 13:54:03 [info]: ::1 - - [09/Dec/2025:08:24:03 +0000] "POST /api/v1/agent/profile/contact/edit-request HTTP/1.1" 500 35 "-" "PostmanRuntime/7.49.1"
+2025-12-09 13:55:57 [info]: ::1 - - [09/Dec/2025:08:25:57 +0000] "POST /api/v1/agent/profile/contact/edit-request HTTP/1.1" 500 35 "-" "PostmanRuntime/7.49.1"
+2025-12-09 13:56:29 [info]: ::1 - - [09/Dec/2025:08:26:29 +0000] "POST /api/v1/agent/profile/contact/edit-request HTTP/1.1" 500 35 "-" "PostmanRuntime/7.49.1"
+2025-12-09 13:56:53 [info]: ::1 - - [09/Dec/2025:08:26:53 +0000] "POST /api/v1/agent/profile/contact/edit-request HTTP/1.1" 200 24 "-" "PostmanRuntime/7.49.1"
+2025-12-09 13:58:24 [info]: ::1 - - [09/Dec/2025:08:28:24 +0000] "POST /api/v1/agent/profile/contact/edit-request HTTP/1.1" 200 81 "-" "PostmanRuntime/7.49.1"
+2025-12-09 13:58:59 [info]: ::1 - - [09/Dec/2025:08:28:59 +0000] "POST /api/v1/agent/profile/contact/edit-request HTTP/1.1" 200 41 "-" "PostmanRuntime/7.49.1"
+2025-12-09 13:59:20 [info]: ::1 - - [09/Dec/2025:08:29:20 +0000] "POST /api/v1/agent/profile/contact/edit-request HTTP/1.1" 200 41 "-" "PostmanRuntime/7.49.1"
+2025-12-09 14:00:05 [info]: ::1 - - [09/Dec/2025:08:30:05 +0000] "POST /api/v1/agent/profile/contact/edit-request HTTP/1.1" 409 34 "-" "PostmanRuntime/7.49.1"
+2025-12-09 14:00:17 [info]: ::1 - - [09/Dec/2025:08:30:17 +0000] "POST /api/v1/agent/profile/contact/edit-request HTTP/1.1" 200 46 "-" "PostmanRuntime/7.49.1"
+2025-12-09 14:02:39 [info]: ::1 - - [09/Dec/2025:08:32:39 +0000] "POST /api/v1/agent/profile/contact/edit-request HTTP/1.1" 200 46 "-" "PostmanRuntime/7.49.1"
+2025-12-09 14:02:41 [info]: 2401:4900:1c30:8fff::3f1:abf2 - - [09/Dec/2025:08:32:41 +0000] "POST /api/v1/auth/log-in HTTP/1.1" 200 444 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.0.0 Safari/537.36 Edg/143.0.0.0"
+2025-12-09 14:08:17 [info]: ::1 - - [09/Dec/2025:08:38:17 +0000] "PATCH /api/v1/agent/profile/contact/apply-update HTTP/1.1" 400 38 "-" "PostmanRuntime/7.49.1"
+2025-12-09 14:08:25 [info]: ::1 - - [09/Dec/2025:08:38:25 +0000] "PATCH /api/v1/agent/profile/contact/apply-update HTTP/1.1" 200 50 "-" "PostmanRuntime/7.49.1"
+2025-12-09 14:08:57 [info]: ::1 - - [09/Dec/2025:08:38:57 +0000] "POST /api/v1/agent/profile/contact/edit-request HTTP/1.1" 200 46 "-" "PostmanRuntime/7.49.1"
+2025-12-09 14:09:16 [error]: Error: Route not found: /api/v1/agent/profile/contact/apply-update
+    at notFoundHandler (file:///C:/Users/shama/HitouchCx_Backend/src/middlewares/errorHandler.js:115:17)
+    at Layer.handleRequest (C:\Users\shama\HitouchCx_Backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (C:\Users\shama\HitouchCx_Backend\node_modules\router\index.js:342:13)
+    at C:\Users\shama\HitouchCx_Backend\node_modules\router\index.js:297:9
+    at processParams (C:\Users\shama\HitouchCx_Backend\node_modules\router\index.js:582:12)
+    at next (C:\Users\shama\HitouchCx_Backend\node_modules\router\index.js:291:5)
+    at C:\Users\shama\HitouchCx_Backend\node_modules\router\index.js:688:15
+    at next (C:\Users\shama\HitouchCx_Backend\node_modules\router\index.js:276:14)
+    at C:\Users\shama\HitouchCx_Backend\node_modules\router\index.js:688:15
+    at next (C:\Users\shama\HitouchCx_Backend\node_modules\router\index.js:276:14)
+    at C:\Users\shama\HitouchCx_Backend\node_modules\router\index.js:688:15
+    at next (C:\Users\shama\HitouchCx_Backend\node_modules\router\index.js:276:14)
+    at Function.handle (C:\Users\shama\HitouchCx_Backend\node_modules\router\index.js:186:3)
+    at router (C:\Users\shama\HitouchCx_Backend\node_modules\router\index.js:60:12)
+    at Layer.handleRequest (C:\Users\shama\HitouchCx_Backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (C:\Users\shama\HitouchCx_Backend\node_modules\router\index.js:342:13)
+2025-12-09 14:09:16 [info]: ::1 - - [09/Dec/2025:08:39:16 +0000] "POST /api/v1/agent/profile/contact/apply-update HTTP/1.1" 404 89 "-" "PostmanRuntime/7.49.1"
+2025-12-09 14:09:22 [info]: ::1 - - [09/Dec/2025:08:39:22 +0000] "PATCH /api/v1/agent/profile/contact/apply-update HTTP/1.1" 200 50 "-" "PostmanRuntime/7.49.1"
+2025-12-09 14:11:35 [info]: ::1 - - [09/Dec/2025:08:41:35 +0000] "POST /api/v1/auth/log-in HTTP/1.1" 200 444 "-" "PostmanRuntime/7.49.1"
+2025-12-09 14:12:30 [info]: ::1 - - [09/Dec/2025:08:42:30 +0000] "POST /api/v1/agent/profile/contact/edit-request HTTP/1.1" 200 46 "-" "PostmanRuntime/7.49.1"
+2025-12-09 14:13:16 [info]: ::1 - - [09/Dec/2025:08:43:16 +0000] "PATCH /api/v1/agent/profile/contact/apply-update HTTP/1.1" 200 50 "-" "PostmanRuntime/7.49.1"
+2025-12-09 14:15:45 [info]: ::1 - - [09/Dec/2025:08:45:45 +0000] "PATCH /api/v1/agent/profile/contact/apply-update HTTP/1.1" 200 50 "-" "PostmanRuntime/7.49.1"
+2025-12-09 14:16:22 [info]: ::1 - - [09/Dec/2025:08:46:22 +0000] "POST /api/v1/agent/profile/contact/edit-request HTTP/1.1" 200 46 "-" "PostmanRuntime/7.49.1"
+2025-12-09 14:16:40 [info]: ::1 - - [09/Dec/2025:08:46:40 +0000] "PATCH /api/v1/agent/profile/contact/apply-update HTTP/1.1" 200 50 "-" "PostmanRuntime/7.49.1"
+2025-12-09 14:17:06 [info]: ::1 - - [09/Dec/2025:08:47:06 +0000] "PATCH /api/v1/agent/profile/contact/apply-update HTTP/1.1" 200 50 "-" "PostmanRuntime/7.49.1"
+2025-12-09 14:17:44 [info]: ::1 - - [09/Dec/2025:08:47:44 +0000] "PATCH /api/v1/agent/profile/contact/apply-update HTTP/1.1" 200 70 "-" "PostmanRuntime/7.49.1"
+2025-12-09 15:00:53 [error]: Error: Route not found: /api/v1/agent/agent-opportunities?agentId=cmi5uzu8w0001o420uoclv9oz&limit=10
+    at notFoundHandler (file:///C:/Users/shama/HitouchCx_Backend/src/middlewares/errorHandler.js:115:17)
+    at Layer.handleRequest (C:\Users\shama\HitouchCx_Backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (C:\Users\shama\HitouchCx_Backend\node_modules\router\index.js:342:13)
+    at C:\Users\shama\HitouchCx_Backend\node_modules\router\index.js:297:9
+    at processParams (C:\Users\shama\HitouchCx_Backend\node_modules\router\index.js:582:12)
+    at next (C:\Users\shama\HitouchCx_Backend\node_modules\router\index.js:291:5)
+    at C:\Users\shama\HitouchCx_Backend\node_modules\router\index.js:688:15
+    at next (C:\Users\shama\HitouchCx_Backend\node_modules\router\index.js:276:14)
+    at C:\Users\shama\HitouchCx_Backend\node_modules\router\index.js:688:15
+    at next (C:\Users\shama\HitouchCx_Backend\node_modules\router\index.js:276:14)
+    at C:\Users\shama\HitouchCx_Backend\node_modules\router\index.js:688:15
+    at next (C:\Users\shama\HitouchCx_Backend\node_modules\router\index.js:276:14)
+    at Function.handle (C:\Users\shama\HitouchCx_Backend\node_modules\router\index.js:186:3)
+    at router (C:\Users\shama\HitouchCx_Backend\node_modules\router\index.js:60:12)
+    at Layer.handleRequest (C:\Users\shama\HitouchCx_Backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (C:\Users\shama\HitouchCx_Backend\node_modules\router\index.js:342:13)
+2025-12-09 15:00:53 [info]: ::1 - - [09/Dec/2025:09:30:53 +0000] "GET /api/v1/agent/agent-opportunities?agentId=cmi5uzu8w0001o420uoclv9oz&limit=10 HTTP/1.1" 404 123 "-" "PostmanRuntime/7.49.1"
+2025-12-09 15:01:07 [info]: ::1 - - [09/Dec/2025:09:31:07 +0000] "GET /api/v1/opportunity/agent-opportunities?agentId=cmi5uzu8w0001o420uoclv9oz&limit=10 HTTP/1.1" 500 56 "-" "PostmanRuntime/7.49.1"
+2025-12-09 15:02:59 [info]: ::1 - - [09/Dec/2025:09:32:59 +0000] "GET /api/v1/opportunity/agent-opportunities?agentId=cmi5uzu8w0001o420uoclv9oz&limit=10 HTTP/1.1" 500 56 "-" "PostmanRuntime/7.49.1"
+2025-12-09 15:03:57 [info]: ::1 - - [09/Dec/2025:09:33:57 +0000] "GET /api/v1/opportunity/agent-opportunities?agentId=cmi5uzu8w0001o420uoclv9oz&limit=10 HTTP/1.1" 500 56 "-" "PostmanRuntime/7.49.1"
+2025-12-09 15:05:16 [info]: ::1 - - [09/Dec/2025:09:35:16 +0000] "GET /api/v1/opportunity/agent-opportunities?agentId=cmi5uzu8w0001o420uoclv9oz&limit=10 HTTP/1.1" 200 - "-" "PostmanRuntime/7.49.1"
+2025-12-09 15:06:11 [info]: ::1 - - [09/Dec/2025:09:36:11 +0000] "GET /api/v1/opportunity/agent-opportunities?agentId=cmi5uzu8w0001o420uoclv9oz&limit=10 HTTP/1.1" 200 984 "-" "PostmanRuntime/7.49.1"
+2025-12-09 15:06:32 [info]: ::1 - - [09/Dec/2025:09:36:32 +0000] "GET /api/v1/opportunity/agent-opportunities?agentId=cmi5uzu8w0001o420uoclv9oz&limit=10 HTTP/1.1" 200 984 "-" "PostmanRuntime/7.49.1"
+2025-12-09 15:06:41 [info]: ::1 - - [09/Dec/2025:09:36:41 +0000] "GET /api/v1/opportunity/agent-opportunities?agentId=cmi5uzu8w0001o420uoclv9oz&limit=100 HTTP/1.1" 200 985 "-" "PostmanRuntime/7.49.1"
+2025-12-09 15:07:03 [info]: ::1 - - [09/Dec/2025:09:37:03 +0000] "GET /api/v1/opportunity/agent-opportunities?agentId=cmi5uzu8w0001o420uoclv9oz&limit=100 HTTP/1.1" 200 174 "-" "PostmanRuntime/7.49.1"
+2025-12-09 15:07:25 [info]: ::1 - - [09/Dec/2025:09:37:25 +0000] "GET /api/v1/opportunity/agent-opportunities?agentId=cmi5uzu8w0001o420uoclv9oz&limit=100 HTTP/1.1" 200 - "-" "PostmanRuntime/7.49.1"
+2025-12-09 15:07:42 [info]: ::1 - - [09/Dec/2025:09:37:42 +0000] "GET /api/v1/opportunity/agent-opportunities?agentId=cmi5uzu8w0001o420uoclv9oz&limit=100 HTTP/1.1" 200 - "-" "PostmanRuntime/7.49.1"
+2025-12-09 15:07:54 [info]: ::1 - - [09/Dec/2025:09:37:54 +0000] "GET /api/v1/opportunity/agent-opportunities?agentId=cmi5uzu8w0001o420uoclv9oz&limit=100 HTTP/1.1" 200 - "-" "PostmanRuntime/7.49.1"
+2025-12-09 15:08:02 [info]: ::1 - - [09/Dec/2025:09:38:02 +0000] "GET /api/v1/opportunity/agent-opportunities?agentId=cmi5uzu8w0001o420uoclv9oz&limit=100 HTTP/1.1" 200 - "-" "PostmanRuntime/7.49.1"
+2025-12-09 15:22:36 [info]: ::1 - - [09/Dec/2025:09:52:36 +0000] "GET /api/v1/opportunity/agent-opportunities?agentId=cmi5uzu8w0001o420uoclv9oz&limit=100 HTTP/1.1" 200 - "-" "PostmanRuntime/7.49.1"
+2025-12-09 15:27:57 [error]: Error: Route not found: /api/v1/agent/cmi5uzu8w0001o420uoclv9oz
+    at notFoundHandler (file:///C:/Users/shama/HitouchCx_Backend/src/middlewares/errorHandler.js:115:17)
+    at Layer.handleRequest (C:\Users\shama\HitouchCx_Backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (C:\Users\shama\HitouchCx_Backend\node_modules\router\index.js:342:13)
+    at C:\Users\shama\HitouchCx_Backend\node_modules\router\index.js:297:9
+    at processParams (C:\Users\shama\HitouchCx_Backend\node_modules\router\index.js:582:12)
+    at next (C:\Users\shama\HitouchCx_Backend\node_modules\router\index.js:291:5)
+    at C:\Users\shama\HitouchCx_Backend\node_modules\router\index.js:688:15
+    at next (C:\Users\shama\HitouchCx_Backend\node_modules\router\index.js:276:14)
+    at C:\Users\shama\HitouchCx_Backend\node_modules\router\index.js:688:15
+    at next (C:\Users\shama\HitouchCx_Backend\node_modules\router\index.js:276:14)
+    at C:\Users\shama\HitouchCx_Backend\node_modules\router\index.js:688:15
+    at next (C:\Users\shama\HitouchCx_Backend\node_modules\router\index.js:276:14)
+    at Function.handle (C:\Users\shama\HitouchCx_Backend\node_modules\router\index.js:186:3)
+    at router (C:\Users\shama\HitouchCx_Backend\node_modules\router\index.js:60:12)
+    at Layer.handleRequest (C:\Users\shama\HitouchCx_Backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (C:\Users\shama\HitouchCx_Backend\node_modules\router\index.js:342:13)
+2025-12-09 15:27:57 [info]: ::1 - - [09/Dec/2025:09:57:57 +0000] "GET /api/v1/agent/cmi5uzu8w0001o420uoclv9oz HTTP/1.1" 404 86 "-" "PostmanRuntime/7.49.1"
+2025-12-09 15:28:14 [info]: ::1 - - [09/Dec/2025:09:58:14 +0000] "GET /api/v1/agent/agentInfo/cmi5uzu8w0001o420uoclv9oz HTTP/1.1" 200 837 "-" "PostmanRuntime/7.49.1"
+2025-12-09 15:30:17 [info]: ::1 - - [09/Dec/2025:10:00:17 +0000] "GET /api/v1/agent/agentInfo/cmi5uzu8w0001o420uoclv9oz HTTP/1.1" 200 878 "-" "PostmanRuntime/7.49.1"
+2025-12-09 15:30:34 [info]: ::1 - - [09/Dec/2025:10:00:34 +0000] "GET /api/v1/agent/agentInfo/cmi5uzu8w0001o420uoclv9oz HTTP/1.1" 200 837 "-" "PostmanRuntime/7.49.1"
+2025-12-09 15:31:18 [info]: ::1 - - [09/Dec/2025:10:01:18 +0000] "GET /api/v1/agent/agentInfo/cmi5uzu8w0001o420uoclv9oz HTTP/1.1" 500 35 "-" "PostmanRuntime/7.49.1"
+2025-12-09 15:32:18 [info]: ::1 - - [09/Dec/2025:10:02:18 +0000] "GET /api/v1/agent/agentInfo/cmi5uzu8w0001o420uoclv9oz HTTP/1.1" 500 35 "-" "PostmanRuntime/7.49.1"
+2025-12-09 15:34:12 [info]: ::1 - - [09/Dec/2025:10:04:12 +0000] "GET /api/v1/agent/agentInfo/cmi5uzu8w0001o420uoclv9oz HTTP/1.1" 200 - "-" "PostmanRuntime/7.49.1"
+2025-12-09 15:36:01 [info]: ::1 - - [09/Dec/2025:10:06:01 +0000] "GET /api/v1/agent/agentInfo/cmi5uzu8w0001o420uoclv9oz HTTP/1.1" 200 - "-" "PostmanRuntime/7.49.1"
+2025-12-09 15:40:11 [error]: Error: Route not found: /robots.txt
+    at notFoundHandler (file:///C:/Users/shama/HitouchCx_Backend/src/middlewares/errorHandler.js:115:17)
+    at Layer.handleRequest (C:\Users\shama\HitouchCx_Backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (C:\Users\shama\HitouchCx_Backend\node_modules\router\index.js:342:13)
+    at C:\Users\shama\HitouchCx_Backend\node_modules\router\index.js:297:9
+    at processParams (C:\Users\shama\HitouchCx_Backend\node_modules\router\index.js:582:12)
+    at next (C:\Users\shama\HitouchCx_Backend\node_modules\router\index.js:291:5)
+    at initialize (C:\Users\shama\HitouchCx_Backend\node_modules\passport\lib\middleware\initialize.js:98:5)
+    at Layer.handleRequest (C:\Users\shama\HitouchCx_Backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (C:\Users\shama\HitouchCx_Backend\node_modules\router\index.js:342:13)
+    at C:\Users\shama\HitouchCx_Backend\node_modules\router\index.js:297:9
+    at processParams (C:\Users\shama\HitouchCx_Backend\node_modules\router\index.js:582:12)
+    at next (C:\Users\shama\HitouchCx_Backend\node_modules\router\index.js:291:5)
+    at urlencodedParser (C:\Users\shama\HitouchCx_Backend\node_modules\body-parser\lib\types\urlencoded.js:68:7)
+    at Layer.handleRequest (C:\Users\shama\HitouchCx_Backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (C:\Users\shama\HitouchCx_Backend\node_modules\router\index.js:342:13)
+    at C:\Users\shama\HitouchCx_Backend\node_modules\router\index.js:297:9
+2025-12-09 15:40:11 [info]: 66.249.74.65 - - [09/Dec/2025:10:10:11 +0000] "GET /robots.txt HTTP/1.1" 404 58 "-" "Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)"
+2025-12-09 15:50:35 [info]: ::1 - - [09/Dec/2025:10:20:35 +0000] "GET /api/v1/opportunity/agent-opportunities?agentId=cmi5uzu8w0001o420uoclv9oz&limit=10 HTTP/1.1" 200 - "-" "PostmanRuntime/7.49.1"
+2025-12-09 15:50:42 [info]: ::1 - - [09/Dec/2025:10:20:42 +0000] "GET /api/v1/opportunity/agent-opportunities?agentId=cmi5uzu8w0001o420uoclv9oz&limit=100 HTTP/1.1" 200 - "-" "PostmanRuntime/7.49.1"

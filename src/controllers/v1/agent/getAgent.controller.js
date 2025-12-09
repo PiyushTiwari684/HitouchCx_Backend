@@ -19,8 +19,14 @@ const getAgentById = async (req, res) => {
             phone: true,
             phoneVerified: true,
             status: true,
+            
           },
         },
+        qualifications: true, // include related qualifications
+        experiences: true, 
+        employment:true,
+
+        
       },
     });
 
@@ -44,6 +50,9 @@ const getAgentById = async (req, res) => {
           hasExperience: agent.hasExperience,
           isEmployed: agent.isEmployed,
           skills: agent.skills,
+          experiences:agent.experiences,
+          qualifications:agent.qualifications,
+          employment:agent.employment,
           languages: agent.languages,
           kycStatus: agent.kycStatus,
           createdAt: agent.createdAt,

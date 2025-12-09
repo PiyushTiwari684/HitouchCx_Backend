@@ -1,10 +1,11 @@
-import bcrypt from 'bcrypt'; 
-import prisma from '../../../config/db.js'; 
-import {sendEmailFromTwilio} from "../../../services/otp.service.js"
+import bcrypt from 'bcrypt';
+import prisma from '../../../config/db.js';
+import { sendEmailFromTwilio } from "../../../services/otp.service.js"
+import { sendPhoneOTP, verifyPhoneOTP } from "../../../services/otp.service.js"
 
 
 // Request OTPs for changing email/phone
- const requestEmailPhoneChange = async (req, res) => {
+const requestEmailPhoneChange = async (req, res) => {
   try {
     const userId = req.user?.id;
     if (!userId) return res.status(401).json({ message: 'Unauthorized' });
@@ -19,8 +20,8 @@ import {sendEmailFromTwilio} from "../../../services/otp.service.js"
 
     // Uniqueness pre-checks (avoid generating OTP for already taken values)
     if (normalizedEmail) {
-      const emailInUse = await prisma.user.findUnique({ where: { email: normalizedEmail }, select: { id: true,status:true } });
-      if (emailInUse && emailInUse.status=="ACTIVE") return res.status(409).json({ message: 'Email already in use' });
+      const emailInUse = await prisma.user.findUnique({ where: { email: normalizedEmail }, select: { id: true, status: true } });
+      if (emailInUse && emailInUse.status == "ACTIVE") return res.status(409).json({ message: 'Email already in use' });
     }
     if (normalizedPhone) {
       const phoneInUse = await prisma.user.findUnique({ where: { phone: normalizedPhone }, select: { id: true } });
@@ -46,35 +47,23 @@ import {sendEmailFromTwilio} from "../../../services/otp.service.js"
       });
       result.email = { target: normalizedEmail, otpId: emailOtp.id };
 
-      // TODO: send emailCode to normalizedEmail via your mailer
-      // await sendEmail(normalizedEmail, `Your verification code is ${emailCode}`);
-      sendEmailFromTwilio(emailCode,normalizedEmail,10)
+      sendEmailFromTwilio(emailCode, normalizedEmail, 10)
 
-      return res.json({targetMail:normalizedEmail,otpSent:emailCode})
     }
 
     // Phone OTP
     if (normalizedPhone) {
-      const phoneCode = genOtp();
-      const phoneOtp = await prisma.oTP.create({
-        data: {
-          code: phoneCode,
-          type: 'PHONE',
-          target: normalizedPhone,
-          userId,
-          expiresAt,
-        },
-      });
-      result.phone = { target: normalizedPhone, otpId: phoneOtp.id };
-
-      // TODO: send phoneCode to normalizedPhone via your SMS provider
-      // await sendSms(normalizedPhone, `Your verification code is ${phoneCode}`);
+      const otpStatus = await sendPhoneOTP(phone)
+      if (!otpStatus.sent) {
+        return res.json({ message: "Failed to send otp to phone"})
+      } 
     }
 
     return res.status(200).json({
       message: 'OTP(s) generated. Please verify.',
-      data: result,
     });
+
+
   } catch (err) {
     console.error('requestEmailPhoneChange error:', err);
     return res.status(500).json({ message: 'Internal server error' });
@@ -82,7 +71,7 @@ import {sendEmailFromTwilio} from "../../../services/otp.service.js"
 };
 
 // Verify OTPs and update contact details
- const updateEmailPhoneChange = async (req, res) => {
+const updateEmailPhoneChange = async (req, res) => {
   try {
     const userId = req.user?.id;
     if (!userId) return res.status(401).json({ message: 'Unauthorized' });
@@ -122,13 +111,11 @@ import {sendEmailFromTwilio} from "../../../services/otp.service.js"
       if (phoneInUse) return res.status(409).json({ message: 'Phone already in use' });
       if (!phoneOtpCode) return res.status(400).json({ message: 'phoneOtpCode is required' });
 
-      const phoneOtp = await prisma.oTP.findFirst({
-        where: { userId, type: 'PHONE', target: normalizedPhone, consumed: false },
-        orderBy: { createdAt: 'desc' },
-      });
-      if (!phoneOtp) return res.status(400).json({ message: 'No pending phone OTP found' });
-      if (phoneOtp.code !== String(phoneOtpCode)) return res.status(400).json({ message: 'Invalid phone OTP' });
-      if (phoneOtp.expiresAt <= now) return res.status(400).json({ message: 'Phone OTP expired' });
+      const otpStatus = verifyPhoneOTP(normalizedPhone,phoneOtpCode)
+
+      if(otpStatus.success){
+        return res.json({error:"Verified!!"})
+      }
 
       updates.phone = normalizedPhone;
     }
@@ -145,12 +132,7 @@ import {sendEmailFromTwilio} from "../../../services/otp.service.js"
           data: { consumed: true },
         });
       }
-      if (updates.phone) {
-        await tx.oTP.updateMany({
-          where: { userId, type: 'PHONE', target: updates.phone, consumed: false },
-          data: { consumed: true },
-        });
-      }
+
 
       await tx.user.update({
         where: { id: userId },
@@ -174,11 +156,11 @@ import {sendEmailFromTwilio} from "../../../services/otp.service.js"
 //Pending Phone change
 
 //Updating basic profile info of an agent
- const updateAgentProfile = async (req, res) => {
+const updateAgentProfile = async (req, res) => {
   try {
 
     const userId = req.user?.id;
-    
+
     //--Error when user is not logged in but trying to edit profile
     if (!userId) {
       return res.status(401).json({ message: 'Unauthorized' });
@@ -200,7 +182,7 @@ import {sendEmailFromTwilio} from "../../../services/otp.service.js"
       where: { id: userId },
       include: { agent: true },
     });
-     
+
     //--If user logged in but Database lost its information
     if (!user || !user.agent) {
       return res.status(404).json({ message: 'Agent profile not found' });
@@ -213,34 +195,34 @@ import {sendEmailFromTwilio} from "../../../services/otp.service.js"
     if (phone !== undefined) userUpdate.phone = phone;
 
     const agentUpdate = {};
-    if (firstName !== undefined){
-     const v = firstName == null ? null : String(firstName).trim();
+    if (firstName !== undefined) {
+      const v = firstName == null ? null : String(firstName).trim();
       if (v && v.length > 0) {
         agentUpdate.firstName = v;
       }
-    } 
-     if (middleName !== undefined) {
+    }
+    if (middleName !== undefined) {
       const v = middleName == null ? null : String(middleName).trim();
       if (v && v.length > 0) {
         agentUpdate.middleName = v;
       }
     }
-    if (lastName !== undefined){
-        const v = lastName==null?null:String(lastName).trim();
-        if(v && v.length>0){
-            agentUpdate.lastName = v;
-        }
+    if (lastName !== undefined) {
+      const v = lastName == null ? null : String(lastName).trim();
+      if (v && v.length > 0) {
+        agentUpdate.lastName = v;
+      }
     }
     if (profilePhotoUrl !== undefined && profilePhotoUrl !== null) agentUpdate.profilePhotoUrl = profilePhotoUrl;
 
-     if (address !== undefined) {
+    if (address !== undefined) {
       const normalized = address == null ? null : String(address).trim();
-       if (normalized && normalized.length > 0) {
+      if (normalized && normalized.length > 0) {
         agentUpdate.address = normalized;
       }
     }
     console.log("came here 1")
-    if (dob !== undefined && dob!==null) {
+    if (dob !== undefined && dob !== null) {
       const parsedDob = new Date(dob);
       if (isNaN(parsedDob.getTime())) {
         return res.status(400).json({ message: 'Invalid dob format. Use ISO date string.' });
@@ -249,7 +231,7 @@ import {sendEmailFromTwilio} from "../../../services/otp.service.js"
     }
     console.log("came here 2")
 
-     // If nothing to update, return current data
+    // If nothing to update, return current data
     const willUpdateUser = Object.keys(userUpdate).length > 0;
     const willUpdateAgent = Object.keys(agentUpdate).length > 0;
     if (!willUpdateUser && !willUpdateAgent) {
@@ -269,7 +251,7 @@ import {sendEmailFromTwilio} from "../../../services/otp.service.js"
         },
       });
     }
-   
+
     // Interactive transaction
     const { updatedUser, updatedAgent } = await prisma.$transaction(async (tx) => {
       let updatedUserLocal = user;
@@ -366,10 +348,10 @@ const updateAgentPassword = async (req, res) => {
 
     return res.status(200).json({ message: 'Password updated successfully', data: { id: updated.id } });
   }//catch error when user cant update password due to server error
-   catch (err) {
+  catch (err) {
     console.error('UpdateAgentPassword error:', err);
     return res.status(500).json({ message: 'Internal server error' });
   }
 };
 
-export {updateAgentProfile,updateAgentPassword,requestEmailPhoneChange,updateEmailPhoneChange}
+export { updateAgentProfile, updateAgentPassword, requestEmailPhoneChange, updateEmailPhoneChange }

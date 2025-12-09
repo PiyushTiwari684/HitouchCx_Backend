@@ -11,7 +11,7 @@ const WEIGHTS = {
   languageLevel: 10,     // derived from test results or heuristic
   languages: 5
 };
-
+const agentLanguageLevel = "C1"
 const LANGUAGE_LEVEL_MAP = { A1:1, A2:2, B1:3, B2:4, C1:5, C2:6 };
 
 /*
@@ -19,35 +19,35 @@ const LANGUAGE_LEVEL_MAP = { A1:1, A2:2, B1:3, B2:4, C1:5, C2:6 };
   (Placeholder: adapt after you add LanguageProficiencyTest model.)
   Expected shape: { level: 'B2' | 'C1' | ... }
 */
-async function fetchLanguageTests(agentId) {
-  // If model not yet created this will fail; we catch and return empty.
-  try {
-    if (!('languageProficiencyTest' in prisma)) return [];
-    return await prisma.languageProficiencyTest.findMany({
-      where: { agentId }
-    });
-  } catch {
-    return [];
-  }
-}
+// async function fetchLanguageTests(agentId) {
+//   // If model not yet created this will fail; we catch and return empty.
+//   try {
+//     if (!('languageProficiencyTest' in prisma)) return [];
+//     return await prisma.languageProficiencyTest.findMany({
+//       where: { agentId }
+//     });
+//   } catch {
+//     return [];
+//   }
+// }
 
 /*
   Decide agent language level:
   1. Use highest test level if tests exist.
   2. Else estimate: if has experiences -> C1 else B1.
 */
-function resolveAgentLanguageLevel(agent, tests) {
-  if (tests && tests.length) {
-    const levels = tests
-      .map(t => t.level)
-      .filter(l => LANGUAGE_LEVEL_MAP[l]);
-    if (levels.length) {
-      // Pick highest numeric level
-      return levels.sort((a, b) => LANGUAGE_LEVEL_MAP[b] - LANGUAGE_LEVEL_MAP[a])[0];
-    }
-  }
-  return agent.experiences.length > 0 ? 'C1' : 'B1';
-}
+// function resolveAgentLanguageLevel(agent, tests) {
+//   if (tests && tests.length) {
+//     const levels = tests
+//       .map(t => t.level)
+//       .filter(l => LANGUAGE_LEVEL_MAP[l]);
+//     if (levels.length) {
+//       // Pick highest numeric level
+//       return levels.sort((a, b) => LANGUAGE_LEVEL_MAP[b] - LANGUAGE_LEVEL_MAP[a])[0];
+//     }
+//   }
+//   return agent.experiences.length > 0 ? 'C1' : 'B1';
+// }
 
 /*
   Safe parse JSON fields.
@@ -123,9 +123,9 @@ function scoreOpportunity(agent, opportunity, agentLanguageLevel) {
   const skillRatio = requiredSkills.length === 0 ? 1 : matchedSkills / requiredSkills.length;
 
   //If skill ratio is less(according to our requirement) then stop the function
-  if (skillRatio < 0.5) {
+  if (skillRatio < 0.1) {
     breakdown.disqualified = true;
-    breakdown.reasons.push('Less than 50% required skills matched');
+    breakdown.reasons.push('Less than 10% required skills matched');
     return breakdown;
   }
   //Pushing the skill score match to the breakdown object
@@ -333,7 +333,8 @@ const agentOpportunities = async (req, res) => {
 
     // Score all
     const scored = opportunities.map(o => {
-      const breakdown = scoreOpportunity(agent, o, agentLanguageLevel);
+      
+      const breakdown = scoreOpportunity(agent, o, "C1");
       if (breakdown.disqualified) return null;
       return {
         id: o.id,
@@ -347,7 +348,7 @@ const agentOpportunities = async (req, res) => {
       };
     })
       .filter(Boolean)
-      .filter(r => r.score >= 60) // threshold
+      .filter(r => r.score >= 40) // threshold
       .sort((a, b) => b.score - a.score)
       .slice(0, Number(limit));
 
@@ -360,7 +361,7 @@ const agentOpportunities = async (req, res) => {
       meta: {
         limit: Number(limit),
         considered: opportunities.length,
-        threshold: 60
+        threshold: 40
       }
     });
   } catch (error) {
