@@ -122,6 +122,7 @@ model Agent {
   lastName   String?
   dob        DateTime
   address    String?
+  additionalInfo Json?
 
   //Bank Details (Essential for NEFT)
   bankAccountNumber String?

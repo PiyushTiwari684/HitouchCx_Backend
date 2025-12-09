@@ -12,7 +12,7 @@ import {
 import { getAgentById } from "../../../controllers/v1/agent/getAgent.controller.js";
 import { uploadProfilePhoto, uploadResume } from "../../../config/upload.config.js";
 import { extractResume } from "../../../controllers/v1/resume/resume.controller.js";
-import { updateAgentProfile,updateAgentPassword,requestEmailPhoneChange,updateEmailPhoneChange } from "../../../controllers/v1/agent/profile.controller.js";
+import { updateAgentProfile,updateAgentPassword,requestEmailPhoneChange,updateEmailPhoneChange,updateAgentInfo } from "../../../controllers/v1/agent/profile.controller.js";
 
 
 const router = express.Router();
@@ -40,6 +40,9 @@ router.post("/profile/contact/edit-request", authMiddleware, requestEmailPhoneCh
 
 //Update Email/Phone Changes
 router.patch("/profile/contact/apply-update", authMiddleware, updateEmailPhoneChange);
+
+//Update Professional/Addition Info of agent
+router.patch("/profile/extra-info",authMiddleware,updateAgentInfo)
 
 //Get Agent info
 router.get("/agentInfo/:id", getAgentById);
