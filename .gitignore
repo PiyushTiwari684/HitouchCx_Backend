@@ -3,6 +3,7 @@ node_modules/
 coverage/
 uploads/
 !uploads/.gitkeep
+logs/
 
 /src/generated/prisma
 /docs/sam-merge.md

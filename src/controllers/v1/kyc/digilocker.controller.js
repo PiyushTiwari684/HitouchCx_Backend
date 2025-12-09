@@ -1,45 +1,6 @@
-/**
- * DigiLocker Controller
- *
- * HTTP request handlers for DigiLocker KYC endpoints.
- * These controllers handle requests, call services, and format responses.
- *
- * @module controllers/v1/kyc/digilocker
- */
-
 import * as digilockerService from '../../../services/kyc/digilocker.service.js';
 import perfiosConfig from '../../../config/perfios.config.js';
 
-/**
- * Generate DigiLocker Link
- *
- * POST /api/v1/kyc/digilocker/generate-link
- *
- * Generates a DigiLocker OAuth authentication link for the user.
- * User must be authenticated (JWT required).
- *
- * @route POST /api/v1/kyc/digilocker/generate-link
- * @access Protected (requires JWT)
- * @body {string} consent - User consent ("Y")
- *
- * @example
- * Request:
- * POST /api/v1/kyc/digilocker/generate-link
- * Headers: { Authorization: "Bearer <token>" }
- * Body: { consent: "Y" }
- *
- * Response (200):
- * {
- *   success: true,
- *   data: {
- *     link: "https://digilocker.gov.in/oauth2/...",
- *     sessionId: "clx123",
- *     requestId: "uuid",
- *     expiresAt: "2024-01-01T12:30:00Z"
- *   },
- *   message: "DigiLocker link generated successfully"
- * }
- */
 export const generateDigiLockerLink = async (req, res) => {
   try {
     // Get user ID from JWT (set by authMiddleware)
@@ -90,28 +51,7 @@ export const generateDigiLockerLink = async (req, res) => {
   }
 };
 
-/**
- * DigiLocker Callback Handler
- *
- * GET /api/v1/kyc/digilocker/callback
- *
- * Handles the OAuth callback from DigiLocker after user authentication.
- * This is called by DigiLocker, not directly by the frontend.
- * Processes the callback, downloads documents, and redirects to frontend.
- *
- * @route GET /api/v1/kyc/digilocker/callback
- * @access Public (called by DigiLocker)
- * @query {string} code - Authorization code from DigiLocker
- * @query {string} state - OAuth state parameter (contains userId)
- * @query {string} [error] - Error code if user denied permission
- *
- * @example
- * DigiLocker redirects to:
- * GET /api/v1/kyc/digilocker/callback?code=ABC123&state=user123_1704...
- *
- * Or if user denied:
- * GET /api/v1/kyc/digilocker/callback?error=access_denied&state=user123_1704...
- */
+
 export const digilockerCallback = async (req, res) => {
   try {
     const { code, state, error } = req.query;
@@ -170,40 +110,6 @@ export const digilockerCallback = async (req, res) => {
   }
 };
 
-/**
- * Get KYC Status
- *
- * GET /api/v1/kyc/status
- *
- * Returns the current KYC verification status for the authenticated user.
- * Used by frontend to poll for completion after callback.
- *
- * @route GET /api/v1/kyc/status
- * @access Protected (requires JWT)
- *
- * @example
- * Request:
- * GET /api/v1/kyc/status
- * Headers: { Authorization: "Bearer <token>" }
- *
- * Response (200):
- * {
- *   success: true,
- *   data: {
- *     kycStatus: "APPROVED",
- *     kycCompleted: true,
- *     latestSession: {
- *       status: "COMPLETED",
- *       createdAt: "2024-01-01T10:00:00Z",
- *       completedAt: "2024-01-01T10:05:00Z"
- *     },
- *     documents: [
- *       { documentType: "AADHAR", verificationStatus: "APPROVED", ... },
- *       { documentType: "PAN", verificationStatus: "APPROVED", ... }
- *     ]
- *   }
- * }
- */
 export const getKYCStatus = async (req, res) => {
   try {
     // Get user ID from JWT
@@ -248,45 +154,7 @@ export const getKYCStatus = async (req, res) => {
   }
 };
 
-/**
- * Get KYC Documents
- *
- * GET /api/v1/kyc/documents
- *
- * Returns detailed document data for the authenticated user.
- * Includes extracted information from Aadhaar and PAN.
- *
- * @route GET /api/v1/kyc/documents
- * @access Protected (requires JWT)
- *
- * @example
- * Request:
- * GET /api/v1/kyc/documents
- * Headers: { Authorization: "Bearer <token>" }
- *
- * Response (200):
- * {
- *   success: true,
- *   data: {
- *     aadhaar: {
- *       name: "Rajesh Kumar",
- *       number: "XXXX-XXXX-1234",
- *       dob: "1990-01-01",
- *       gender: "M",
- *       address: { ... },
- *       photoUrl: "/uploads/kyc/aadhaar/...",
- *       verifiedAt: "2024-01-01T10:00:00Z"
- *     },
- *     pan: {
- *       name: "RAJESH KUMAR",
- *       number: "ABCDE1234F",
- *       dob: "01/01/1990",
- *       status: "A",
- *       verifiedAt: "2024-01-01T10:00:00Z"
- *     }
- *   }
- * }
- */
+
 export const getDocuments = async (req, res) => {
   try {
     // Get user ID from JWT
