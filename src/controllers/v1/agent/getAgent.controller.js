@@ -1,75 +1,60 @@
-import prisma from '../../../config/db.js'; 
+import prisma from '../../../config/db.js';
 
-
+// Get agent info by ID
 const getAgentById = async (req, res) => {
   try {
-    const { agentId } = req.params;
+    const agentId = req.params?.id;
+    if (!agentId) {
+      return res.status(400).json({ message: 'agentId (params.id) is required' });
+    }
 
     const agent = await prisma.agent.findUnique({
       where: { id: agentId },
-      select: {
-        id: true,
-        firstName: true,
-        middleName: true,
-        lastName: true,
-        dob: true,
-        profilePhotoUrl: true,
-        
-        // Shift & Availability
-        preferredShift: true,
-        hoursPerDay: true,
-        
-        // Skills & Languages
-        skills: true,
-        languages: true,
-        
-        // Experience & Employment
-        hasExperience: true,
-        isEmployed: true,
-        
-        // KYC Status
-        kycStatus: true,
-        assessedCandidate:true,
-
-        //Gig Application
-        GigApplication:{
-          select:{
-            selectedGig:{
-              select:{
-                activityLogs:true
-              }
-            }
-          }
+      include: {
+        user: {
+          select: {
+            id: true,
+            email: true,
+            emailVerified: true,
+            phone: true,
+            phoneVerified: true,
+            status: true,
+          },
         },
-        
-        // Timestamps
-        createdAt: true,
-        updatedAt: true,
-        
-      }
+      },
     });
 
     if (!agent) {
-      return res.status(404).json({
-        success: false,
-        error: 'Agent not found'
-      });
+      return res.status(404).json({ message: 'Agent not found' });
     }
 
     return res.status(200).json({
-      success: true,
+      message: 'Agent fetched',
       data: {
-        agent
-      }
+        agent: {
+          id: agent.id,
+          firstName: agent.firstName,
+          middleName: agent.middleName,
+          lastName: agent.lastName,
+          dob: agent.dob,
+          address: agent.address,
+          profilePhotoUrl: agent.profilePhotoUrl,
+          preferredShift: agent.preferredShift,
+          hoursPerDay: agent.hoursPerDay,
+          hasExperience: agent.hasExperience,
+          isEmployed: agent.isEmployed,
+          skills: agent.skills,
+          languages: agent.languages,
+          kycStatus: agent.kycStatus,
+          createdAt: agent.createdAt,
+          updatedAt: agent.updatedAt,
+        },
+        user: agent.user,
+      },
     });
-
-  } catch (error) {
-    console.error('Error fetching agent:', error);
-    return res.status(500).json({
-      success: false,
-      error: 'Failed to fetch agent information',
-      message: error.message
-    });
+  } catch (err) {
+    console.error('getAgentById error:', err);
+    return res.status(500).json({ message: 'Internal server error' });
   }
 };
 

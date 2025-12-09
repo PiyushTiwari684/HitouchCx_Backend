@@ -807,3 +807,137 @@ Foreign key constraint violated on the constraint: `assessments_createdById_fkey
     at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
     at async o (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\@prisma\client\runtime\binary.js:267:9560)
     at async file:///C:/Users/tiwar/Desktop/HitouchCX_Projects/Hitouch_Project/HitouchCx_Backend/src/controllers/v1/proctoring-assessment/assessment.controller.js:47:22
+2025-12-08 22:51:21 [error]: Error: Route not found: /favicon.ico
+    at notFoundHandler (file:///C:/Users/shama/HitouchCx_Backend/src/middlewares/errorHandler.js:115:17)
+    at Layer.handleRequest (C:\Users\shama\HitouchCx_Backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (C:\Users\shama\HitouchCx_Backend\node_modules\router\index.js:342:13)
+    at C:\Users\shama\HitouchCx_Backend\node_modules\router\index.js:297:9
+    at processParams (C:\Users\shama\HitouchCx_Backend\node_modules\router\index.js:582:12)
+    at next (C:\Users\shama\HitouchCx_Backend\node_modules\router\index.js:291:5)
+    at initialize (C:\Users\shama\HitouchCx_Backend\node_modules\passport\lib\middleware\initialize.js:98:5)
+    at Layer.handleRequest (C:\Users\shama\HitouchCx_Backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (C:\Users\shama\HitouchCx_Backend\node_modules\router\index.js:342:13)
+    at C:\Users\shama\HitouchCx_Backend\node_modules\router\index.js:297:9
+    at processParams (C:\Users\shama\HitouchCx_Backend\node_modules\router\index.js:582:12)
+    at next (C:\Users\shama\HitouchCx_Backend\node_modules\router\index.js:291:5)
+    at urlencodedParser (C:\Users\shama\HitouchCx_Backend\node_modules\body-parser\lib\types\urlencoded.js:68:7)
+    at Layer.handleRequest (C:\Users\shama\HitouchCx_Backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (C:\Users\shama\HitouchCx_Backend\node_modules\router\index.js:342:13)
+    at C:\Users\shama\HitouchCx_Backend\node_modules\router\index.js:297:9
+2025-12-09 10:20:11 [error]: Error: Route not found: /robots.txt
+    at notFoundHandler (file:///C:/Users/shama/HitouchCx_Backend/src/middlewares/errorHandler.js:115:17)
+    at Layer.handleRequest (C:\Users\shama\HitouchCx_Backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (C:\Users\shama\HitouchCx_Backend\node_modules\router\index.js:342:13)
+    at C:\Users\shama\HitouchCx_Backend\node_modules\router\index.js:297:9
+    at processParams (C:\Users\shama\HitouchCx_Backend\node_modules\router\index.js:582:12)
+    at next (C:\Users\shama\HitouchCx_Backend\node_modules\router\index.js:291:5)
+    at initialize (C:\Users\shama\HitouchCx_Backend\node_modules\passport\lib\middleware\initialize.js:98:5)
+    at Layer.handleRequest (C:\Users\shama\HitouchCx_Backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (C:\Users\shama\HitouchCx_Backend\node_modules\router\index.js:342:13)
+    at C:\Users\shama\HitouchCx_Backend\node_modules\router\index.js:297:9
+    at processParams (C:\Users\shama\HitouchCx_Backend\node_modules\router\index.js:582:12)
+    at next (C:\Users\shama\HitouchCx_Backend\node_modules\router\index.js:291:5)
+    at urlencodedParser (C:\Users\shama\HitouchCx_Backend\node_modules\body-parser\lib\types\urlencoded.js:68:7)
+    at Layer.handleRequest (C:\Users\shama\HitouchCx_Backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (C:\Users\shama\HitouchCx_Backend\node_modules\router\index.js:342:13)
+    at C:\Users\shama\HitouchCx_Backend\node_modules\router\index.js:297:9
+2025-12-09 11:05:14 [error]: PrismaClientValidationError: 
+[31mInvalid [1m`prisma.assessment.create()`[22m invocation:[39m
+
+{
+  data: {
+    title: "LANGUAGE Proficiency Test",
+    assessmentType: "LANGUAGE",
+    status: "DRAFT",
+    createdById: undefined,
+    totalDuration: 45,
+[32m+[39m   [32mcreatedBy[39m[32m: [39m[32m{[39m
+[32m[2m+[22m[39m     [32m[2mcreate: SuperAdminCreateWithoutCreatedAssessmentsInput | SuperAdminUncheckedCreateWithoutCreatedAssessmentsInput[22m[39m,
+[32m[2m+[22m[39m     [32m[2mconnectOrCreate: SuperAdminCreateOrConnectWithoutCreatedAssessmentsInput[22m[39m,
+[32m[2m+[22m[39m     [32m[2mconnect: SuperAdminWhereUniqueInput[22m[39m
+[32m+[39m   [32m}[39m
+  }
+}
+
+Argument `[32mcreatedBy[39m` is missing.
+    at oa (C:\Users\shama\HitouchCx_Backend\node_modules\@prisma\client\runtime\binary.js:156:1375)
+    at bl.handleRequestError (C:\Users\shama\HitouchCx_Backend\node_modules\@prisma\client\runtime\binary.js:258:6913)
+    at bl.handleAndLogRequestError (C:\Users\shama\HitouchCx_Backend\node_modules\@prisma\client\runtime\binary.js:258:6594)
+    at bl.request (C:\Users\shama\HitouchCx_Backend\node_modules\@prisma\client\runtime\binary.js:258:6301)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async o (C:\Users\shama\HitouchCx_Backend\node_modules\@prisma\client\runtime\binary.js:267:9560)
+    at async file:///C:/Users/shama/HitouchCx_Backend/src/controllers/v1/proctoring-assessment/assessment.controller.js:47:22
+2025-12-09 11:34:15 [error]: Error: Not allowed by CORS
+    at origin (file:///C:/Users/shama/HitouchCx_Backend/app.js:31:21)
+    at C:\Users\shama\HitouchCx_Backend\node_modules\cors\lib\index.js:219:13
+    at optionsCallback (C:\Users\shama\HitouchCx_Backend\node_modules\cors\lib\index.js:199:9)
+    at corsMiddleware (C:\Users\shama\HitouchCx_Backend\node_modules\cors\lib\index.js:204:7)
+    at Layer.handleRequest (C:\Users\shama\HitouchCx_Backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (C:\Users\shama\HitouchCx_Backend\node_modules\router\index.js:342:13)
+    at C:\Users\shama\HitouchCx_Backend\node_modules\router\index.js:297:9
+    at processParams (C:\Users\shama\HitouchCx_Backend\node_modules\router\index.js:582:12)
+    at next (C:\Users\shama\HitouchCx_Backend\node_modules\router\index.js:291:5)
+    at Function.handle (C:\Users\shama\HitouchCx_Backend\node_modules\router\index.js:186:3)
+    at Function.handle (C:\Users\shama\HitouchCx_Backend\node_modules\express\lib\application.js:177:15)
+    at Server.app (C:\Users\shama\HitouchCx_Backend\node_modules\express\lib\express.js:38:9)
+    at Server.emit (node:events:519:28)
+    at parserOnIncoming (node:_http_server:1173:12)
+    at HTTPParser.parserOnHeadersComplete (node:_http_common:121:17)
+2025-12-09 11:36:46 [error]: Error: Route not found: /api/v1/profile/contact/apply-update
+    at notFoundHandler (file:///C:/Users/shama/HitouchCx_Backend/src/middlewares/errorHandler.js:115:17)
+    at Layer.handleRequest (C:\Users\shama\HitouchCx_Backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (C:\Users\shama\HitouchCx_Backend\node_modules\router\index.js:342:13)
+    at C:\Users\shama\HitouchCx_Backend\node_modules\router\index.js:297:9
+    at processParams (C:\Users\shama\HitouchCx_Backend\node_modules\router\index.js:582:12)
+    at next (C:\Users\shama\HitouchCx_Backend\node_modules\router\index.js:291:5)
+    at C:\Users\shama\HitouchCx_Backend\node_modules\router\index.js:688:15
+    at next (C:\Users\shama\HitouchCx_Backend\node_modules\router\index.js:276:14)
+    at C:\Users\shama\HitouchCx_Backend\node_modules\router\index.js:688:15
+    at next (C:\Users\shama\HitouchCx_Backend\node_modules\router\index.js:276:14)
+    at Function.handle (C:\Users\shama\HitouchCx_Backend\node_modules\router\index.js:186:3)
+    at router (C:\Users\shama\HitouchCx_Backend\node_modules\router\index.js:60:12)
+    at Layer.handleRequest (C:\Users\shama\HitouchCx_Backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (C:\Users\shama\HitouchCx_Backend\node_modules\router\index.js:342:13)
+    at C:\Users\shama\HitouchCx_Backend\node_modules\router\index.js:297:9
+    at processParams (C:\Users\shama\HitouchCx_Backend\node_modules\router\index.js:582:12)
+2025-12-09 11:37:04 [error]: Error: Route not found: /api/v1/profile/contact/edit-request
+    at notFoundHandler (file:///C:/Users/shama/HitouchCx_Backend/src/middlewares/errorHandler.js:115:17)
+    at Layer.handleRequest (C:\Users\shama\HitouchCx_Backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (C:\Users\shama\HitouchCx_Backend\node_modules\router\index.js:342:13)
+    at C:\Users\shama\HitouchCx_Backend\node_modules\router\index.js:297:9
+    at processParams (C:\Users\shama\HitouchCx_Backend\node_modules\router\index.js:582:12)
+    at next (C:\Users\shama\HitouchCx_Backend\node_modules\router\index.js:291:5)
+    at C:\Users\shama\HitouchCx_Backend\node_modules\router\index.js:688:15
+    at next (C:\Users\shama\HitouchCx_Backend\node_modules\router\index.js:276:14)
+    at C:\Users\shama\HitouchCx_Backend\node_modules\router\index.js:688:15
+    at next (C:\Users\shama\HitouchCx_Backend\node_modules\router\index.js:276:14)
+    at Function.handle (C:\Users\shama\HitouchCx_Backend\node_modules\router\index.js:186:3)
+    at router (C:\Users\shama\HitouchCx_Backend\node_modules\router\index.js:60:12)
+    at Layer.handleRequest (C:\Users\shama\HitouchCx_Backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (C:\Users\shama\HitouchCx_Backend\node_modules\router\index.js:342:13)
+    at C:\Users\shama\HitouchCx_Backend\node_modules\router\index.js:297:9
+    at processParams (C:\Users\shama\HitouchCx_Backend\node_modules\router\index.js:582:12)
+2025-12-09 12:00:46 [error]: Error [ERR_HTTP_HEADERS_SENT]: Cannot set headers after they are sent to the client
+    at ServerResponse.setHeader (node:_http_outgoing:700:11)
+    at ServerResponse.header (C:\Users\shama\HitouchCx_Backend\node_modules\express\lib\response.js:684:10)
+    at ServerResponse.send (C:\Users\shama\HitouchCx_Backend\node_modules\express\lib\response.js:161:12)
+    at ServerResponse.json (C:\Users\shama\HitouchCx_Backend\node_modules\express\lib\response.js:250:15)
+    at requestOtp (file:///C:/Users/shama/HitouchCx_Backend/src/controllers/v1/auth/otp.controller.js:82:25)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+2025-12-09 12:05:19 [error]: Error: Route not found: /api/v1/agent/profile/contact/apply-update
+    at notFoundHandler (file:///C:/Users/shama/HitouchCx_Backend/src/middlewares/errorHandler.js:115:17)
+    at Layer.handleRequest (C:\Users\shama\HitouchCx_Backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (C:\Users\shama\HitouchCx_Backend\node_modules\router\index.js:342:13)
+    at C:\Users\shama\HitouchCx_Backend\node_modules\router\index.js:297:9
+    at processParams (C:\Users\shama\HitouchCx_Backend\node_modules\router\index.js:582:12)
+    at next (C:\Users\shama\HitouchCx_Backend\node_modules\router\index.js:291:5)
+    at C:\Users\shama\HitouchCx_Backend\node_modules\router\index.js:688:15
+    at next (C:\Users\shama\HitouchCx_Backend\node_modules\router\index.js:276:14)
+    at C:\Users\shama\HitouchCx_Backend\node_modules\router\index.js:688:15
+    at next (C:\Users\shama\HitouchCx_Backend\node_modules\router\index.js:276:14)
+    at C:\Users\shama\HitouchCx_Backend\node_modules\router\index.js:688:15
+    at next (C:\Users\shama\HitouchCx_Backend\node_modules\router\index.js:276:14)
+    at Function.handle (C:\Users\shama\HitouchCx_Backend\node_modules\router\index.js:186:3)
+    at router (C:\Users\shama\HitouchCx_Backend\node_modules\router\index.js:60:12)
+    at Layer.handleRequest (C:\Users\shama\HitouchCx_Backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (C:\Users\shama\HitouchCx_Backend\node_modules\router\index.js:342:13)

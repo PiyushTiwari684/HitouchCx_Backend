@@ -81,8 +81,6 @@ import {sendEmailFromTwilio} from "../../../services/otp.service.js"
   }
 };
 
-
-
 // Verify OTPs and update contact details
  const updateEmailPhoneChange = async (req, res) => {
   try {
@@ -172,6 +170,8 @@ import {sendEmailFromTwilio} from "../../../services/otp.service.js"
     return res.status(500).json({ message: 'Internal server error' });
   }
 }
+
+//Pending Phone change
 
 //Updating basic profile info of an agent
  const updateAgentProfile = async (req, res) => {

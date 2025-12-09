@@ -13,6 +13,38 @@ import logger from "./src/utils/logger.js";
 
 const app = express();
 
+// Trust only one hop (ngrok) or local networks
+app.set('trust proxy', 1); // one reverse proxy hop (ngrok)
+
+const corsOptions = {
+  origin: (origin, callback) => {
+    const allowedLocal = [
+      "http://localhost:5173",
+      "http://localhost:3000",
+      "https://localhost:5173",
+      "https://localhost:3000",
+    ];
+    const isNgrok = origin && /https:\/\/[a-z0-9-]+\.ngrok(-free)?\.(dev|app|io)/i.test(origin);
+    if (!origin || allowedLocal.includes(origin) || isNgrok) {
+      return callback(null, true);
+    }
+    return callback(new Error("Not allowed by CORS"));
+  },
+  credentials: true,
+  methods: ["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"],
+  allowedHeaders: [
+    "Content-Type",
+    "Authorization",
+    "ngrok-skip-browser-warning", // add this
+  ],
+  exposedHeaders: ["Content-Range", "X-Content-Range"],
+};
+
+app.use(cors(corsOptions));
+// Handle all preflight OPTIONS (Express v5)
+app.options(/.*/, cors(corsOptions));
+
+
 // ========== SECURITY MIDDLEWARE ==========
 app.use(
   helmet({
