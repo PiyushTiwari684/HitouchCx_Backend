@@ -5,21 +5,7 @@ import prisma from "../../config/db.js";
  * Handles all candidate-related business logic
  */
 export async function getOrCreateCandidate(agentId) {
-  // Step 1: Try to find existing candidate
-  let candidate = await prisma.candidate.findFirst({
-    where: { agentId }
-  });
-
-  // Step 2: If candidate exists, return it
-  if (candidate) {
-    console.log(`[CandidateService] Using existing candidate: ${candidate.id}`);
-    return candidate;
-  }
-
-  // Step 3: Candidate doesn't exist, need to create one from agent data
-  console.log(`[CandidateService] Creating new candidate for agentId: ${agentId}`);
-
-  // Step 4: Fetch agent details with user info
+  // Step 1: Fetch agent details with user info first
   const agent = await prisma.agent.findUnique({
     where: { id: agentId },
     include: {
@@ -31,12 +17,44 @@ export async function getOrCreateCandidate(agentId) {
     },
   });
 
-  // Step 5: Validate agent exists
+  // Step 2: Validate agent exists
   if (!agent) {
     throw new Error("Agent profile not found. Please complete registration first.");
   }
 
-  // Step 6: Create candidate record (Agent → Candidate transition)
+  // Step 3: Try to find existing candidate by agentId OR email
+  let candidate = await prisma.candidate.findFirst({
+    where: {
+      OR: [
+        { agentId: agentId },
+        { email: agent.user.email }
+      ]
+    }
+  });
+
+  // Step 4: If candidate exists, check if it needs to be updated
+  if (candidate) {
+    console.log(`[CandidateService] Found existing candidate: ${candidate.id}`);
+
+    // If candidate exists but has different agentId, update it
+    if (candidate.agentId !== agentId) {
+      console.log(`[CandidateService] Updating candidate agentId from ${candidate.agentId} to ${agentId}`);
+      candidate = await prisma.candidate.update({
+        where: { id: candidate.id },
+        data: {
+          agentId: agentId,
+          firstName: agent.firstName,
+          lastName: agent.lastName || "",
+        },
+      });
+    }
+
+    return candidate;
+  }
+
+  // Step 5: Candidate doesn't exist, create new one
+  console.log(`[CandidateService] Creating new candidate for agentId: ${agentId}`);
+
   candidate = await prisma.candidate.create({
     data: {
       agentId: agentId,
