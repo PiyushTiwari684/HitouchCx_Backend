@@ -26,8 +26,6 @@ export async function getOrCreateCandidate(agentId) {
       user: {
         select: {
           email: true,
-          firstName: true,
-          lastName: true,
         },
       },
     },
@@ -38,17 +36,17 @@ export async function getOrCreateCandidate(agentId) {
     throw new Error("Agent profile not found. Please complete registration first.");
   }
 
-  // Step 6: Create candidate record (Agent � Candidate transition)
+  // Step 6: Create candidate record (Agent → Candidate transition)
   candidate = await prisma.candidate.create({
     data: {
       agentId: agentId,
       email: agent.user.email,
-      firstName: agent.user.firstName || agent.firstName,
-      lastName: agent.user.lastName || agent.lastName || "",
+      firstName: agent.firstName, // Get from Agent model, not User model
+      lastName: agent.lastName || "", // Get from Agent model, not User model
     },
   });
 
-  console.log(` [CandidateService] Candidate created: ${candidate.id}`);
+  console.log(`✅ [CandidateService] Candidate created: ${candidate.id}`);
   return candidate;
 }
 
@@ -70,19 +68,9 @@ export async function getOrCreateAgent(userId) {
     return user.agent.id;
   }
 
-  // Step 4: Create new agent for this user
-  console.log(`[CandidateService] Creating new agent for user: ${userId}`);
-  const newAgent = await prisma.agent.create({
-    data: {
-      userId: user.id,
-      firstName: user.firstName || "User",
-      lastName: user.lastName || "",
-      dob: new Date("2000-01-01"), // Default DOB, can be updated later
-    },
-  });
-
-  console.log(` [CandidateService] Agent created: ${newAgent.id}`);
-  return newAgent.id;
+  // Step 4: Agent doesn't exist - user needs to complete profile registration first
+  console.log(`[CandidateService] Agent profile not found for user: ${userId}`);
+  throw new Error("Agent profile not found. Please complete your profile registration with all required details (firstName, lastName, DOB) before taking the assessment.");
 }
 
 export async function verifyCandidateOwnership(candidateId, agentId) {

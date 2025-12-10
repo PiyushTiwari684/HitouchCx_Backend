@@ -1107,3 +1107,10 @@ Unique constraint failed on the fields: (`sessionId`)
     at Layer.handleRequest (C:\Users\shama\HitouchCx_Backend\node_modules\router\lib\layer.js:152:17)
     at trimPrefix (C:\Users\shama\HitouchCx_Backend\node_modules\router\index.js:342:13)
 >>>>>>> c00be584a0cf0b7bc220e578703ef2e7454b8905
+2025-12-10 11:37:09 [error]: Error [ERR_HTTP_HEADERS_SENT]: Cannot set headers after they are sent to the client
+    at ServerResponse.setHeader (node:_http_outgoing:700:11)
+    at ServerResponse.header (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\express\lib\response.js:684:10)
+    at ServerResponse.send (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\express\lib\response.js:161:12)
+    at ServerResponse.json (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\express\lib\response.js:250:15)
+    at requestOtp (file:///C:/Users/tiwar/Desktop/HitouchCX_Projects/Hitouch_Project/HitouchCx_Backend/src/controllers/v1/auth/otp.controller.js:82:25)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
