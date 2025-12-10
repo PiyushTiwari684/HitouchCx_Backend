@@ -8,3 +8,4 @@ logs/
 /src/generated/prisma
 /docs/sam-merge.md
 sendgrid.env
+/logs/combined.log
