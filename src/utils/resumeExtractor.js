@@ -68,12 +68,32 @@ export async function extractWithGemini(text, maxRetries = 3) {
 
       console.log(`Gemini API attempt ${attempt}/${maxRetries}`);
 
-      const prompt = `
-        Extract the following fields from this resume text and return a JSON object with keys:
-        firstName, lastName, email, phone, bio, experience, education, skills.
-        Resume text:
-        ${text}
-      `;
+      const prompt = `You are a resume parser. Extract information from the resume text below and return a JSON object.
+
+IMPORTANT: For experience, education, and skills - extract the FULL content from those sections, not just labels.
+
+Required JSON format:
+{
+  "firstName": "first name only",
+  "lastName": "last name only",
+  "email": "email address",
+  "phone": "phone number with country code if present",
+  "dateOfBirth": "YYYY-MM-DD format if mentioned, otherwise null",
+  "bio": "brief professional summary or objective if present",
+  "fullEducation": "ALL education details including degrees, institutions, dates, and scores",
+  "fullExperience": "ALL work experience details including company names, roles, dates, and descriptions",
+  "fullSkills": "ALL skills listed, comma separated",
+  "languages": "languages known, comma separated",
+  "currentCompany": "current or most recent company name, otherwise null",
+  "currentRole": "current or most recent job title/role, otherwise null",
+  "yearsOfExperience": "total years of experience as a number (e.g., 3), otherwise null",
+  "isCurrentlyEmployed": "true if currently working, false if not, null if unknown"
+}
+
+Resume text:
+${text}
+
+Return ONLY the JSON object, no markdown, no explanations:`;
 
       const result = await ai.models.generateContent({
         model: "gemini-2.0-flash-exp", // Experimental model (original)
@@ -153,11 +173,17 @@ Required JSON format:
   "firstName": "first name only",
   "lastName": "last name only",
   "email": "email address",
-  "phone": "phone number",
+  "phone": "phone number with country code if present",
+  "dateOfBirth": "YYYY-MM-DD format if mentioned, otherwise null",
   "bio": "brief professional summary or objective if present",
-  "experience": "ALL work experience details including company names, roles, dates, and descriptions",
-  "education": "ALL education details including degrees, institutions, dates, and scores",
-  "skills": "ALL skills listed, comma separated"
+  "fullEducation": "ALL education details including degrees, institutions, dates, and scores",
+  "fullExperience": "ALL work experience details including company names, roles, dates, and descriptions",
+  "fullSkills": "ALL skills listed, comma separated",
+  "languages": "languages known, comma separated",
+  "currentCompany": "current or most recent company name, otherwise null",
+  "currentRole": "current or most recent job title/role, otherwise null",
+  "yearsOfExperience": "total years of experience as a number (e.g., 3), otherwise null",
+  "isCurrentlyEmployed": "true if currently working, false if not, null if unknown"
 }
 
 Resume text:
@@ -229,8 +255,27 @@ export async function extractWithHuggingFace(text) {
 
     const client = new InferenceClient(process.env.HUGGINGFACE_API_KEY);
 
-    const prompt = `Extract the following fields from this resume text and return ONLY a valid JSON object:
-{"firstName": "", "lastName": "", "email": "", "phone": "", "bio": "", "experience": "", "education": "", "skills": ""}
+    const prompt = `You are a resume parser. Extract information from the resume text below and return a JSON object.
+
+IMPORTANT: For experience, education, and skills - extract the FULL content from those sections, not just labels.
+
+Required JSON format:
+{
+  "firstName": "first name only",
+  "lastName": "last name only",
+  "email": "email address",
+  "phone": "phone number with country code if present",
+  "dateOfBirth": "YYYY-MM-DD format if mentioned, otherwise null",
+  "bio": "brief professional summary or objective if present",
+  "fullEducation": "ALL education details including degrees, institutions, dates, and scores",
+  "fullExperience": "ALL work experience details including company names, roles, dates, and descriptions",
+  "fullSkills": "ALL skills listed, comma separated",
+  "languages": "languages known, comma separated",
+  "currentCompany": "current or most recent company name, otherwise null",
+  "currentRole": "current or most recent job title/role, otherwise null",
+  "yearsOfExperience": "total years of experience as a number (e.g., 3), otherwise null",
+  "isCurrentlyEmployed": "true if currently working, false if not, null if unknown"
+}
 
 Resume text:
 ${text}
@@ -268,10 +313,16 @@ Return ONLY the JSON object, no markdown, no explanations:`;
         lastName: cleaned.match(/"lastName"\s*:\s*"([^"]*)"/)?.[1] || "",
         email: cleaned.match(/"email"\s*:\s*"([^"]*)"/)?.[1] || "",
         phone: cleaned.match(/"phone"\s*:\s*"([^"]*)"/)?.[1] || "",
+        dateOfBirth: cleaned.match(/"dateOfBirth"\s*:\s*"([^"]*)"/)?.[1] || null,
         bio: cleaned.match(/"bio"\s*:\s*"([^"]*)"/)?.[1] || "",
-        experience: cleaned.match(/"experience"\s*:\s*"([^"]*)"/)?.[1] || "",
-        education: cleaned.match(/"education"\s*:\s*"([^"]*)"/)?.[1] || "",
-        skills: cleaned.match(/"skills"\s*:\s*"([^"]*)"/)?.[1] || "",
+        fullEducation: cleaned.match(/"fullEducation"\s*:\s*"([^"]*)"/)?.[1] || "",
+        fullExperience: cleaned.match(/"fullExperience"\s*:\s*"([^"]*)"/)?.[1] || "",
+        fullSkills: cleaned.match(/"fullSkills"\s*:\s*"([^"]*)"/)?.[1] || "",
+        languages: cleaned.match(/"languages"\s*:\s*"([^"]*)"/)?.[1] || "",
+        currentCompany: cleaned.match(/"currentCompany"\s*:\s*"([^"]*)"/)?.[1] || null,
+        currentRole: cleaned.match(/"currentRole"\s*:\s*"([^"]*)"/)?.[1] || null,
+        yearsOfExperience: cleaned.match(/"yearsOfExperience"\s*:\s*(\d+|null)/)?.[1] || null,
+        isCurrentlyEmployed: cleaned.match(/"isCurrentlyEmployed"\s*:\s*(true|false|null)/)?.[1] || null,
       };
     }
 
@@ -321,4 +372,161 @@ export async function extractResumeWithFallback(text) {
   console.log("\n📝 All AI services failed. Using regex fallback...");
   const regexResult = extractWithRegex(text);
   return { ...formatRegexResult(regexResult), _extractedBy: "Regex" };
+}
+
+/**
+ * Transform raw AI-extracted data to frontend form format
+ * Maps free-text fields to strict enum values required by frontend
+ * @param {Object} rawData - Raw data from AI extraction
+ * @returns {Object} Formatted data matching frontend form structure
+ */
+export function transformToFrontendFormat(rawData) {
+  // Helper: Map education text to qualification enum
+  const mapQualification = (eduText) => {
+    if (!eduText) return '';
+    const lower = eduText.toLowerCase();
+    if (lower.includes('phd') || lower.includes('ph.d') || lower.includes('doctorate')) return 'phd';
+    if (lower.includes('master') || lower.includes('m.tech') || lower.includes('m.sc') || lower.includes('mba') || lower.includes('m.a')) return 'master';
+    if (lower.includes('bachelor') || lower.includes('b.tech') || lower.includes('b.e') || lower.includes('b.sc') || lower.includes('bca') || lower.includes('b.a')) return 'bachelor';
+    if (lower.includes('high school') || lower.includes('12th') || lower.includes('intermediate') || lower.includes('higher secondary')) return 'highschool';
+    return 'bachelor'; // default
+  };
+
+  // Helper: Map years to experience range enum
+  const mapExperience = (years) => {
+    if (!years) return '0-1';
+    const num = parseInt(years);
+    if (isNaN(num) || num <= 1) return '0-1';
+    if (num <= 3) return '1-3';
+    if (num <= 5) return '3-5';
+    return '5+';
+  };
+
+  // Helper: Map employment status
+  const mapEmploymentStatus = (isEmployed, expText) => {
+    if (isEmployed === true || isEmployed === 'true') return 'employed';
+    if (!expText) return 'unemployed';
+    const lower = expText.toLowerCase();
+    if (lower.includes('student') || lower.includes('pursuing') || lower.includes('studying')) return 'student';
+    return 'unemployed';
+  };
+
+  // Helper: Map industry from experience/role
+  const mapIndustry = (company, role, expText) => {
+    const text = `${company || ''} ${role || ''} ${expText || ''}`.toLowerCase();
+    if (text.includes('software') || text.includes('tech') || text.includes('developer') || text.includes('programmer') || text.includes('it ')) return 'it';
+    if (text.includes('financ') || text.includes('bank') || text.includes('account')) return 'finance';
+    if (text.includes('health') || text.includes('medical') || text.includes('hospital') || text.includes('pharma')) return 'healthcare';
+    if (text.includes('retail') || text.includes('sales') || text.includes('store') || text.includes('commerce')) return 'retail';
+    if (text.includes('educat') || text.includes('teach') || text.includes('school') || text.includes('university')) return 'education';
+    return 'it'; // default
+  };
+
+  // Helper: Map role from job title
+  const mapRole = (roleText, expText) => {
+    const text = `${roleText || ''} ${expText || ''}`.toLowerCase();
+    if (text.includes('develop') || text.includes('engineer') || text.includes('programmer') || text.includes('software')) return 'developer';
+    if (text.includes('design') || text.includes('ui') || text.includes('ux') || text.includes('graphic')) return 'designer';
+    if (text.includes('manag') || text.includes('lead') || text.includes('director') || text.includes('head')) return 'manager';
+    if (text.includes('analyst') || text.includes('data') || text.includes('business') || text.includes('research')) return 'analyst';
+    return 'developer'; // default
+  };
+
+  // Helper: Map skills to primary category
+  const mapSkills = (skillsText) => {
+    if (!skillsText) return 'customer-service';
+    const lower = skillsText.toLowerCase();
+
+    // Count keyword occurrences for each category
+    const scores = {
+      'technical-support': 0,
+      'sales': 0,
+      'data-entry': 0,
+      'customer-service': 0
+    };
+
+    if (lower.includes('technical') || lower.includes('support') || lower.includes('troubleshoot') || lower.includes('helpdesk')) scores['technical-support'] += 2;
+    if (lower.includes('sales') || lower.includes('selling') || lower.includes('marketing') || lower.includes('business development')) scores['sales'] += 2;
+    if (lower.includes('data entry') || lower.includes('typing') || lower.includes('excel') || lower.includes('documentation')) scores['data-entry'] += 2;
+    if (lower.includes('customer') || lower.includes('client') || lower.includes('service') || lower.includes('communication')) scores['customer-service'] += 1;
+
+    // Return category with highest score
+    const maxCategory = Object.keys(scores).reduce((a, b) => scores[a] > scores[b] ? a : b);
+    return maxCategory;
+  };
+
+  // Helper: Convert month name to number
+  const getMonthNumber = (monthName) => {
+    const months = {
+      jan: '01', january: '01',
+      feb: '02', february: '02',
+      mar: '03', march: '03',
+      apr: '04', april: '04',
+      may: '05',
+      jun: '06', june: '06',
+      jul: '07', july: '07',
+      aug: '08', august: '08',
+      sep: '09', september: '09',
+      oct: '10', october: '10',
+      nov: '11', november: '11',
+      dec: '12', december: '12'
+    };
+    return months[monthName.toLowerCase()] || '01';
+  };
+
+  // Helper: Extract dates from experience text
+  const extractDates = (expText) => {
+    if (!expText) return { startDate: '', endDate: '' };
+
+    // Try to match date patterns
+    // Pattern 1: "2020 - 2023" or "2020-2023"
+    let match = expText.match(/(\d{4})\s*[-–—to]+\s*(\d{4}|present|current)/i);
+    if (match) {
+      const startYear = match[1];
+      const endYear = match[2].toLowerCase().includes('present') || match[2].toLowerCase().includes('current') ? '' : match[2];
+      return {
+        startDate: `${startYear}-01-01`,
+        endDate: endYear ? `${endYear}-12-31` : ''
+      };
+    }
+
+    // Pattern 2: "Jan 2020 - Dec 2023"
+    match = expText.match(/([A-Za-z]+)\s+(\d{4})\s*[-–—to]+\s*([A-Za-z]+)?\s*(\d{4}|present|current)/i);
+    if (match) {
+      const startMonth = getMonthNumber(match[1]);
+      const startYear = match[2];
+      const endMonth = match[3] ? getMonthNumber(match[3]) : '12';
+      const endYear = match[4].toLowerCase().includes('present') || match[4].toLowerCase().includes('current') ? '' : match[4];
+
+      return {
+        startDate: `${startYear}-${startMonth}-01`,
+        endDate: endYear ? `${endYear}-${endMonth}-01` : ''
+      };
+    }
+
+    return { startDate: '', endDate: '' };
+  };
+
+  // Perform transformation
+  const dates = extractDates(rawData.fullExperience || '');
+
+  return {
+    firstName: rawData.firstName || '',
+    lastName: rawData.lastName || '',
+    email: rawData.email || '',
+    phone: rawData.phone || '',
+    dateOfBirth: rawData.dateOfBirth || '', // Leave empty if not found
+    qualification: mapQualification(rawData.fullEducation),
+    experience: mapExperience(rawData.yearsOfExperience),
+    employmentStatus: mapEmploymentStatus(rawData.isCurrentlyEmployed, rawData.fullExperience),
+    companyName: rawData.currentCompany || '',
+    industry: mapIndustry(rawData.currentCompany, rawData.currentRole, rawData.fullExperience),
+    role: mapRole(rawData.currentRole, rawData.fullExperience),
+    startDate: dates.startDate,
+    endDate: dates.endDate,
+    skills: mapSkills(rawData.fullSkills),
+    timeSlot: '', // Cannot be extracted from resume
+    workingHours: '', // Cannot be extracted from resume
+    languages: rawData.languages || ''
+  };
 }

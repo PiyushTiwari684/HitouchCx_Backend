@@ -62,6 +62,7 @@ export const generateAssessment = asyncHandler(async (req, res) => {
       attemptNumber: 1,
       sessionStatus: "NOT_STARTED",
       verificationStatus: "NOT_STARTED",
+      startedAt: new Date(), // Set start time when assessment is generated
     },
   });
 
@@ -114,6 +115,91 @@ export const startAssessment = asyncHandler(async (req, res) => {
   }
 
   return sendSuccess(res, attemptData, "Assessment started successfully", 201);
+});
+
+/**
+ * POST /api/v1/proctoring/assessment/attempt/:attemptId/submit
+ * Submit/complete an assessment attempt
+ * Updates completedAt, submittedAt, and totalTimeSpent
+ * Protected route - requires authentication
+ */
+export const submitAssessment = asyncHandler(async (req, res) => {
+  const { attemptId } = req.params;
+  const { submitReason = 'MANUAL' } = req.body;
+  const agentId = req.user.agentId;
+
+  console.log("[submitAssessment] Request received:", {
+    attemptId,
+    agentId,
+    submitReason,
+  });
+
+  // Validate attempt ownership
+  const isOwner = await attemptService.validateAttemptOwnership(attemptId, agentId);
+  if (!isOwner) {
+    return sendError(res, "Unauthorized access to this assessment attempt", 403);
+  }
+
+  try {
+    // Get current attempt to calculate time spent
+    const attempt = await prisma.candidateAssessment.findUnique({
+      where: { id: attemptId },
+      select: { startedAt: true },
+    });
+
+    if (!attempt) {
+      return sendError(res, "Assessment attempt not found", 404);
+    }
+
+    // Calculate total time spent in seconds
+    let totalTimeSpent = 0;
+    if (attempt.startedAt) {
+      const now = new Date();
+      totalTimeSpent = Math.floor((now - attempt.startedAt) / 1000);
+    }
+
+    // Update attempt with completion data
+    const updated = await prisma.candidateAssessment.update({
+      where: { id: attemptId },
+      data: {
+        completedAt: new Date(),
+        submittedAt: new Date(),
+        totalTimeSpent,
+        sessionStatus: "COMPLETED",
+        autoSubmitReason: submitReason !== 'MANUAL' ? submitReason : null,
+      },
+      select: {
+        id: true,
+        completedAt: true,
+        submittedAt: true,
+        totalTimeSpent: true,
+        sessionStatus: true,
+      },
+    });
+
+    console.log("[submitAssessment] Assessment submitted successfully:", {
+      attemptId: updated.id,
+      totalTimeSpent: updated.totalTimeSpent,
+    });
+
+    return sendSuccess(
+      res,
+      {
+        attemptId: updated.id,
+        completedAt: updated.completedAt,
+        submittedAt: updated.submittedAt,
+        totalTimeSpent: updated.totalTimeSpent,
+      },
+      "Assessment submitted successfully"
+    );
+  } catch (error) {
+    console.error("[submitAssessment] Error:", error);
+    return sendError(
+      res,
+      `Failed to submit assessment: ${error.message}`,
+      500
+    );
+  }
 });
 
 /**
