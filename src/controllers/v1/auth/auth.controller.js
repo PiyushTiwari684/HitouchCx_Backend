@@ -69,7 +69,7 @@ const signUp = async (req, res) => {
           await prisma.refreshToken.create({
             data: { userId: user.id, tokenHash: refreshHash, expiresAt }
           })
-           return res.json({message:"User added successfully and is 'Active'",token:token,refreshToken:refreshPlain})
+           return res.json({message:"User added successfully and is 'Active'",token:token,refreshToken:refreshPlain,email,phone})
         }else{
             return res.json({error:"Prisma failed to return the user info"})
         }

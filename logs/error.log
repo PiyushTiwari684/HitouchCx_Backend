@@ -1107,3 +1107,27 @@ Unique constraint failed on the fields: (`sessionId`)
     at Layer.handleRequest (C:\Users\shama\HitouchCx_Backend\node_modules\router\lib\layer.js:152:17)
     at trimPrefix (C:\Users\shama\HitouchCx_Backend\node_modules\router\index.js:342:13)
 >>>>>>> c00be584a0cf0b7bc220e578703ef2e7454b8905
+2025-12-10 11:19:50 [error]: Error [ERR_HTTP_HEADERS_SENT]: Cannot set headers after they are sent to the client
+    at ServerResponse.setHeader (node:_http_outgoing:700:11)
+    at ServerResponse.header (C:\Users\shama\HitouchCx_Backend\node_modules\express\lib\response.js:684:10)
+    at ServerResponse.send (C:\Users\shama\HitouchCx_Backend\node_modules\express\lib\response.js:161:12)
+    at ServerResponse.json (C:\Users\shama\HitouchCx_Backend\node_modules\express\lib\response.js:250:15)
+    at requestOtp (file:///C:/Users/shama/HitouchCx_Backend/src/controllers/v1/auth/otp.controller.js:82:25)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+2025-12-10 11:22:37 [error]: Error: Route not found: /api/v1/otp/sign-up
+    at notFoundHandler (file:///C:/Users/shama/HitouchCx_Backend/src/middlewares/errorHandler.js:115:17)
+    at Layer.handleRequest (C:\Users\shama\HitouchCx_Backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (C:\Users\shama\HitouchCx_Backend\node_modules\router\index.js:342:13)
+    at C:\Users\shama\HitouchCx_Backend\node_modules\router\index.js:297:9
+    at processParams (C:\Users\shama\HitouchCx_Backend\node_modules\router\index.js:582:12)
+    at next (C:\Users\shama\HitouchCx_Backend\node_modules\router\index.js:291:5)
+    at C:\Users\shama\HitouchCx_Backend\node_modules\router\index.js:688:15
+    at next (C:\Users\shama\HitouchCx_Backend\node_modules\router\index.js:276:14)
+    at C:\Users\shama\HitouchCx_Backend\node_modules\router\index.js:688:15
+    at next (C:\Users\shama\HitouchCx_Backend\node_modules\router\index.js:276:14)
+    at C:\Users\shama\HitouchCx_Backend\node_modules\router\index.js:688:15
+    at next (C:\Users\shama\HitouchCx_Backend\node_modules\router\index.js:276:14)
+    at Function.handle (C:\Users\shama\HitouchCx_Backend\node_modules\router\index.js:186:3)
+    at router (C:\Users\shama\HitouchCx_Backend\node_modules\router\index.js:60:12)
+    at Layer.handleRequest (C:\Users\shama\HitouchCx_Backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (C:\Users\shama\HitouchCx_Backend\node_modules\router\index.js:342:13)

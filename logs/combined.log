@@ -2994,3 +2994,43 @@ Unique constraint failed on the fields: (`sessionId`)
 2025-12-10 10:31:03 [info]: ::1 - - [10/Dec/2025:05:01:03 +0000] "GET /api/v1/agent/agentInfo/cmi5uzu8w0001o420uoclv9oz HTTP/1.1" 200 - "-" "PostmanRuntime/7.49.1"
 2025-12-10 10:31:10 [info]: ::1 - - [10/Dec/2025:05:01:10 +0000] "GET /api/v1/agent/agentInfo/cmi5uzu8w0001o420uoclv9ozf HTTP/1.1" 404 29 "-" "PostmanRuntime/7.49.1"
 2025-12-10 10:31:13 [info]: ::1 - - [10/Dec/2025:05:01:13 +0000] "GET /api/v1/agent/agentInfo/cmi5uzu8w0001o420uoclv9oz HTTP/1.1" 200 - "-" "PostmanRuntime/7.49.1"
+2025-12-10 10:38:01 [info]: ::1 - - [10/Dec/2025:05:08:01 +0000] "GET /api/v1/agent/agentInfo/cmi5uzu8w0001o420uoclv9oz HTTP/1.1" 200 - "-" "PostmanRuntime/7.49.1"
+2025-12-10 10:38:07 [info]: ::1 - - [10/Dec/2025:05:08:07 +0000] "GET /api/v1/agent/agentInfo/cmi5uzu8w0001o420uoclv9ozf HTTP/1.1" 404 29 "-" "PostmanRuntime/7.49.1"
+2025-12-10 10:38:10 [info]: ::1 - - [10/Dec/2025:05:08:10 +0000] "GET /api/v1/agent/agentInfo/cmi5uzu8w0001o420uoclv9oz HTTP/1.1" 200 - "-" "PostmanRuntime/7.49.1"
+2025-12-10 10:39:24 [info]: ::1 - - [10/Dec/2025:05:09:24 +0000] "PATCH /api/v1/agent/profile/extra-info HTTP/1.1" 200 214 "-" "PostmanRuntime/7.49.1"
+2025-12-10 11:14:00 [info]: ::1 - - [10/Dec/2025:05:44:00 +0000] "POST /api/v1/otp/request-otp HTTP/1.1" 200 499 "-" "PostmanRuntime/7.49.1"
+2025-12-10 11:15:22 [info]: ::1 - - [10/Dec/2025:05:45:22 +0000] "POST /api/v1/otp/request-otp HTTP/1.1" 200 499 "-" "PostmanRuntime/7.49.1"
+2025-12-10 11:16:15 [info]: ::1 - - [10/Dec/2025:05:46:15 +0000] "POST /api/v1/otp/request-otp HTTP/1.1" 200 499 "-" "PostmanRuntime/7.49.1"
+2025-12-10 11:16:43 [info]: ::1 - - [10/Dec/2025:05:46:43 +0000] "POST /api/v1/otp/verify-otp HTTP/1.1" 200 39 "-" "PostmanRuntime/7.49.1"
+2025-12-10 11:19:50 [info]: ::1 - - [10/Dec/2025:05:49:50 +0000] "POST /api/v1/otp/request-otp HTTP/1.1" 200 137 "-" "PostmanRuntime/7.49.1"
+2025-12-10 11:19:50 [error]: Error [ERR_HTTP_HEADERS_SENT]: Cannot set headers after they are sent to the client
+    at ServerResponse.setHeader (node:_http_outgoing:700:11)
+    at ServerResponse.header (C:\Users\shama\HitouchCx_Backend\node_modules\express\lib\response.js:684:10)
+    at ServerResponse.send (C:\Users\shama\HitouchCx_Backend\node_modules\express\lib\response.js:161:12)
+    at ServerResponse.json (C:\Users\shama\HitouchCx_Backend\node_modules\express\lib\response.js:250:15)
+    at requestOtp (file:///C:/Users/shama/HitouchCx_Backend/src/controllers/v1/auth/otp.controller.js:82:25)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+2025-12-10 11:20:51 [info]: ::1 - - [10/Dec/2025:05:50:51 +0000] "POST /api/v1/otp/verify-otp HTTP/1.1" 200 70 "-" "PostmanRuntime/7.49.1"
+2025-12-10 11:22:37 [error]: Error: Route not found: /api/v1/otp/sign-up
+    at notFoundHandler (file:///C:/Users/shama/HitouchCx_Backend/src/middlewares/errorHandler.js:115:17)
+    at Layer.handleRequest (C:\Users\shama\HitouchCx_Backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (C:\Users\shama\HitouchCx_Backend\node_modules\router\index.js:342:13)
+    at C:\Users\shama\HitouchCx_Backend\node_modules\router\index.js:297:9
+    at processParams (C:\Users\shama\HitouchCx_Backend\node_modules\router\index.js:582:12)
+    at next (C:\Users\shama\HitouchCx_Backend\node_modules\router\index.js:291:5)
+    at C:\Users\shama\HitouchCx_Backend\node_modules\router\index.js:688:15
+    at next (C:\Users\shama\HitouchCx_Backend\node_modules\router\index.js:276:14)
+    at C:\Users\shama\HitouchCx_Backend\node_modules\router\index.js:688:15
+    at next (C:\Users\shama\HitouchCx_Backend\node_modules\router\index.js:276:14)
+    at C:\Users\shama\HitouchCx_Backend\node_modules\router\index.js:688:15
+    at next (C:\Users\shama\HitouchCx_Backend\node_modules\router\index.js:276:14)
+    at Function.handle (C:\Users\shama\HitouchCx_Backend\node_modules\router\index.js:186:3)
+    at router (C:\Users\shama\HitouchCx_Backend\node_modules\router\index.js:60:12)
+    at Layer.handleRequest (C:\Users\shama\HitouchCx_Backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (C:\Users\shama\HitouchCx_Backend\node_modules\router\index.js:342:13)
+2025-12-10 11:22:37 [info]: ::1 - - [10/Dec/2025:05:52:37 +0000] "POST /api/v1/otp/sign-up HTTP/1.1" 404 66 "-" "PostmanRuntime/7.49.1"
+2025-12-10 11:22:45 [info]: ::1 - - [10/Dec/2025:05:52:45 +0000] "POST /api/v1/auth/sign-up HTTP/1.1" 200 393 "-" "PostmanRuntime/7.49.1"
+2025-12-10 11:23:36 [info]: ::1 - - [10/Dec/2025:05:53:36 +0000] "POST /api/v1/auth/sign-up HTTP/1.1" 500 - "-" "PostmanRuntime/7.49.1"
+2025-12-10 11:24:07 [info]: ::1 - - [10/Dec/2025:05:54:07 +0000] "POST /api/v1/auth/sign-up HTTP/1.1" 500 - "-" "PostmanRuntime/7.49.1"
+2025-12-10 11:24:42 [info]: ::1 - - [10/Dec/2025:05:54:42 +0000] "POST /api/v1/auth/sign-up HTTP/1.1" 200 456 "-" "PostmanRuntime/7.49.1"
+2025-12-10 11:25:50 [info]: ::1 - - [10/Dec/2025:05:55:50 +0000] "POST /api/v1/auth/log-in HTTP/1.1" 200 449 "-" "PostmanRuntime/7.49.1"
