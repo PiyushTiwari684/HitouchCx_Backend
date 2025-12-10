@@ -354,4 +354,90 @@ const updateAgentPassword = async (req, res) => {
   }
 };
 
-export { updateAgentProfile, updateAgentPassword, requestEmailPhoneChange, updateEmailPhoneChange }
+//Updating Agent Professional Information
+// Update agent skills and additionalInfo (bio, hourlyRate, etc.)
+
+const updateAgentInfo = async (req, res) => {
+  try {
+    const userId = req.user?.id;
+    if (!userId) return res.status(401).json({ message: 'Unauthorized' });
+
+    const { skills, bio, hourlyRate } = req.body || {};
+
+    // Fetch agent
+    const user = await prisma.user.findUnique({
+      where: { id: userId },
+      include: { agent: true },
+    });
+    if (!user || !user.agent) {
+      return res.status(404).json({ message: 'Agent profile not found' });
+    }
+
+    // Validate skills
+    if (skills !== undefined) {
+      if (!Array.isArray(skills) || !skills.every(s => typeof s === 'string')) {
+        return res.status(400).json({ message: 'skills must be an array of strings' });
+      }
+    }
+
+    // Validate hourlyRate
+    if (hourlyRate !== undefined) {
+      const rateNum = Number(hourlyRate);
+      if (!Number.isFinite(rateNum) || rateNum < 0) {
+        return res.status(400).json({ message: 'hourlyRate must be a non-negative number' });
+      }
+    }
+
+    // Prepare updates
+    const agentUpdate = {};
+    if (skills !== undefined) agentUpdate.skills = skills;
+
+    // Merge additionalInfo (preserve existing keys)
+    const additionalInfoPatch = {};
+    if (bio !== undefined) additionalInfoPatch.bio = typeof bio === 'string' ? bio.trim() : bio;
+    if (hourlyRate !== undefined) additionalInfoPatch.hourlyRate = Number(hourlyRate);
+
+    const hasArrayUpdates = Object.keys(agentUpdate).length > 0;
+    const hasInfoUpdates = Object.keys(additionalInfoPatch).length > 0;
+
+    if (!hasArrayUpdates && !hasInfoUpdates) {
+      return res.status(200).json({
+        message: 'No changes',
+        data: {
+          agent: {
+            id: user.agent.id,
+            skills: user.agent.skills,
+            additionalInfo: user.agent.additionalInfo || {},
+          },
+        },
+      });
+    }
+
+    const updatedAgent = await prisma.agent.update({
+      where: { id: user.agent.id },
+      data: {
+        ...(hasArrayUpdates ? agentUpdate : {}),
+        ...(hasInfoUpdates
+          ? {
+              additionalInfo: {
+                ...(user.agent.additionalInfo || {}),
+                ...additionalInfoPatch,
+              },
+            }
+          : {}),
+      },
+      select: { id: true, skills: true, additionalInfo: true },
+    });
+
+    return res.status(200).json({
+      message: 'Skills and profile info updated',
+      data: { agent: updatedAgent },
+    });
+  } catch (err) {
+    console.error('updateAgentSkillsBioRate error:', err);
+    return res.status(500).json({ message: 'Internal server error' });
+  }
+};
+
+
+export { updateAgentProfile, updateAgentPassword, updateEmailPhoneChange,requestEmailPhoneChange, updateAgentInfo }

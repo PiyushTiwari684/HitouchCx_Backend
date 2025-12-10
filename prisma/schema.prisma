@@ -14,8 +14,8 @@ generator client {
 // }
 
 datasource db {
-  provider  = "postgresql"
-  url       = env("DATABASE_URL")
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
 }
 
 //ctrl + G to go to a particular line
@@ -36,22 +36,21 @@ enum AuthProvider {
 }
 
 model User {
-  id            String  @id @default(cuid())
-  email         String  @unique
-  emailVerified Boolean @default(false)
-  phone         String? @unique
-  phoneVerified Boolean @default(false)
+  id            String         @id @default(cuid())
+  email         String         @unique
+  emailVerified Boolean        @default(false)
+  phone         String?        @unique
+  phoneVerified Boolean        @default(false)
   passwordHash  String?
-  username      String? @unique
-  role          Role    @default(USER)
-  status        Status  @default(PENDING)
-  refreshTokens RefreshToken[] 
+  username      String?        @unique
+  role          Role           @default(USER)
+  status        Status         @default(PENDING)
+  refreshTokens RefreshToken[]
 
   // Registration tracking fields
   profileCompleted Boolean @default(false)
   kycCompleted     Boolean @default(false) // KYC verification completed
   agreementSigned  Boolean @default(false)
-
 
   googleId       String?      @unique //oAuth Google Id
   profilePicture String? //Profile Picture received from Google
@@ -84,15 +83,15 @@ enum OTPType {
 }
 
 model RefreshToken {
-  id              String   @id @default(cuid())
+  id              String    @id @default(cuid())
   userId          String
-  user            User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  user            User      @relation(fields: [userId], references: [id], onDelete: Cascade)
   tokenHash       String
   expiresAt       DateTime
-  revoked         Boolean  @default(false)
+  revoked         Boolean   @default(false)
   revokedAt       DateTime?
   replacedByToken String?
-  createdAt       DateTime @default(now())
+  createdAt       DateTime  @default(now())
 
   @@index([userId])
   @@index([expiresAt])
@@ -114,14 +113,15 @@ enum Status {
 //~~~~~~~~~ Step 1 ~~~~~~~~~
 
 model Agent {
-  id         String   @id @default(cuid())
-  userId     String   @unique
-  user       User     @relation(fields: [userId], references: [id], onDelete: SetNull)
-  firstName  String
-  middleName String?
-  lastName   String?
-  dob        DateTime
-  address    String?
+  id             String   @id @default(cuid())
+  userId         String   @unique
+  user           User     @relation(fields: [userId], references: [id], onDelete: SetNull)
+  firstName      String
+  middleName     String?
+  lastName       String?
+  dob            DateTime
+  address        String?
+  additionalInfo Json?
 
   //Bank Details (Essential for NEFT)
   bankAccountNumber String?
@@ -173,20 +173,19 @@ enum WorkShift {
 }
 
 model Qualification {
-  id        String            @id @default(cuid())
-  agentId   String
-  agent     Agent             @relation(fields: [agentId], references: [id], onDelete: Cascade)
-  type      QualificationType
+  id          String              @id @default(cuid())
+  agentId     String
+  agent       Agent               @relation(fields: [agentId], references: [id], onDelete: Cascade)
+  type        QualificationType
   degree      String?
-  field     QualificationField?
+  field       QualificationField?
   institution String?
-  startYear Int?
-  endYear   Int?
+  startYear   Int?
+  endYear     Int?
   grade       String?
-  createdAt DateTime          @default(now())
-  updatedAt DateTime          @updatedAt
+  createdAt   DateTime            @default(now())
+  updatedAt   DateTime            @updatedAt
 }
-
 
 enum QualificationType {
   HIGH_SCHOOL
@@ -435,7 +434,6 @@ model Project {
   currency        String   @default("INR")
   projectDeadline DateTime // Final completion date
 
-
   // Status
   status ProjectStatus @default(PLANNING)
 
@@ -479,7 +477,7 @@ model Opportunity {
   processType ProcessType //How work happens/kind of work to be done
 
   //Time & Duration  
-  deadline     DateTime //Apply before this date 
+  deadline DateTime //Apply before this date 
 
   //Payment
   payAmount   Decimal     @db.Decimal(10, 2) //Money to be paid for the work
@@ -490,26 +488,24 @@ model Opportunity {
   status     OpportunityStatus @default(OPEN) //Lifecycle of Opportunity(IN_PROGRESS, COMPLETED, CANCELLED)
   visibility VisibilityLevel   @default(PUBLIC) // Opportunity visible to : (PUBLIC, PRIVATE etc)
 
-
   //Project that this opportunity is connected to
   projectId String // FK to brand
   project   Project @relation(fields: [projectId], references: [id], onDelete: Cascade)
 
-
   //Skills/Qualifications/Scores Required(To be given by client/admin)
 
-  minimumSkills String[]
-  requiredLanguages String[]
+  minimumSkills         String[]
+  requiredLanguages     String[]
   minimumQualifications Json?
-  minimumL1Score LanguageProficiency @default(A1)
-  preferredExperience Json?
+  minimumL1Score        LanguageProficiency @default(A1)
+  preferredExperience   Json?
 
   //Relationships
-  applications GigApplication[]
+  applications        GigApplication[]
   clientScheduleSlots ClientScheduleSlot[]
 
-  createdAt  DateTime          @default(now())
-  updatedAt  DateTime          @updatedAt
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 }
 
 enum ServiceCategory {
@@ -519,13 +515,13 @@ enum ServiceCategory {
 }
 
 enum ProcessType {
-  INBOUND_CALL      // Voice support
-  CHAT_SUPPORT      // Live chat / text
-  DATA_ANNOTATION   // Labeling / tagging
+  INBOUND_CALL // Voice support
+  CHAT_SUPPORT // Live chat / text
+  DATA_ANNOTATION // Labeling / tagging
   PROMPT_ENGINEERING // LLM prompt & refinement
-  TECH_SUPPORT      // General technical help
-  QA_TESTING        // Quality / testing tasks
-  DOCUMENTATION     // Writing / knowledge base
+  TECH_SUPPORT // General technical help
+  QA_TESTING // Quality / testing tasks
+  DOCUMENTATION // Writing / knowledge base
 }
 
 enum DurationType {
@@ -554,7 +550,7 @@ enum LanguageProficiency {
 }
 
 enum PaymentType {
-  FIXED  //Fixed Pay for the work
+  FIXED //Fixed Pay for the work
   HOURLY //Hourly Pay for the work
   MILESTONE_BASIS //Pay for a particular milestone in opportunity
 }
@@ -591,9 +587,8 @@ model GigApplication {
   dispute     Dispute[]
 
   // Timestamps
-  appliedAt   DateTime     @default(now())
-  hireDateAt  DateTime? //Date & Time at which the agent is succesfully accepted for the gig
-  
+  appliedAt  DateTime  @default(now())
+  hireDateAt DateTime? //Date & Time at which the agent is succesfully accepted for the gig
 }
 
 model SelectedGig {
@@ -613,11 +608,10 @@ model SelectedGig {
   submittedWorks SubmittedWork[] //Works/Deliverables of particular gig
   reviews        Review[]
   disputes       Dispute[] //Disputes related to any gig work
-  AgentWorkSlot AgentWorkSlot?
+  AgentWorkSlot  AgentWorkSlot?
 
-  createdAt     DateTime       @default(now())
-  updatedAt     DateTime       @updatedAt
-  
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 }
 
 enum GigStatus {
@@ -632,14 +626,14 @@ enum GigStatus {
 model ActivityLog {
   id String @id @default(cuid())
 
-  agentId       String
-  agent         Agent    @relation(fields: [agentId], references: [id], onDelete: Cascade)
+  agentId String
+  agent   Agent  @relation(fields: [agentId], references: [id], onDelete: Cascade)
 
   selectedGigId String
   selectedGig   SelectedGig @relation(fields: [selectedGigId], references: [id], onDelete: Cascade)
 
   // Activity Details
-  type        ActivityType  @default(NOT_STARTED) //Type of Activity
+  type        ActivityType @default(NOT_STARTED) //Type of Activity
   description String?
 
   // When it happened
@@ -813,7 +807,7 @@ model Review {
   reviewType ReviewType // Type of review
 
   // Optional foreign keys (only one should be set based on reviewType)
-  submittedWorkId String?        
+  submittedWorkId String?
   submittedWork   SubmittedWork? @relation(fields: [submittedWorkId], references: [id], onDelete: Cascade)
 
   selectedGigId String?
@@ -827,7 +821,7 @@ model Review {
 
   // Who is reviewing
   reviewerId   String? // ID of the person giving the review
-  reviewerType ReviewerType  @default(ADMIN) // "AGENT", "CLIENT", "ADMIN", "SYSTEM"
+  reviewerType ReviewerType @default(ADMIN) // "AGENT", "CLIENT", "ADMIN", "SYSTEM"
 
   // Review content
   rating   Int? // 1-5 stars (required)
@@ -859,13 +853,14 @@ enum ReviewCategory {
   SUPPORT
   ASSESSMENT
 }
+
 enum ReviewerType {
-  AGENT        // An agent reviewing (e.g., peer or client performance)
-  CLIENT       // Client providing feedback
-  ADMIN        // Platform admin / moderator
-  SYSTEM       // Auto-generated/system evaluation
-  QA           // Dedicated quality/audit reviewer
-  TRAINER      // L&D / onboarding evaluator
+  AGENT // An agent reviewing (e.g., peer or client performance)
+  CLIENT // Client providing feedback
+  ADMIN // Platform admin / moderator
+  SYSTEM // Auto-generated/system evaluation
+  QA // Dedicated quality/audit reviewer
+  TRAINER // L&D / onboarding evaluator
 }
 
 model Dispute {
@@ -880,7 +875,6 @@ model Dispute {
 
   gigApplicationId String?
   gigApplication   GigApplication? @relation(fields: [gigApplicationId], references: [id], onDelete: Cascade)
-
 
   submittedWorkId String?
   submittedWork   SubmittedWork? @relation(fields: [submittedWorkId], references: [id], onDelete: Cascade)
@@ -960,7 +954,7 @@ model Payment {
   method   PaymentMethod @default(BANK_TRANSFER)
 
   //Relations
-  submittedWorkId String        
+  submittedWorkId String
   submittedWork   SubmittedWork @relation(fields: [submittedWorkId], references: [id])
 
   //NEFT Transfer Details (Essential)
@@ -983,7 +977,6 @@ model Payment {
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 }
-
 
 // ~~~~~~~~~~~~~~~~~ Proctoring and Assessment Schema ~~~~~~~~~~~~~~~~~~~
 
@@ -1760,25 +1753,25 @@ model Answer {
   grammarScore  Float? // Grammar score (0-100)
 
   // AI Evaluation Fields (Gemini + Hugging Face)
-  correctnessScore      Float?     // How accurate/correct is the answer (0-100)
-  fluencyScore          Float?     // Speaking fluency - natural, smooth speech (0-100) [Speaking only]
-  thinkingLevelScore    Float?     // Depth of critical thinking/reasoning (0-100)
-  completenessScore     Float?     // How complete/thorough the answer is (0-100) [Writing only]
+  correctnessScore   Float? // How accurate/correct is the answer (0-100)
+  fluencyScore       Float? // Speaking fluency - natural, smooth speech (0-100) [Speaking only]
+  thinkingLevelScore Float? // Depth of critical thinking/reasoning (0-100)
+  completenessScore  Float? // How complete/thorough the answer is (0-100) [Writing only]
 
   // Overall evaluation results
-  aiOverallScore        Float?     // Weighted average score based on question type (0-100)
-  aiCefrLevel           CEFRLevel? // Final CEFR level (A1, A2, B1, B2, C1, C2)
+  aiOverallScore Float? // Weighted average score based on question type (0-100)
+  aiCefrLevel    CEFRLevel? // Final CEFR level (A1, A2, B1, B2, C1, C2)
 
   // Detailed AI feedback
-  detailedFeedback      String?    @db.Text // AI-generated paragraph feedback
-  strengths             Json?      // Array of strength points ["Good vocabulary", "Clear structure"]
-  improvements          Json?      // Array of improvement suggestions ["Work on tenses", "Add examples"]
-  evaluationReasoning   String?    @db.Text // AI's detailed reasoning for the scores given
+  detailedFeedback    String? @db.Text // AI-generated paragraph feedback
+  strengths           Json? // Array of strength points ["Good vocabulary", "Clear structure"]
+  improvements        Json? // Array of improvement suggestions ["Work on tenses", "Add examples"]
+  evaluationReasoning String? @db.Text // AI's detailed reasoning for the scores given
 
   // Evaluation metadata
-  evaluatedAt           DateTime?  // Timestamp when AI evaluation was completed
-  evaluatedBy           String?    // Which AI service evaluated (e.g., "Gemini-1.5-Flash")
-  evaluationVersion     String?    // Version of evaluation algorithm (for tracking improvements)
+  evaluatedAt       DateTime? // Timestamp when AI evaluation was completed
+  evaluatedBy       String? // Which AI service evaluated (e.g., "Gemini-1.5-Flash")
+  evaluationVersion String? // Version of evaluation algorithm (for tracking improvements)
 
   // Metadata
   isSkipped         Boolean @default(false) // Was question skipped?
@@ -2034,13 +2027,12 @@ model AudioClipUsage {
 
 //~~~~~~~~~~~~~~~~~~~ Chatbot Schema ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-
 // ==================== Table 1: FAQ Categories ====================
 
 model FaqCategory {
   id        String        @id @default(uuid())
   name      String        @unique // e.g., "Password & Login"
-  emoji     String        // e.g., "🔐"
+  emoji     String // e.g., "🔐"
   order     Int           @unique // Display order (1, 2, 3...)
   isActive  Boolean       @default(true) // Can be disabled without deleting
   questions FaqQuestion[] // One category has many questions
@@ -2056,49 +2048,49 @@ model FaqQuestion {
   id         String      @id @default(uuid())
   categoryId String
   category   FaqCategory @relation(fields: [categoryId], references: [id], onDelete: Cascade)
-  question   String      // e.g., "How to reset my password?"
+  question   String // e.g., "How to reset my password?"
   answer     String      @db.Text // Long text answer
-  order      Int         // Display order within category
+  order      Int // Display order within category
   isActive   Boolean     @default(true) // Can be disabled
-  
-  // Analytics tracking
-  viewCount  Int         @default(0) // How many times viewed
-  helpfulYes Int         @default(0) // "Was helpful" count
-  helpfulNo  Int         @default(0) // "Not helpful" count
-  
-  createdAt  DateTime    @default(now())
-  updatedAt  DateTime    @updatedAt
 
-  @@map("faq_questions")
+  // Analytics tracking
+  viewCount  Int @default(0) // How many times viewed
+  helpfulYes Int @default(0) // "Was helpful" count
+  helpfulNo  Int @default(0) // "Not helpful" count
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
   @@index([categoryId]) // Fast lookup by category
+  @@map("faq_questions")
 }
 
 // ==================== Table 3: Conversations ====================
 
 model Conversation {
-  id             String          @id @default(uuid())
-  sessionId      String          @unique // Anonymous session identifier
-  currentTier    Int             @default(1) // 1=FAQ, 2=AI (MVP uses 2 tiers only)
-  isResolved     Boolean         @default(false)
-  isClosed       Boolean         @default(false)
-  agentId        String
-  agent          Agent          @relation(fields: [agentId], references: [id], onDelete: Cascade)
-  
-  // Timestamps for session management
-  lastActivityAt DateTime        @default(now()) // Updated on each message
-  closedAt       DateTime?       // When conversation was closed
-  
-  // Relationships
-  messages       Message[]       // One conversation has many messages
-  customQuestions CustomQuestion[] // Questions asked via "Other"
-  supportTicket  SupportTicket?  // One conversation can have one ticket
-  
-  createdAt      DateTime        @default(now())
-  updatedAt      DateTime        @updatedAt
+  id          String  @id @default(uuid())
+  sessionId   String  @unique // Anonymous session identifier
+  currentTier Int     @default(1) // 1=FAQ, 2=AI (MVP uses 2 tiers only)
+  isResolved  Boolean @default(false)
+  isClosed    Boolean @default(false)
+  agentId     String
+  agent       Agent   @relation(fields: [agentId], references: [id], onDelete: Cascade)
 
-  @@map("conversations")
+  // Timestamps for session management
+  lastActivityAt DateTime  @default(now()) // Updated on each message
+  closedAt       DateTime? // When conversation was closed
+
+  // Relationships
+  messages        Message[] // One conversation has many messages
+  customQuestions CustomQuestion[] // Questions asked via "Other"
+  supportTicket   SupportTicket? // One conversation can have one ticket
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
   @@index([sessionId])
   @@index([isClosed, closedAt]) // For auto-deletion query
+  @@map("conversations")
 }
 
 // ==================== Table 4: Messages ====================
@@ -2107,18 +2099,18 @@ model Message {
   id             String       @id @default(uuid())
   conversationId String
   conversation   Conversation @relation(fields: [conversationId], references: [id], onDelete: Cascade)
-  
-  role           String       // "user" or "assistant"
-  content        String       @db.Text // Message content
-  tier           Int          // Which tier answered (1=FAQ, 2=AI)
-  
-  // Optional: reference to FAQ question if Tier 1
-  faqQuestionId  String?
-  
-  createdAt      DateTime     @default(now())
 
-  @@map("messages")
+  role    String // "user" or "assistant"
+  content String @db.Text // Message content
+  tier    Int // Which tier answered (1=FAQ, 2=AI)
+
+  // Optional: reference to FAQ question if Tier 1
+  faqQuestionId String?
+
+  createdAt DateTime @default(now())
+
   @@index([conversationId])
+  @@map("messages")
 }
 
 // ==================== Table 5: Custom Questions ====================
@@ -2127,22 +2119,22 @@ model CustomQuestion {
   id             String       @id @default(uuid())
   conversationId String
   conversation   Conversation @relation(fields: [conversationId], references: [id], onDelete: Cascade)
-  
-  question       String       @db.Text // Agent's typed question
-  answer         String?      @db.Text // AI-generated answer
-  
-  // Feedback
-  isHelpful      Boolean?     // null=no feedback, true=helpful, false=not helpful
-  
-  // Frequency tracking (for identifying common questions)
-  similarCount   Int          @default(1) // How many times similar question asked
-  flaggedForFaq  Boolean      @default(false) // Should be added to FAQ?
-  
-  createdAt      DateTime     @default(now())
-  updatedAt      DateTime     @updatedAt
 
-  @@map("custom_questions")
+  question String  @db.Text // Agent's typed question
+  answer   String? @db.Text // AI-generated answer
+
+  // Feedback
+  isHelpful Boolean? // null=no feedback, true=helpful, false=not helpful
+
+  // Frequency tracking (for identifying common questions)
+  similarCount  Int     @default(1) // How many times similar question asked
+  flaggedForFaq Boolean @default(false) // Should be added to FAQ?
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
   @@index([flaggedForFaq])
+  @@map("custom_questions")
 }
 
 // ==================== Table 6: Support Tickets ====================
@@ -2151,58 +2143,55 @@ model SupportTicket {
   id             String       @id @default(uuid())
   conversationId String       @unique
   conversation   Conversation @relation(fields: [conversationId], references: [id], onDelete: Cascade)
-  
-  // Ticket details - auto-populated from conversation
-  issueDescription String     @db.Text // Auto-filled from user's question
-  category       String       @default("AI Unresolved") // Auto-set category
-  
-  // Status management
-  status         String       @default("open")
-  priority       String       @default("normal")
-  
-  // Assignment
-  assignedTo     String?
-  resolutionNotes String?     @db.Text
-  
-  // Timestamps
-  createdAt      DateTime     @default(now())
-  updatedAt      DateTime     @updatedAt
-  resolvedAt     DateTime?
 
-  @@map("support_tickets")
+  // Ticket details - auto-populated from conversation
+  issueDescription String @db.Text // Auto-filled from user's question
+  category         String @default("AI Unresolved") // Auto-set category
+
+  // Status management
+  status   String @default("open")
+  priority String @default("normal")
+
+  // Assignment
+  assignedTo      String?
+  resolutionNotes String? @db.Text
+
+  // Timestamps
+  createdAt  DateTime  @default(now())
+  updatedAt  DateTime  @updatedAt
+  resolvedAt DateTime?
+
   @@index([status])
   @@index([assignedTo])
   @@index([category])
+  @@map("support_tickets")
 }
 
 // ==================== Table 7: Analytics Summary ====================
 
 model AnalyticsSummary {
-  id             String   @id @default(uuid())
-  date           DateTime @unique @db.Date // One record per day
-  
+  id   String   @id @default(uuid())
+  date DateTime @unique @db.Date // One record per day
+
   // Conversation metrics
-  totalConversations    Int @default(0)
-  tier1Resolved         Int @default(0) // FAQ solved
-  tier2Resolved         Int @default(0) // AI solved
-  ticketCreated         Int @default(0) // Tickets created
-  
+  totalConversations Int @default(0)
+  tier1Resolved      Int @default(0) // FAQ solved
+  tier2Resolved      Int @default(0) // AI solved
+  ticketCreated      Int @default(0) // Tickets created
+
   // Time metrics (in seconds)
   avgResolutionTimeTier1 Int? // Average time for FAQ resolution
   avgResolutionTimeTier2 Int? // Average time for AI resolution
-  
-  
+
   // Top FAQs (stored as JSON array of question IDs)
   topFaqQuestions String? @db.Text // JSON: ["id1", "id2", "id3"]
-  
+
   // Top custom questions (stored as JSON array)
   topCustomQuestions String? @db.Text // JSON: ["question1", "question2"]
-  
-  createdAt      DateTime @default(now())
-  updatedAt      DateTime @updatedAt
 
-  @@map("analytics_summary")
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
   @@index([date])
+  @@map("analytics_summary")
 }
-
-        
