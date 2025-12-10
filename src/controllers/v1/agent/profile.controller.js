@@ -356,7 +356,13 @@ const updateAgentPassword = async (req, res) => {
 
 //Updating Agent Professional Information
 // Update agent skills and additionalInfo (bio, hourlyRate, etc.)
-
+/* 
+Request Body Format : {
+  "skills": ["Customer Support", "Sales","AI Agents"],
+  "bio": "Experienced CX agent.",
+  "hourlyRate": 22.5
+} 
+*/
 const updateAgentInfo = async (req, res) => {
   try {
     const userId = req.user?.id;

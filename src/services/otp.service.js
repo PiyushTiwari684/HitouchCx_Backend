@@ -10,13 +10,13 @@ import prisma from '../config/db.js';
 //OTP Service for Email
 
 async function sendEmailFromTwilio(otpCode,email,minutes) {
-  const name = "Shamayil"
+
   const msg = {
     to: email, // Change to your recipient
     from: 'noreply@hitouchcx.com', // Change to your verified sender
     subject: 'Your OTP for reboo8!',
     text: `OTP `,
-    html: `<p>Your otp is ${otpCode} and valid for ${minutes}</p>`,
+    html: `<p>Here's your otp: ${otpCode} and its valid for ${minutes} minutes</p>`,
   }
 
   try {
