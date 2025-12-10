@@ -3034,3 +3034,123 @@ Unique constraint failed on the fields: (`sessionId`)
 2025-12-10 11:24:07 [info]: ::1 - - [10/Dec/2025:05:54:07 +0000] "POST /api/v1/auth/sign-up HTTP/1.1" 500 - "-" "PostmanRuntime/7.49.1"
 2025-12-10 11:24:42 [info]: ::1 - - [10/Dec/2025:05:54:42 +0000] "POST /api/v1/auth/sign-up HTTP/1.1" 200 456 "-" "PostmanRuntime/7.49.1"
 2025-12-10 11:25:50 [info]: ::1 - - [10/Dec/2025:05:55:50 +0000] "POST /api/v1/auth/log-in HTTP/1.1" 200 449 "-" "PostmanRuntime/7.49.1"
+2025-12-10 11:39:36 [info]: ::1 - - [10/Dec/2025:06:09:36 +0000] "POST /api/v1/otp/request-otp HTTP/1.1" 200 436 "-" "PostmanRuntime/7.49.1"
+2025-12-10 11:59:07 [info]: ::1 - - [10/Dec/2025:06:29:07 +0000] "POST /api/v1/otp/request-otp HTTP/1.1" 200 436 "-" "PostmanRuntime/7.49.1"
+2025-12-10 11:59:24 [info]: ::1 - - [10/Dec/2025:06:29:24 +0000] "POST /api/v1/otp/request-otp HTTP/1.1" 200 514 "-" "PostmanRuntime/7.49.1"
+2025-12-10 12:00:45 [info]: ::1 - - [10/Dec/2025:06:30:45 +0000] "POST /api/v1/otp/request-otp HTTP/1.1" 400 64 "-" "PostmanRuntime/7.49.1"
+2025-12-10 12:01:03 [info]: ::1 - - [10/Dec/2025:06:31:03 +0000] "POST /api/v1/otp/request-otp HTTP/1.1" 200 436 "-" "PostmanRuntime/7.49.1"
+2025-12-10 12:03:00 [info]: ::1 - - [10/Dec/2025:06:33:00 +0000] "POST /api/v1/otp/request-otp HTTP/1.1" 200 436 "-" "PostmanRuntime/7.49.1"
+2025-12-10 12:03:06 [info]: ::1 - - [10/Dec/2025:06:33:06 +0000] "POST /api/v1/otp/request-otp HTTP/1.1" 400 49 "-" "PostmanRuntime/7.49.1"
+2025-12-10 12:05:00 [info]: ::1 - - [10/Dec/2025:06:35:00 +0000] "POST /api/v1/otp/request-otp HTTP/1.1" 400 43 "-" "PostmanRuntime/7.49.1"
+2025-12-10 12:05:01 [error]: Error [ERR_HTTP_HEADERS_SENT]: Cannot set headers after they are sent to the client
+    at ServerResponse.setHeader (node:_http_outgoing:700:11)
+    at ServerResponse.header (C:\Users\shama\HitouchCx_Backend\node_modules\express\lib\response.js:684:10)
+    at ServerResponse.send (C:\Users\shama\HitouchCx_Backend\node_modules\express\lib\response.js:161:12)
+    at ServerResponse.json (C:\Users\shama\HitouchCx_Backend\node_modules\express\lib\response.js:250:15)
+    at requestOtp (file:///C:/Users/shama/HitouchCx_Backend/src/controllers/v1/auth/otp.controller.js:95:25)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+2025-12-10 12:06:04 [info]: ::1 - - [10/Dec/2025:06:36:04 +0000] "POST /api/v1/otp/request-otp HTTP/1.1" 400 49 "-" "PostmanRuntime/7.49.1"
+2025-12-10 12:06:40 [info]: ::1 - - [10/Dec/2025:06:36:40 +0000] "POST /api/v1/otp/request-otp HTTP/1.1" 200 39 "-" "PostmanRuntime/7.49.1"
+2025-12-10 12:06:40 [error]: Error [ERR_HTTP_HEADERS_SENT]: Cannot set headers after they are sent to the client
+    at ServerResponse.setHeader (node:_http_outgoing:700:11)
+    at ServerResponse.header (C:\Users\shama\HitouchCx_Backend\node_modules\express\lib\response.js:684:10)
+    at ServerResponse.send (C:\Users\shama\HitouchCx_Backend\node_modules\express\lib\response.js:161:12)
+    at ServerResponse.json (C:\Users\shama\HitouchCx_Backend\node_modules\express\lib\response.js:250:15)
+    at requestOtp (file:///C:/Users/shama/HitouchCx_Backend/src/controllers/v1/auth/otp.controller.js:95:25)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+2025-12-10 12:06:46 [info]: ::1 - - [10/Dec/2025:06:36:46 +0000] "POST /api/v1/otp/request-otp HTTP/1.1" 400 49 "-" "PostmanRuntime/7.49.1"
+2025-12-10 12:06:55 [info]: ::1 - - [10/Dec/2025:06:36:55 +0000] "POST /api/v1/otp/request-otp HTTP/1.1" 400 49 "-" "PostmanRuntime/7.49.1"
+2025-12-10 12:08:28 [info]: ::1 - - [10/Dec/2025:06:38:28 +0000] "POST /api/v1/otp/request-otp HTTP/1.1" 400 64 "-" "PostmanRuntime/7.49.1"
+2025-12-10 12:09:20 [info]: ::1 - - [10/Dec/2025:06:39:20 +0000] "POST /api/v1/otp/request-otp HTTP/1.1" 400 64 "-" "PostmanRuntime/7.49.1"
+2025-12-10 12:09:51 [info]: ::1 - - [10/Dec/2025:06:39:51 +0000] "POST /api/v1/otp/request-otp HTTP/1.1" 500 105 "-" "PostmanRuntime/7.49.1"
+2025-12-10 12:10:13 [info]: ::1 - - [10/Dec/2025:06:40:13 +0000] "POST /api/v1/otp/request-otp HTTP/1.1" 200 436 "-" "PostmanRuntime/7.49.1"
+2025-12-10 12:11:37 [info]: ::1 - - [10/Dec/2025:06:41:37 +0000] "POST /api/v1/otp/request-otp HTTP/1.1" 200 436 "-" "PostmanRuntime/7.49.1"
+2025-12-10 12:12:11 [info]: ::1 - - [10/Dec/2025:06:42:11 +0000] "POST /api/v1/otp/request-otp HTTP/1.1" 400 64 "-" "PostmanRuntime/7.49.1"
+2025-12-10 12:12:59 [info]: ::1 - - [10/Dec/2025:06:42:59 +0000] "POST /api/v1/otp/request-otp HTTP/1.1" 400 64 "-" "PostmanRuntime/7.49.1"
+2025-12-10 12:13:50 [info]: ::1 - - [10/Dec/2025:06:43:50 +0000] "POST /api/v1/otp/request-otp HTTP/1.1" 400 64 "-" "PostmanRuntime/7.49.1"
+2025-12-10 12:14:10 [info]: ::1 - - [10/Dec/2025:06:44:10 +0000] "POST /api/v1/otp/request-otp HTTP/1.1" 400 64 "-" "PostmanRuntime/7.49.1"
+2025-12-10 12:14:12 [info]: ::1 - - [10/Dec/2025:06:44:12 +0000] "POST /api/v1/otp/request-otp HTTP/1.1" 400 64 "-" "PostmanRuntime/7.49.1"
+2025-12-10 12:14:29 [info]: ::1 - - [10/Dec/2025:06:44:29 +0000] "POST /api/v1/otp/request-otp HTTP/1.1" 400 64 "-" "PostmanRuntime/7.49.1"
+2025-12-10 12:14:52 [info]: ::1 - - [10/Dec/2025:06:44:52 +0000] "POST /api/v1/otp/request-otp HTTP/1.1" 500 44 "-" "PostmanRuntime/7.49.1"
+2025-12-10 12:15:08 [info]: ::1 - - [10/Dec/2025:06:45:08 +0000] "POST /api/v1/otp/request-otp HTTP/1.1" 500 44 "-" "PostmanRuntime/7.49.1"
+2025-12-10 12:15:23 [info]: ::1 - - [10/Dec/2025:06:45:23 +0000] "POST /api/v1/otp/request-otp HTTP/1.1" 500 44 "-" "PostmanRuntime/7.49.1"
+2025-12-10 12:15:34 [info]: ::1 - - [10/Dec/2025:06:45:34 +0000] "POST /api/v1/otp/request-otp HTTP/1.1" 500 44 "-" "PostmanRuntime/7.49.1"
+2025-12-10 12:17:32 [info]: ::1 - - [10/Dec/2025:06:47:32 +0000] "POST /api/v1/otp/request-otp HTTP/1.1" 200 130 "-" "PostmanRuntime/7.49.1"
+2025-12-10 12:17:32 [error]: Error [ERR_HTTP_HEADERS_SENT]: Cannot set headers after they are sent to the client
+    at ServerResponse.setHeader (node:_http_outgoing:700:11)
+    at ServerResponse.header (C:\Users\shama\HitouchCx_Backend\node_modules\express\lib\response.js:684:10)
+    at ServerResponse.send (C:\Users\shama\HitouchCx_Backend\node_modules\express\lib\response.js:161:12)
+    at ServerResponse.json (C:\Users\shama\HitouchCx_Backend\node_modules\express\lib\response.js:250:15)
+    at requestOtp (file:///C:/Users/shama/HitouchCx_Backend/src/controllers/v1/auth/otp.controller.js:116:25)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+2025-12-10 12:17:54 [info]: ::1 - - [10/Dec/2025:06:47:54 +0000] "POST /api/v1/otp/request-otp HTTP/1.1" 400 49 "-" "PostmanRuntime/7.49.1"
+2025-12-10 12:18:07 [info]: ::1 - - [10/Dec/2025:06:48:07 +0000] "POST /api/v1/otp/request-otp HTTP/1.1" 200 447 "-" "PostmanRuntime/7.49.1"
+2025-12-10 12:18:16 [info]: ::1 - - [10/Dec/2025:06:48:16 +0000] "POST /api/v1/otp/request-otp HTTP/1.1" 400 49 "-" "PostmanRuntime/7.49.1"
+2025-12-10 12:18:35 [info]: ::1 - - [10/Dec/2025:06:48:35 +0000] "POST /api/v1/otp/request-otp HTTP/1.1" 200 39 "-" "PostmanRuntime/7.49.1"
+2025-12-10 12:18:35 [error]: Error [ERR_HTTP_HEADERS_SENT]: Cannot set headers after they are sent to the client
+    at ServerResponse.setHeader (node:_http_outgoing:700:11)
+    at ServerResponse.header (C:\Users\shama\HitouchCx_Backend\node_modules\express\lib\response.js:684:10)
+    at ServerResponse.send (C:\Users\shama\HitouchCx_Backend\node_modules\express\lib\response.js:161:12)
+    at ServerResponse.json (C:\Users\shama\HitouchCx_Backend\node_modules\express\lib\response.js:250:15)
+    at requestOtp (file:///C:/Users/shama/HitouchCx_Backend/src/controllers/v1/auth/otp.controller.js:116:25)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+2025-12-10 12:18:43 [info]: ::1 - - [10/Dec/2025:06:48:43 +0000] "POST /api/v1/otp/request-otp HTTP/1.1" 400 32 "-" "PostmanRuntime/7.49.1"
+2025-12-10 12:19:04 [info]: ::1 - - [10/Dec/2025:06:49:04 +0000] "POST /api/v1/otp/request-otp HTTP/1.1" 400 32 "-" "PostmanRuntime/7.49.1"
+2025-12-10 12:20:42 [info]: ::1 - - [10/Dec/2025:06:50:42 +0000] "POST /api/v1/otp/request-otp HTTP/1.1" 400 49 "-" "PostmanRuntime/7.49.1"
+2025-12-10 12:20:55 [info]: ::1 - - [10/Dec/2025:06:50:55 +0000] "POST /api/v1/otp/request-otp HTTP/1.1" 200 447 "-" "PostmanRuntime/7.49.1"
+2025-12-10 12:21:10 [info]: ::1 - - [10/Dec/2025:06:51:10 +0000] "POST /api/v1/otp/request-otp HTTP/1.1" 400 32 "-" "PostmanRuntime/7.49.1"
+2025-12-10 12:21:44 [info]: ::1 - - [10/Dec/2025:06:51:44 +0000] "POST /api/v1/otp/request-otp HTTP/1.1" 200 130 "-" "PostmanRuntime/7.49.1"
+2025-12-10 12:21:44 [error]: Error [ERR_HTTP_HEADERS_SENT]: Cannot set headers after they are sent to the client
+    at ServerResponse.setHeader (node:_http_outgoing:700:11)
+    at ServerResponse.header (C:\Users\shama\HitouchCx_Backend\node_modules\express\lib\response.js:684:10)
+    at ServerResponse.send (C:\Users\shama\HitouchCx_Backend\node_modules\express\lib\response.js:161:12)
+    at ServerResponse.json (C:\Users\shama\HitouchCx_Backend\node_modules\express\lib\response.js:250:15)
+    at requestOtp (file:///C:/Users/shama/HitouchCx_Backend/src/controllers/v1/auth/otp.controller.js:115:25)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+2025-12-10 12:23:10 [info]: ::1 - - [10/Dec/2025:06:53:10 +0000] "POST /api/v1/otp/request-otp HTTP/1.1" 200 130 "-" "PostmanRuntime/7.49.1"
+2025-12-10 12:23:10 [error]: Error [ERR_HTTP_HEADERS_SENT]: Cannot set headers after they are sent to the client
+    at ServerResponse.setHeader (node:_http_outgoing:700:11)
+    at ServerResponse.header (C:\Users\shama\HitouchCx_Backend\node_modules\express\lib\response.js:684:10)
+    at ServerResponse.send (C:\Users\shama\HitouchCx_Backend\node_modules\express\lib\response.js:161:12)
+    at ServerResponse.json (C:\Users\shama\HitouchCx_Backend\node_modules\express\lib\response.js:250:15)
+    at requestOtp (file:///C:/Users/shama/HitouchCx_Backend/src/controllers/v1/auth/otp.controller.js:115:25)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+2025-12-10 12:23:32 [info]: ::1 - - [10/Dec/2025:06:53:32 +0000] "POST /api/v1/otp/request-otp HTTP/1.1" 400 49 "-" "PostmanRuntime/7.49.1"
+2025-12-10 12:23:42 [info]: ::1 - - [10/Dec/2025:06:53:42 +0000] "POST /api/v1/otp/request-otp HTTP/1.1" 400 49 "-" "PostmanRuntime/7.49.1"
+2025-12-10 12:24:44 [info]: ::1 - - [10/Dec/2025:06:54:44 +0000] "POST /api/v1/otp/request-otp HTTP/1.1" 200 130 "-" "PostmanRuntime/7.49.1"
+2025-12-10 12:24:44 [error]: Error [ERR_HTTP_HEADERS_SENT]: Cannot set headers after they are sent to the client
+    at ServerResponse.setHeader (node:_http_outgoing:700:11)
+    at ServerResponse.header (C:\Users\shama\HitouchCx_Backend\node_modules\express\lib\response.js:684:10)
+    at ServerResponse.send (C:\Users\shama\HitouchCx_Backend\node_modules\express\lib\response.js:161:12)
+    at ServerResponse.json (C:\Users\shama\HitouchCx_Backend\node_modules\express\lib\response.js:250:15)
+    at requestOtp (file:///C:/Users/shama/HitouchCx_Backend/src/controllers/v1/auth/otp.controller.js:115:25)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+2025-12-10 12:24:58 [info]: ::1 - - [10/Dec/2025:06:54:58 +0000] "POST /api/v1/otp/request-otp HTTP/1.1" 400 49 "-" "PostmanRuntime/7.49.1"
+2025-12-10 12:25:08 [info]: ::1 - - [10/Dec/2025:06:55:08 +0000] "POST /api/v1/otp/request-otp HTTP/1.1" 400 49 "-" "PostmanRuntime/7.49.1"
+2025-12-10 12:25:34 [info]: ::1 - - [10/Dec/2025:06:55:34 +0000] "POST /api/v1/otp/request-otp HTTP/1.1" 400 49 "-" "PostmanRuntime/7.49.1"
+2025-12-10 12:25:43 [info]: ::1 - - [10/Dec/2025:06:55:43 +0000] "POST /api/v1/otp/request-otp HTTP/1.1" 400 49 "-" "PostmanRuntime/7.49.1"
+2025-12-10 12:28:41 [info]: ::1 - - [10/Dec/2025:06:58:41 +0000] "POST /api/v1/otp/request-otp HTTP/1.1" 500 169 "-" "PostmanRuntime/7.49.1"
+2025-12-10 12:30:22 [info]: ::1 - - [10/Dec/2025:07:00:22 +0000] "POST /api/v1/otp/request-otp HTTP/1.1" 400 49 "-" "PostmanRuntime/7.49.1"
+2025-12-10 12:31:01 [info]: ::1 - - [10/Dec/2025:07:01:01 +0000] "POST /api/v1/otp/request-otp HTTP/1.1" 400 40 "-" "PostmanRuntime/7.49.1"
+2025-12-10 12:33:36 [info]: ::1 - - [10/Dec/2025:07:03:36 +0000] "POST /api/v1/auth/sign-up HTTP/1.1" 400 38 "-" "PostmanRuntime/7.49.1"
+2025-12-10 12:33:59 [info]: ::1 - - [10/Dec/2025:07:03:59 +0000] "POST /api/v1/auth/sign-up HTTP/1.1" 500 231 "-" "PostmanRuntime/7.49.1"
+2025-12-10 12:34:34 [info]: ::1 - - [10/Dec/2025:07:04:34 +0000] "POST /api/v1/auth/sign-up HTTP/1.1" 500 231 "-" "PostmanRuntime/7.49.1"
+2025-12-10 12:36:06 [info]: ::1 - - [10/Dec/2025:07:06:06 +0000] "POST /api/v1/auth/sign-up HTTP/1.1" 404 45 "-" "PostmanRuntime/7.49.1"
+2025-12-10 12:37:53 [info]: ::1 - - [10/Dec/2025:07:07:53 +0000] "POST /api/v1/otp/request-otp HTTP/1.1" 200 443 "-" "PostmanRuntime/7.49.1"
+2025-12-10 12:38:25 [info]: ::1 - - [10/Dec/2025:07:08:25 +0000] "POST /api/v1/otp/verify-otp HTTP/1.1" 200 39 "-" "PostmanRuntime/7.49.1"
+2025-12-10 12:38:50 [info]: ::1 - - [10/Dec/2025:07:08:50 +0000] "POST /api/v1/otp/request-otp HTTP/1.1" 200 137 "-" "PostmanRuntime/7.49.1"
+2025-12-10 12:38:50 [error]: Error [ERR_HTTP_HEADERS_SENT]: Cannot set headers after they are sent to the client
+    at ServerResponse.setHeader (node:_http_outgoing:700:11)
+    at ServerResponse.header (C:\Users\shama\HitouchCx_Backend\node_modules\express\lib\response.js:684:10)
+    at ServerResponse.send (C:\Users\shama\HitouchCx_Backend\node_modules\express\lib\response.js:161:12)
+    at ServerResponse.json (C:\Users\shama\HitouchCx_Backend\node_modules\express\lib\response.js:250:15)
+    at requestOtp (file:///C:/Users/shama/HitouchCx_Backend/src/controllers/v1/auth/otp.controller.js:123:25)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+2025-12-10 12:39:45 [info]: ::1 - - [10/Dec/2025:07:09:45 +0000] "POST /api/v1/otp/verify-otp HTTP/1.1" 200 70 "-" "PostmanRuntime/7.49.1"
+2025-12-10 12:41:22 [info]: ::1 - - [10/Dec/2025:07:11:22 +0000] "POST /api/v1/auth/sign-up HTTP/1.1" 200 456 "-" "PostmanRuntime/7.49.1"
+2025-12-10 12:44:45 [info]: ::1 - - [10/Dec/2025:07:14:45 +0000] "POST /api/v1/otp/request-otp HTTP/1.1" 400 49 "-" "PostmanRuntime/7.49.1"
+2025-12-10 12:46:28 [info]: ::1 - - [10/Dec/2025:07:16:28 +0000] "GET /api/v1/agent/agentInfo/cmi5uzu8w0001o420uoclv9oz HTTP/1.1" 500 35 "-" "PostmanRuntime/7.49.1"
+2025-12-10 12:47:05 [info]: ::1 - - [10/Dec/2025:07:17:05 +0000] "GET /api/v1/agent/agentInfo/cmi5uzu8w0001o420uoclv9oz HTTP/1.1" 200 - "-" "PostmanRuntime/7.49.1"
+2025-12-10 12:47:38 [info]: ::1 - - [10/Dec/2025:07:17:38 +0000] "GET /api/v1/agent/agentInfo/cmi5uzu8w0001o420uoclv9oz HTTP/1.1" 200 - "-" "PostmanRuntime/7.49.1"
+2025-12-10 12:53:24 [info]: ::1 - - [10/Dec/2025:07:23:24 +0000] "POST /api/v1/auth/log-in HTTP/1.1" 200 448 "-" "PostmanRuntime/7.49.1"
+2025-12-10 12:54:00 [info]: ::1 - - [10/Dec/2025:07:24:00 +0000] "POST /api/v1/agent/register HTTP/1.1" 400 80 "-" "PostmanRuntime/7.49.1"

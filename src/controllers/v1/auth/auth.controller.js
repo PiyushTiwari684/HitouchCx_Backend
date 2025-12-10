@@ -1,4 +1,4 @@
-import prisma from '../../../config/db.js'; 
+import prisma from '../../../config/db.js';
 import { generateAccessToken, generateRefreshTokenValue, hashRefreshToken } from "../../../utils/token.js"
 import validator from 'validator';
 import bcrypt from 'bcrypt';
@@ -13,41 +13,51 @@ const signUp = async (req, res) => {
   try {
     const { email, phone, password } = req.body;
 
-        //Checking Email,Phone & Password 
-        if (!email || !phone || !password) {
-            return res.status(400).json({ error: "Enter All required fields." })
-        }
+    //Checking Email,Phone & Password 
+    if (!email || !phone || !password) {
+      return res.status(400).json({ error: "Enter All required fields." })
+    }
 
-        //Validation all the credentials
-       
-        if (!validator.isEmail(email)) {
-                return res.status(400).json({ error: "Invalid email address." })
-            }
+    //Validation all the credentials
 
-        if (!validator.isMobilePhone(phone)) {
-                return res.status(400).json({ error: "Invalid phone number." })
-            }
+    if (!validator.isEmail(email)) {
+      return res.status(400).json({ error: "Invalid email address." })
+    }
 
-        if (!validator.isStrongPassword(password)) {
-                return res.status(400).json({ error: "Password is not strong enough" })
-            }
-        
+    if (!validator.isMobilePhone(phone)) {
+      return res.status(400).json({ error: "Invalid phone number." })
+    }
 
-        //Creating Hash Password and updating fields
-        const hashedPassword = await bcrypt.hash(password,10);
-        const now = new Date();
-        const user = await prisma.user.update({
-            where:{email,emailVerified:true,phoneVerified:true},
-            data:{passwordHash:hashedPassword,status:"ACTIVE",createdAt:now}
-        })
+    if (!validator.isStrongPassword(password)) {
+      return res.status(400).json({ error: "Password is not strong enough" })
+    }
 
-          // Create Agent profile automatically for the new user
+    // Find the user by unique email
+    const userRecord = await prisma.user.findUnique({ where: { email } });
+    if (!userRecord) {
+      return res.status(404).json({ error: "User not found. Verify OTP first." });
+    }
+    if (!userRecord.emailVerified || !userRecord.phoneVerified) {
+      return res.status(400).json({ error: "Verify email and phone OTP before sign up." });
+    }
+
+
+
+    //Creating Hash Password and updating fields
+    const hashedPassword = await bcrypt.hash(password, 10);
+    const now = new Date();
+    const user = await prisma.user.update({
+      where: { email, emailVerified: true, phoneVerified: true },
+      data: { passwordHash: hashedPassword, status: "ACTIVE", createdAt: now }
+    })
+
+    // Create Agent profile automatically for the new user
     if (user && user.status === "ACTIVE") {
       const existingAgent = await prisma.agent.findUnique({
         where: { userId: user.id },
       });
-        
-       if (!existingAgent) {
+
+      if (!existingAgent) {
         await prisma.agent.create({
           data: {
             userId: user.id,
@@ -58,26 +68,26 @@ const signUp = async (req, res) => {
         });
       }
     }
-        //Sending Response if User Updated
-        console.log(user.status)
-        if(user && user.status=="ACTIVE"){
-            const token = generateAccessToken({id:user.id,role:user.role,status:user.status}); 
-            const refreshPlain = generateRefreshTokenValue()
-            const refreshHash = hashRefreshToken(refreshPlain)
-            const expiresAt = new Date(Date.now() + 30 * 24 * 60 * 60 * 1000) // 30 days
+    //Sending Response if User Updated
+    console.log(user.status)
+    if (user && user.status == "ACTIVE") {
+      const token = generateAccessToken({ id: user.id, role: user.role, status: user.status });
+      const refreshPlain = generateRefreshTokenValue()
+      const refreshHash = hashRefreshToken(refreshPlain)
+      const expiresAt = new Date(Date.now() + 30 * 24 * 60 * 60 * 1000) // 30 days
 
-          await prisma.refreshToken.create({
-            data: { userId: user.id, tokenHash: refreshHash, expiresAt }
-          })
-           return res.json({message:"User added successfully and is 'Active'",token:token,refreshToken:refreshPlain,email,phone})
-        }else{
-            return res.json({error:"Prisma failed to return the user info"})
-        }
+      await prisma.refreshToken.create({
+        data: { userId: user.id, tokenHash: refreshHash, expiresAt }
+      })
+      return res.json({ message: "User added successfully and is 'Active'", token: token, refreshToken: refreshPlain, email, phone })
+    } else {
+      return res.json({ error: "Prisma failed to return the user info" })
+    }
 
-    }
-    catch (err) {
-        res.status(500).json({ error: "Error Occured while Sign Up", error: err.message });
-    }
+  }
+  catch (err) {
+    res.status(500).json({ error: "Error Occured while Sign Up", error: err.message });
+  }
 }
 
 // Log In Controller
@@ -87,7 +97,7 @@ const logIn = async (req, res) => {
     if ((!email && !phone) || !password) {
       return res.status(400).json({ error: "Enter all fields" })
     }
-    
+
 
     async function authenticate(user) {
       if (user) {
@@ -109,8 +119,8 @@ const logIn = async (req, res) => {
             message: "User Authenticated",
             accessToken,
             refreshToken: refreshPlain,
-            userEmail:user.email,
-            userPhone:user.phone
+            userEmail: user.email,
+            userPhone: user.phone
           })
         } else {
           return res.status(401).json({ error: "Invalid credentials or user not active" })
