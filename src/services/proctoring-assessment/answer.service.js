@@ -140,9 +140,44 @@ export async function getAllAnswersForAttempt(attemptId) {
  * @returns {Object} Statistics object
  */
 export async function getAnswerStatistics(attemptId) {
+  console.log("[getAnswerStatistics] Fetching stats for attemptId:", attemptId);
+
+  // Fetch attempt data to get timing information
+  const attempt = await prisma.candidateAssessment.findUnique({
+    where: { id: attemptId },
+    select: {
+      startedAt: true,
+      completedAt: true,
+      submittedAt: true,
+      totalTimeSpent: true,
+    },
+  });
+
+  console.log("[getAnswerStatistics] Attempt data:", {
+    startedAt: attempt?.startedAt,
+    completedAt: attempt?.completedAt,
+    submittedAt: attempt?.submittedAt,
+    totalTimeSpent: attempt?.totalTimeSpent,
+  });
+
+  // Fetch all answers
   const answers = await prisma.answer.findMany({
     where: { attemptId },
   });
+
+  // Calculate totalTimeSpent if not already set
+  let totalTimeSpent = attempt?.totalTimeSpent || 0;
+
+  if (!totalTimeSpent && attempt?.startedAt) {
+    // Calculate from startedAt to completedAt or current time
+    const endTime = attempt.completedAt || attempt.submittedAt || new Date();
+    totalTimeSpent = Math.floor((endTime - attempt.startedAt) / 1000); // Convert to seconds
+    console.log("[getAnswerStatistics] Calculated totalTimeSpent:", {
+      startedAt: attempt.startedAt,
+      endTime,
+      totalTimeSpent,
+    });
+  }
 
   const stats = {
     totalQuestions: answers.length,
@@ -150,8 +185,13 @@ export async function getAnswerStatistics(attemptId) {
     skippedQuestions: answers.filter((a) => a.isSkipped).length,
     writingAnswers: answers.filter((a) => a.answerText && !a.audioFilePath).length,
     speakingAnswers: answers.filter((a) => a.audioFilePath).length,
+    totalTimeSpent, // Time spent in seconds
+    startedAt: attempt?.startedAt,
+    completedAt: attempt?.completedAt,
+    submittedAt: attempt?.submittedAt,
   };
 
+  console.log("[getAnswerStatistics] Returning stats:", stats);
   return stats;
 }
 

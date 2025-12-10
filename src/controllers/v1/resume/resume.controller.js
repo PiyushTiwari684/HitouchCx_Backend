@@ -2,7 +2,7 @@ import fs from "fs";
 import mammoth from "mammoth";
 import ApiError from "../../../utils/ApiError.js";
 import pdfjsLib from "pdfjs-dist/legacy/build/pdf.js"; // for older versions of pdfjs-dist
-import { extractResumeWithFallback } from "../../../utils/resumeExtractor.js";
+import { extractResumeWithFallback, transformToFrontendFormat } from "../../../utils/resumeExtractor.js";
 
 
 export const extractResume = async(req,res) =>{
@@ -69,9 +69,16 @@ export const extractResume = async(req,res) =>{
     console.warn("Could not delete temp file:", error.message);
   }
 
-  // After extracting textContent, call Gemini to structure the data
+  // After extracting textContent, call AI to structure the data
   try {
-    const structuredData = await extractResumeWithFallback(textContent);
+    // Step 1: Extract raw data using AI (Groq/HuggingFace/Gemini with fallback)
+    const rawData = await extractResumeWithFallback(textContent);
+    console.log("Raw AI extraction successful:", rawData._extractedBy);
+
+    // Step 2: Transform raw data to frontend form format
+    const structuredData = transformToFrontendFormat(rawData);
+    console.log("Data transformation complete");
+
     // Respond with both the file name and the structured data
     res.json({
       file: req.file.originalname,
@@ -79,8 +86,8 @@ export const extractResume = async(req,res) =>{
       message: "File uploaded, parsed, and structured successfully"
     });
   } catch (err) {
-    // Handle errors from Gemini API
-    console.error("Gemini API Error:", err);
-    throw new ApiError(500, "Failed to structure resume data with Gemini");
+    // Handle errors from AI API
+    console.error("Resume extraction error:", err);
+    throw new ApiError(500, "Failed to structure resume data with AI");
   }
 }

@@ -1037,3 +1037,19 @@ Argument `[32mcreatedBy[39m` is missing.
     at Layer.handleRequest (C:\Users\shama\HitouchCx_Backend\node_modules\router\lib\layer.js:152:17)
     at trimPrefix (C:\Users\shama\HitouchCx_Backend\node_modules\router\index.js:342:13)
     at C:\Users\shama\HitouchCx_Backend\node_modules\router\index.js:297:9
+2025-12-10 01:50:17 [error]: Error: Failed to start conversation: 
+[31mInvalid [1m`prisma.conversation.create()`[22m invocation:[39m
+
+
+Unique constraint failed on the fields: (`sessionId`)
+    at Module.startConversation (file:///C:/Users/tiwar/Desktop/HitouchCX_Projects/Hitouch_Project/HitouchCx_Backend/src/services/conversation.service.js:51:11)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async startConversation (file:///C:/Users/tiwar/Desktop/HitouchCX_Projects/Hitouch_Project/HitouchCx_Backend/src/controllers/v1/chatbot/conversation.controller.js:16:26)
+2025-12-10 09:50:36 [error]: Error: Failed to start conversation: 
+[31mInvalid [1m`prisma.conversation.create()`[22m invocation:[39m
+
+
+Unique constraint failed on the fields: (`sessionId`)
+    at Module.startConversation (file:///C:/Users/tiwar/Desktop/HitouchCX_Projects/Hitouch_Project/HitouchCx_Backend/src/services/conversation.service.js:51:11)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async startConversation (file:///C:/Users/tiwar/Desktop/HitouchCX_Projects/Hitouch_Project/HitouchCx_Backend/src/controllers/v1/chatbot/conversation.controller.js:16:26)

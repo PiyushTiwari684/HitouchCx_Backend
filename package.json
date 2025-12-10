@@ -18,7 +18,8 @@
   "dependencies": {
     "@ffmpeg-installer/ffmpeg": "^1.1.0",
     "@google/genai": "^1.25.0",
-    "@huggingface/inference": "^4.13.3",
+    "@google/generative-ai": "^0.24.1",
+    "@huggingface/inference": "^4.13.5",
     "@prisma/client": "^6.19.0",
     "@sendgrid/mail": "^8.1.6",
     "@vladmandic/face-api": "^1.7.15",

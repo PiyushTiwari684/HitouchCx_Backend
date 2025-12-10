@@ -1394,6 +1394,10 @@ model CandidateAssessment {
   fullscreenEnteredAt DateTime? // When fullscreen was first entered
   fullscreenExitCount Int       @default(0) // How many times fullscreen was exited
 
+  // Candidate feedback
+  candidateFeedback   String?   @db.Text // Feedback from candidate about assessment experience
+  feedbackSubmittedAt DateTime? // When feedback was submitted
+
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
@@ -1754,6 +1758,27 @@ model Answer {
   // Grammar checking results (for writing)
   grammarErrors Json? // Array of grammar errors detected
   grammarScore  Float? // Grammar score (0-100)
+
+  // AI Evaluation Fields (Gemini + Hugging Face)
+  correctnessScore      Float?     // How accurate/correct is the answer (0-100)
+  fluencyScore          Float?     // Speaking fluency - natural, smooth speech (0-100) [Speaking only]
+  thinkingLevelScore    Float?     // Depth of critical thinking/reasoning (0-100)
+  completenessScore     Float?     // How complete/thorough the answer is (0-100) [Writing only]
+
+  // Overall evaluation results
+  aiOverallScore        Float?     // Weighted average score based on question type (0-100)
+  aiCefrLevel           CEFRLevel? // Final CEFR level (A1, A2, B1, B2, C1, C2)
+
+  // Detailed AI feedback
+  detailedFeedback      String?    @db.Text // AI-generated paragraph feedback
+  strengths             Json?      // Array of strength points ["Good vocabulary", "Clear structure"]
+  improvements          Json?      // Array of improvement suggestions ["Work on tenses", "Add examples"]
+  evaluationReasoning   String?    @db.Text // AI's detailed reasoning for the scores given
+
+  // Evaluation metadata
+  evaluatedAt           DateTime?  // Timestamp when AI evaluation was completed
+  evaluatedBy           String?    // Which AI service evaluated (e.g., "Gemini-1.5-Flash")
+  evaluationVersion     String?    // Version of evaluation algorithm (for tracking improvements)
 
   // Metadata
   isSkipped         Boolean @default(false) // Was question skipped?
