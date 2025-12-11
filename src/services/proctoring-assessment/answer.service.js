@@ -222,12 +222,6 @@ function calculateWordCount(text) {
   return words.length;
 }
 
-/**
- * Validate answer ownership (ensure answer belongs to the authenticated user's attempt)
- * @param {string} answerId - Answer ID
- * @param {string} agentId - Agent ID from auth
- * @returns {boolean} True if valid ownership
- */
 export async function validateAnswerOwnership(answerId, agentId) {
   const answer = await prisma.answer.findUnique({
     where: { id: answerId },

@@ -213,26 +213,6 @@ export const getDocuments = async (req, res) => {
   }
 };
 
-/**
- * Retry KYC Verification
- *
- * POST /api/v1/kyc/retry
- *
- * Generates a new DigiLocker link for users who want to retry verification.
- * Uses smart retry logic (reuses session if created within last 5 minutes).
- *
- * @route POST /api/v1/kyc/retry
- * @access Protected (requires JWT)
- * @body {string} consent - User consent ("Y")
- *
- * @example
- * Request:
- * POST /api/v1/kyc/retry
- * Headers: { Authorization: "Bearer <token>" }
- * Body: { consent: "Y" }
- *
- * Response: Same as generateDigiLockerLink
- */
 export const retryKYCVerification = async (req, res) => {
   try {
     // This is essentially the same as generating a new link
