@@ -347,7 +347,6 @@ const verifyForgotPasswordOtp = async (req, res) => {
   }
 };
 
-// ...existing code...
 
 const resetPasswordWithToken = async (req, res) => {
   try {
@@ -394,7 +393,6 @@ const resetPasswordWithToken = async (req, res) => {
   }
 };
 
-// ...existing code...
 
 
 export { signUp, logIn, refresh, logout, requestForgotPassword, verifyForgotPasswordOtp, resetPasswordWithToken }
