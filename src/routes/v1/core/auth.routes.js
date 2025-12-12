@@ -1,6 +1,7 @@
 import express from 'express';
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken'
+import {verifyToken} from "../../../utils/token.js"
 import authMiddleware from "../../../middlewares/authMiddleware.js"
 import {signUp,logIn,requestForgotPassword,verifyForgotPasswordOtp,resetPasswordWithToken,logout,refresh} from "../../../controllers/v1/auth/auth.controller.js"
 import passport from '../../../config/passport.js';
@@ -64,5 +65,30 @@ router.get(
     }
   }
 );
+
+
+//Testing - Token/JWT(Not for Prod)
+ 
+router.post('/token/introspect', (req, res) => {
+  const { token } = req.body;
+  if (!token) return res.status(400).json({ valid: false, error: 'Missing token' });
+
+  try {
+    const decoded = verifyToken(token); // throws if invalid/expired
+    const nowSec = Math.floor(Date.now() / 1000);
+    const expSec = decoded.exp; // JWT exp in seconds
+    const ttlSec = expSec - nowSec;
+    const ttlInMins = ttlSec/60;
+
+    return res.json({
+      valid: true,
+      expiresAt: new Date(expSec * 1000).toISOString(),
+      timeToExpireMinutes: ttlInMins,
+      payload: { id: decoded.id, role: decoded.role, status: decoded.status, scope: decoded.scope || null }
+    });
+  } catch (e) {
+    return res.status(401).json({ valid: false, error: 'Invalid or expired token' });
+  }
+});
 
 export default router;
