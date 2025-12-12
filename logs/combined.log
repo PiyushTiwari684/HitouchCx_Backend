@@ -3380,3 +3380,5 @@ Unique constraint failed on the fields: (`sessionId`)
 2025-12-12 11:11:50 [info]: ::1 - - [12/Dec/2025:05:41:50 +0000] "POST /api/v1/auth/log-in HTTP/1.1" 200 444 "-" "PostmanRuntime/7.49.1"
 2025-12-12 12:25:14 [info]: ::1 - - [12/Dec/2025:06:55:14 +0000] "POST /api/v1/auth/log-in HTTP/1.1" 500 78 "-" "PostmanRuntime/7.49.1"
 2025-12-12 12:25:32 [info]: ::1 - - [12/Dec/2025:06:55:32 +0000] "POST /api/v1/auth/log-in HTTP/1.1" 200 444 "-" "PostmanRuntime/7.49.1"
+2025-12-12 12:27:14 [info]: ::1 - - [12/Dec/2025:06:57:14 +0000] "POST /api/v1/auth/log-in HTTP/1.1" 200 444 "-" "PostmanRuntime/7.49.1"
+2025-12-12 12:56:15 [info]: ::1 - - [12/Dec/2025:07:26:15 +0000] "POST /api/v1/auth/password/request-change HTTP/1.1" 200 58 "-" "PostmanRuntime/7.49.1"
