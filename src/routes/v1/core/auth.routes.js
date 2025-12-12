@@ -1,7 +1,7 @@
 import express from 'express';
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken'
-import {signUp,logIn} from "../../../controllers/v1/auth/auth.controller.js"
+import {signUp,logIn,requestForgotPassword,verifyForgotPasswordOtp} from "../../../controllers/v1/auth/auth.controller.js"
 import passport from '../../../config/passport.js';
 
 
@@ -11,6 +11,13 @@ const router = express.Router();
 router.post('/sign-up',signUp);
 
 router.post('/log-in', logIn);
+
+//Forgot Password
+router.post("/password/request-change",requestForgotPassword)
+
+// Reset password (verify OTP/code + set new password)
+
+router.post("/password/otp-verify",verifyForgotPasswordOtp)
 
 //OAuth Stuff
 

@@ -80,6 +80,7 @@ model OTP {
 enum OTPType {
   EMAIL
   PHONE
+  PASSWORD_RESET
 }
 
 model RefreshToken {

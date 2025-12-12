@@ -13,8 +13,41 @@ const requestOtp = async (req, res) => {
         const { email, phone } = req.body;
 
         //Error Response if both email and phone not present and in incorrect format
-        if ( (!email || !validator.isEmail(email)) && (!phone || !validator.isMobilePhone(phone))) {
+        if ((!email || !validator.isEmail(email)) && (!phone || !validator.isMobilePhone(phone))) {
             res.status(400).json({ error: "Incorrect Email or Phone format" })
+        }
+
+        // const emailStatus = await prisma.user.findUnique({
+        //     where:{
+        //         email:email
+        //     }
+        // })
+
+        // if(emailStatus.status=="ACTIVE" ){
+        //     return res.status(400).json({error:"Cannot send OTP. User already exists with same email"})
+        // }
+
+        //  const phoneStatus = await prisma.user.findUnique({
+        //     where:{
+        //         phone:phone
+        //     }
+        // })
+
+        // if(phoneStatus.status=="ACTIVE"){
+        //     return res.status(400).json({error:"Cannot send OTP. User already exists with same phone"})
+        // }
+
+        // Find existing user by whichever identifier is provided
+        const existingUser = await prisma.user.findFirst({
+            where: {
+                OR: [
+                    email ? { email } : undefined,
+                ].filter(Boolean),
+            },
+        });
+
+        if (existingUser && existingUser.status === 'ACTIVE') {
+            return res.status(400).json({ error: 'Cannot send OTP. User already exists.' });
         }
 
         let user;
@@ -32,12 +65,20 @@ const requestOtp = async (req, res) => {
 
             //If Phone already exists, send error response
 
+            const emailPhoneExists = await prisma.user.findUnique({
+                where: { email }
+            })
+
             const phoneExists = await prisma.user.findUnique({
                 where:{phone}
             })
 
             if(phoneExists){
-                return res.status(400).json({error:"Phone already exists"})
+                return res.status(400).json({error:"Phone already exists. Provide new one"})
+            }
+
+            if (emailPhoneExists.phone==phone && emailPhoneExists.status=="ACTIVE") {
+                return res.status(400).json({ error: "Phone already exists" })
             }
 
             const otpStatus = await sendPhoneOTP(phone)
@@ -53,8 +94,8 @@ const requestOtp = async (req, res) => {
                 res.json({ error: "Failed to send otp to phone" })
             }
 
-        }else{
-            return res.status(400).json({error:"Provide both email and phone"})
+        } else {
+            return res.status(400).json({ error: "Provide both email and phone" })
         }
         // count only OTPs for this type (EMAIL or PHONE)
         const recentCount = await prisma.oTP.count({
@@ -125,11 +166,11 @@ const verifyOtp = async (req, res) => {
                 })
 
                 res.json({ message: "OTP Verified Successfully" })
-            } else if(presentTime > otp.expiresAt){
+            } else if (presentTime > otp.expiresAt) {
                 return res.status(401).json({ error: "OTP Expired" })
 
             }
-            else{
+            else {
                 return res.status(401).json({ error: "OTP Mismatched" })
             }
         } else {
@@ -144,7 +185,7 @@ const verifyOtp = async (req, res) => {
                     data: { phoneVerified: true }
                 })
 
-               return res.json({ message: "Verified..", status: status })
+                return res.json({ message: "Verified..", status: status })
 
             } else {
                 return res.status(401).json({ message: "Not able to verify." })
@@ -153,7 +194,7 @@ const verifyOtp = async (req, res) => {
         }
     }
     catch (error) {
-       return res.json({ message: "Failed to verify Phone/Email OTP", error })
+        return res.json({ message: "Failed to verify Phone/Email OTP", error })
     }
 }
 

@@ -26,6 +26,7 @@ const getAgentById = async (req, res) => {
         experiences: true, 
         employment:true,
 
+
         
       },
     });
@@ -55,6 +56,7 @@ const getAgentById = async (req, res) => {
           employment:agent.employment,
           languages: agent.languages,
           kycStatus: agent.kycStatus,
+          bankAccountNumber:agent.bankAccountNumber,
           createdAt: agent.createdAt,
           updatedAt: agent.updatedAt,
         },

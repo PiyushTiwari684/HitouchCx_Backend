@@ -3282,307 +3282,45 @@ Unique constraint failed on the fields: (`sessionId`)
 2025-12-10 13:50:35 [info]: ::1 - - [10/Dec/2025:08:20:35 +0000] "GET /api/v1/proctoring/assessment/latest-evaluation HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.0.0 Safari/537.36"
 2025-12-10 13:50:42 [info]: ::1 - - [10/Dec/2025:08:20:42 +0000] "GET /api/v1/proctoring/assessment/attempt/2476aa01-53b3-4cb9-96fe-3dc4a941867a/evaluation/summary HTTP/1.1" 200 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.0.0 Safari/537.36"
 2025-12-10 13:50:42 [info]: ::1 - - [10/Dec/2025:08:20:42 +0000] "GET /api/v1/proctoring/assessment/attempt/2476aa01-53b3-4cb9-96fe-3dc4a941867a/evaluation/summary HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.0.0 Safari/537.36"
-2025-12-10 13:57:36 [error]: Error: Not allowed by CORS
-    at origin (file:///Users/rajeevkumar/Documents/Reboo8Works/Reboo8Code/Server/app.js:31:21)
-    at /Users/rajeevkumar/Documents/Reboo8Works/Reboo8Code/Server/node_modules/cors/lib/index.js:219:13
-    at optionsCallback (/Users/rajeevkumar/Documents/Reboo8Works/Reboo8Code/Server/node_modules/cors/lib/index.js:199:9)
-    at corsMiddleware (/Users/rajeevkumar/Documents/Reboo8Works/Reboo8Code/Server/node_modules/cors/lib/index.js:204:7)
-    at Layer.handleRequest (/Users/rajeevkumar/Documents/Reboo8Works/Reboo8Code/Server/node_modules/router/lib/layer.js:152:17)
-    at trimPrefix (/Users/rajeevkumar/Documents/Reboo8Works/Reboo8Code/Server/node_modules/router/index.js:342:13)
-    at /Users/rajeevkumar/Documents/Reboo8Works/Reboo8Code/Server/node_modules/router/index.js:297:9
-    at processParams (/Users/rajeevkumar/Documents/Reboo8Works/Reboo8Code/Server/node_modules/router/index.js:582:12)
-    at next (/Users/rajeevkumar/Documents/Reboo8Works/Reboo8Code/Server/node_modules/router/index.js:291:5)
-    at Function.handle (/Users/rajeevkumar/Documents/Reboo8Works/Reboo8Code/Server/node_modules/router/index.js:186:3)
-    at Function.handle (/Users/rajeevkumar/Documents/Reboo8Works/Reboo8Code/Server/node_modules/express/lib/application.js:177:15)
-    at Server.app (/Users/rajeevkumar/Documents/Reboo8Works/Reboo8Code/Server/node_modules/express/lib/express.js:38:9)
-    at Server.emit (node:events:507:28)
-    at parserOnIncoming (node:_http_server:1153:12)
-    at HTTPParser.parserOnHeadersComplete (node:_http_common:117:17)
-2025-12-10 13:58:17 [error]: Error: Not allowed by CORS
-    at origin (file:///Users/rajeevkumar/Documents/Reboo8Works/Reboo8Code/Server/app.js:32:21)
-    at /Users/rajeevkumar/Documents/Reboo8Works/Reboo8Code/Server/node_modules/cors/lib/index.js:219:13
-    at optionsCallback (/Users/rajeevkumar/Documents/Reboo8Works/Reboo8Code/Server/node_modules/cors/lib/index.js:199:9)
-    at corsMiddleware (/Users/rajeevkumar/Documents/Reboo8Works/Reboo8Code/Server/node_modules/cors/lib/index.js:204:7)
-    at Layer.handleRequest (/Users/rajeevkumar/Documents/Reboo8Works/Reboo8Code/Server/node_modules/router/lib/layer.js:152:17)
-    at trimPrefix (/Users/rajeevkumar/Documents/Reboo8Works/Reboo8Code/Server/node_modules/router/index.js:342:13)
-    at /Users/rajeevkumar/Documents/Reboo8Works/Reboo8Code/Server/node_modules/router/index.js:297:9
-    at processParams (/Users/rajeevkumar/Documents/Reboo8Works/Reboo8Code/Server/node_modules/router/index.js:582:12)
-    at next (/Users/rajeevkumar/Documents/Reboo8Works/Reboo8Code/Server/node_modules/router/index.js:291:5)
-    at Function.handle (/Users/rajeevkumar/Documents/Reboo8Works/Reboo8Code/Server/node_modules/router/index.js:186:3)
-    at Function.handle (/Users/rajeevkumar/Documents/Reboo8Works/Reboo8Code/Server/node_modules/express/lib/application.js:177:15)
-    at Server.app (/Users/rajeevkumar/Documents/Reboo8Works/Reboo8Code/Server/node_modules/express/lib/express.js:38:9)
-    at Server.emit (node:events:507:28)
-    at parserOnIncoming (node:_http_server:1153:12)
-    at HTTPParser.parserOnHeadersComplete (node:_http_common:117:17)
-2025-12-10 13:58:17 [error]: Error: Not allowed by CORS
-    at origin (file:///Users/rajeevkumar/Documents/Reboo8Works/Reboo8Code/Server/app.js:32:21)
-    at /Users/rajeevkumar/Documents/Reboo8Works/Reboo8Code/Server/node_modules/cors/lib/index.js:219:13
-    at optionsCallback (/Users/rajeevkumar/Documents/Reboo8Works/Reboo8Code/Server/node_modules/cors/lib/index.js:199:9)
-    at corsMiddleware (/Users/rajeevkumar/Documents/Reboo8Works/Reboo8Code/Server/node_modules/cors/lib/index.js:204:7)
-    at Layer.handleRequest (/Users/rajeevkumar/Documents/Reboo8Works/Reboo8Code/Server/node_modules/router/lib/layer.js:152:17)
-    at trimPrefix (/Users/rajeevkumar/Documents/Reboo8Works/Reboo8Code/Server/node_modules/router/index.js:342:13)
-    at /Users/rajeevkumar/Documents/Reboo8Works/Reboo8Code/Server/node_modules/router/index.js:297:9
-    at processParams (/Users/rajeevkumar/Documents/Reboo8Works/Reboo8Code/Server/node_modules/router/index.js:582:12)
-    at next (/Users/rajeevkumar/Documents/Reboo8Works/Reboo8Code/Server/node_modules/router/index.js:291:5)
-    at Function.handle (/Users/rajeevkumar/Documents/Reboo8Works/Reboo8Code/Server/node_modules/router/index.js:186:3)
-    at Function.handle (/Users/rajeevkumar/Documents/Reboo8Works/Reboo8Code/Server/node_modules/express/lib/application.js:177:15)
-    at Server.app (/Users/rajeevkumar/Documents/Reboo8Works/Reboo8Code/Server/node_modules/express/lib/express.js:38:9)
-    at Server.emit (node:events:507:28)
-    at parserOnIncoming (node:_http_server:1153:12)
-    at HTTPParser.parserOnHeadersComplete (node:_http_common:117:17)
-2025-12-10 13:58:17 [error]: Error: Not allowed by CORS
-    at origin (file:///Users/rajeevkumar/Documents/Reboo8Works/Reboo8Code/Server/app.js:32:21)
-    at /Users/rajeevkumar/Documents/Reboo8Works/Reboo8Code/Server/node_modules/cors/lib/index.js:219:13
-    at optionsCallback (/Users/rajeevkumar/Documents/Reboo8Works/Reboo8Code/Server/node_modules/cors/lib/index.js:199:9)
-    at corsMiddleware (/Users/rajeevkumar/Documents/Reboo8Works/Reboo8Code/Server/node_modules/cors/lib/index.js:204:7)
-    at Layer.handleRequest (/Users/rajeevkumar/Documents/Reboo8Works/Reboo8Code/Server/node_modules/router/lib/layer.js:152:17)
-    at trimPrefix (/Users/rajeevkumar/Documents/Reboo8Works/Reboo8Code/Server/node_modules/router/index.js:342:13)
-    at /Users/rajeevkumar/Documents/Reboo8Works/Reboo8Code/Server/node_modules/router/index.js:297:9
-    at processParams (/Users/rajeevkumar/Documents/Reboo8Works/Reboo8Code/Server/node_modules/router/index.js:582:12)
-    at next (/Users/rajeevkumar/Documents/Reboo8Works/Reboo8Code/Server/node_modules/router/index.js:291:5)
-    at Function.handle (/Users/rajeevkumar/Documents/Reboo8Works/Reboo8Code/Server/node_modules/router/index.js:186:3)
-    at Function.handle (/Users/rajeevkumar/Documents/Reboo8Works/Reboo8Code/Server/node_modules/express/lib/application.js:177:15)
-    at Server.app (/Users/rajeevkumar/Documents/Reboo8Works/Reboo8Code/Server/node_modules/express/lib/express.js:38:9)
-    at Server.emit (node:events:507:28)
-    at parserOnIncoming (node:_http_server:1153:12)
-    at HTTPParser.parserOnHeadersComplete (node:_http_common:117:17)
-2025-12-10 13:58:17 [error]: Error: Not allowed by CORS
-    at origin (file:///Users/rajeevkumar/Documents/Reboo8Works/Reboo8Code/Server/app.js:32:21)
-    at /Users/rajeevkumar/Documents/Reboo8Works/Reboo8Code/Server/node_modules/cors/lib/index.js:219:13
-    at optionsCallback (/Users/rajeevkumar/Documents/Reboo8Works/Reboo8Code/Server/node_modules/cors/lib/index.js:199:9)
-    at corsMiddleware (/Users/rajeevkumar/Documents/Reboo8Works/Reboo8Code/Server/node_modules/cors/lib/index.js:204:7)
-    at Layer.handleRequest (/Users/rajeevkumar/Documents/Reboo8Works/Reboo8Code/Server/node_modules/router/lib/layer.js:152:17)
-    at trimPrefix (/Users/rajeevkumar/Documents/Reboo8Works/Reboo8Code/Server/node_modules/router/index.js:342:13)
-    at /Users/rajeevkumar/Documents/Reboo8Works/Reboo8Code/Server/node_modules/router/index.js:297:9
-    at processParams (/Users/rajeevkumar/Documents/Reboo8Works/Reboo8Code/Server/node_modules/router/index.js:582:12)
-    at next (/Users/rajeevkumar/Documents/Reboo8Works/Reboo8Code/Server/node_modules/router/index.js:291:5)
-    at Function.handle (/Users/rajeevkumar/Documents/Reboo8Works/Reboo8Code/Server/node_modules/router/index.js:186:3)
-    at Function.handle (/Users/rajeevkumar/Documents/Reboo8Works/Reboo8Code/Server/node_modules/express/lib/application.js:177:15)
-    at Server.app (/Users/rajeevkumar/Documents/Reboo8Works/Reboo8Code/Server/node_modules/express/lib/express.js:38:9)
-    at Server.emit (node:events:507:28)
-    at parserOnIncoming (node:_http_server:1153:12)
-    at HTTPParser.parserOnHeadersComplete (node:_http_common:117:17)
-2025-12-10 13:58:31 [error]: Error: Not allowed by CORS
-    at origin (file:///Users/rajeevkumar/Documents/Reboo8Works/Reboo8Code/Server/app.js:32:21)
-    at /Users/rajeevkumar/Documents/Reboo8Works/Reboo8Code/Server/node_modules/cors/lib/index.js:219:13
-    at optionsCallback (/Users/rajeevkumar/Documents/Reboo8Works/Reboo8Code/Server/node_modules/cors/lib/index.js:199:9)
-    at corsMiddleware (/Users/rajeevkumar/Documents/Reboo8Works/Reboo8Code/Server/node_modules/cors/lib/index.js:204:7)
-    at Layer.handleRequest (/Users/rajeevkumar/Documents/Reboo8Works/Reboo8Code/Server/node_modules/router/lib/layer.js:152:17)
-    at trimPrefix (/Users/rajeevkumar/Documents/Reboo8Works/Reboo8Code/Server/node_modules/router/index.js:342:13)
-    at /Users/rajeevkumar/Documents/Reboo8Works/Reboo8Code/Server/node_modules/router/index.js:297:9
-    at processParams (/Users/rajeevkumar/Documents/Reboo8Works/Reboo8Code/Server/node_modules/router/index.js:582:12)
-    at next (/Users/rajeevkumar/Documents/Reboo8Works/Reboo8Code/Server/node_modules/router/index.js:291:5)
-    at Function.handle (/Users/rajeevkumar/Documents/Reboo8Works/Reboo8Code/Server/node_modules/router/index.js:186:3)
-    at Function.handle (/Users/rajeevkumar/Documents/Reboo8Works/Reboo8Code/Server/node_modules/express/lib/application.js:177:15)
-    at Server.app (/Users/rajeevkumar/Documents/Reboo8Works/Reboo8Code/Server/node_modules/express/lib/express.js:38:9)
-    at Server.emit (node:events:507:28)
-    at parserOnIncoming (node:_http_server:1153:12)
-    at HTTPParser.parserOnHeadersComplete (node:_http_common:117:17)
-2025-12-10 13:58:31 [error]: Error: Not allowed by CORS
-    at origin (file:///Users/rajeevkumar/Documents/Reboo8Works/Reboo8Code/Server/app.js:32:21)
-    at /Users/rajeevkumar/Documents/Reboo8Works/Reboo8Code/Server/node_modules/cors/lib/index.js:219:13
-    at optionsCallback (/Users/rajeevkumar/Documents/Reboo8Works/Reboo8Code/Server/node_modules/cors/lib/index.js:199:9)
-    at corsMiddleware (/Users/rajeevkumar/Documents/Reboo8Works/Reboo8Code/Server/node_modules/cors/lib/index.js:204:7)
-    at Layer.handleRequest (/Users/rajeevkumar/Documents/Reboo8Works/Reboo8Code/Server/node_modules/router/lib/layer.js:152:17)
-    at trimPrefix (/Users/rajeevkumar/Documents/Reboo8Works/Reboo8Code/Server/node_modules/router/index.js:342:13)
-    at /Users/rajeevkumar/Documents/Reboo8Works/Reboo8Code/Server/node_modules/router/index.js:297:9
-    at processParams (/Users/rajeevkumar/Documents/Reboo8Works/Reboo8Code/Server/node_modules/router/index.js:582:12)
-    at next (/Users/rajeevkumar/Documents/Reboo8Works/Reboo8Code/Server/node_modules/router/index.js:291:5)
-    at Function.handle (/Users/rajeevkumar/Documents/Reboo8Works/Reboo8Code/Server/node_modules/router/index.js:186:3)
-    at Function.handle (/Users/rajeevkumar/Documents/Reboo8Works/Reboo8Code/Server/node_modules/express/lib/application.js:177:15)
-    at Server.app (/Users/rajeevkumar/Documents/Reboo8Works/Reboo8Code/Server/node_modules/express/lib/express.js:38:9)
-    at Server.emit (node:events:507:28)
-    at parserOnIncoming (node:_http_server:1153:12)
-    at HTTPParser.parserOnHeadersComplete (node:_http_common:117:17)
-2025-12-10 13:58:31 [error]: Error: Not allowed by CORS
-    at origin (file:///Users/rajeevkumar/Documents/Reboo8Works/Reboo8Code/Server/app.js:32:21)
-    at /Users/rajeevkumar/Documents/Reboo8Works/Reboo8Code/Server/node_modules/cors/lib/index.js:219:13
-    at optionsCallback (/Users/rajeevkumar/Documents/Reboo8Works/Reboo8Code/Server/node_modules/cors/lib/index.js:199:9)
-    at corsMiddleware (/Users/rajeevkumar/Documents/Reboo8Works/Reboo8Code/Server/node_modules/cors/lib/index.js:204:7)
-    at Layer.handleRequest (/Users/rajeevkumar/Documents/Reboo8Works/Reboo8Code/Server/node_modules/router/lib/layer.js:152:17)
-    at trimPrefix (/Users/rajeevkumar/Documents/Reboo8Works/Reboo8Code/Server/node_modules/router/index.js:342:13)
-    at /Users/rajeevkumar/Documents/Reboo8Works/Reboo8Code/Server/node_modules/router/index.js:297:9
-    at processParams (/Users/rajeevkumar/Documents/Reboo8Works/Reboo8Code/Server/node_modules/router/index.js:582:12)
-    at next (/Users/rajeevkumar/Documents/Reboo8Works/Reboo8Code/Server/node_modules/router/index.js:291:5)
-    at Function.handle (/Users/rajeevkumar/Documents/Reboo8Works/Reboo8Code/Server/node_modules/router/index.js:186:3)
-    at Function.handle (/Users/rajeevkumar/Documents/Reboo8Works/Reboo8Code/Server/node_modules/express/lib/application.js:177:15)
-    at Server.app (/Users/rajeevkumar/Documents/Reboo8Works/Reboo8Code/Server/node_modules/express/lib/express.js:38:9)
-    at Server.emit (node:events:507:28)
-    at parserOnIncoming (node:_http_server:1153:12)
-    at HTTPParser.parserOnHeadersComplete (node:_http_common:117:17)
-2025-12-10 13:58:31 [error]: Error: Not allowed by CORS
-    at origin (file:///Users/rajeevkumar/Documents/Reboo8Works/Reboo8Code/Server/app.js:32:21)
-    at /Users/rajeevkumar/Documents/Reboo8Works/Reboo8Code/Server/node_modules/cors/lib/index.js:219:13
-    at optionsCallback (/Users/rajeevkumar/Documents/Reboo8Works/Reboo8Code/Server/node_modules/cors/lib/index.js:199:9)
-    at corsMiddleware (/Users/rajeevkumar/Documents/Reboo8Works/Reboo8Code/Server/node_modules/cors/lib/index.js:204:7)
-    at Layer.handleRequest (/Users/rajeevkumar/Documents/Reboo8Works/Reboo8Code/Server/node_modules/router/lib/layer.js:152:17)
-    at trimPrefix (/Users/rajeevkumar/Documents/Reboo8Works/Reboo8Code/Server/node_modules/router/index.js:342:13)
-    at /Users/rajeevkumar/Documents/Reboo8Works/Reboo8Code/Server/node_modules/router/index.js:297:9
-    at processParams (/Users/rajeevkumar/Documents/Reboo8Works/Reboo8Code/Server/node_modules/router/index.js:582:12)
-    at next (/Users/rajeevkumar/Documents/Reboo8Works/Reboo8Code/Server/node_modules/router/index.js:291:5)
-    at Function.handle (/Users/rajeevkumar/Documents/Reboo8Works/Reboo8Code/Server/node_modules/router/index.js:186:3)
-    at Function.handle (/Users/rajeevkumar/Documents/Reboo8Works/Reboo8Code/Server/node_modules/express/lib/application.js:177:15)
-    at Server.app (/Users/rajeevkumar/Documents/Reboo8Works/Reboo8Code/Server/node_modules/express/lib/express.js:38:9)
-    at Server.emit (node:events:507:28)
-    at parserOnIncoming (node:_http_server:1153:12)
-    at HTTPParser.parserOnHeadersComplete (node:_http_common:117:17)
-2025-12-10 13:58:31 [error]: Error: Not allowed by CORS
-    at origin (file:///Users/rajeevkumar/Documents/Reboo8Works/Reboo8Code/Server/app.js:32:21)
-    at /Users/rajeevkumar/Documents/Reboo8Works/Reboo8Code/Server/node_modules/cors/lib/index.js:219:13
-    at optionsCallback (/Users/rajeevkumar/Documents/Reboo8Works/Reboo8Code/Server/node_modules/cors/lib/index.js:199:9)
-    at corsMiddleware (/Users/rajeevkumar/Documents/Reboo8Works/Reboo8Code/Server/node_modules/cors/lib/index.js:204:7)
-    at Layer.handleRequest (/Users/rajeevkumar/Documents/Reboo8Works/Reboo8Code/Server/node_modules/router/lib/layer.js:152:17)
-    at trimPrefix (/Users/rajeevkumar/Documents/Reboo8Works/Reboo8Code/Server/node_modules/router/index.js:342:13)
-    at /Users/rajeevkumar/Documents/Reboo8Works/Reboo8Code/Server/node_modules/router/index.js:297:9
-    at processParams (/Users/rajeevkumar/Documents/Reboo8Works/Reboo8Code/Server/node_modules/router/index.js:582:12)
-    at next (/Users/rajeevkumar/Documents/Reboo8Works/Reboo8Code/Server/node_modules/router/index.js:291:5)
-    at Function.handle (/Users/rajeevkumar/Documents/Reboo8Works/Reboo8Code/Server/node_modules/router/index.js:186:3)
-    at Function.handle (/Users/rajeevkumar/Documents/Reboo8Works/Reboo8Code/Server/node_modules/express/lib/application.js:177:15)
-    at Server.app (/Users/rajeevkumar/Documents/Reboo8Works/Reboo8Code/Server/node_modules/express/lib/express.js:38:9)
-    at Server.emit (node:events:507:28)
-    at parserOnIncoming (node:_http_server:1153:12)
-    at HTTPParser.parserOnHeadersComplete (node:_http_common:117:17)
-2025-12-10 13:58:31 [error]: Error: Not allowed by CORS
-    at origin (file:///Users/rajeevkumar/Documents/Reboo8Works/Reboo8Code/Server/app.js:32:21)
-    at /Users/rajeevkumar/Documents/Reboo8Works/Reboo8Code/Server/node_modules/cors/lib/index.js:219:13
-    at optionsCallback (/Users/rajeevkumar/Documents/Reboo8Works/Reboo8Code/Server/node_modules/cors/lib/index.js:199:9)
-    at corsMiddleware (/Users/rajeevkumar/Documents/Reboo8Works/Reboo8Code/Server/node_modules/cors/lib/index.js:204:7)
-    at Layer.handleRequest (/Users/rajeevkumar/Documents/Reboo8Works/Reboo8Code/Server/node_modules/router/lib/layer.js:152:17)
-    at trimPrefix (/Users/rajeevkumar/Documents/Reboo8Works/Reboo8Code/Server/node_modules/router/index.js:342:13)
-    at /Users/rajeevkumar/Documents/Reboo8Works/Reboo8Code/Server/node_modules/router/index.js:297:9
-    at processParams (/Users/rajeevkumar/Documents/Reboo8Works/Reboo8Code/Server/node_modules/router/index.js:582:12)
-    at next (/Users/rajeevkumar/Documents/Reboo8Works/Reboo8Code/Server/node_modules/router/index.js:291:5)
-    at Function.handle (/Users/rajeevkumar/Documents/Reboo8Works/Reboo8Code/Server/node_modules/router/index.js:186:3)
-    at Function.handle (/Users/rajeevkumar/Documents/Reboo8Works/Reboo8Code/Server/node_modules/express/lib/application.js:177:15)
-    at Server.app (/Users/rajeevkumar/Documents/Reboo8Works/Reboo8Code/Server/node_modules/express/lib/express.js:38:9)
-    at Server.emit (node:events:507:28)
-    at parserOnIncoming (node:_http_server:1153:12)
-    at HTTPParser.parserOnHeadersComplete (node:_http_common:117:17)
-2025-12-10 13:58:31 [error]: Error: Not allowed by CORS
-    at origin (file:///Users/rajeevkumar/Documents/Reboo8Works/Reboo8Code/Server/app.js:32:21)
-    at /Users/rajeevkumar/Documents/Reboo8Works/Reboo8Code/Server/node_modules/cors/lib/index.js:219:13
-    at optionsCallback (/Users/rajeevkumar/Documents/Reboo8Works/Reboo8Code/Server/node_modules/cors/lib/index.js:199:9)
-    at corsMiddleware (/Users/rajeevkumar/Documents/Reboo8Works/Reboo8Code/Server/node_modules/cors/lib/index.js:204:7)
-    at Layer.handleRequest (/Users/rajeevkumar/Documents/Reboo8Works/Reboo8Code/Server/node_modules/router/lib/layer.js:152:17)
-    at trimPrefix (/Users/rajeevkumar/Documents/Reboo8Works/Reboo8Code/Server/node_modules/router/index.js:342:13)
-    at /Users/rajeevkumar/Documents/Reboo8Works/Reboo8Code/Server/node_modules/router/index.js:297:9
-    at processParams (/Users/rajeevkumar/Documents/Reboo8Works/Reboo8Code/Server/node_modules/router/index.js:582:12)
-    at next (/Users/rajeevkumar/Documents/Reboo8Works/Reboo8Code/Server/node_modules/router/index.js:291:5)
-    at Function.handle (/Users/rajeevkumar/Documents/Reboo8Works/Reboo8Code/Server/node_modules/router/index.js:186:3)
-    at Function.handle (/Users/rajeevkumar/Documents/Reboo8Works/Reboo8Code/Server/node_modules/express/lib/application.js:177:15)
-    at Server.app (/Users/rajeevkumar/Documents/Reboo8Works/Reboo8Code/Server/node_modules/express/lib/express.js:38:9)
-    at Server.emit (node:events:507:28)
-    at parserOnIncoming (node:_http_server:1153:12)
-    at HTTPParser.parserOnHeadersComplete (node:_http_common:117:17)
-2025-12-10 13:58:31 [error]: Error: Not allowed by CORS
-    at origin (file:///Users/rajeevkumar/Documents/Reboo8Works/Reboo8Code/Server/app.js:32:21)
-    at /Users/rajeevkumar/Documents/Reboo8Works/Reboo8Code/Server/node_modules/cors/lib/index.js:219:13
-    at optionsCallback (/Users/rajeevkumar/Documents/Reboo8Works/Reboo8Code/Server/node_modules/cors/lib/index.js:199:9)
-    at corsMiddleware (/Users/rajeevkumar/Documents/Reboo8Works/Reboo8Code/Server/node_modules/cors/lib/index.js:204:7)
-    at Layer.handleRequest (/Users/rajeevkumar/Documents/Reboo8Works/Reboo8Code/Server/node_modules/router/lib/layer.js:152:17)
-    at trimPrefix (/Users/rajeevkumar/Documents/Reboo8Works/Reboo8Code/Server/node_modules/router/index.js:342:13)
-    at /Users/rajeevkumar/Documents/Reboo8Works/Reboo8Code/Server/node_modules/router/index.js:297:9
-    at processParams (/Users/rajeevkumar/Documents/Reboo8Works/Reboo8Code/Server/node_modules/router/index.js:582:12)
-    at next (/Users/rajeevkumar/Documents/Reboo8Works/Reboo8Code/Server/node_modules/router/index.js:291:5)
-    at Function.handle (/Users/rajeevkumar/Documents/Reboo8Works/Reboo8Code/Server/node_modules/router/index.js:186:3)
-    at Function.handle (/Users/rajeevkumar/Documents/Reboo8Works/Reboo8Code/Server/node_modules/express/lib/application.js:177:15)
-    at Server.app (/Users/rajeevkumar/Documents/Reboo8Works/Reboo8Code/Server/node_modules/express/lib/express.js:38:9)
-    at Server.emit (node:events:507:28)
-    at parserOnIncoming (node:_http_server:1153:12)
-    at HTTPParser.parserOnHeadersComplete (node:_http_common:117:17)
-2025-12-10 13:58:32 [error]: Error: Not allowed by CORS
-    at origin (file:///Users/rajeevkumar/Documents/Reboo8Works/Reboo8Code/Server/app.js:32:21)
-    at /Users/rajeevkumar/Documents/Reboo8Works/Reboo8Code/Server/node_modules/cors/lib/index.js:219:13
-    at optionsCallback (/Users/rajeevkumar/Documents/Reboo8Works/Reboo8Code/Server/node_modules/cors/lib/index.js:199:9)
-    at corsMiddleware (/Users/rajeevkumar/Documents/Reboo8Works/Reboo8Code/Server/node_modules/cors/lib/index.js:204:7)
-    at Layer.handleRequest (/Users/rajeevkumar/Documents/Reboo8Works/Reboo8Code/Server/node_modules/router/lib/layer.js:152:17)
-    at trimPrefix (/Users/rajeevkumar/Documents/Reboo8Works/Reboo8Code/Server/node_modules/router/index.js:342:13)
-    at /Users/rajeevkumar/Documents/Reboo8Works/Reboo8Code/Server/node_modules/router/index.js:297:9
-    at processParams (/Users/rajeevkumar/Documents/Reboo8Works/Reboo8Code/Server/node_modules/router/index.js:582:12)
-    at next (/Users/rajeevkumar/Documents/Reboo8Works/Reboo8Code/Server/node_modules/router/index.js:291:5)
-    at Function.handle (/Users/rajeevkumar/Documents/Reboo8Works/Reboo8Code/Server/node_modules/router/index.js:186:3)
-    at Function.handle (/Users/rajeevkumar/Documents/Reboo8Works/Reboo8Code/Server/node_modules/express/lib/application.js:177:15)
-    at Server.app (/Users/rajeevkumar/Documents/Reboo8Works/Reboo8Code/Server/node_modules/express/lib/express.js:38:9)
-    at Server.emit (node:events:507:28)
-    at parserOnIncoming (node:_http_server:1153:12)
-    at HTTPParser.parserOnHeadersComplete (node:_http_common:117:17)
-2025-12-10 13:58:32 [error]: Error: Not allowed by CORS
-    at origin (file:///Users/rajeevkumar/Documents/Reboo8Works/Reboo8Code/Server/app.js:32:21)
-    at /Users/rajeevkumar/Documents/Reboo8Works/Reboo8Code/Server/node_modules/cors/lib/index.js:219:13
-    at optionsCallback (/Users/rajeevkumar/Documents/Reboo8Works/Reboo8Code/Server/node_modules/cors/lib/index.js:199:9)
-    at corsMiddleware (/Users/rajeevkumar/Documents/Reboo8Works/Reboo8Code/Server/node_modules/cors/lib/index.js:204:7)
-    at Layer.handleRequest (/Users/rajeevkumar/Documents/Reboo8Works/Reboo8Code/Server/node_modules/router/lib/layer.js:152:17)
-    at trimPrefix (/Users/rajeevkumar/Documents/Reboo8Works/Reboo8Code/Server/node_modules/router/index.js:342:13)
-    at /Users/rajeevkumar/Documents/Reboo8Works/Reboo8Code/Server/node_modules/router/index.js:297:9
-    at processParams (/Users/rajeevkumar/Documents/Reboo8Works/Reboo8Code/Server/node_modules/router/index.js:582:12)
-    at next (/Users/rajeevkumar/Documents/Reboo8Works/Reboo8Code/Server/node_modules/router/index.js:291:5)
-    at Function.handle (/Users/rajeevkumar/Documents/Reboo8Works/Reboo8Code/Server/node_modules/router/index.js:186:3)
-    at Function.handle (/Users/rajeevkumar/Documents/Reboo8Works/Reboo8Code/Server/node_modules/express/lib/application.js:177:15)
-    at Server.app (/Users/rajeevkumar/Documents/Reboo8Works/Reboo8Code/Server/node_modules/express/lib/express.js:38:9)
-    at Server.emit (node:events:507:28)
-    at parserOnIncoming (node:_http_server:1153:12)
-    at HTTPParser.parserOnHeadersComplete (node:_http_common:117:17)
-2025-12-10 13:58:32 [error]: Error: Not allowed by CORS
-    at origin (file:///Users/rajeevkumar/Documents/Reboo8Works/Reboo8Code/Server/app.js:32:21)
-    at /Users/rajeevkumar/Documents/Reboo8Works/Reboo8Code/Server/node_modules/cors/lib/index.js:219:13
-    at optionsCallback (/Users/rajeevkumar/Documents/Reboo8Works/Reboo8Code/Server/node_modules/cors/lib/index.js:199:9)
-    at corsMiddleware (/Users/rajeevkumar/Documents/Reboo8Works/Reboo8Code/Server/node_modules/cors/lib/index.js:204:7)
-    at Layer.handleRequest (/Users/rajeevkumar/Documents/Reboo8Works/Reboo8Code/Server/node_modules/router/lib/layer.js:152:17)
-    at trimPrefix (/Users/rajeevkumar/Documents/Reboo8Works/Reboo8Code/Server/node_modules/router/index.js:342:13)
-    at /Users/rajeevkumar/Documents/Reboo8Works/Reboo8Code/Server/node_modules/router/index.js:297:9
-    at processParams (/Users/rajeevkumar/Documents/Reboo8Works/Reboo8Code/Server/node_modules/router/index.js:582:12)
-    at next (/Users/rajeevkumar/Documents/Reboo8Works/Reboo8Code/Server/node_modules/router/index.js:291:5)
-    at Function.handle (/Users/rajeevkumar/Documents/Reboo8Works/Reboo8Code/Server/node_modules/router/index.js:186:3)
-    at Function.handle (/Users/rajeevkumar/Documents/Reboo8Works/Reboo8Code/Server/node_modules/express/lib/application.js:177:15)
-    at Server.app (/Users/rajeevkumar/Documents/Reboo8Works/Reboo8Code/Server/node_modules/express/lib/express.js:38:9)
-    at Server.emit (node:events:507:28)
-    at parserOnIncoming (node:_http_server:1153:12)
-    at HTTPParser.parserOnHeadersComplete (node:_http_common:117:17)
-2025-12-10 13:58:32 [error]: Error: Not allowed by CORS
-    at origin (file:///Users/rajeevkumar/Documents/Reboo8Works/Reboo8Code/Server/app.js:32:21)
-    at /Users/rajeevkumar/Documents/Reboo8Works/Reboo8Code/Server/node_modules/cors/lib/index.js:219:13
-    at optionsCallback (/Users/rajeevkumar/Documents/Reboo8Works/Reboo8Code/Server/node_modules/cors/lib/index.js:199:9)
-    at corsMiddleware (/Users/rajeevkumar/Documents/Reboo8Works/Reboo8Code/Server/node_modules/cors/lib/index.js:204:7)
-    at Layer.handleRequest (/Users/rajeevkumar/Documents/Reboo8Works/Reboo8Code/Server/node_modules/router/lib/layer.js:152:17)
-    at trimPrefix (/Users/rajeevkumar/Documents/Reboo8Works/Reboo8Code/Server/node_modules/router/index.js:342:13)
-    at /Users/rajeevkumar/Documents/Reboo8Works/Reboo8Code/Server/node_modules/router/index.js:297:9
-    at processParams (/Users/rajeevkumar/Documents/Reboo8Works/Reboo8Code/Server/node_modules/router/index.js:582:12)
-    at next (/Users/rajeevkumar/Documents/Reboo8Works/Reboo8Code/Server/node_modules/router/index.js:291:5)
-    at Function.handle (/Users/rajeevkumar/Documents/Reboo8Works/Reboo8Code/Server/node_modules/router/index.js:186:3)
-    at Function.handle (/Users/rajeevkumar/Documents/Reboo8Works/Reboo8Code/Server/node_modules/express/lib/application.js:177:15)
-    at Server.app (/Users/rajeevkumar/Documents/Reboo8Works/Reboo8Code/Server/node_modules/express/lib/express.js:38:9)
-    at Server.emit (node:events:507:28)
-    at parserOnIncoming (node:_http_server:1153:12)
-    at HTTPParser.parserOnHeadersComplete (node:_http_common:117:17)
-2025-12-10 13:59:00 [error]: Error: Not allowed by CORS
-    at origin (file:///Users/rajeevkumar/Documents/Reboo8Works/Reboo8Code/Server/app.js:32:21)
-    at /Users/rajeevkumar/Documents/Reboo8Works/Reboo8Code/Server/node_modules/cors/lib/index.js:219:13
-    at optionsCallback (/Users/rajeevkumar/Documents/Reboo8Works/Reboo8Code/Server/node_modules/cors/lib/index.js:199:9)
-    at corsMiddleware (/Users/rajeevkumar/Documents/Reboo8Works/Reboo8Code/Server/node_modules/cors/lib/index.js:204:7)
-    at Layer.handleRequest (/Users/rajeevkumar/Documents/Reboo8Works/Reboo8Code/Server/node_modules/router/lib/layer.js:152:17)
-    at trimPrefix (/Users/rajeevkumar/Documents/Reboo8Works/Reboo8Code/Server/node_modules/router/index.js:342:13)
-    at /Users/rajeevkumar/Documents/Reboo8Works/Reboo8Code/Server/node_modules/router/index.js:297:9
-    at processParams (/Users/rajeevkumar/Documents/Reboo8Works/Reboo8Code/Server/node_modules/router/index.js:582:12)
-    at next (/Users/rajeevkumar/Documents/Reboo8Works/Reboo8Code/Server/node_modules/router/index.js:291:5)
-    at Function.handle (/Users/rajeevkumar/Documents/Reboo8Works/Reboo8Code/Server/node_modules/router/index.js:186:3)
-    at Function.handle (/Users/rajeevkumar/Documents/Reboo8Works/Reboo8Code/Server/node_modules/express/lib/application.js:177:15)
-    at Server.app (/Users/rajeevkumar/Documents/Reboo8Works/Reboo8Code/Server/node_modules/express/lib/express.js:38:9)
-    at Server.emit (node:events:507:28)
-    at parserOnIncoming (node:_http_server:1153:12)
-    at HTTPParser.parserOnHeadersComplete (node:_http_common:117:17)
-2025-12-10 13:59:01 [error]: Error: Not allowed by CORS
-    at origin (file:///Users/rajeevkumar/Documents/Reboo8Works/Reboo8Code/Server/app.js:32:21)
-    at /Users/rajeevkumar/Documents/Reboo8Works/Reboo8Code/Server/node_modules/cors/lib/index.js:219:13
-    at optionsCallback (/Users/rajeevkumar/Documents/Reboo8Works/Reboo8Code/Server/node_modules/cors/lib/index.js:199:9)
-    at corsMiddleware (/Users/rajeevkumar/Documents/Reboo8Works/Reboo8Code/Server/node_modules/cors/lib/index.js:204:7)
-    at Layer.handleRequest (/Users/rajeevkumar/Documents/Reboo8Works/Reboo8Code/Server/node_modules/router/lib/layer.js:152:17)
-    at trimPrefix (/Users/rajeevkumar/Documents/Reboo8Works/Reboo8Code/Server/node_modules/router/index.js:342:13)
-    at /Users/rajeevkumar/Documents/Reboo8Works/Reboo8Code/Server/node_modules/router/index.js:297:9
-    at processParams (/Users/rajeevkumar/Documents/Reboo8Works/Reboo8Code/Server/node_modules/router/index.js:582:12)
-    at next (/Users/rajeevkumar/Documents/Reboo8Works/Reboo8Code/Server/node_modules/router/index.js:291:5)
-    at Function.handle (/Users/rajeevkumar/Documents/Reboo8Works/Reboo8Code/Server/node_modules/router/index.js:186:3)
-    at Function.handle (/Users/rajeevkumar/Documents/Reboo8Works/Reboo8Code/Server/node_modules/express/lib/application.js:177:15)
-    at Server.app (/Users/rajeevkumar/Documents/Reboo8Works/Reboo8Code/Server/node_modules/express/lib/express.js:38:9)
-    at Server.emit (node:events:507:28)
-    at parserOnIncoming (node:_http_server:1153:12)
-    at HTTPParser.parserOnHeadersComplete (node:_http_common:117:17)
+2025-12-10 13:57:26 [info]: ::1 - - [10/Dec/2025:08:27:26 +0000] "POST /api/v1/auth/log-in HTTP/1.1" 200 444 "-" "PostmanRuntime/7.49.1"
+2025-12-10 14:26:07 [info]: ::1 - - [10/Dec/2025:08:56:07 +0000] "GET /api/v1/opportunity/agent-opportunities?agentId=cmi5uzu8w0001o420uoclv9oz&limit=10 HTTP/1.1" 200 173 "-" "PostmanRuntime/7.49.1"
+2025-12-10 14:26:48 [info]: ::1 - - [10/Dec/2025:08:56:48 +0000] "POST /api/v1/auth/log-in HTTP/1.1" 200 444 "-" "PostmanRuntime/7.49.1"
+2025-12-10 14:27:46 [info]: ::1 - - [10/Dec/2025:08:57:46 +0000] "GET /api/v1/opportunity/agent-opportunities?agentId=cmi5uzu8w0001o420uoclv9oz&limit=10 HTTP/1.1" 200 173 "-" "PostmanRuntime/7.49.1"
+2025-12-10 14:30:38 [info]: ::1 - - [10/Dec/2025:09:00:38 +0000] "GET /api/v1/opportunity/agent-opportunities?agentId=cmi5uzu8w0001o420uoclv9oz&limit=100 HTTP/1.1" 200 174 "-" "PostmanRuntime/7.49.1"
+2025-12-10 14:31:49 [info]: ::1 - - [10/Dec/2025:09:01:49 +0000] "GET /api/v1/opportunity/agent-opportunities?agentId=cmi5uzu8w0001o420uoclv9oz&limit=100 HTTP/1.1" 200 174 "-" "PostmanRuntime/7.49.1"
+2025-12-10 14:32:25 [info]: ::1 - - [10/Dec/2025:09:02:25 +0000] "GET /api/v1/opportunity/agent-opportunities?agentId=cmi5uzu8w0001o420uoclv9oz&limit=100 HTTP/1.1" 200 174 "-" "PostmanRuntime/7.49.1"
+2025-12-10 14:33:11 [info]: ::1 - - [10/Dec/2025:09:03:11 +0000] "GET /api/v1/opportunity/agent-opportunities?agentId=cmi5uzu8w0001o420uoclv9oz&limit=100 HTTP/1.1" 200 174 "-" "PostmanRuntime/7.49.1"
+2025-12-10 14:35:07 [info]: ::1 - - [10/Dec/2025:09:05:07 +0000] "GET /api/v1/opportunity/agent-opportunities?agentId=cmi5uzu8w0001o420uoclv9oz&limit=100 HTTP/1.1" 200 174 "-" "PostmanRuntime/7.49.1"
+2025-12-10 14:35:57 [info]: ::1 - - [10/Dec/2025:09:05:57 +0000] "GET /api/v1/opportunity/agent-opportunities/cmi5uzu8w0001o420uoclv9oz HTTP/1.1" 200 173 "-" "PostmanRuntime/7.49.1"
+2025-12-10 14:37:55 [info]: ::1 - - [10/Dec/2025:09:07:55 +0000] "GET /api/v1/opportunity/agent-opportunities/cmi5uzu8w0001o420uoclv9oz HTTP/1.1" 200 173 "-" "PostmanRuntime/7.49.1"
+2025-12-11 14:00:29 [info]: ::1 - - [11/Dec/2025:08:30:29 +0000] "POST /api/v1/auth/password/request-change HTTP/1.1" 500 35 "-" "PostmanRuntime/7.49.1"
+2025-12-11 14:03:03 [info]: ::1 - - [11/Dec/2025:08:33:03 +0000] "POST /api/v1/auth/password/request-change HTTP/1.1" 200 58 "-" "PostmanRuntime/7.49.1"
+2025-12-11 14:04:17 [info]: ::1 - - [11/Dec/2025:08:34:17 +0000] "POST /api/v1/auth/password/request-change HTTP/1.1" 200 58 "-" "PostmanRuntime/7.49.1"
+2025-12-11 14:04:46 [info]: ::1 - - [11/Dec/2025:08:34:46 +0000] "POST /api/v1/auth/password/request-change HTTP/1.1" 200 58 "-" "PostmanRuntime/7.49.1"
+2025-12-11 14:05:43 [info]: ::1 - - [11/Dec/2025:08:35:43 +0000] "POST /api/v1/auth/password/request-change HTTP/1.1" 200 47 "-" "PostmanRuntime/7.49.1"
+2025-12-11 14:06:07 [info]: ::1 - - [11/Dec/2025:08:36:07 +0000] "POST /api/v1/auth/password/request-change HTTP/1.1" 200 58 "-" "PostmanRuntime/7.49.1"
+2025-12-11 14:06:51 [info]: ::1 - - [11/Dec/2025:08:36:51 +0000] "POST /api/v1/auth/password/request-change HTTP/1.1" 500 35 "-" "PostmanRuntime/7.49.1"
+2025-12-11 14:10:48 [info]: ::1 - - [11/Dec/2025:08:40:48 +0000] "POST /api/v1/auth/password/request-change HTTP/1.1" 200 58 "-" "PostmanRuntime/7.49.1"
+2025-12-11 14:13:07 [info]: ::1 - - [11/Dec/2025:08:43:07 +0000] "POST /api/v1/auth/password/request-change HTTP/1.1" 200 58 "-" "PostmanRuntime/7.49.1"
+2025-12-11 14:13:50 [info]: ::1 - - [11/Dec/2025:08:43:50 +0000] "POST /api/v1/auth/password/request-change HTTP/1.1" 400 55 "-" "PostmanRuntime/7.49.1"
+2025-12-11 14:14:28 [info]: ::1 - - [11/Dec/2025:08:44:28 +0000] "POST /api/v1/auth/password/request-change HTTP/1.1" 200 58 "-" "PostmanRuntime/7.49.1"
+2025-12-11 15:31:13 [info]: ::1 - - [11/Dec/2025:10:01:13 +0000] "POST /api/v1/auth/password/request-change HTTP/1.1" 200 58 "-" "PostmanRuntime/7.49.1"
+2025-12-11 16:18:56 [info]: ::1 - - [11/Dec/2025:10:48:56 +0000] "POST /api/v1/auth/password/request-change HTTP/1.1" 200 58 "-" "PostmanRuntime/7.49.1"
+2025-12-11 16:20:43 [info]: ::1 - - [11/Dec/2025:10:50:43 +0000] "POST /api/v1/auth/password/otp-verify HTTP/1.1" 200 297 "-" "PostmanRuntime/7.49.1"
+2025-12-11 16:21:45 [info]: ::1 - - [11/Dec/2025:10:51:45 +0000] "POST /api/v1/auth/password/request-change HTTP/1.1" 200 58 "-" "PostmanRuntime/7.49.1"
+2025-12-11 16:26:24 [info]: ::1 - - [11/Dec/2025:10:56:24 +0000] "POST /api/v1/auth/password/otp-verify HTTP/1.1" 400 34 "-" "PostmanRuntime/7.49.1"
+2025-12-11 16:26:53 [info]: ::1 - - [11/Dec/2025:10:56:53 +0000] "POST /api/v1/auth/password/otp-verify HTTP/1.1" 400 34 "-" "PostmanRuntime/7.49.1"
+2025-12-11 16:28:01 [info]: ::1 - - [11/Dec/2025:10:58:01 +0000] "POST /api/v1/auth/password/otp-verify HTTP/1.1" 400 34 "-" "PostmanRuntime/7.49.1"
+2025-12-11 16:28:41 [info]: ::1 - - [11/Dec/2025:10:58:41 +0000] "POST /api/v1/auth/password/otp-verify HTTP/1.1" 400 34 "-" "PostmanRuntime/7.49.1"
+2025-12-11 16:30:31 [info]: ::1 - - [11/Dec/2025:11:00:31 +0000] "POST /api/v1/auth/password/otp-verify HTTP/1.1" 400 34 "-" "PostmanRuntime/7.49.1"
+2025-12-11 16:31:02 [info]: ::1 - - [11/Dec/2025:11:01:02 +0000] "POST /api/v1/auth/password/request-change HTTP/1.1" 200 58 "-" "PostmanRuntime/7.49.1"
+2025-12-11 16:31:21 [info]: ::1 - - [11/Dec/2025:11:01:21 +0000] "POST /api/v1/auth/password/otp-verify HTTP/1.1" 200 27 "-" "PostmanRuntime/7.49.1"
+2025-12-11 16:34:36 [info]: ::1 - - [11/Dec/2025:11:04:36 +0000] "POST /api/v1/auth/password/otp-verify HTTP/1.1" 400 57 "-" "PostmanRuntime/7.49.1"
+2025-12-11 16:34:54 [info]: ::1 - - [11/Dec/2025:11:04:54 +0000] "POST /api/v1/auth/password/request-change HTTP/1.1" 200 58 "-" "PostmanRuntime/7.49.1"
+2025-12-11 16:35:09 [info]: ::1 - - [11/Dec/2025:11:05:09 +0000] "POST /api/v1/auth/password/request-change HTTP/1.1" 200 58 "-" "PostmanRuntime/7.49.1"
+2025-12-11 16:35:27 [info]: ::1 - - [11/Dec/2025:11:05:27 +0000] "POST /api/v1/auth/password/otp-verify HTTP/1.1" 200 297 "-" "PostmanRuntime/7.49.1"
+2025-12-11 16:35:54 [info]: ::1 - - [11/Dec/2025:11:05:54 +0000] "POST /api/v1/auth/password/request-change HTTP/1.1" 200 58 "-" "PostmanRuntime/7.49.1"
+2025-12-11 16:36:44 [info]: ::1 - - [11/Dec/2025:11:06:44 +0000] "POST /api/v1/auth/password/otp-verify HTTP/1.1" 200 297 "-" "PostmanRuntime/7.49.1"
+2025-12-11 16:37:27 [info]: ::1 - - [11/Dec/2025:11:07:27 +0000] "POST /api/v1/auth/password/request-change HTTP/1.1" 200 58 "-" "PostmanRuntime/7.49.1"
+2025-12-11 16:37:44 [info]: ::1 - - [11/Dec/2025:11:07:44 +0000] "POST /api/v1/auth/password/otp-verify HTTP/1.1" 400 57 "-" "PostmanRuntime/7.49.1"
+2025-12-11 16:37:58 [info]: ::1 - - [11/Dec/2025:11:07:58 +0000] "POST /api/v1/auth/password/otp-verify HTTP/1.1" 200 297 "-" "PostmanRuntime/7.49.1"

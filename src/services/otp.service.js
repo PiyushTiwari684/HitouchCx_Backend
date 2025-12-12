@@ -21,7 +21,7 @@ async function sendEmailFromTwilio(otpCode,email,minutes) {
 
   try {
     const [response] = await sgMail.send(msg)
-    console.log('Email sent to ',name)
+    console.log('Email sent to ',email)
     return { success: true, statusCode: response.statusCode }
   } catch (error) {
     console.error(error)
