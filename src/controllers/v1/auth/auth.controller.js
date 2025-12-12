@@ -165,7 +165,7 @@ const refresh = async (req, res) => {
     // Rotate refresh token
     const newPlain = generateRefreshTokenValue()
     const newHash = hashRefreshToken(newPlain)
-    const newExpiresAt = new Date(Date.now() + 30 * 24 * 60 * 60 * 1000)
+    const newExpiresAt = new Date(Date.now() + 30 * 24 * 60 * 60 * 1000) // 30 Days
 
     await prisma.$transaction([
       prisma.refreshToken.update({
