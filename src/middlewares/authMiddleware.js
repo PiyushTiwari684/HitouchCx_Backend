@@ -26,6 +26,7 @@ async function authMiddleware(req, res, next) {
       id: decoded.id,
       role: decoded.role,
       status: decoded.status,
+      scope :decoded.scope || null,
       agentId: user?.agent?.id || null, // ✅ Always fetches latest agentId
     };
 

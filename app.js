@@ -10,11 +10,10 @@ import { CORS_CONFIG, RATE_LIMIT_CONFIG } from "./src/config/constants.js";
 import errorHandler, { notFoundHandler } from "./src/middlewares/errorHandler.js";
 import logger from "./src/utils/logger.js";
 
-
 const app = express();
 
 // Trust only one hop (ngrok) or local networks
-app.set('trust proxy', 1); // one reverse proxy hop (ngrok)
+app.set("trust proxy", 1); // one reverse proxy hop (ngrok)
 
 const corsOptions = {
   origin: (origin, callback) => {
@@ -43,7 +42,6 @@ const corsOptions = {
 app.use(cors(corsOptions));
 // Handle all preflight OPTIONS (Express v5)
 app.options(/.*/, cors(corsOptions));
-
 
 // ========== SECURITY MIDDLEWARE ==========
 app.use(
@@ -120,7 +118,6 @@ app.use(
 // ========== AUTH INITIALIZATION ==========
 app.use(passport.initialize());
 
-
 app.get("/health", (req, res) => {
   res.status(200).json({
     success: true,
@@ -138,4 +135,3 @@ app.use(notFoundHandler);
 app.use(errorHandler);
 
 export default app;
-

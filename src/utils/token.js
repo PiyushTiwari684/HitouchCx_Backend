@@ -7,9 +7,9 @@ import crypto from 'crypto'
 }
 
 
- function generateAccessToken({ id, role, status }) {
+ function generateAccessToken( payload ) {
   const secret = process.env.JWT_SECRET || 'dev-secret'
-  return jwt.sign({ id, role, status }, secret, { expiresIn: '50m' })
+  return jwt.sign(payload, secret, { expiresIn: '50m' })
 }
 
  function generateRefreshTokenValue() {
