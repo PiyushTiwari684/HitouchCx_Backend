@@ -358,6 +358,9 @@ model KYCSession {
   status       KYCSessionStatus @default(PENDING)
   errorMessage String? // Error details if status = FAILED
 
+  // Validation results (comprehensive KYC validation data)
+  validationResult Json? // Stores complete validation results: name, DOB, address, signature
+
   createdAt   DateTime  @default(now())
   expiresAt   DateTime // createdAt + 30 minutes
   completedAt DateTime? // When status changed to COMPLETED

@@ -72,6 +72,19 @@ router.get(
 );
 
 /**
+ * @route   GET /api/v1/kyc/validation-status
+ * @desc    Get detailed KYC validation results with error messages
+ * @access  Protected (requires JWT)
+ * @returns { kycStatus, validations, errors, documents }
+ * @note    Use this for showing success/failure modal in frontend
+ */
+router.get(
+  '/validation-status',
+  authMiddleware,
+  digilockerController.getKYCValidationStatus
+);
+
+/**
  * @route   POST /api/v1/kyc/retry
  * @desc    Retry KYC verification (generates new link)
  * @access  Protected (requires JWT)

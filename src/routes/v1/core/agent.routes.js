@@ -13,6 +13,7 @@ import { getAgentById } from "../../../controllers/v1/agent/getAgent.controller.
 import { uploadProfilePhoto, uploadResume } from "../../../config/upload.config.js";
 import { extractResume } from "../../../controllers/v1/resume/resume.controller.js";
 import { updateAgentProfile,updateAgentPassword,requestEmailPhoneChange,updateEmailPhoneChange,updateAgentInfo } from "../../../controllers/v1/agent/profile.controller.js";
+import { getAgentProfile, updateAgentProfile as updateProfileAfterKYC } from "../../../controllers/v1/agent/update-profile.controller.js";
 
 
 const router = express.Router();
@@ -64,5 +65,22 @@ router.delete("/:agentId/delete-photo", deleteAgentPhoto);
 
 //Add Resume Auto Fill Route
 router.post("/resume-upload", uploadResume.single("resume"), extractResume);
+
+//KYC-Related Profile Routes
+
+/**
+ * @route   GET /api/v1/agent/profile-for-kyc
+ * @desc    Get agent profile for KYC retry/update
+ * @access  Protected (requires JWT)
+ */
+router.get("/profile-for-kyc", authMiddleware, getAgentProfile);
+
+/**
+ * @route   PUT /api/v1/agent/profile-for-kyc
+ * @desc    Update agent profile after KYC rejection
+ * @access  Protected (requires JWT)
+ * @note    Only allowed if kycStatus is REJECTED or PENDING
+ */
+router.put("/profile-for-kyc", authMiddleware, updateProfileAfterKYC);
 
 export default router;
