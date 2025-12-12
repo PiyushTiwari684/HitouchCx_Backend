@@ -14,17 +14,18 @@
  * @module services/kyc/digilocker
  */
 
-import prisma from '../../config/db.js';
-import perfiosConfig from '../../config/perfios.config.js';
-import * as perfiosService from './perfios.service.js';
-import * as documentProcessor from './document-processor.service.js';
+import prisma from "../../config/db.js";
+import perfiosConfig from "../../config/perfios.config.js";
+import * as perfiosService from "./perfios.service.js";
+import * as documentProcessor from "./document-processor.service.js";
 import {
   generateOAuthState,
   parseOAuthState,
   calculateExpiryTime,
   isSessionExpired,
-  validateNames,
-} from '../../utils/kyc-helpers.js';
+} from "../../utils/kyc-helpers.js";
+import { validateKYC } from "../../utils/kyc-validator.js";
+import { extractAadhaarData, extractPANData } from "../../utils/kyc-data-extractor.js";
 
 /**
  * Create audit log entry
@@ -40,7 +41,14 @@ import {
  * @returns {Promise<void>}
  * @private
  */
-const createAuditLog = async (userId, action, status, metadata = {}, ipAddress = null, userAgent = null) => {
+const createAuditLog = async (
+  userId,
+  action,
+  status,
+  metadata = {},
+  ipAddress = null,
+  userAgent = null,
+) => {
   try {
     await prisma.kYCAuditLog.create({
       data: {
@@ -54,7 +62,7 @@ const createAuditLog = async (userId, action, status, metadata = {}, ipAddress =
     });
   } catch (error) {
     // Don't fail the main operation if audit log fails
-    console.error('Failed to create audit log:', error);
+    console.error("Failed to create audit log:", error);
   }
 };
 
@@ -88,8 +96,8 @@ const createAuditLog = async (userId, action, status, metadata = {}, ipAddress =
 export const generateLink = async (userId, consent, ipAddress = null, userAgent = null) => {
   try {
     // Validate consent
-    if (consent !== 'Y') {
-      throw new Error('User consent is required');
+    if (consent !== "Y") {
+      throw new Error("User consent is required");
     }
 
     // Check for existing active session (created within last 5 minutes)
@@ -97,7 +105,7 @@ export const generateLink = async (userId, consent, ipAddress = null, userAgent 
     const existingSession = await prisma.kYCSession.findFirst({
       where: {
         userId,
-        status: 'PENDING',
+        status: "PENDING",
         createdAt: {
           gte: fiveMinutesAgo,
         },
@@ -106,13 +114,13 @@ export const generateLink = async (userId, consent, ipAddress = null, userAgent 
         },
       },
       orderBy: {
-        createdAt: 'desc',
+        createdAt: "desc",
       },
     });
 
     // If recent session exists, return existing link
     if (existingSession) {
-      console.log('Reusing existing session', {
+      console.log("Reusing existing session", {
         sessionId: existingSession.id,
       });
 
@@ -139,7 +147,7 @@ export const generateLink = async (userId, consent, ipAddress = null, userAgent 
         userId,
         accessRequestId: response.requestId,
         oAuthState,
-        status: 'PENDING',
+        status: "PENDING",
         expiresAt,
       },
     });
@@ -147,18 +155,18 @@ export const generateLink = async (userId, consent, ipAddress = null, userAgent 
     // Log to audit trail
     await createAuditLog(
       userId,
-      'LINK_GENERATED',
-      'SUCCESS',
+      "LINK_GENERATED",
+      "SUCCESS",
       {
         sessionId: session.id,
         requestId: response.requestId,
       },
       ipAddress,
-      userAgent
+      userAgent,
     );
 
-    console.log('DigiLocker link generated', {
-      userId: userId.substring(0, 10) + '...',
+    console.log("DigiLocker link generated", {
+      userId: userId.substring(0, 10) + "...",
       sessionId: session.id,
       expiresAt,
     });
@@ -173,14 +181,14 @@ export const generateLink = async (userId, consent, ipAddress = null, userAgent 
     // Log failure
     await createAuditLog(
       userId,
-      'LINK_GENERATED',
-      'FAILED',
+      "LINK_GENERATED",
+      "FAILED",
       { error: error.message },
       ipAddress,
-      userAgent
+      userAgent,
     );
 
-    console.error('Error generating DigiLocker link:', error);
+    console.error("Error generating DigiLocker link:", error);
     throw error;
   }
 };
@@ -225,11 +233,11 @@ export const processCallback = async (oAuthState, code, ipAddress = null, userAg
     // Log callback received
     await createAuditLog(
       userId,
-      'CALLBACK_RECEIVED',
-      'SUCCESS',
-      { oAuthState: oAuthState.substring(0, 20) + '...' },
+      "CALLBACK_RECEIVED",
+      "SUCCESS",
+      { oAuthState: oAuthState.substring(0, 20) + "..." },
       ipAddress,
-      userAgent
+      userAgent,
     );
 
     // Find session by oAuthState
@@ -245,71 +253,71 @@ export const processCallback = async (oAuthState, code, ipAddress = null, userAg
     });
 
     if (!session) {
-      throw new Error('Invalid session: State parameter not found');
+      throw new Error("Invalid session: State parameter not found");
     }
 
     // Check if session expired
     if (isSessionExpired(session.expiresAt)) {
       await prisma.kYCSession.update({
         where: { id: session.id },
-        data: { status: 'EXPIRED' },
+        data: { status: "EXPIRED" },
       });
 
-      throw new Error('Session expired. Please try again.');
+      throw new Error("Session expired. Please try again.");
     }
 
     // Check if session already processed
-    if (session.status === 'COMPLETED') {
-      throw new Error('Session already processed');
+    if (session.status === "COMPLETED") {
+      throw new Error("Session already processed");
     }
 
     // Update session to PROCESSING
     await prisma.kYCSession.update({
       where: { id: session.id },
-      data: { status: 'PROCESSING' },
+      data: { status: "PROCESSING" },
     });
 
     // Get agent
     const agent = session.user.agent;
     if (!agent) {
-      throw new Error('Agent profile not found');
+      throw new Error("Agent profile not found");
     }
 
     // Step 2: Fetch document list from DigiLocker
-    console.log('Fetching documents from DigiLocker...');
+    console.log("Fetching documents from DigiLocker...");
     const documentListResponse = await perfiosService.fetchDocumentList({
       accessRequestId: session.accessRequestId,
-      consent: 'Y',
+      consent: "Y",
     });
 
     const documents = documentListResponse.result;
 
     // Find Aadhaar and PAN documents
-    const aadhaarDoc = documents.find((doc) => doc.doctype === 'ADHAR');
-    const panDoc = documents.find((doc) => doc.doctype === 'PANCR');
+    const aadhaarDoc = documents.find((doc) => doc.doctype === "ADHAR");
+    const panDoc = documents.find((doc) => doc.doctype === "PANCR");
 
     if (!aadhaarDoc && !panDoc) {
       throw new Error(
-        'No Aadhaar or PAN documents found in your DigiLocker. Please upload documents first.'
+        "No Aadhaar or PAN documents found in your DigiLocker. Please upload documents first.",
       );
     }
 
     // Log documents found
     await createAuditLog(
       userId,
-      'DOCUMENTS_FETCHED',
-      'SUCCESS',
+      "DOCUMENTS_FETCHED",
+      "SUCCESS",
       {
         aadhaarFound: !!aadhaarDoc,
         panFound: !!panDoc,
         totalDocuments: documents.length,
       },
       ipAddress,
-      userAgent
+      userAgent,
     );
 
     // Step 3: Download documents
-    console.log('Downloading documents...');
+    console.log("Downloading documents...");
     const filesToDownload = [];
 
     if (aadhaarDoc) {
@@ -332,83 +340,145 @@ export const processCallback = async (oAuthState, code, ipAddress = null, userAg
 
     const downloadResponse = await perfiosService.downloadDocuments({
       accessRequestId: session.accessRequestId,
-      consent: 'Y',
+      consent: "Y",
       files: filesToDownload,
     });
 
     // Log download success
     await createAuditLog(
       userId,
-      'DOCUMENTS_DOWNLOADED',
-      'SUCCESS',
+      "DOCUMENTS_DOWNLOADED",
+      "SUCCESS",
       { documentCount: downloadResponse.result.length },
       ipAddress,
-      userAgent
+      userAgent,
     );
 
     // Process and save documents
-    console.log('Processing and saving documents...');
+    console.log("Processing and saving documents...");
     const processedDocuments = await documentProcessor.processAndSaveDocuments(
       downloadResponse.result,
       userId,
-      agent.id
+      agent.id,
     );
 
-    // Extract names for validation
-    const documentNames = documentProcessor.extractDocumentNames(processedDocuments);
-    const registeredName = `${agent.firstName} ${agent.lastName || ''}`.trim();
-
-    // Determine KYC status based on documents found and name validation
-    let kycStatus = 'PENDING';
-    let nameValidationResult = null;
+    // Determine KYC status based on documents found and comprehensive validation
+    let kycStatus = "PENDING";
+    let validationResult = null;
 
     if (processedDocuments.aadhaar && processedDocuments.pan) {
-      // Both documents found - validate names
-      nameValidationResult = validateNames(
-        registeredName,
-        documentNames.aadhaarName,
-        documentNames.panName
+      console.log("Both documents found - performing comprehensive validation...");
+
+      // Extract structured data from saved documents
+      const aadhaarDoc = processedDocuments.savedDocuments.find(
+        (doc) => doc.documentType === "AADHAR",
+      );
+      const panDoc = processedDocuments.savedDocuments.find((doc) => doc.documentType === "PAN");
+
+      const aadhaarData = extractAadhaarData(aadhaarDoc);
+      const panData = extractPANData(panDoc);
+
+      // Prepare profile data for validation
+      const profileData = {
+        name: `${agent.firstName || ""} ${agent.middleName || ""} ${agent.lastName || ""}`
+          .trim()
+          .replace(/\s+/g, " "),
+        dob: agent.dob,
+        address: agent.address || "",
+      };
+
+      console.log("[DigiLocker Service] Profile data:", profileData);
+      console.log("[DigiLocker Service] Aadhaar data for validation:", {
+        name: aadhaarData.name,
+        dob: aadhaarData.dob,
+        address: aadhaarData.address,
+      });
+      console.log("[DigiLocker Service] PAN data for validation:", {
+        name: panData.name,
+        dob: panData.dob,
+      });
+
+      // Perform comprehensive KYC validation (Name + DOB + Address)
+      validationResult = validateKYC(profileData, aadhaarData, panData);
+
+      console.log(
+        "[DigiLocker Service] Validation result:",
+        JSON.stringify(validationResult, null, 2),
       );
 
-      if (nameValidationResult.valid) {
-        kycStatus = 'APPROVED';
+      if (validationResult.valid) {
+        kycStatus = "APPROVED";
 
-        // Log name validation success
+        // Update Agent address with verified Aadhaar address
+        await prisma.agent.update({
+          where: { id: agent.id },
+          data: { address: aadhaarData.fullAddress },
+        });
+
+        console.log("[DigiLocker Service] Address updated with verified Aadhaar address");
+
+        // Log validation success
         await createAuditLog(
           userId,
-          'NAME_VALIDATION_SUCCESS',
-          'SUCCESS',
-          { fuzzyMatch: nameValidationResult.fuzzyMatch || false },
-          ipAddress,
-          userAgent
-        );
-      } else {
-        kycStatus = 'REJECTED';
-
-        // Log name validation failure
-        await createAuditLog(
-          userId,
-          'NAME_VALIDATION_FAILED',
-          'FAILED',
+          "KYC_VALIDATION_SUCCESS",
+          "SUCCESS",
           {
-            mismatch: nameValidationResult.mismatch,
-            similarities: nameValidationResult.similarities,
+            validations: {
+              name: validationResult.validations.name.valid,
+              dob: validationResult.validations.dob.valid,
+              address: validationResult.validations.address.valid,
+              signature: validationResult.validations.signature.valid,
+            },
           },
           ipAddress,
-          userAgent
+          userAgent,
         );
+      } else {
+        kycStatus = "REJECTED";
+
+        // Log validation failure with detailed reasons
+        await createAuditLog(
+          userId,
+          "KYC_VALIDATION_FAILED",
+          "FAILED",
+          {
+            errors: validationResult.errors,
+            validations: {
+              name: validationResult.validations.name.valid,
+              dob: validationResult.validations.dob.valid,
+              address: validationResult.validations.address.valid,
+              signature: validationResult.validations.signature.valid,
+            },
+          },
+          ipAddress,
+          userAgent,
+        );
+
+        console.log("[DigiLocker Service] KYC validation failed:", validationResult.errors);
       }
     } else if (processedDocuments.aadhaar && !processedDocuments.pan) {
       // Only Aadhaar found
-      kycStatus = 'PARTIAL';
+      kycStatus = "PARTIAL";
 
       await createAuditLog(
         userId,
-        'PARTIAL_KYC',
-        'SUCCESS',
-        { reason: 'PAN document not found in DigiLocker' },
+        "PARTIAL_KYC",
+        "SUCCESS",
+        { reason: "PAN document not found in DigiLocker" },
         ipAddress,
-        userAgent
+        userAgent,
+      );
+    } else if (!processedDocuments.aadhaar && processedDocuments.pan) {
+      // Only PAN found
+      kycStatus = "PARTIAL";
+
+      await createAuditLog(
+        userId,
+        "PARTIAL_KYC",
+        "SUCCESS",
+        { reason: "Aadhaar document not found in DigiLocker" },
+        ipAddress,
+        userAgent,
       );
     }
 
@@ -423,19 +493,25 @@ export const processCallback = async (oAuthState, code, ipAddress = null, userAg
     });
 
     // Update User kycCompleted flag (only if APPROVED)
-    if (kycStatus === 'APPROVED') {
+    if (kycStatus === "APPROVED") {
       await prisma.user.update({
         where: { id: userId },
         data: { kycCompleted: true },
       });
     }
 
-    // Update session to COMPLETED
+    // Update session to COMPLETED with validation results
+    console.log(
+      "[DigiLocker Service] Storing validationResult in session:",
+      JSON.stringify(validationResult, null, 2),
+    );
+
     await prisma.kYCSession.update({
       where: { id: session.id },
       data: {
-        status: 'COMPLETED',
+        status: "COMPLETED",
         completedAt: new Date(),
+        validationResult: validationResult || {}, // Store complete validation details
       },
     });
 
@@ -443,44 +519,43 @@ export const processCallback = async (oAuthState, code, ipAddress = null, userAg
     await createAuditLog(
       userId,
       `KYC_${kycStatus}`,
-      'SUCCESS',
+      "SUCCESS",
       {
         aadhaarVerified: !!processedDocuments.aadhaar,
         panVerified: !!processedDocuments.pan,
       },
       ipAddress,
-      userAgent
+      userAgent,
     );
 
-    console.log('KYC processing completed', {
-      userId: userId.substring(0, 10) + '...',
+    console.log("KYC processing completed", {
+      userId: userId.substring(0, 10) + "...",
       kycStatus,
     });
 
-    // Determine redirect URL
-    let redirectUrl = perfiosConfig.frontend.successUrl;
-    if (kycStatus === 'REJECTED') {
-      redirectUrl = `${perfiosConfig.frontend.errorUrl}?error=name_mismatch`;
-    } else if (kycStatus === 'PARTIAL') {
-      redirectUrl = `${perfiosConfig.frontend.errorUrl}?error=pan_not_found&partial=true`;
-    }
+    // Determine redirect URL - Always redirect to KYC Status page
+    // The status page will handle showing success or failure modals based on validation results
+    // Extract only protocol and host from success URL (e.g., http://localhost:5173)
+    const urlObj = new URL(perfiosConfig.frontend.successUrl);
+    const frontendBaseUrl = `${urlObj.protocol}//${urlObj.host}`;
+    const redirectUrl = `${frontendBaseUrl}/kyc-status`;
 
     return {
       userId,
       kycStatus,
       documents: processedDocuments,
-      nameValidation: nameValidationResult,
+      validation: validationResult,
       redirectUrl,
     };
   } catch (error) {
-    console.error('Error processing callback:', error);
+    console.error("Error processing callback:", error);
 
     // Update session to FAILED
     if (session) {
       await prisma.kYCSession.update({
         where: { id: session.id },
         data: {
-          status: 'FAILED',
+          status: "FAILED",
           errorMessage: error.message,
         },
       });
@@ -490,11 +565,11 @@ export const processCallback = async (oAuthState, code, ipAddress = null, userAg
     if (userId) {
       await createAuditLog(
         userId,
-        'CALLBACK_PROCESSING',
-        'FAILED',
+        "CALLBACK_PROCESSING",
+        "FAILED",
         { error: error.message },
         ipAddress,
-        userAgent
+        userAgent,
       );
     }
 
@@ -535,7 +610,7 @@ export const getKYCStatus = async (userId) => {
         },
         kycSessions: {
           orderBy: {
-            createdAt: 'desc',
+            createdAt: "desc",
           },
           take: 1,
         },
@@ -543,7 +618,7 @@ export const getKYCStatus = async (userId) => {
     });
 
     if (!user || !user.agent) {
-      throw new Error('User or agent not found');
+      throw new Error("User or agent not found");
     }
 
     return {
@@ -553,7 +628,7 @@ export const getKYCStatus = async (userId) => {
       documents: user.agent.kycDocuments,
     };
   } catch (error) {
-    console.error('Error getting KYC status:', error);
+    console.error("Error getting KYC status:", error);
     throw error;
   }
 };

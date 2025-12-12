@@ -414,21 +414,53 @@ export function transformToFrontendFormat(rawData) {
   // Helper: Map industry from experience/role
   const mapIndustry = (company, role, expText) => {
     const text = `${company || ''} ${role || ''} ${expText || ''}`.toLowerCase();
-    if (text.includes('software') || text.includes('tech') || text.includes('developer') || text.includes('programmer') || text.includes('it ')) return 'it';
+
+    // IT/Tech indicators
+    if (text.includes('software') || text.includes('tech') || text.includes('developer') ||
+        text.includes('programmer') || text.includes('it ') || text.includes('react') ||
+        text.includes('node') || text.includes('javascript') || text.includes('frontend') ||
+        text.includes('backend') || text.includes('fullstack') || text.includes('full stack') ||
+        text.includes('web dev') || text.includes('app dev')) return 'it';
+
+    // Education indicators
+    if (text.includes('educat') || text.includes('teach') || text.includes('school') ||
+        text.includes('university') || text.includes('academy') || text.includes('tutor') ||
+        text.includes('instructor') || text.includes('mentor') || text.includes('professor')) return 'education';
+
+    // Finance indicators
     if (text.includes('financ') || text.includes('bank') || text.includes('account')) return 'finance';
+
+    // Healthcare indicators
     if (text.includes('health') || text.includes('medical') || text.includes('hospital') || text.includes('pharma')) return 'healthcare';
+
+    // Retail indicators
     if (text.includes('retail') || text.includes('sales') || text.includes('store') || text.includes('commerce')) return 'retail';
-    if (text.includes('educat') || text.includes('teach') || text.includes('school') || text.includes('university')) return 'education';
+
     return 'it'; // default
   };
 
   // Helper: Map role from job title
   const mapRole = (roleText, expText) => {
     const text = `${roleText || ''} ${expText || ''}`.toLowerCase();
-    if (text.includes('develop') || text.includes('engineer') || text.includes('programmer') || text.includes('software')) return 'developer';
+
+    // Developer/Engineer role
+    if (text.includes('develop') || text.includes('engineer') || text.includes('programmer') ||
+        text.includes('software') || text.includes('coding') || text.includes('frontend') ||
+        text.includes('backend') || text.includes('fullstack') || text.includes('full stack')) return 'developer';
+
+    // Designer role
     if (text.includes('design') || text.includes('ui') || text.includes('ux') || text.includes('graphic')) return 'designer';
+
+    // Manager role
     if (text.includes('manag') || text.includes('lead') || text.includes('director') || text.includes('head')) return 'manager';
+
+    // Analyst role
     if (text.includes('analyst') || text.includes('data') || text.includes('business') || text.includes('research')) return 'analyst';
+
+    // Educator role
+    if (text.includes('teach') || text.includes('educat') || text.includes('instructor') ||
+        text.includes('tutor') || text.includes('mentor')) return 'educator';
+
     return 'developer'; // default
   };
 
@@ -507,26 +539,115 @@ export function transformToFrontendFormat(rawData) {
     return { startDate: '', endDate: '' };
   };
 
+  // Helper: Convert qualification to frontend enum
+  const mapQualificationToEnum = (qualType) => {
+    switch (qualType) {
+      case 'bachelor': return 'BACHELORS';
+      case 'master': return 'MASTERS';
+      case 'phd': return 'PHD';
+      case 'highschool': return 'HIGH_SCHOOL';
+      default: return 'BACHELORS';
+    }
+  };
+
+  // Helper: Map field based on education and industry
+  const mapQualificationField = (eduText, industry) => {
+    const text = (eduText || '').toLowerCase();
+    const ind = (industry || '').toLowerCase();
+
+    if (text.includes('computer') || text.includes('cs') || text.includes('software') || text.includes('it') || ind === 'it') return 'CS_IT';
+    if (text.includes('electrical') || text.includes('mechanical') || text.includes('civil') || text.includes('engineer')) return 'ENGINEERING';
+    if (text.includes('data') || text.includes('ai') || text.includes('machine learning') || text.includes('ml')) return 'DATA_AI';
+    if (text.includes('design') || text.includes('graphic') || text.includes('ux') || text.includes('ui')) return 'DESIGN';
+    if (text.includes('business') || text.includes('mba') || text.includes('management')) return 'BUSINESS';
+    if (text.includes('marketing') || text.includes('advertising')) return 'MARKETING';
+    if (text.includes('financ') || text.includes('account') || text.includes('economics')) return 'FINANCE';
+    if (text.includes('hr') || text.includes('human resource')) return 'HR';
+    if (text.includes('media') || text.includes('journalism') || text.includes('communication')) return 'MEDIA_COMM';
+    if (text.includes('language') || text.includes('linguistics') || text.includes('english')) return 'LANGUAGE';
+    if (text.includes('health') || text.includes('medical') || text.includes('nursing')) return 'HEALTHCARE';
+    if (text.includes('educat') || text.includes('teaching') || text.includes('pedagogy')) return 'EDUCATION';
+    if (text.includes('law') || text.includes('legal')) return 'LAW';
+    if (text.includes('science') || text.includes('physics') || text.includes('chemistry') || text.includes('biology')) return 'SCIENCE';
+
+    return 'OTHER';
+  };
+
+  // Helper: Map industry to frontend Industry enum
+  const mapIndustryToEnum = (industry) => {
+    switch (industry) {
+      case 'it': return 'TECH';
+      case 'finance': return 'FINANCE';
+      case 'healthcare': return 'HEALTHCARE';
+      case 'retail': return 'ECOMMERCE';
+      case 'education': return 'EDUCATION';
+      default: return 'OTHER';
+    }
+  };
+
+  // Helper: Map role to frontend Vertical enum
+  const mapRoleToVertical = (role, skills) => {
+    const text = `${role || ''} ${skills || ''}`.toLowerCase();
+
+    if (text.includes('call') || text.includes('phone') || text.includes('voice')) return 'INBOUND_CALL';
+    if (text.includes('chat') || text.includes('messaging') || text.includes('whatsapp')) return 'CHAT_SUPPORT';
+    if (text.includes('multi') || text.includes('omni')) return 'MULTI_CHANNEL_SUPPORT';
+    if (text.includes('prompt') || text.includes('ai') || text.includes('gpt')) return 'PROMPT_ENGINEERING';
+    if (text.includes('annotation') || text.includes('labeling') || text.includes('tagging')) return 'DATA_ANNOTATION';
+    if (text.includes('model') || text.includes('evaluation') || text.includes('testing')) return 'MODEL_EVALUATION';
+    if (text.includes('content') || text.includes('moderation') || text.includes('review')) return 'CONTENT_MODERATION';
+    if (text.includes('transcription') || text.includes('typing') || text.includes('audio')) return 'TRANSCRIPTION';
+    if (text.includes('social') || text.includes('community')) return 'SOCIAL_MEDIA_MANAGEMENT';
+    if (text.includes('email') || text.includes('ticket')) return 'EMAIL_SUPPORT';
+    if (text.includes('sales') || text.includes('outbound')) return 'OUTBOUND_SALES';
+    if (text.includes('technical') || text.includes('troubleshoot')) return 'TECHNICAL_SUPPORT';
+    if (text.includes('crm') || text.includes('database')) return 'CRM_MANAGEMENT';
+    if (text.includes('teach') || text.includes('tutor') || text.includes('mentor')) return 'ONLINE_TUTORING';
+
+    return 'CHAT_SUPPORT'; // default
+  };
+
   // Perform transformation
   const dates = extractDates(rawData.fullExperience || '');
+  const qualificationType = mapQualification(rawData.fullEducation);
+  const experienceRange = mapExperience(rawData.yearsOfExperience);
+  const [expMin, expMax] = experienceRange.split('-').map(v => v.replace('+', ''));
+  const mappedIndustry = mapIndustry(rawData.currentCompany, rawData.currentRole, rawData.fullExperience);
+  const mappedRole = mapRole(rawData.currentRole, rawData.fullExperience);
 
   return {
     firstName: rawData.firstName || '',
     lastName: rawData.lastName || '',
     email: rawData.email || '',
     phone: rawData.phone || '',
-    dateOfBirth: rawData.dateOfBirth || '', // Leave empty if not found
-    qualification: mapQualification(rawData.fullEducation),
-    experience: mapExperience(rawData.yearsOfExperience),
+    dateOfBirth: rawData.dateOfBirth || '',
+
+    // Qualifications array with proper enums
+    qualifications: [{
+      type: mapQualificationToEnum(qualificationType),
+      field: mapQualificationField(rawData.fullEducation, mappedIndustry)
+    }],
+
+    // Experiences array with proper structure
+    experiences: [{
+      experienceMin: expMin === '5+' ? '5' : expMin || '0',
+      experienceMax: expMax === '5+' ? '100' : expMax || '2',
+      industry: mapIndustryToEnum(mappedIndustry),
+      vertical: mapRoleToVertical(rawData.currentRole, rawData.fullSkills)
+    }],
+
     employmentStatus: mapEmploymentStatus(rawData.isCurrentlyEmployed, rawData.fullExperience),
+
+    // Current Employment Details
     companyName: rawData.currentCompany || '',
-    industry: mapIndustry(rawData.currentCompany, rawData.currentRole, rawData.fullExperience),
-    role: mapRole(rawData.currentRole, rawData.fullExperience),
+    industry: mapIndustryToEnum(mappedIndustry),
+    role: mapRoleToVertical(rawData.currentRole, rawData.fullSkills),
     startDate: dates.startDate,
     endDate: dates.endDate,
-    skills: mapSkills(rawData.fullSkills),
-    timeSlot: '', // Cannot be extracted from resume
-    workingHours: '', // Cannot be extracted from resume
+
+    // Skills & Languages
+    preferredShift: '',
+    hoursPerDay: '',
     languages: rawData.languages || ''
   };
 }
