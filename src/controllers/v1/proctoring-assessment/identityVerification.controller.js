@@ -1,16 +1,12 @@
 import prisma from "../../../config/db.js";
 import asyncHandler from "express-async-handler";
 import { sendSuccess, sendError } from "../../../utils/ApiResponse.js";
-import {
-  checkImageBlur,
-  getImageMetadata,
-  resizeImage,
-} from "../../../utils/imageProcessor.js";
+import { checkImageBlur, getImageMetadata, resizeImage } from "../../../utils/imageProcessor.js";
 import { processAudio, getAudioDuration } from "../../../utils/audioProcessor.js";
 import {
   transcribeAudio,
-  isAssemblyAIConfigured,
-} from "../../../services/assemblyAi.service.js";
+  isGroqTranscriptionConfigured,
+} from "../../../services/groq.transcription.service.js";
 import { checkMatch } from "../../../utils/stringSimilarity.js";
 import fs from "fs";
 import path from "path";
@@ -55,9 +51,7 @@ export const uploadFaceCapture = asyncHandler(async (req, res) => {
 
       // Validate descriptor format (should be array of 128 numbers)
       if (!Array.isArray(parsedDescriptor) || parsedDescriptor.length !== 128) {
-        console.warn(
-          "Invalid face descriptor format. Expected array of 128 numbers."
-        );
+        console.warn("Invalid face descriptor format. Expected array of 128 numbers.");
         parsedDescriptor = null;
       }
     } catch (error) {
@@ -95,7 +89,7 @@ export const uploadFaceCapture = asyncHandler(async (req, res) => {
       return sendError(
         res,
         `Image is too blurry (sharpness: ${blurCheck.sharpness}). Please retake with better lighting.`,
-        400
+        400,
       );
     }
 
@@ -151,7 +145,7 @@ export const uploadFaceCapture = asyncHandler(async (req, res) => {
           dimensions: `${metadata.width}x${metadata.height}`,
         },
       },
-      "Face captured successfully"
+      "Face captured successfully",
     );
   } catch (error) {
     // Clean up uploaded file on error
@@ -202,7 +196,7 @@ export const getReferenceDescriptor = asyncHandler(async (req, res) => {
       return sendError(
         res,
         "Identity verification not found. Please complete face capture first.",
-        404
+        404,
       );
     }
 
@@ -213,11 +207,7 @@ export const getReferenceDescriptor = asyncHandler(async (req, res) => {
 
     // 4. Check if face descriptor exists
     if (!verification.faceEmbedding) {
-      return sendError(
-        res,
-        "Face descriptor not found. Please retake face capture.",
-        404
-      );
+      return sendError(res, "Face descriptor not found. Please retake face capture.", 404);
     }
 
     return sendSuccess(
@@ -227,19 +217,16 @@ export const getReferenceDescriptor = asyncHandler(async (req, res) => {
         faceImagePath: verification.faceImagePath,
         qualityScore: verification.faceQualityScore,
       },
-      "Reference descriptor retrieved successfully"
+      "Reference descriptor retrieved successfully",
     );
   } catch (error) {
     throw error;
   }
 });
 
-
-
 export const logFaceComparison = asyncHandler(async (req, res) => {
   const { attemptId } = req.params;
-  const { matchScore, matched, faceDetected, faceCount, snapshotBase64 } =
-    req.body;
+  const { matchScore, matched, faceDetected, faceCount, snapshotBase64 } = req.body;
 
   console.log("[logFaceComparison] Request received:", {
     attemptId,
@@ -280,9 +267,7 @@ export const logFaceComparison = asyncHandler(async (req, res) => {
     });
 
     if (!verification) {
-      console.log(
-        "[logFaceComparison] No verification found, creating placeholder..."
-      );
+      console.log("[logFaceComparison] No verification found, creating placeholder...");
 
       try {
         verification = await prisma.identityVerification.create({
@@ -296,15 +281,9 @@ export const logFaceComparison = asyncHandler(async (req, res) => {
           },
         });
 
-        console.log(
-          "[logFaceComparison] Placeholder verification created:",
-          verification.id
-        );
+        console.log("[logFaceComparison] Placeholder verification created:", verification.id);
       } catch (createError) {
-        console.error(
-          "[logFaceComparison] Failed to create verification:",
-          createError.message
-        );
+        console.error("[logFaceComparison] Failed to create verification:", createError.message);
         return sendError(res, "Failed to create verification record", 500);
       }
     }
@@ -345,15 +324,9 @@ export const logFaceComparison = asyncHandler(async (req, res) => {
           },
         });
 
-        console.log(
-          "[logFaceComparison] Session created successfully:",
-          session.id
-        );
+        console.log("[logFaceComparison] Session created successfully:", session.id);
       } catch (createError) {
-        console.error(
-          "[logFaceComparison] Failed to create session:",
-          createError.message
-        );
+        console.error("[logFaceComparison] Failed to create session:", createError.message);
         return sendError(res, "Failed to create proctoring session", 500);
       }
     }
@@ -405,10 +378,7 @@ export const logFaceComparison = asyncHandler(async (req, res) => {
         });
         console.log("[logFaceComparison] Snapshot saved:", snapshot.id);
       } catch (snapshotError) {
-        console.error(
-          "[logFaceComparison] Failed to save snapshot:",
-          snapshotError.message
-        );
+        console.error("[logFaceComparison] Failed to save snapshot:", snapshotError.message);
       }
     }
 
@@ -423,16 +393,13 @@ export const logFaceComparison = asyncHandler(async (req, res) => {
         },
         snapshot: snapshot ? { id: snapshot.id } : null,
       },
-      "Face comparison logged successfully"
+      "Face comparison logged successfully",
     );
   } catch (error) {
     console.error("[logFaceComparison] Error:", error);
     throw error;
   }
 });
-
-
-
 
 // ============================================================
 // AUDIO RECORDING ENDPOINT
@@ -489,18 +456,14 @@ export const uploadAudioRecording = asyncHandler(async (req, res) => {
       return sendError(
         res,
         "Identity verification not found. Please complete face capture first.",
-        404
+        404,
       );
     }
 
     // 5. Check retry limit (max 3 attempts)
     if (verification.audioAttemptCount >= 3) {
       fs.unlinkSync(req.file.path);
-      return sendError(
-        res,
-        "Maximum audio recording attempts (3) exceeded",
-        400
-      );
+      return sendError(res, "Maximum audio recording attempts (3) exceeded", 400);
     }
 
     // 6. Process audio (compress if needed)
@@ -513,19 +476,23 @@ export const uploadAudioRecording = asyncHandler(async (req, res) => {
     // 8. Get transcription
     let finalTranscription = transcription; // From frontend (Web Speech API)
 
-    // If no transcription provided, use AssemblyAI as fallback
+    // If no transcription provided, use Groq Whisper as fallback (FREE & FAST!)
     if (!finalTranscription || finalTranscription.trim() === "") {
-      console.log(
-        "No transcription from frontend. Using AssemblyAI fallback..."
-      );
+      console.log("No transcription from frontend. Using Groq Whisper (FREE) fallback...");
 
-      if (!isAssemblyAIConfigured()) {
+      if (!isGroqTranscriptionConfigured()) {
         fs.unlinkSync(finalAudioPath);
-        return sendError(res, "Transcription service not configured", 500);
+        return sendError(
+          res,
+          "Groq transcription service not configured. Please set GROQ_API_KEY.",
+          500,
+        );
       }
 
-      const assemblyResult = await transcribeAudio(finalAudioPath);
-      finalTranscription = assemblyResult.text;
+      console.log("Starting Groq Whisper transcription...");
+      const groqResult = await transcribeAudio(finalAudioPath);
+      finalTranscription = groqResult.text;
+      console.log("Groq transcription complete:", finalTranscription.substring(0, 100));
     }
 
     // 9. Calculate match score
@@ -568,8 +535,7 @@ export const uploadAudioRecording = asyncHandler(async (req, res) => {
 
     // 13. Check if warning needed (2nd failed attempt)
     if (!matchResult.isMatch && updatedVerification.audioAttemptCount === 2) {
-      response.warning =
-        "This is your 2nd failed attempt. You have 1 more try remaining.";
+      response.warning = "This is your 2nd failed attempt. You have 1 more try remaining.";
     }
 
     return sendSuccess(res, response, "Audio recorded successfully");

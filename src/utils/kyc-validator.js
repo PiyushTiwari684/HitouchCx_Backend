@@ -21,7 +21,9 @@
 function levenshteinDistance(str1, str2) {
   const len1 = str1.length;
   const len2 = str2.length;
-  const matrix = Array(len1 + 1).fill(null).map(() => Array(len2 + 1).fill(0));
+  const matrix = Array(len1 + 1)
+    .fill(null)
+    .map(() => Array(len2 + 1).fill(0));
 
   for (let i = 0; i <= len1; i++) matrix[i][0] = i;
   for (let j = 0; j <= len2; j++) matrix[0][j] = j;
@@ -30,9 +32,9 @@ function levenshteinDistance(str1, str2) {
     for (let j = 1; j <= len2; j++) {
       const cost = str1[i - 1] === str2[j - 1] ? 0 : 1;
       matrix[i][j] = Math.min(
-        matrix[i - 1][j] + 1,     // deletion
-        matrix[i][j - 1] + 1,     // insertion
-        matrix[i - 1][j - 1] + cost // substitution
+        matrix[i - 1][j] + 1, // deletion
+        matrix[i][j - 1] + 1, // insertion
+        matrix[i - 1][j - 1] + cost, // substitution
       );
     }
   }
@@ -60,7 +62,7 @@ function calculateSimilarity(str1, str2) {
   if (maxLen === 0) return 1.0;
 
   const distance = levenshteinDistance(s1, s2);
-  return 1.0 - (distance / maxLen);
+  return 1.0 - distance / maxLen;
 }
 
 /**
@@ -75,12 +77,12 @@ function calculateSimilarity(str1, str2) {
  * @private
  */
 function normalizeName(name) {
-  if (!name) return '';
+  if (!name) return "";
   return name
     .trim()
     .toLowerCase()
-    .replace(/\s+/g, ' ')           // Replace multiple spaces with single space
-    .replace(/[^a-z\s]/g, '');      // Remove special characters except spaces
+    .replace(/\s+/g, " ") // Replace multiple spaces with single space
+    .replace(/[^a-z\s]/g, ""); // Remove special characters except spaces
 }
 
 /**
@@ -100,7 +102,7 @@ export function normalizeDate(dateInput) {
 
   // If it's a Date object
   if (dateInput instanceof Date) {
-    return dateInput.toISOString().split('T')[0];
+    return dateInput.toISOString().split("T")[0];
   }
 
   const dateStr = String(dateInput).trim();
@@ -121,7 +123,7 @@ export function normalizeDate(dateInput) {
   try {
     const date = new Date(dateStr);
     if (!isNaN(date.getTime())) {
-      return date.toISOString().split('T')[0];
+      return date.toISOString().split("T")[0];
     }
   } catch (e) {
     // Ignore
@@ -154,10 +156,10 @@ function extractPINCode(address) {
  * @private
  */
 function extractCity(address) {
-  if (!address) return '';
+  if (!address) return "";
 
   // Remove PIN code first
-  const withoutPIN = address.replace(/\b\d{6}\b/g, '').trim();
+  const withoutPIN = address.replace(/\b\d{6}\b/g, "").trim();
 
   // Split by common delimiters
   const parts = withoutPIN.split(/[,\n]/);
@@ -168,7 +170,7 @@ function extractCity(address) {
     if (part.length > 0) return part;
   }
 
-  return '';
+  return "";
 }
 
 /**
@@ -184,25 +186,24 @@ export function validateName(profileName, aadhaarName, panName) {
   const normalized = {
     profile: normalizeName(profileName),
     aadhaar: normalizeName(aadhaarName),
-    pan: normalizeName(panName)
+    pan: normalizeName(panName),
   };
 
   // Calculate pairwise similarities
   const similarity = {
     profileVsAadhaar: calculateSimilarity(normalized.profile, normalized.aadhaar),
     profileVsPan: calculateSimilarity(normalized.profile, normalized.pan),
-    aadhaarVsPan: calculateSimilarity(normalized.aadhaar, normalized.pan)
+    aadhaarVsPan: calculateSimilarity(normalized.aadhaar, normalized.pan),
   };
 
   // Threshold for fuzzy matching (80%)
-  const threshold = 0.80;
+  const threshold = 0.8;
 
   // All three must match
-  const allMatch = (
+  const allMatch =
     similarity.profileVsAadhaar >= threshold &&
     similarity.profileVsPan >= threshold &&
-    similarity.aadhaarVsPan >= threshold
-  );
+    similarity.aadhaarVsPan >= threshold;
 
   const result = {
     valid: allMatch,
@@ -212,8 +213,8 @@ export function validateName(profileName, aadhaarName, panName) {
     original: {
       profile: profileName,
       aadhaar: aadhaarName,
-      pan: panName
-    }
+      pan: panName,
+    },
   };
 
   // Add detailed mismatch information
@@ -222,25 +223,25 @@ export function validateName(profileName, aadhaarName, panName) {
 
     if (similarity.profileVsAadhaar < threshold) {
       result.mismatch.push({
-        type: 'profile_aadhaar',
+        type: "profile_aadhaar",
         message: `Profile name "${profileName}" does not match Aadhaar name "${aadhaarName}"`,
-        similarity: similarity.profileVsAadhaar
+        similarity: similarity.profileVsAadhaar,
       });
     }
 
     if (similarity.profileVsPan < threshold) {
       result.mismatch.push({
-        type: 'profile_pan',
+        type: "profile_pan",
         message: `Profile name "${profileName}" does not match PAN name "${panName}"`,
-        similarity: similarity.profileVsPan
+        similarity: similarity.profileVsPan,
       });
     }
 
     if (similarity.aadhaarVsPan < threshold) {
       result.mismatch.push({
-        type: 'aadhaar_pan',
+        type: "aadhaar_pan",
         message: `Aadhaar name "${aadhaarName}" does not match PAN name "${panName}"`,
-        similarity: similarity.aadhaarVsPan
+        similarity: similarity.aadhaarVsPan,
       });
     }
   }
@@ -262,27 +263,25 @@ export function validateDOB(profileDOB, aadhaarDOB, panDOB) {
   const normalized = {
     profile: normalizeDate(profileDOB),
     aadhaar: normalizeDate(aadhaarDOB),
-    pan: normalizeDate(panDOB)
+    pan: normalizeDate(panDOB),
   };
 
   // Check for invalid dates
   if (!normalized.profile || !normalized.aadhaar || !normalized.pan) {
     return {
       valid: false,
-      error: 'One or more dates are invalid',
+      error: "One or more dates are invalid",
       normalized,
-      original: { profile: profileDOB, aadhaar: aadhaarDOB, pan: panDOB }
+      original: { profile: profileDOB, aadhaar: aadhaarDOB, pan: panDOB },
     };
   }
 
   // All three must match exactly
-  const allMatch = (
-    normalized.profile === normalized.aadhaar &&
-    normalized.aadhaar === normalized.pan
-  );
+  const allMatch =
+    normalized.profile === normalized.aadhaar && normalized.aadhaar === normalized.pan;
 
   // Critical: Aadhaar and PAN must match (these are government docs)
-  const aadhaarPanMatch = (normalized.aadhaar === normalized.pan);
+  const aadhaarPanMatch = normalized.aadhaar === normalized.pan;
 
   const result = {
     valid: allMatch,
@@ -290,9 +289,9 @@ export function validateDOB(profileDOB, aadhaarDOB, panDOB) {
     original: {
       profile: profileDOB,
       aadhaar: aadhaarDOB,
-      pan: panDOB
+      pan: panDOB,
     },
-    aadhaarPanMatch // Critical check
+    aadhaarPanMatch, // Critical check
   };
 
   // Add detailed mismatch information
@@ -301,23 +300,23 @@ export function validateDOB(profileDOB, aadhaarDOB, panDOB) {
 
     if (normalized.profile !== normalized.aadhaar) {
       result.mismatch.push({
-        type: 'profile_aadhaar',
-        message: `Profile DOB "${normalized.profile}" does not match Aadhaar DOB "${normalized.aadhaar}"`
+        type: "profile_aadhaar",
+        message: `Profile DOB "${normalized.profile}" does not match Aadhaar DOB "${normalized.aadhaar}"`,
       });
     }
 
     if (normalized.profile !== normalized.pan) {
       result.mismatch.push({
-        type: 'profile_pan',
-        message: `Profile DOB "${normalized.profile}" does not match PAN DOB "${normalized.pan}"`
+        type: "profile_pan",
+        message: `Profile DOB "${normalized.profile}" does not match PAN DOB "${normalized.pan}"`,
       });
     }
 
     if (!aadhaarPanMatch) {
       result.mismatch.push({
-        type: 'aadhaar_pan',
+        type: "aadhaar_pan",
         message: `Aadhaar DOB "${normalized.aadhaar}" does not match PAN DOB "${normalized.pan}" - Critical mismatch in government documents`,
-        critical: true
+        critical: true,
       });
     }
   }
@@ -338,71 +337,138 @@ export function validateAddress(profileAddress, aadhaarAddress) {
   if (!profileAddress || !aadhaarAddress) {
     const result = {
       valid: false,
-      error: 'Missing address data',
+      error: "Missing address data",
       profileAddress,
       aadhaarAddress,
-      mismatch: []
+      mismatch: [],
     };
 
     if (!profileAddress) {
       result.mismatch.push({
-        type: 'missing_profile_address',
-        message: 'Profile address is missing. Please update your profile with your complete address including PIN code.'
+        type: "missing_profile_address",
+        message:
+          "Profile address is missing. Please update your profile with your complete address including PIN code.",
       });
     }
 
     if (!aadhaarAddress) {
       result.mismatch.push({
-        type: 'missing_aadhaar_address',
-        message: 'Aadhaar address data is missing or could not be extracted.'
+        type: "missing_aadhaar_address",
+        message: "Aadhaar address data is missing or could not be extracted.",
       });
     }
 
     return result;
   }
 
+  // Normalize addresses for comparison
+  const normalizeAddress = (addr) => {
+    return addr
+      .toLowerCase()
+      .replace(/[,.\-:]/g, " ") // Replace punctuation with spaces
+      .replace(/\s+/g, " ") // Normalize whitespace
+      .trim();
+  };
+
   // Extract PIN codes
   const profilePIN = extractPINCode(profileAddress);
   const aadhaarPIN = aadhaarAddress.pin || aadhaarAddress.pc;
 
   // PIN code must match exactly
-  const pinMatch = (profilePIN === aadhaarPIN);
+  const pinMatch = profilePIN === aadhaarPIN;
 
-  // Extract and compare city/district
+  // Format full Aadhaar address for comparison
+  const aadhaarFullAddress = formatAadhaarAddress(aadhaarAddress);
+
+  // Normalize both addresses
+  const normalizedProfile = normalizeAddress(profileAddress);
+  const normalizedAadhaar = normalizeAddress(aadhaarFullAddress);
+
+  // Extract key address components
   const profileCity = extractCity(profileAddress);
-  const aadhaarCity = aadhaarAddress.district || aadhaarAddress.dist || aadhaarAddress.vtc || '';
+  const aadhaarCity = aadhaarAddress.district || aadhaarAddress.dist || aadhaarAddress.vtc || "";
 
-  const cityMatch = calculateSimilarity(profileCity, aadhaarCity) >= 0.80;
+  // Check if key components exist in each other's addresses
+  const aadhaarComponents = [
+    aadhaarAddress.house,
+    aadhaarAddress.street,
+    aadhaarAddress.locality,
+    aadhaarAddress.vtc,
+    aadhaarAddress.district || aadhaarAddress.dist,
+  ]
+    .filter(Boolean)
+    .map((c) => normalizeAddress(c));
+
+  // Calculate component matches
+  let componentMatchCount = 0;
+  let totalComponents = aadhaarComponents.length;
+
+  aadhaarComponents.forEach((component) => {
+    if (component && normalizedProfile.includes(component)) {
+      componentMatchCount++;
+    }
+  });
+
+  // Calculate overall address similarity
+  const addressSimilarity = calculateSimilarity(normalizedProfile, normalizedAadhaar);
+  const componentMatchRatio = totalComponents > 0 ? componentMatchCount / totalComponents : 0;
+
+  // City match with fuzzy matching
+  const cityMatch = calculateSimilarity(profileCity, aadhaarCity) >= 0.8;
+
+  // Address is valid if:
+  // 1. PIN matches AND
+  // 2. Either city matches OR at least 60% of address components match OR overall similarity >= 70%
+  const addressContentMatch = cityMatch || componentMatchRatio >= 0.6 || addressSimilarity >= 0.7;
 
   const result = {
-    valid: pinMatch && cityMatch,
+    valid: pinMatch && addressContentMatch,
     pinMatch,
     cityMatch,
+    addressSimilarity,
+    componentMatchRatio,
     details: {
       profilePIN,
       aadhaarPIN,
       profileCity,
       aadhaarCity,
       profileAddress,
-      aadhaarFullAddress: formatAadhaarAddress(aadhaarAddress)
-    }
+      aadhaarFullAddress,
+      matchedComponents: componentMatchCount,
+      totalComponents,
+    },
   };
 
   // Add mismatch information
-  if (!pinMatch || !cityMatch) {
+  if (!pinMatch || !addressContentMatch) {
     result.mismatch = [];
 
     if (!pinMatch) {
       result.mismatch.push({
-        type: 'pin_code',
-        message: `Profile PIN code "${profilePIN}" does not match Aadhaar PIN code "${aadhaarPIN}"`
+        type: "pin_code",
+        message: `Profile PIN code "${profilePIN}" does not match Aadhaar PIN code "${aadhaarPIN}"`,
       });
     }
 
-    if (!cityMatch) {
+    if (!addressContentMatch) {
+      const reasons = [];
+      if (!cityMatch) {
+        reasons.push(
+          `city/district mismatch (Profile: "${profileCity}", Aadhaar: "${aadhaarCity}")`,
+        );
+      }
+      if (componentMatchRatio < 0.6) {
+        reasons.push(
+          `only ${Math.round(componentMatchRatio * 100)}% of address components matched`,
+        );
+      }
+      if (addressSimilarity < 0.7) {
+        reasons.push(`overall address similarity is ${Math.round(addressSimilarity * 100)}%`);
+      }
+
       result.mismatch.push({
-        type: 'city_district',
-        message: `Profile city/district "${profileCity}" does not match Aadhaar "${aadhaarCity}"`
+        type: "address_content",
+        message: `Address details do not match sufficiently: ${reasons.join(", ")}`,
       });
     }
   }
@@ -425,10 +491,10 @@ function formatAadhaarAddress(address) {
     address.vtc,
     address.district || address.dist,
     address.state,
-    address.pin || address.pc
+    address.pin || address.pc,
   ].filter(Boolean);
 
-  return parts.join(', ');
+  return parts.join(", ");
 }
 
 /**
@@ -451,68 +517,56 @@ function formatAadhaarAddress(address) {
  * @returns {Object} Complete validation result
  */
 export function validateKYC(profileData, aadhaarData, panData) {
-  console.log('[KYC Validator] Starting validation...');
-  console.log('[KYC Validator] Profile:', { name: profileData.name, dob: profileData.dob });
-  console.log('[KYC Validator] Aadhaar:', { name: aadhaarData?.name, dob: aadhaarData?.dob });
-  console.log('[KYC Validator] PAN:', { name: panData?.name, dob: panData?.dob });
+  console.log("[KYC Validator] Starting validation...");
+  console.log("[KYC Validator] Profile:", { name: profileData.name, dob: profileData.dob });
+  console.log("[KYC Validator] Aadhaar:", { name: aadhaarData?.name, dob: aadhaarData?.dob });
+  console.log("[KYC Validator] PAN:", { name: panData?.name, dob: panData?.dob });
 
   // Validate required data
   if (!profileData || !aadhaarData || !panData) {
     return {
       valid: false,
-      error: 'Missing required data for validation',
-      validations: null
+      error: "Missing required data for validation",
+      validations: null,
     };
   }
 
   // Perform individual validations
-  const nameValidation = validateName(
-    profileData.name,
-    aadhaarData.name,
-    panData.name
-  );
+  const nameValidation = validateName(profileData.name, aadhaarData.name, panData.name);
 
-  const dobValidation = validateDOB(
-    profileData.dob,
-    aadhaarData.dob,
-    panData.dob
-  );
+  const dobValidation = validateDOB(profileData.dob, aadhaarData.dob, panData.dob);
 
-  const addressValidation = validateAddress(
-    profileData.address,
-    aadhaarData.address
-  );
+  const addressValidation = validateAddress(profileData.address, aadhaarData.address);
 
   // Check signature verification
   const signatureValidation = {
     valid: aadhaarData.signatureVerified && panData.signatureVerified,
     aadhaarVerified: aadhaarData.signatureVerified,
-    panVerified: panData.signatureVerified
+    panVerified: panData.signatureVerified,
   };
 
   if (!signatureValidation.valid) {
     signatureValidation.mismatch = [];
     if (!aadhaarData.signatureVerified) {
       signatureValidation.mismatch.push({
-        type: 'aadhaar_signature',
-        message: 'Aadhaar XML signature verification failed'
+        type: "aadhaar_signature",
+        message: "Aadhaar XML signature verification failed",
       });
     }
     if (!panData.signatureVerified) {
       signatureValidation.mismatch.push({
-        type: 'pan_signature',
-        message: 'PAN XML signature verification failed'
+        type: "pan_signature",
+        message: "PAN XML signature verification failed",
       });
     }
   }
 
   // Overall validation result
-  const allValid = (
+  const allValid =
     nameValidation.valid &&
     dobValidation.valid &&
     addressValidation.valid &&
-    signatureValidation.valid
-  );
+    signatureValidation.valid;
 
   const result = {
     valid: allValid,
@@ -520,8 +574,8 @@ export function validateKYC(profileData, aadhaarData, panData) {
       name: nameValidation,
       dob: dobValidation,
       address: addressValidation,
-      signature: signatureValidation
-    }
+      signature: signatureValidation,
+    },
   };
 
   // Collect all error messages
@@ -529,23 +583,26 @@ export function validateKYC(profileData, aadhaarData, panData) {
     result.errors = [];
 
     if (!nameValidation.valid && nameValidation.mismatch) {
-      result.errors.push(...nameValidation.mismatch.map(m => m.message));
+      result.errors.push(...nameValidation.mismatch.map((m) => m.message));
     }
 
     if (!dobValidation.valid && dobValidation.mismatch) {
-      result.errors.push(...dobValidation.mismatch.map(m => m.message));
+      result.errors.push(...dobValidation.mismatch.map((m) => m.message));
     }
 
     if (!addressValidation.valid && addressValidation.mismatch) {
-      result.errors.push(...addressValidation.mismatch.map(m => m.message));
+      result.errors.push(...addressValidation.mismatch.map((m) => m.message));
     }
 
     if (!signatureValidation.valid && signatureValidation.mismatch) {
-      result.errors.push(...signatureValidation.mismatch.map(m => m.message));
+      result.errors.push(...signatureValidation.mismatch.map((m) => m.message));
     }
   }
 
-  console.log('[KYC Validator] Validation complete:', { valid: allValid, errorCount: result.errors?.length || 0 });
+  console.log("[KYC Validator] Validation complete:", {
+    valid: allValid,
+    errorCount: result.errors?.length || 0,
+  });
 
   return result;
 }

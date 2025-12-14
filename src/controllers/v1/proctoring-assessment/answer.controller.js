@@ -49,6 +49,17 @@ export const saveAnswer = asyncHandler(async (req, res) => {
     isSkipped: isSkipped === "true" || isSkipped === true,
   };
 
+  // DEBUG: Log file upload details
+  if (req.file) {
+    console.log("🔍 [DEBUG] Audio file details from multer:");
+    console.log("   originalname:", req.file.originalname);
+    console.log("   filename:", req.file.filename);
+    console.log("   path:", req.file.path);
+    console.log("   mimetype:", req.file.mimetype);
+    console.log("   size:", req.file.size);
+    console.log("   Storing in DB as:", answerData.audioFilePath);
+  }
+
   // Validate that either text or audio is provided (unless skipped)
   if (!answerData.isSkipped && !answerData.answerText && !answerData.audioFilePath) {
     return sendError(res, "Either answerText or audio file must be provided", 400);
@@ -70,7 +81,7 @@ export const saveAnswer = asyncHandler(async (req, res) => {
         revisionCount: savedAnswer.revisionCount,
         submittedAt: savedAnswer.submittedAt,
       },
-      savedAnswer.revisionCount > 0 ? "Answer updated successfully" : "Answer saved successfully"
+      savedAnswer.revisionCount > 0 ? "Answer updated successfully" : "Answer saved successfully",
     );
   } catch (error) {
     console.error("[saveAnswer] Error:", error);
@@ -119,7 +130,7 @@ export const getAllAnswers = asyncHandler(async (req, res) => {
         })),
         statistics: stats,
       },
-      "Answers retrieved successfully"
+      "Answers retrieved successfully",
     );
   } catch (error) {
     console.error("[getAllAnswers] Error:", error);
@@ -164,7 +175,7 @@ export const getAnswerByQuestion = asyncHandler(async (req, res) => {
         revisionCount: answer.revisionCount,
         submittedAt: answer.submittedAt,
       },
-      "Answer retrieved successfully"
+      "Answer retrieved successfully",
     );
   } catch (error) {
     console.error("[getAnswerByQuestion] Error:", error);

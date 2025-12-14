@@ -57,7 +57,6 @@ const resumeStorage = multer.diskStorage({
   filename: (req, file, cb) => cb(null, Date.now() + "-" + file.originalname),
 });
 
-
 const resumeFileFilter = (req, file, cb) => {
   const allowed = [
     "application/pdf",
@@ -121,9 +120,31 @@ const audioStorage = multer.diskStorage({
   },
   filename: (_req, file, cb) => {
     const timestamp = Date.now();
-    const extension = path.extname(file.originalname);
     const randomString = Math.random().toString(36).substring(2, 15);
+
+    // Get extension from originalname
+    let extension = path.extname(file.originalname);
+
+    // If no extension found, determine from MIME type (CRITICAL FIX!)
+    if (!extension || extension === "") {
+      console.log(
+        `⚠️  No extension in originalname: "${file.originalname}", using MIME type: ${file.mimetype}`,
+      );
+      const mimeToExt = {
+        "audio/webm": ".webm",
+        "audio/webm;codecs=opus": ".webm",
+        "audio/mpeg": ".mp3",
+        "audio/mp3": ".mp3",
+        "audio/wav": ".wav",
+        "audio/ogg": ".ogg",
+        "audio/opus": ".opus",
+      };
+      extension = mimeToExt[file.mimetype] || ".webm"; // Default to .webm
+      console.log(`   ✅ Using extension: ${extension}`);
+    }
+
     const filename = `audio-${timestamp}-${randomString}${extension}`;
+    console.log(`[Multer] Saving audio as: ${filename}`);
     cb(null, filename);
   },
 });

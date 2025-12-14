@@ -7,7 +7,7 @@ import { transcribeAudio } from "../groq.transcription.service.js";
 
 /**
  * Evaluation weights for different question types
-*/
+ */
 const EVALUATION_WEIGHTS = {
   SPEAKING: {
     correctness: 0.3, // 30%
@@ -25,7 +25,7 @@ const EVALUATION_WEIGHTS = {
 
 /**
  * CEFR level mapping based on overall score
-*/
+ */
 const CEFR_MAPPING = [
   { min: 90, max: 100, level: "C2" }, // Mastery
   { min: 80, max: 89, level: "C1" }, // Advanced
@@ -42,7 +42,9 @@ const CEFR_MAPPING = [
  */
 export async function evaluateSingleAnswer(answerId) {
   try {
-    console.log(`\n=== Starting evaluation for answer ${answerId} ===`);
+    console.log(`\n========================================`);
+    console.log(`=== Starting evaluation for answer ${answerId} ===`);
+    console.log(`========================================`);
 
     // 1. Fetch the answer with related data
     const answer = await prisma.answer.findUnique({
@@ -54,39 +56,80 @@ export async function evaluateSingleAnswer(answerId) {
     });
 
     if (!answer) {
+      console.error(`❌ Answer ${answerId} not found in database`);
       throw new Error(`Answer ${answerId} not found`);
     }
 
     // 2. Determine question type
     const questionType = answer.question.questionType;
-    console.log(`Question type: ${questionType}`);
+    console.log(`📝 Question type: ${questionType}`);
+    console.log(`📄 Question text: ${answer.question.questionText.substring(0, 100)}...`);
+    console.log(`💬 Current answerText: "${answer.answerText}"`);
+    console.log(`🎵 Audio file path: ${answer.audioFilePath || "NONE"}`);
 
     // 3. Get answer text (transcribe if speaking)
     let answerText = answer.answerText;
 
-    if (
-      questionType === "SPEAKING" &&
-      !answerText &&
-      answer.audioFilePath
-    ) {
-      console.log("Transcribing audio for speaking question...");
-      const transcription = await transcribeAudio(answer.audioFilePath);
-      answerText = transcription.text;
+    if (questionType === "SPEAKING") {
+      console.log(`\n🎤 SPEAKING question detected`);
+      console.log(`   - Has answerText: ${!!answerText}`);
+      console.log(`   - answerText length: ${answerText?.length || 0}`);
+      console.log(`   - answerText trimmed length: ${answerText?.trim().length || 0}`);
+      console.log(`   - Has audioFilePath: ${!!answer.audioFilePath}`);
 
-      // Update answer with transcription
-      await prisma.answer.update({
-        where: { id: answerId },
-        data: { answerText },
-      });
+      // For speaking questions, transcribe audio if text is missing or empty
+      if ((!answerText || answerText.trim().length === 0) && answer.audioFilePath) {
+        console.log(`\n🔊 Starting audio transcription...`);
+        console.log(`   📁 Audio file path: ${answer.audioFilePath}`);
+
+        try {
+          const transcription = await transcribeAudio(answer.audioFilePath);
+          answerText = transcription.text;
+
+          console.log(`\n✅ TRANSCRIPTION SUCCESSFUL!`);
+          console.log(`   📝 Transcribed text length: ${answerText.length} characters`);
+          console.log(`   📝 Transcribed text preview: "${answerText.substring(0, 200)}..."`);
+          console.log(`   ⏱️  Duration: ${transcription.duration || "N/A"} seconds`);
+          console.log(`   🔤 Language: ${transcription.language || "N/A"}`);
+
+          // Update answer with transcription
+          await prisma.answer.update({
+            where: { id: answerId },
+            data: { answerText },
+          });
+
+          console.log(`   💾 Transcription saved to database`);
+        } catch (error) {
+          console.error(`\n❌ TRANSCRIPTION FAILED!`);
+          console.error(`   Error type: ${error.constructor.name}`);
+          console.error(`   Error message: ${error.message}`);
+          console.error(`   Stack trace:`, error.stack);
+          throw new Error(`Failed to transcribe audio: ${error.message}`);
+        }
+      } else {
+        console.log(`\n⏭️  Skipping transcription:`);
+        if (answerText && answerText.trim().length > 0) {
+          console.log(`   ✓ Already has transcribed text`);
+        } else if (!answer.audioFilePath) {
+          console.log(`   ⚠️  No audio file path available`);
+        }
+      }
     }
 
     if (!answerText || answerText.trim().length === 0) {
-      console.log("No answer text available, skipping evaluation");
+      console.log(`\n⚠️  EVALUATION SKIPPED - No answer text available`);
+      console.log(`   - answerText: "${answerText}"`);
+      console.log(`   - Question type: ${questionType}`);
+      console.log(`========================================\n`);
       return null;
     }
 
+    console.log(`\n✅ Answer text ready for evaluation`);
+    console.log(`   Length: ${answerText.length} characters`);
+    console.log(`   Preview: "${answerText.substring(0, 150)}..."`);
+
     // 4. Run AI evaluations in parallel
-    console.log("Running parallel AI evaluations...");
+    console.log(`\n🤖 Running AI evaluations...`);
     const [groqResult, grammarResult] = await Promise.all([
       groqEvaluate({
         questionText: answer.question.questionText,
@@ -356,10 +399,7 @@ export async function getEvaluationSummary(attemptId) {
   }
 
   // Calculate average score
-  const totalScore = evaluatedAnswers.reduce(
-    (sum, a) => sum + a.aiOverallScore,
-    0
-  );
+  const totalScore = evaluatedAnswers.reduce((sum, a) => sum + a.aiOverallScore, 0);
   const averageScore = totalScore / evaluatedAnswers.length;
 
   // CEFR distribution
