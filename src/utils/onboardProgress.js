@@ -24,7 +24,7 @@
   if (!emailVerified || !phoneVerified) return Step.VERIFY;
   if (status !== 'ACTIVE') return Step.SET_PASSWORD;
   if (!profileCompleted) return Step.PROFILE;
-  if (kycCompleted !== 'APPROVED') return Step.KYC;
+  if (kycCompleted !== true) return Step.KYC;
   if (assessmentStatus !== 'COMPLETED') {
     return assessmentStatus === 'IN_PROGRESS' ? Step.ASSESSMENT : Step.ASSESSMENT_INTRO;
   }
@@ -43,8 +43,8 @@
     assessmentStatus: user.assessmentStatus ?? 'NOT_STARTED',
     agreementSigned: user.agreementSigned ?? false,
   };
-  const stepCode = calculateNextStepCode(flags);
-  return { stepCode,flags };
+  const nextStep = calculateNextStepCode(flags);
+  return { nextStep,flags };
 }
 
-export {Step,stepToPath,calculateNextStepCode,buildProgress}
+export {buildProgress}

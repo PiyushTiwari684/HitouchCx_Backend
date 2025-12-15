@@ -9,6 +9,7 @@ import {
   addBankDetails,
  getBankDetails
 } from "../../../controllers/v1/agent/bankDetails.controller.js";
+import {getProgress} from "../../../controllers/v1/agent/onboardProgress.controller.js"
 import { getAgentById } from "../../../controllers/v1/agent/getAgent.controller.js";
 import { uploadProfilePhoto, uploadResume } from "../../../config/upload.config.js";
 import { extractResume } from "../../../controllers/v1/resume/resume.controller.js";
@@ -20,9 +21,12 @@ const router = express.Router();
 
 //~~~~~~Agent Information
 
+//Agent Registration Process Progress/Steps
+
+router.get("/onboardProgress",authMiddleware,getProgress)
+
 //Add Agent info
 router.post("/register", authMiddleware, registerAgent);
-
 
 router.post("/bank-details", authMiddleware, addBankDetails);
 
