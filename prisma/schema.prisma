@@ -51,6 +51,7 @@ model User {
   profileCompleted Boolean @default(false)
   kycCompleted     Boolean @default(false) // KYC verification completed
   agreementSigned  Boolean @default(false)
+  assessmentStatus assessStatus @default(NOT_STARTED)
 
   googleId       String?      @unique //oAuth Google Id
   profilePicture String? //Profile Picture received from Google
@@ -63,6 +64,12 @@ model User {
   agent        Agent?
   kycSessions  KYCSession[] // DigiLocker KYC sessions
   kycAuditLogs KYCAuditLog[] // KYC audit trail
+}
+
+enum assessStatus{
+  NOT_STARTED
+  IN_PROGRESS
+  COMPLETED
 }
 
 model OTP {
