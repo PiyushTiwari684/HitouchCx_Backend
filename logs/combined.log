@@ -153,3 +153,5 @@
 2025-12-15 16:25:44 [info]: ::1 - - [15/Dec/2025:10:55:44 +0000] "POST /api/v1/auth/token/introspect HTTP/1.1" 200 171 "-" "PostmanRuntime/7.49.1"
 2025-12-15 17:43:26 [info]: ::1 - - [15/Dec/2025:12:13:26 +0000] "POST /api/v1/auth/log-in HTTP/1.1" 200 444 "-" "PostmanRuntime/7.51.0"
 2025-12-15 17:43:58 [info]: ::1 - - [15/Dec/2025:12:13:58 +0000] "POST /api/v1/auth/token/introspect HTTP/1.1" 200 172 "-" "PostmanRuntime/7.51.0"
+2025-12-15 17:45:25 [info]: ::1 - - [15/Dec/2025:12:15:25 +0000] "POST /api/v1/auth/token/introspect HTTP/1.1" 200 169 "-" "PostmanRuntime/7.51.0"
+2025-12-15 17:45:31 [info]: ::1 - - [15/Dec/2025:12:15:31 +0000] "POST /api/v1/auth/log-in HTTP/1.1" 200 444 "-" "PostmanRuntime/7.51.0"
