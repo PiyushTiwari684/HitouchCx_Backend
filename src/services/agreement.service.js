@@ -190,10 +190,10 @@ export async function processAgreementAcceptance({ userId, ipAddress, userAgent,
     const personalizedNDA = replaceAgreementPlaceholders(NDA_TEMPLATE, userData);
     const personalizedMSA = replaceAgreementPlaceholders(MSA_TEMPLATE, userData);
 
-    // Step 4: Start database transaction
-    const result = await prisma.$transaction(async (tx) => {
+    // Step 4: Create agreement records in transaction (fast operation)
+    const agreements = await prisma.$transaction(async (tx) => {
       // Create NDA Agreement record
-      ndaAgreement = await tx.agreement.create({
+      const nda = await tx.agreement.create({
         data: {
           agentId,
           documentType: "NDA",
@@ -207,10 +207,10 @@ export async function processAgreementAcceptance({ userId, ipAddress, userAgent,
         },
       });
 
-      console.log(`✅ NDA agreement record created: ${ndaAgreement.id}`);
+      console.log(`✅ NDA agreement record created: ${nda.id}`);
 
       // Create MSA Agreement record
-      msaAgreement = await tx.agreement.create({
+      const msa = await tx.agreement.create({
         data: {
           agentId,
           documentType: "MSA",
@@ -224,49 +224,9 @@ export async function processAgreementAcceptance({ userId, ipAddress, userAgent,
         },
       });
 
-      console.log(`✅ MSA agreement record created: ${msaAgreement.id}`);
+      console.log(`✅ MSA agreement record created: ${msa.id}`);
 
-      // Step 5: Generate PDFs
-      console.log("📄 Generating PDFs...");
-      const [ndaPdfBuffer, msaPdfBuffer] = await Promise.all([
-        generateAgreementPDF(personalizedNDA, "NDA"),
-        generateAgreementPDF(personalizedMSA, "MSA"),
-      ]);
-
-      console.log("✅ PDFs generated successfully");
-
-      // Step 6: Upload PDFs to Cloudinary
-      console.log("☁️ Uploading PDFs to Cloudinary...");
-      const timestamp = Date.now();
-      const userNameSlug = userData.fullName.replace(/\s+/g, "_");
-
-      const [ndaUploadResult, msaUploadResult] = await Promise.all([
-        uploadPDFToCloudinary(ndaPdfBuffer, `NDA_${userNameSlug}_${timestamp}`, "agreements/nda"),
-        uploadPDFToCloudinary(msaPdfBuffer, `MSA_${userNameSlug}_${timestamp}`, "agreements/msa"),
-      ]);
-
-      console.log("✅ PDFs uploaded to Cloudinary");
-
-      // Step 7: Update Agreement records with PDF URLs
-      await tx.agreement.update({
-        where: { id: ndaAgreement.id },
-        data: {
-          pdfUrl: ndaUploadResult.url,
-          pdfPublicId: ndaUploadResult.publicId,
-        },
-      });
-
-      await tx.agreement.update({
-        where: { id: msaAgreement.id },
-        data: {
-          pdfUrl: msaUploadResult.url,
-          pdfPublicId: msaUploadResult.publicId,
-        },
-      });
-
-      console.log("✅ Agreement records updated with PDF URLs");
-
-      // Step 8: Update User agreementSigned flag
+      // Update User agreementSigned flag
       await tx.user.update({
         where: { id: userId },
         data: { agreementSigned: true },
@@ -274,18 +234,80 @@ export async function processAgreementAcceptance({ userId, ipAddress, userAgent,
 
       console.log("✅ User agreementSigned flag updated");
 
-      return {
-        ndaAgreement,
-        msaAgreement,
-        ndaPdfUrl: ndaUploadResult.url,
-        msaPdfUrl: msaUploadResult.url,
-        userData,
-      };
+      return { nda, msa };
     });
+
+    ndaAgreement = agreements.nda;
+    msaAgreement = agreements.msa;
 
     console.log("✅ Transaction committed successfully");
 
-    // Step 9: Send email in background (non-blocking)
+    // Step 5: Generate PDFs (outside transaction - slow operation)
+    console.log("📄 Generating PDFs...");
+    const [ndaPdfBuffer, msaPdfBuffer] = await Promise.all([
+      generateAgreementPDF(personalizedNDA, "NDA"),
+      generateAgreementPDF(personalizedMSA, "MSA"),
+    ]);
+
+    console.log("✅ PDFs generated successfully");
+
+    // Step 6: Upload PDFs to Cloudinary (outside transaction - slow operation)
+    console.log("☁️ Uploading PDFs to Cloudinary...");
+    const timestamp = Date.now();
+    const userNameSlug = userData.fullName.replace(/\s+/g, "_");
+
+    const [ndaUploadResult, msaUploadResult] = await Promise.all([
+      uploadPDFToCloudinary(ndaPdfBuffer, `NDA_${userNameSlug}_${timestamp}`, "agreements/nda"),
+      uploadPDFToCloudinary(msaPdfBuffer, `MSA_${userNameSlug}_${timestamp}`, "agreements/msa"),
+    ]);
+
+    console.log("✅ PDFs uploaded to Cloudinary");
+
+    // Step 7: Update Agreement records with PDF URLs (separate from main transaction)
+    await Promise.all([
+      prisma.agreement.update({
+        where: { id: ndaAgreement.id },
+        data: {
+          pdfUrl: ndaUploadResult.url,
+          pdfPublicId: ndaUploadResult.publicId,
+        },
+      }),
+      prisma.agreement.update({
+        where: { id: msaAgreement.id },
+        data: {
+          pdfUrl: msaUploadResult.url,
+          pdfPublicId: msaUploadResult.publicId,
+        },
+      }),
+    ]);
+
+    console.log("✅ Agreement records updated with PDF URLs");
+
+    const result = {
+      ndaAgreement,
+      msaAgreement,
+      ndaPdfUrl: ndaUploadResult.url,
+      msaPdfUrl: msaUploadResult.url,
+      userData,
+    };
+
+    // Step 8: Send email in background (non-blocking)
+    // Convert buffers to base64 strings (Buffers can't be passed through setImmediate)
+    // Ensure buffers are valid Buffers before converting
+    const ndaBase64 = Buffer.isBuffer(ndaPdfBuffer) 
+      ? ndaPdfBuffer.toString("base64") 
+      : Buffer.from(ndaPdfBuffer).toString("base64");
+    const msaBase64 = Buffer.isBuffer(msaPdfBuffer) 
+      ? msaPdfBuffer.toString("base64") 
+      : Buffer.from(msaPdfBuffer).toString("base64");
+      
+    console.log(`✅ Converted to base64 - NDA: ${ndaBase64.length} chars, MSA: ${msaBase64.length} chars`);
+    console.log(`🔍 NDA base64 sample: ${ndaBase64.substring(0, 50)}...`);
+    
+    const capturedUserEmail = user.email;
+    const capturedUserName = result.userData.fullName;
+    const capturedAcceptanceDate = result.userData.acceptanceDate.toLocaleDateString("en-GB");
+
     // This runs after the transaction commits, so user can proceed to dashboard
     setImmediate(async () => {
       await sendAgreementEmailBackground({
@@ -294,11 +316,11 @@ export async function processAgreementAcceptance({ userId, ipAddress, userAgent,
           msa: result.msaAgreement.id,
         },
         emailParams: {
-          toEmail: user.email,
-          userName: result.userData.fullName,
-          ndaPdfUrl: result.ndaPdfUrl,
-          msaPdfUrl: result.msaPdfUrl,
-          acceptanceDate: result.userData.acceptanceDate.toLocaleDateString("en-GB"),
+          toEmail: capturedUserEmail,
+          userName: capturedUserName,
+          ndaPdfBase64: ndaBase64,
+          msaPdfBase64: msaBase64,
+          acceptanceDate: capturedAcceptanceDate,
         },
       });
     });
@@ -334,6 +356,11 @@ async function sendAgreementEmailBackground({ agreementIds, emailParams }) {
     try {
       console.log(`📧 Email send attempt ${attempt}/${MAX_RETRIES}`);
 
+      // Debug: Check what we're receiving
+      console.log(`🔍 emailParams keys: ${Object.keys(emailParams).join(", ")}`);
+      console.log(`🔍 ndaPdfBuffer in emailParams: ${Buffer.isBuffer(emailParams.ndaPdfBuffer)}`);
+      console.log(`🔍 msaPdfBuffer in emailParams: ${Buffer.isBuffer(emailParams.msaPdfBuffer)}`);
+
       // Send email
       const emailResult = await sendAgreementEmail(emailParams);
 
@@ -358,11 +385,12 @@ async function sendAgreementEmailBackground({ agreementIds, emailParams }) {
           }),
         ]);
 
-        console.log(`✅ Email sent successfully on attempt ${attempt}`);
-        return;
+        console.log(`✅ Email sent successfully on attempt ${attempt} - STOPPING RETRIES`);
+        return; // Exit the function - no more retries
       }
 
-      // Email failed
+      // Email failed but didn't throw error
+      console.log(`❌ Email attempt ${attempt} failed (returned success: false)`);
       if (attempt < MAX_RETRIES) {
         // Update retry count and wait before next attempt
         await Promise.all([

@@ -5,11 +5,11 @@ import prisma from '../../../config/db.js';
   Weights (total ≈ 100)
 */
 const WEIGHTS = {
-  skills: 35,
+  languageLevel: 30,  
+  skills: 20,
   qualifications: 20,
-  experience: 30,        // split into years + domain (industry/vertical)
-  languageLevel: 10,     // derived from test results or heuristic
-  languages: 5
+  experience: 20,        // split into years + domain (industry/vertical)
+  languages: 10
 };
 const agentLanguageLevel = "C1"
 const LANGUAGE_LEVEL_MAP = { A1:1, A2:2, B1:3, B2:4, C1:5, C2:6 };
@@ -348,7 +348,7 @@ const agentOpportunities = async (req, res) => {
       };
     })
       .filter(Boolean)
-      .filter(r => r.score >= 40) // threshold
+      .filter(r => r.score >30 ) // threshold
       .sort((a, b) => b.score - a.score)
       .slice(0, Number(limit));
 
@@ -361,9 +361,11 @@ const agentOpportunities = async (req, res) => {
       meta: {
         limit: Number(limit),
         considered: opportunities.length,
-        threshold: 40
+        threshold: 30
       }
     });
+
+    
   } catch (error) {
     console.error('agentOpportunities error:', error);
     return res.status(500).json({ success: false, message: 'Cannot fetch opportunities' });
