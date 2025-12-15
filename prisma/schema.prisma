@@ -51,6 +51,7 @@ model User {
   profileCompleted Boolean @default(false)
   kycCompleted     Boolean @default(false) // KYC verification completed
   agreementSigned  Boolean @default(false)
+  assessmentStatus AssessmentStatus? // Assessment status for candidates
 
   googleId       String?      @unique //oAuth Google Id
   profilePicture String? //Profile Picture received from Google
@@ -153,7 +154,7 @@ model Agent {
 
   //languageTests  LanguageProficiencyTest[] -> Review with Piyush
 
-  //agreements     Agreement[]  -> Review with Piyush
+  agreements     Agreement[] // Legal agreements signed by the agent
 
   reviews        Review[] //Reviews related to the agent (platform reviews, performance reviews, etc.)
   GigApplication GigApplication[]
@@ -392,7 +393,53 @@ model KYCAuditLog {
 
 //To be Reviewed with Piyush
 // Model LanguageProficiencyTest
-// Model Agreement 
+
+//~~~~~~~~~ Agreements ~~~~~~~~~
+
+model Agreement {
+  id              String        @id @default(cuid())
+  agentId         String
+  agent           Agent         @relation(fields: [agentId], references: [id], onDelete: Cascade)
+
+  // Document details
+  documentType    AgreementType
+  documentVersion String        @default("1.0")
+  agreementText   String        @db.Text  // Full personalized text at signing time
+
+  // Signature details
+  signedAt        DateTime      @default(now())
+  ipAddress       String?
+  userAgent       String?
+  sessionId       String?
+
+  // PDF storage
+  pdfUrl          String?       // Cloudinary URL
+  pdfPublicId     String?       // Cloudinary public ID
+
+  // Email tracking
+  emailSentAt     DateTime?
+  emailStatus     EmailStatus   @default(PENDING)
+  emailRetryCount Int           @default(0)
+  lastRetryAt     DateTime?
+
+  createdAt       DateTime      @default(now())
+  updatedAt       DateTime      @updatedAt
+
+  @@index([agentId])
+  @@index([emailStatus])
+  @@index([documentType])
+}
+
+enum AgreementType {
+  NDA
+  MSA
+}
+
+enum EmailStatus {
+  PENDING
+  SENT
+  FAILED
+}
 
 //~~~~~~~~~ Step 2 ~~~~~~~~~
 

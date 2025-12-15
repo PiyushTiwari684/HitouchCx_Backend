@@ -4,6 +4,7 @@ import app from "./app.js";
 import db from "./src/config/db.js";
 import { APP_CONFIG } from "./src/config/constants.js";
 import { initializeUploadDirectories } from "./src/utils/file-storage.js";
+import { startEmailRetryJob } from "./src/jobs/emailRetry.job.js";
 
 const { PORT } = APP_CONFIG;
 
@@ -20,6 +21,9 @@ async function startServer() {
     const server = app.listen(PORT, () => {
       console.log(`Server running at https://localhost:${PORT}`);
     });
+
+    // Start email retry cron job for agreements
+    startEmailRetryJob();
 
     //SIGINT -> IT catches when we stop the server
     //SIGTERM -> It catches when the system or cloud asks your to stop
