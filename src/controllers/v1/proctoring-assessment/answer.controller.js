@@ -119,7 +119,7 @@ export const getAllAnswers = asyncHandler(async (req, res) => {
           questionId: answer.questionId,
           sectionId: answer.sectionId,
           questionType: answer.question.questionType,
-          questionText: answer.question.questionText,
+          questionText: answer.question.questionText, 
           sectionName: answer.section.name,
           answerText: answer.answerText,
           audioFilePath: answer.audioFilePath,

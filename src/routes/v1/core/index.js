@@ -8,6 +8,7 @@ import clientRouter from './client.routes.js';
 import opportunityRouter from './opportunity.routes.js';
 import projectRouter from './project.routes.js';
 import kycRouter from './kyc.routes.js';
+import agreementRouter from './agreement.routes.js';
 
 const router = express.Router();
 
@@ -42,6 +43,10 @@ router.use('/opportunity', opportunityRouter);
 // KYC Routes
 // Final path: /api/v1/kyc/*
 router.use('/kyc', kycRouter);
+
+// Agreement Routes
+// Final path: /api/v1/agreement/*
+router.use('/agreement', agreementRouter);
 
 // Protected User Routes
 // Final path: /api/v1/user/*
