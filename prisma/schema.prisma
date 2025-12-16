@@ -278,8 +278,8 @@ model Experience {
   vertical      Vertical?
   companyName   String?
 
-  startDate DateTime
-  endDate   DateTime
+  startDate DateTime?
+  endDate   DateTime?
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt

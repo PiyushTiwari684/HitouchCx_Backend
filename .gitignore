@@ -9,3 +9,4 @@ logs/
 /docs/sam-merge.md
 sendgrid.env
 /logs/combined.log
+/src/controllers/v/agent/cloudinary-demo.js

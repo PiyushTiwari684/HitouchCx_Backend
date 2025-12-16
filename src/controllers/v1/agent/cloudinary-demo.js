@@ -6,11 +6,11 @@ import 'dotenv/config';
     // Configuration
     cloudinary.config({ 
         cloud_name: 'dvgiafjxp', 
-        api_key: process.env.CLOUDINARY_API_KEY, 
-        api_secret: process.env.CLOUDINARY_API_SECRET // Click 'View API Keys' above to copy your API secret
+        api_key: 326763188152378, 
+        api_secret: wGqZGGufr64f2LRbV6HTM7zVNMw // Click 'View API Keys' above to copy your API secret
     });
-    console.log('API KEY:', process.env.CLOUDINARY_API_KEY);
-console.log('API SECRET set:', process.env.CLOUDINARY_API_SECRET);
+//     console.log('API KEY:', process.env.CLOUDINARY_API_KEY);
+// console.log('API SECRET set:', process.env.CLOUDINARY_API_SECRET);
     // Upload an image
      const uploadResult = await cloudinary.uploader
        .upload(
