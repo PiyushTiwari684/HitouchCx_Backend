@@ -2,8 +2,8 @@ import { sendEmailOTP, sendPhoneOTP, verifyPhoneOTP } from "../../../services/ot
 import prisma from '../../../config/db.js';
 import validator from 'validator';
 
-const MAX_REQUESTS = 100000;
-const WINDOW_MINUTES = 10;
+const MAX_REQUESTS = 10;
+const WINDOW_MINUTES = 1;
 
 // Sending OTP to Phone/Email captured 
 const requestOtp = async (req, res) => {
@@ -69,13 +69,7 @@ const requestOtp = async (req, res) => {
                 where: { email }
             })
 
-            const phoneExists = await prisma.user.findUnique({
-                where:{phone}
-            })
 
-            if(phoneExists){
-                return res.status(400).json({error:"Phone already exists. Provide new one"})
-            }
 
             if (emailPhoneExists.phone==phone && emailPhoneExists.status=="ACTIVE") {
                 return res.status(400).json({ error: "Phone already exists" })

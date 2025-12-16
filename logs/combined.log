@@ -278,3 +278,41 @@
 2025-12-15 16:53:46 [info]: ::1 - - [15/Dec/2025:11:23:46 +0000] "GET /api/v1/proctoring/assessment/latest-evaluation HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.0.0 Safari/537.36"
 2025-12-15 16:56:04 [info]: ::1 - - [15/Dec/2025:11:26:04 +0000] "GET /api/v1/agreement/preview HTTP/1.1" 200 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.0.0 Safari/537.36"
 2025-12-15 16:56:05 [info]: ::1 - - [15/Dec/2025:11:26:05 +0000] "GET /api/v1/agreement/preview HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.0.0 Safari/537.36"
+2025-12-15 17:57:23 [info]: ::1 - - [15/Dec/2025:12:27:23 +0000] "POST /api/v1/auth/token/introspect HTTP/1.1" 200 184 "-" "PostmanRuntime/7.51.0"
+2025-12-15 17:57:28 [info]: ::1 - - [15/Dec/2025:12:27:28 +0000] "POST /api/v1/auth/log-in HTTP/1.1" 200 444 "-" "PostmanRuntime/7.51.0"
+2025-12-15 18:00:56 [info]: ::1 - - [15/Dec/2025:12:30:56 +0000] "GET /api/v1/agent/onboardProgress HTTP/1.1" 200 192 "-" "PostmanRuntime/7.51.0"
+2025-12-15 18:02:07 [info]: ::1 - - [15/Dec/2025:12:32:07 +0000] "GET /api/v1/agent/onboardProgress HTTP/1.1" 200 187 "-" "PostmanRuntime/7.51.0"
+2025-12-16 10:02:22 [info]: ::1 - - [16/Dec/2025:04:32:22 +0000] "POST /api/v1/auth/log-in HTTP/1.1" 200 444 "-" "PostmanRuntime/7.51.0"
+2025-12-16 10:03:29 [info]: ::1 - - [16/Dec/2025:04:33:29 +0000] "POST /api/v1/auth/token/introspect HTTP/1.1" 200 184 "-" "PostmanRuntime/7.51.0"
+2025-12-16 10:03:46 [info]: ::1 - - [16/Dec/2025:04:33:46 +0000] "GET /api/v1/opportunity/agent-opportunities?agentId=cmiztdwv5001v0i8w28cnnihl&limit=10 HTTP/1.1" 200 173 "-" "PostmanRuntime/7.51.0"
+2025-12-16 10:04:06 [info]: ::1 - - [16/Dec/2025:04:34:06 +0000] "GET /api/v1/opportunity/agent-opportunities?agentId=cmi5uzu8w0001o420uoclv9oz&limit=10 HTTP/1.1" 200 - "-" "PostmanRuntime/7.51.0"
+2025-12-16 11:19:09 [info]: ::1 - - [16/Dec/2025:05:49:09 +0000] "POST /api/v1/otp/request-otp HTTP/1.1" 400 49 "-" "PostmanRuntime/7.51.0"
+2025-12-16 11:19:42 [info]: ::1 - - [16/Dec/2025:05:49:42 +0000] "POST /api/v1/otp/request-otp HTTP/1.1" 400 49 "-" "PostmanRuntime/7.51.0"
+2025-12-16 11:19:44 [info]: ::1 - - [16/Dec/2025:05:49:44 +0000] "POST /api/v1/otp/request-otp HTTP/1.1" 400 49 "-" "PostmanRuntime/7.51.0"
+2025-12-16 11:19:45 [info]: ::1 - - [16/Dec/2025:05:49:45 +0000] "POST /api/v1/otp/request-otp HTTP/1.1" 400 49 "-" "PostmanRuntime/7.51.0"
+2025-12-16 11:19:47 [info]: ::1 - - [16/Dec/2025:05:49:47 +0000] "POST /api/v1/otp/request-otp HTTP/1.1" 400 49 "-" "PostmanRuntime/7.51.0"
+2025-12-16 11:20:22 [info]: ::1 - - [16/Dec/2025:05:50:22 +0000] "POST /api/v1/otp/request-otp HTTP/1.1" 400 49 "-" "PostmanRuntime/7.51.0"
+2025-12-16 11:23:05 [info]: ::1 - - [16/Dec/2025:05:53:05 +0000] "POST /api/v1/otp/request-otp HTTP/1.1" 200 130 "-" "PostmanRuntime/7.51.0"
+2025-12-16 11:23:05 [error]: Error [ERR_HTTP_HEADERS_SENT]: Cannot set headers after they are sent to the client
+    at ServerResponse.setHeader (node:_http_outgoing:700:11)
+    at ServerResponse.header (C:\Users\shama\HitouchCx_Backend\node_modules\express\lib\response.js:684:10)
+    at ServerResponse.send (C:\Users\shama\HitouchCx_Backend\node_modules\express\lib\response.js:161:12)
+    at ServerResponse.json (C:\Users\shama\HitouchCx_Backend\node_modules\express\lib\response.js:250:15)
+    at requestOtp (file:///C:/Users/shama/HitouchCx_Backend/src/controllers/v1/auth/otp.controller.js:121:25)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+2025-12-16 11:23:52 [info]: ::1 - - [16/Dec/2025:05:53:52 +0000] "POST /api/v1/otp/verify-otp HTTP/1.1" 200 70 "-" "PostmanRuntime/7.51.0"
+2025-12-16 11:24:16 [info]: ::1 - - [16/Dec/2025:05:54:16 +0000] "POST /api/v1/auth/sign-up HTTP/1.1" 200 449 "-" "PostmanRuntime/7.51.0"
+2025-12-16 12:06:34 [info]: ::1 - - [16/Dec/2025:06:36:34 +0000] "POST /api/v1/auth/log-in HTTP/1.1" 200 444 "-" "PostmanRuntime/7.51.0"
+2025-12-16 12:06:49 [info]: ::1 - - [16/Dec/2025:06:36:49 +0000] "POST /api/v1/auth/password/request-change HTTP/1.1" 200 58 "-" "PostmanRuntime/7.51.0"
+2025-12-16 12:08:11 [info]: ::1 - - [16/Dec/2025:06:38:11 +0000] "POST /api/v1/auth/password/otp-verify HTTP/1.1" 200 330 "-" "PostmanRuntime/7.51.0"
+2025-12-16 12:08:39 [info]: ::1 - - [16/Dec/2025:06:38:39 +0000] "PATCH /api/v1/auth/password/new-password HTTP/1.1" 403 38 "-" "PostmanRuntime/7.51.0"
+2025-12-16 12:09:01 [info]: ::1 - - [16/Dec/2025:06:39:01 +0000] "PATCH /api/v1/auth/password/new-password HTTP/1.1" 200 52 "-" "PostmanRuntime/7.51.0"
+2025-12-16 12:09:30 [info]: ::1 - - [16/Dec/2025:06:39:30 +0000] "PATCH /api/v1/auth/password/new-password HTTP/1.1" 200 52 "-" "PostmanRuntime/7.51.0"
+2025-12-16 12:09:56 [info]: ::1 - - [16/Dec/2025:06:39:56 +0000] "PATCH /api/v1/auth/password/new-password HTTP/1.1" 200 52 "-" "PostmanRuntime/7.51.0"
+2025-12-16 12:10:30 [info]: ::1 - - [16/Dec/2025:06:40:30 +0000] "PATCH /api/v1/auth/password/new-password HTTP/1.1" 200 52 "-" "PostmanRuntime/7.51.0"
+2025-12-16 12:10:55 [info]: ::1 - - [16/Dec/2025:06:40:55 +0000] "PATCH /api/v1/auth/password/new-password HTTP/1.1" 200 52 "-" "PostmanRuntime/7.51.0"
+2025-12-16 12:11:57 [info]: ::1 - - [16/Dec/2025:06:41:57 +0000] "PATCH /api/v1/auth/password/new-password HTTP/1.1" 401 61 "-" "PostmanRuntime/7.51.0"
+2025-12-16 12:12:31 [info]: ::1 - - [16/Dec/2025:06:42:31 +0000] "PATCH /api/v1/auth/password/new-password HTTP/1.1" 400 61 "-" "PostmanRuntime/7.51.0"
+2025-12-16 12:12:37 [info]: ::1 - - [16/Dec/2025:06:42:37 +0000] "PATCH /api/v1/auth/password/new-password HTTP/1.1" 200 52 "-" "PostmanRuntime/7.51.0"
+2025-12-16 12:12:41 [info]: ::1 - - [16/Dec/2025:06:42:41 +0000] "PATCH /api/v1/auth/password/new-password HTTP/1.1" 400 61 "-" "PostmanRuntime/7.51.0"
+2025-12-16 12:12:45 [info]: ::1 - - [16/Dec/2025:06:42:45 +0000] "PATCH /api/v1/auth/password/new-password HTTP/1.1" 200 52 "-" "PostmanRuntime/7.51.0"

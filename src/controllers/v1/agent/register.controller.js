@@ -124,8 +124,8 @@ const registerAgent = async (req, res) => {
                 experiences: (hasExperience && experiences && experiences.length > 0) ? {
                     create: experiences.map(exp => ({
                         ...exp,
-                        startDate: new Date(exp.startDate),
-                        endDate: new Date(exp.endDate)
+                        startDate: exp.startDate? new Date(exp.startDate): null,
+                        endDate:exp.endDate? new Date(exp.endDate): null
                     }))
                 } : undefined ,
                 
