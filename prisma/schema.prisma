@@ -48,9 +48,9 @@ model User {
   refreshTokens RefreshToken[]
 
   // Registration tracking fields
-  profileCompleted Boolean @default(false)
-  kycCompleted     Boolean @default(false) // KYC verification completed
-  agreementSigned  Boolean @default(false)
+  profileCompleted Boolean      @default(false)
+  kycCompleted     Boolean      @default(false) // KYC verification completed
+  agreementSigned  Boolean      @default(false)
   assessmentStatus assessStatus @default(NOT_STARTED)
 
   googleId       String?      @unique //oAuth Google Id
@@ -66,7 +66,7 @@ model User {
   kycAuditLogs KYCAuditLog[] // KYC audit trail
 }
 
-enum assessStatus{
+enum assessStatus {
   NOT_STARTED
   IN_PROGRESS
   COMPLETED
@@ -160,7 +160,7 @@ model Agent {
 
   //languageTests  LanguageProficiencyTest[] -> Review with Piyush
 
-  agreements     Agreement[] // Legal agreements signed by the agent
+  agreements Agreement[] // Legal agreements signed by the agent
 
   reviews        Review[] //Reviews related to the agent (platform reviews, performance reviews, etc.)
   GigApplication GigApplication[]
@@ -403,33 +403,33 @@ model KYCAuditLog {
 //~~~~~~~~~ Agreements ~~~~~~~~~
 
 model Agreement {
-  id              String        @id @default(cuid())
-  agentId         String
-  agent           Agent         @relation(fields: [agentId], references: [id], onDelete: Cascade)
+  id      String @id @default(cuid())
+  agentId String
+  agent   Agent  @relation(fields: [agentId], references: [id], onDelete: Cascade)
 
   // Document details
   documentType    AgreementType
   documentVersion String        @default("1.0")
-  agreementText   String        @db.Text  // Full personalized text at signing time
+  agreementText   String        @db.Text // Full personalized text at signing time
 
   // Signature details
-  signedAt        DateTime      @default(now())
-  ipAddress       String?
-  userAgent       String?
-  sessionId       String?
+  signedAt  DateTime @default(now())
+  ipAddress String?
+  userAgent String?
+  sessionId String?
 
   // PDF storage
-  pdfUrl          String?       // Cloudinary URL
-  pdfPublicId     String?       // Cloudinary public ID
+  pdfUrl      String? // Cloudinary URL
+  pdfPublicId String? // Cloudinary public ID
 
   // Email tracking
   emailSentAt     DateTime?
-  emailStatus     EmailStatus   @default(PENDING)
-  emailRetryCount Int           @default(0)
+  emailStatus     EmailStatus @default(PENDING)
+  emailRetryCount Int         @default(0)
   lastRetryAt     DateTime?
 
-  createdAt       DateTime      @default(now())
-  updatedAt       DateTime      @updatedAt
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 
   @@index([agentId])
   @@index([emailStatus])
@@ -1346,6 +1346,9 @@ model Question {
   skillTested     String? // "Grammar", "Vocabulary", "Fluency", etc.
   difficultyScore Float? // Optional difficulty rating (1-10)
 
+  // Time limit per question (in seconds)
+  timeLimit Int? // Time limit for this question (e.g., 60s for writing, 40s for speaking)
+
   // Usage tracking
   timesUsed Int    @default(0) // How many times used in assessments
   avgScore  Float? // Average score on this question
@@ -1444,8 +1447,12 @@ model CandidateAssessment {
   fullscreenEnteredAt DateTime? // When fullscreen was first entered
   fullscreenExitCount Int       @default(0) // How many times fullscreen was exited
 
+  // Typing speed analytics (for writing questions)
+  averageTypingSpeed Float? // Average typing speed in WPM across all writing questions
+
   // Candidate feedback
   candidateFeedback   String?   @db.Text // Feedback from candidate about assessment experience
+  candidateRating     Int? // Star rating from candidate (1-5)
   feedbackSubmittedAt DateTime? // When feedback was submitted
 
   createdAt DateTime @default(now())
@@ -1799,6 +1806,7 @@ model Answer {
   // For writing questions
   wordCount      Int? // Actual word count
   characterCount Int? // Character count
+  typingSpeed    Float? // Typing speed in WPM (Words Per Minute) for writing questions
 
   // Scoring (auto or manual)
   isCorrect Boolean? // For MCQ (auto-graded)
@@ -1840,7 +1848,7 @@ model Answer {
   pasteCount        Int     @default(0) // Number of paste attempts
 
   // Timing
-  timeSpentSeconds Int? // Time spent on this question
+  timeSpentSeconds Int? // Time spent on this question (in seconds)
   firstViewedAt    DateTime? // When first viewed
   lastModifiedAt   DateTime? // When last changed
   submittedAt      DateTime? // When submitted

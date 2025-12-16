@@ -12,7 +12,7 @@ import * as candidateService from "../../../services/proctoring-assessment/candi
  */
 export const saveAnswer = asyncHandler(async (req, res) => {
   const { attemptId } = req.params;
-  const { questionId, sectionId, answerText, isSkipped } = req.body;
+  const { questionId, sectionId, answerText, isSkipped, typingSpeed, timeSpentSeconds } = req.body;
   const agentId = req.user.agentId;
 
   console.log("[saveAnswer] Request received:", {
@@ -20,6 +20,8 @@ export const saveAnswer = asyncHandler(async (req, res) => {
     questionId,
     sectionId,
     hasAudioFile: !!req.file,
+    typingSpeed,
+    timeSpentSeconds,
     agentId,
   });
 
@@ -47,6 +49,8 @@ export const saveAnswer = asyncHandler(async (req, res) => {
     answerText: answerText || null,
     audioFilePath: req.file ? req.file.path : null, // Multer adds file info to req.file
     isSkipped: isSkipped === "true" || isSkipped === true,
+    typingSpeed: typingSpeed ? parseFloat(typingSpeed) : null,
+    timeSpentSeconds: timeSpentSeconds ? parseInt(timeSpentSeconds) : null,
   };
 
   // DEBUG: Log file upload details
@@ -77,6 +81,8 @@ export const saveAnswer = asyncHandler(async (req, res) => {
         questionId: savedAnswer.questionId,
         isSkipped: savedAnswer.isSkipped,
         wordCount: savedAnswer.wordCount,
+        typingSpeed: savedAnswer.typingSpeed,
+        timeSpentSeconds: savedAnswer.timeSpentSeconds,
         audioFilePath: savedAnswer.audioFilePath,
         revisionCount: savedAnswer.revisionCount,
         submittedAt: savedAnswer.submittedAt,
@@ -119,7 +125,7 @@ export const getAllAnswers = asyncHandler(async (req, res) => {
           questionId: answer.questionId,
           sectionId: answer.sectionId,
           questionType: answer.question.questionType,
-          questionText: answer.question.questionText, 
+          questionText: answer.question.questionText,
           sectionName: answer.section.name,
           answerText: answer.answerText,
           audioFilePath: answer.audioFilePath,
