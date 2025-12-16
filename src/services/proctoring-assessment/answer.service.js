@@ -19,6 +19,8 @@ export async function saveOrUpdateAnswer(data) {
     answerText,
     audioFilePath,
     isSkipped = false,
+    typingSpeed,
+    timeSpentSeconds,
   } = data;
 
   // Validate required fields
@@ -36,8 +38,10 @@ export async function saveOrUpdateAnswer(data) {
 
   // Calculate word count if text answer provided
   let wordCount = null;
+  let characterCount = null;
   if (answerText) {
     wordCount = calculateWordCount(answerText);
+    characterCount = answerText.length;
   }
 
   const answerData = {
@@ -48,6 +52,9 @@ export async function saveOrUpdateAnswer(data) {
     answerText: answerText || null,
     audioFilePath: audioFilePath || null,
     wordCount,
+    characterCount,
+    typingSpeed: typingSpeed || null,
+    timeSpentSeconds: timeSpentSeconds || null,
     isSkipped,
     lastModifiedAt: new Date(),
     submittedAt: new Date(),
@@ -125,10 +132,7 @@ export async function getAllAnswersForAttempt(attemptId) {
         },
       },
     },
-    orderBy: [
-      { section: { orderIndex: "asc" } },
-      { createdAt: "asc" },
-    ],
+    orderBy: [{ section: { orderIndex: "asc" } }, { createdAt: "asc" }],
   });
 
   return answers;
@@ -150,6 +154,17 @@ export async function getAnswerStatistics(attemptId) {
       completedAt: true,
       submittedAt: true,
       totalTimeSpent: true,
+      assessment: {
+        select: {
+          sections: {
+            select: {
+              id: true,
+              name: true,
+              orderIndex: true,
+            },
+          },
+        },
+      },
     },
   });
 
@@ -160,9 +175,18 @@ export async function getAnswerStatistics(attemptId) {
     totalTimeSpent: attempt?.totalTimeSpent,
   });
 
-  // Fetch all answers
+  // Fetch all answers with section information
   const answers = await prisma.answer.findMany({
     where: { attemptId },
+    include: {
+      section: {
+        select: {
+          id: true,
+          name: true,
+          orderIndex: true,
+        },
+      },
+    },
   });
 
   // Calculate totalTimeSpent if not already set
@@ -179,6 +203,26 @@ export async function getAnswerStatistics(attemptId) {
     });
   }
 
+  // Group answers by section
+  const sections = attempt?.assessment?.sections || [];
+  const sectionWiseStats = sections.map((section) => {
+    const sectionAnswers = answers.filter((a) => a.sectionId === section.id);
+    return {
+      sectionId: section.id,
+      sectionName: section.name,
+      totalQuestions: sectionAnswers.length,
+      answeredQuestions: sectionAnswers.filter((a) => !a.isSkipped).length,
+      skippedQuestions: sectionAnswers.filter((a) => a.isSkipped).length,
+    };
+  });
+
+  // Calculate average typing speed (for writing questions only)
+  const writingAnswers = answers.filter((a) => a.answerText && !a.audioFilePath && a.typingSpeed);
+  const averageTypingSpeed =
+    writingAnswers.length > 0
+      ? writingAnswers.reduce((sum, a) => sum + (a.typingSpeed || 0), 0) / writingAnswers.length
+      : null;
+
   const stats = {
     totalQuestions: answers.length,
     answeredQuestions: answers.filter((a) => !a.isSkipped).length,
@@ -186,6 +230,8 @@ export async function getAnswerStatistics(attemptId) {
     writingAnswers: answers.filter((a) => a.answerText && !a.audioFilePath).length,
     speakingAnswers: answers.filter((a) => a.audioFilePath).length,
     totalTimeSpent, // Time spent in seconds
+    averageTypingSpeed, // Average WPM for writing questions
+    sectionWiseStats, // Section-by-section breakdown
     startedAt: attempt?.startedAt,
     completedAt: attempt?.completedAt,
     submittedAt: attempt?.submittedAt,

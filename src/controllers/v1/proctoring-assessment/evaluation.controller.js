@@ -20,16 +20,9 @@ export const triggerEvaluation = asyncHandler(async (req, res) => {
   });
 
   // Validate attempt ownership
-  const isOwner = await attemptService.validateAttemptOwnership(
-    attemptId,
-    agentId
-  );
+  const isOwner = await attemptService.validateAttemptOwnership(attemptId, agentId);
   if (!isOwner) {
-    return sendError(
-      res,
-      "Unauthorized access to this assessment attempt",
-      403
-    );
+    return sendError(res, "Unauthorized access to this assessment attempt", 403);
   }
 
   try {
@@ -41,15 +34,11 @@ export const triggerEvaluation = asyncHandler(async (req, res) => {
       result,
       result.successCount > 0
         ? `Successfully evaluated ${result.successCount} answers`
-        : "No answers to evaluate"
+        : "No answers to evaluate",
     );
   } catch (error) {
     console.error("[triggerEvaluation] Error:", error);
-    return sendError(
-      res,
-      `Evaluation failed: ${error.message}`,
-      500
-    );
+    return sendError(res, `Evaluation failed: ${error.message}`, 500);
   }
 });
 
@@ -69,33 +58,18 @@ export const getEvaluationSummary = asyncHandler(async (req, res) => {
   });
 
   // Validate attempt ownership
-  const isOwner = await attemptService.validateAttemptOwnership(
-    attemptId,
-    agentId
-  );
+  const isOwner = await attemptService.validateAttemptOwnership(attemptId, agentId);
   if (!isOwner) {
-    return sendError(
-      res,
-      "Unauthorized access to this assessment attempt",
-      403
-    );
+    return sendError(res, "Unauthorized access to this assessment attempt", 403);
   }
 
   try {
     const summary = await evaluationService.getEvaluationSummary(attemptId);
 
-    return sendSuccess(
-      res,
-      summary,
-      "Evaluation summary retrieved successfully"
-    );
+    return sendSuccess(res, summary, "Evaluation summary retrieved successfully");
   } catch (error) {
     console.error("[getEvaluationSummary] Error:", error);
-    return sendError(
-      res,
-      `Failed to get evaluation summary: ${error.message}`,
-      500
-    );
+    return sendError(res, `Failed to get evaluation summary: ${error.message}`, 500);
   }
 });
 
@@ -133,15 +107,11 @@ export const evaluateSingleAnswer = asyncHandler(async (req, res) => {
         strengths: result.strengths,
         improvements: result.improvements,
       },
-      "Answer evaluated successfully"
+      "Answer evaluated successfully",
     );
   } catch (error) {
     console.error("[evaluateSingleAnswer] Error:", error);
-    return sendError(
-      res,
-      `Evaluation failed: ${error.message}`,
-      500
-    );
+    return sendError(res, `Evaluation failed: ${error.message}`, 500);
   }
 });
 
@@ -171,16 +141,9 @@ export const batchEvaluateAnswers = asyncHandler(async (req, res) => {
   }
 
   // Validate attempt ownership
-  const isOwner = await attemptService.validateAttemptOwnership(
-    attemptId,
-    agentId
-  );
+  const isOwner = await attemptService.validateAttemptOwnership(attemptId, agentId);
   if (!isOwner) {
-    return sendError(
-      res,
-      "Unauthorized access to this assessment attempt",
-      403
-    );
+    return sendError(res, "Unauthorized access to this assessment attempt", 403);
   }
 
   try {
@@ -189,15 +152,11 @@ export const batchEvaluateAnswers = asyncHandler(async (req, res) => {
     return sendSuccess(
       res,
       result,
-      `Batch evaluation complete: ${result.successCount} successful, ${result.errorCount} failed`
+      `Batch evaluation complete: ${result.successCount} successful, ${result.errorCount} failed`,
     );
   } catch (error) {
     console.error("[batchEvaluateAnswers] Error:", error);
-    return sendError(
-      res,
-      `Batch evaluation failed: ${error.message}`,
-      500
-    );
+    return sendError(res, `Batch evaluation failed: ${error.message}`, 500);
   }
 });
 
@@ -208,13 +167,14 @@ export const batchEvaluateAnswers = asyncHandler(async (req, res) => {
  */
 export const submitFeedback = asyncHandler(async (req, res) => {
   const { attemptId } = req.params;
-  const { feedback } = req.body;
+  const { feedback, rating } = req.body;
   const agentId = req.user.agentId;
 
   console.log("[submitFeedback] Request received:", {
     attemptId,
     agentId,
     feedbackLength: feedback?.length,
+    rating,
   });
 
   // Validate input
@@ -226,30 +186,39 @@ export const submitFeedback = asyncHandler(async (req, res) => {
     return sendError(res, "Feedback is too long (max 5000 characters)", 400);
   }
 
+  // Validate rating if provided
+  if (rating !== undefined && rating !== null) {
+    if (typeof rating !== "number" || rating < 1 || rating > 5) {
+      return sendError(res, "Rating must be a number between 1 and 5", 400);
+    }
+  }
+
   // Validate attempt ownership
-  const isOwner = await attemptService.validateAttemptOwnership(
-    attemptId,
-    agentId
-  );
+  const isOwner = await attemptService.validateAttemptOwnership(attemptId, agentId);
   if (!isOwner) {
-    return sendError(
-      res,
-      "Unauthorized access to this assessment attempt",
-      403
-    );
+    return sendError(res, "Unauthorized access to this assessment attempt", 403);
   }
 
   try {
+    // Prepare update data
+    const updateData = {
+      candidateFeedback: feedback.trim(),
+      feedbackSubmittedAt: new Date(),
+    };
+
+    // Add rating if provided
+    if (rating !== undefined && rating !== null) {
+      updateData.candidateRating = rating;
+    }
+
     // Update feedback in database
     const updated = await prisma.candidateAssessment.update({
       where: { id: attemptId },
-      data: {
-        candidateFeedback: feedback.trim(),
-        feedbackSubmittedAt: new Date(),
-      },
+      data: updateData,
       select: {
         id: true,
         candidateFeedback: true,
+        candidateRating: true,
         feedbackSubmittedAt: true,
       },
     });
@@ -261,16 +230,13 @@ export const submitFeedback = asyncHandler(async (req, res) => {
       {
         attemptId: updated.id,
         feedbackSubmittedAt: updated.feedbackSubmittedAt,
+        rating: updated.candidateRating,
       },
-      "Feedback submitted successfully"
+      "Feedback submitted successfully",
     );
   } catch (error) {
     console.error("[submitFeedback] Error:", error);
-    return sendError(
-      res,
-      `Failed to submit feedback: ${error.message}`,
-      500
-    );
+    return sendError(res, `Failed to submit feedback: ${error.message}`, 500);
   }
 });
 
@@ -325,9 +291,7 @@ export const getLatestEvaluation = asyncHandler(async (req, res) => {
     }
 
     // Check if evaluation is complete
-    const evaluatedAnswers = latestAttempt.answers.filter(
-      (a) => a.aiOverallScore !== null
-    );
+    const evaluatedAnswers = latestAttempt.answers.filter((a) => a.aiOverallScore !== null);
     const totalAnswers = latestAttempt.answers.length;
     const isComplete = evaluatedAnswers.length > 0;
 
@@ -340,14 +304,13 @@ export const getLatestEvaluation = asyncHandler(async (req, res) => {
           totalAnswers,
           evaluatedAnswers: 0,
         },
-        "Evaluation in progress"
+        "Evaluation in progress",
       );
     }
 
     // Calculate summary statistics
     const avgScore =
-      evaluatedAnswers.reduce((sum, a) => sum + a.aiOverallScore, 0) /
-      evaluatedAnswers.length;
+      evaluatedAnswers.reduce((sum, a) => sum + a.aiOverallScore, 0) / evaluatedAnswers.length;
 
     const avgFluency =
       evaluatedAnswers.reduce((sum, a) => sum + (a.fluencyScore || a.completenessScore || 0), 0) /
@@ -363,9 +326,7 @@ export const getLatestEvaluation = asyncHandler(async (req, res) => {
 
     const overallCefr =
       Object.keys(cefrCounts).length > 0
-        ? Object.keys(cefrCounts).reduce((a, b) =>
-            cefrCounts[a] > cefrCounts[b] ? a : b
-          )
+        ? Object.keys(cefrCounts).reduce((a, b) => (cefrCounts[a] > cefrCounts[b] ? a : b))
         : "A1";
 
     console.log("[getLatestEvaluation] Evaluation complete:", {
@@ -385,14 +346,10 @@ export const getLatestEvaluation = asyncHandler(async (req, res) => {
         totalEvaluated: evaluatedAnswers.length,
         totalAnswers,
       },
-      "Evaluation complete"
+      "Evaluation complete",
     );
   } catch (error) {
     console.error("[getLatestEvaluation] Error:", error);
-    return sendError(
-      res,
-      `Failed to get latest evaluation: ${error.message}`,
-      500
-    );
+    return sendError(res, `Failed to get latest evaluation: ${error.message}`, 500);
   }
 });
