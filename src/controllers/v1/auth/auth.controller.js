@@ -351,12 +351,17 @@ const resetPasswordWithToken = async (req, res) => {
 
     const user = await prisma.user.findUnique({
       where: { id: session.id },
-      select: { id: true, status: true },
+      select: { id: true, status: true,passwordHash:true },
     });
     if (!user || user.status !== "ACTIVE") {
       return res.status(404).json({ error: "User not found or not active" });
     }
 
+    const isSameAsPrevious =await bcrypt.compare(newPassword, user.passwordHash);
+
+    if (isSameAsPrevious) {
+    return res.status(400).json({ error: "Please enter a password you have not used before." });
+    }
     const hashed = await bcrypt.hash(newPassword, 10);
 
     await prisma.$transaction([
