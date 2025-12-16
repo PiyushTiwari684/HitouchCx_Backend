@@ -316,3 +316,46 @@
 2025-12-16 12:12:37 [info]: ::1 - - [16/Dec/2025:06:42:37 +0000] "PATCH /api/v1/auth/password/new-password HTTP/1.1" 200 52 "-" "PostmanRuntime/7.51.0"
 2025-12-16 12:12:41 [info]: ::1 - - [16/Dec/2025:06:42:41 +0000] "PATCH /api/v1/auth/password/new-password HTTP/1.1" 400 61 "-" "PostmanRuntime/7.51.0"
 2025-12-16 12:12:45 [info]: ::1 - - [16/Dec/2025:06:42:45 +0000] "PATCH /api/v1/auth/password/new-password HTTP/1.1" 200 52 "-" "PostmanRuntime/7.51.0"
+2025-12-16 14:17:11 [info]: ::1 - - [16/Dec/2025:08:47:11 +0000] "POST /api/v1/agent/cmi5uzu8w0001o420uoclv9oz/upload-photo HTTP/1.1" 500 98 "-" "PostmanRuntime/7.51.0"
+2025-12-16 14:20:37 [info]: ::1 - - [16/Dec/2025:08:50:37 +0000] "POST /api/v1/agent/cmi5uzu8w0001o420uoclv9oz/upload-photo HTTP/1.1" 500 99 "-" "PostmanRuntime/7.51.0"
+2025-12-16 14:24:11 [info]: ::1 - - [16/Dec/2025:08:54:11 +0000] "POST /api/v1/agent/cmi5uzu8w0001o420uoclv9oz/upload-photo HTTP/1.1" 200 256 "-" "PostmanRuntime/7.51.0"
+2025-12-16 14:24:46 [info]: ::1 - - [16/Dec/2025:08:54:46 +0000] "POST /api/v1/agent/cmi5uzu8w0001o420uoclv9oz/upload-photo HTTP/1.1" 200 256 "-" "PostmanRuntime/7.51.0"
+2025-12-16 14:31:27 [info]: ::1 - - [16/Dec/2025:09:01:27 +0000] "DELETE /api/v1/agent/cmi5uzu8w0001o420uoclv9oz/delete-photo HTTP/1.1" 500 58 "-" "PostmanRuntime/7.51.0"
+2025-12-16 14:33:10 [info]: ::1 - - [16/Dec/2025:09:03:10 +0000] "POST /api/v1/agent/cmi5uzu8w0001o420uoclv9oz/upload-photo HTTP/1.1" 200 271 "-" "PostmanRuntime/7.51.0"
+2025-12-16 14:33:35 [info]: ::1 - - [16/Dec/2025:09:03:35 +0000] "DELETE /api/v1/agent/cmi5uzu8w0001o420uoclv9oz/delete-photo HTTP/1.1" 200 63 "-" "PostmanRuntime/7.51.0"
+2025-12-16 14:34:14 [error]: Error: Only image files are allowed (jpeg, jpg, png, gif, webp)
+    at profilePhotoFileFilter (file:///C:/Users/shama/HitouchCx_Backend/src/config/upload.config.js:39:8)
+    at wrappedFileFilter (C:\Users\shama\HitouchCx_Backend\node_modules\multer\index.js:44:7)
+    at Multipart.<anonymous> (C:\Users\shama\HitouchCx_Backend\node_modules\multer\lib\make-middleware.js:132:7)
+    at Multipart.emit (node:events:519:28)
+    at HeaderParser.cb (C:\Users\shama\HitouchCx_Backend\node_modules\busboy\lib\types\multipart.js:358:14)
+    at HeaderParser.push (C:\Users\shama\HitouchCx_Backend\node_modules\busboy\lib\types\multipart.js:162:20)
+    at SBMH.ssCb [as _cb] (C:\Users\shama\HitouchCx_Backend\node_modules\busboy\lib\types\multipart.js:394:37)
+    at feed (C:\Users\shama\HitouchCx_Backend\node_modules\streamsearch\lib\sbmh.js:248:10)
+    at SBMH.push (C:\Users\shama\HitouchCx_Backend\node_modules\streamsearch\lib\sbmh.js:104:16)
+    at Multipart._write (C:\Users\shama\HitouchCx_Backend\node_modules\busboy\lib\types\multipart.js:567:19)
+    at writeOrBuffer (node:internal/streams/writable:572:12)
+    at _write (node:internal/streams/writable:501:10)
+    at Writable.write (node:internal/streams/writable:510:10)
+    at IncomingMessage.ondata (node:internal/streams/readable:1009:22)
+    at IncomingMessage.emit (node:events:519:28)
+    at Readable.read (node:internal/streams/readable:782:10)
+2025-12-16 14:34:14 [info]: ::1 - - [16/Dec/2025:09:04:14 +0000] "POST /api/v1/agent/cmi5uzu8w0001o420uoclv9oz/upload-photo HTTP/1.1" 500 86 "-" "PostmanRuntime/7.51.0"
+2025-12-16 14:34:34 [info]: ::1 - - [16/Dec/2025:09:04:34 +0000] "POST /api/v1/agent/cmi5uzu8w0001o420uoclv9oz/upload-photo HTTP/1.1" 200 271 "-" "PostmanRuntime/7.51.0"
+2025-12-16 14:35:39 [info]: ::1 - - [16/Dec/2025:09:05:39 +0000] "DELETE /api/v1/agent/cmi5uzu8w0001o420uoclv9oz/delete-photo HTTP/1.1" 200 63 "-" "PostmanRuntime/7.51.0"
+2025-12-16 14:36:52 [info]: ::1 - - [16/Dec/2025:09:06:52 +0000] "POST /api/v1/agent/cmi5uzu8w0001o420uoclv9oz/upload-photo HTTP/1.1" 200 271 "-" "PostmanRuntime/7.51.0"
+2025-12-16 14:37:22 [info]: ::1 - - [16/Dec/2025:09:07:22 +0000] "DELETE /api/v1/agent/cmi5uzu8w0001o420uoclv9oz/delete-photo HTTP/1.1" 200 63 "-" "PostmanRuntime/7.51.0"
+2025-12-16 14:42:07 [info]: ::1 - - [16/Dec/2025:09:12:07 +0000] "POST /api/v1/agent/cmi5uzu8w0001o420uoclv9oz/upload-photo HTTP/1.1" 200 271 "-" "PostmanRuntime/7.51.0"
+2025-12-16 14:42:52 [info]: ::1 - - [16/Dec/2025:09:12:52 +0000] "DELETE /api/v1/agent/cmi5uzu8w0001o420uoclv9oz/delete-photo HTTP/1.1" 200 63 "-" "PostmanRuntime/7.51.0"
+2025-12-16 14:48:42 [info]: ::1 - - [16/Dec/2025:09:18:42 +0000] "GET /api/v1/opportunity/agent-opportunities?agentId=cmi5uzu8w0001o420uoclv9oz&limit=10 HTTP/1.1" 200 - "-" "PostmanRuntime/7.51.0"
+2025-12-16 14:49:11 [info]: ::1 - - [16/Dec/2025:09:19:11 +0000] "GET /api/v1/opportunity/agent-opportunities?agentId=cmi5uzu8w0001o420uoclv9oz&limit=100 HTTP/1.1" 200 - "-" "PostmanRuntime/7.51.0"
+2025-12-16 14:49:40 [info]: ::1 - - [16/Dec/2025:09:19:40 +0000] "GET /api/v1/opportunity/agent-opportunities?agentId=cmi5uzu8w0001o420uoclv9oz&limit=100 HTTP/1.1" 200 - "-" "PostmanRuntime/7.51.0"
+2025-12-16 14:54:10 [info]: ::1 - - [16/Dec/2025:09:24:10 +0000] "GET /api/v1/opportunity/agent-opportunities?agentId=cmi5uzu8w0001o420uoclv9oz&limit=100 HTTP/1.1" 200 - "-" "PostmanRuntime/7.51.0"
+2025-12-16 14:54:29 [info]: ::1 - - [16/Dec/2025:09:24:29 +0000] "GET /api/v1/opportunity/agent-opportunities?agentId=cmi5uzu8w0001o420uoclv9oz&limit=100 HTTP/1.1" 200 - "-" "PostmanRuntime/7.51.0"
+2025-12-16 14:54:47 [info]: ::1 - - [16/Dec/2025:09:24:47 +0000] "GET /api/v1/opportunity/agent-opportunities?agentId=cmi5uzu8w0001o420uoclv9oz&limit=100 HTTP/1.1" 200 - "-" "PostmanRuntime/7.51.0"
+2025-12-16 14:55:18 [info]: ::1 - - [16/Dec/2025:09:25:18 +0000] "GET /api/v1/opportunity/agent-opportunities?agentId=cmi5uzu8w0001o420uoclv9oz&limit=100 HTTP/1.1" 200 - "-" "PostmanRuntime/7.51.0"
+2025-12-16 14:55:33 [info]: ::1 - - [16/Dec/2025:09:25:33 +0000] "GET /api/v1/opportunity/agent-opportunities?agentId=cmi5uzu8w0001o420uoclv9oz&limit=100 HTTP/1.1" 200 - "-" "PostmanRuntime/7.51.0"
+2025-12-16 14:55:48 [info]: ::1 - - [16/Dec/2025:09:25:48 +0000] "GET /api/v1/opportunity/agent-opportunities?agentId=cmi5uzu8w0001o420uoclv9oz&limit=100 HTTP/1.1" 200 - "-" "PostmanRuntime/7.51.0"
+2025-12-16 15:00:27 [info]: ::1 - - [16/Dec/2025:09:30:27 +0000] "POST /api/v1/agent/cmi5uzu8w0001o420uoclv9oz/upload-photo HTTP/1.1" 200 271 "-" "PostmanRuntime/7.51.0"
+2025-12-16 15:00:54 [info]: ::1 - - [16/Dec/2025:09:30:54 +0000] "POST /api/v1/agent/cmi5uzu8w0001o420uoclv9oz/upload-photo HTTP/1.1" 200 271 "-" "PostmanRuntime/7.51.0"
+2025-12-16 15:01:24 [info]: ::1 - - [16/Dec/2025:09:31:24 +0000] "DELETE /api/v1/agent/cmi5uzu8w0001o420uoclv9oz/delete-photo HTTP/1.1" 200 63 "-" "PostmanRuntime/7.51.0"
