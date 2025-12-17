@@ -1,7 +1,7 @@
 import prisma from '../../../config/db.js'; 
 import ImageProcessor from '../../../utils/imageProcessor.js';
 import fs from 'fs/promises';
-
+import {uploadToCloudinary,deleteFromCloudinary } from '../../../utils/cloudinaryUpload.js'
 
 /**
  * Upload and process agent profile photo
@@ -25,27 +25,29 @@ const uploadAgentPhoto = async (req, res) => {
       where: { id: agentId }
     });
 
-    if (!agent) {
-      // Delete uploaded file if agent not found
-      await fs.unlink(req.file.path);
-      return res.status(404).json({ 
-        success: false,
-        error: 'Agent not found' 
-      });
-    }
+    // if (!agent) {
+    //   // Delete uploaded file if agent not found
+    //   await fs.unlink(req.file.path);
+    //   return res.status(404).json({ 
+    //     success: false,
+    //     error: 'Agent not found' 
+    //   });
+    // }
 
     // Process and optimize the uploaded image
-    const optimizedPath = await ImageProcessor.processProfilePhoto(req.file.path);
+    // const optimizedPath = await ImageProcessor.processProfilePhoto(req.file.path);
+
+    const {uploadResult,optimizeUrl,autoCropUrl} = await uploadToCloudinary(req.file.path,agent.id)
 
     // Delete old profile photo if exists
-    if (agent.profilePhotoUrl) {
-      await ImageProcessor.deletePhoto(agent.profilePhotoUrl);
-    }
+    // if (agent.profilePhotoUrl) {
+    //   await ImageProcessor.deletePhoto(agent.profilePhotoUrl);
+    // }
 
-    // Update agent with new photo URL
+   // Update agent with new photo URL
     const updatedAgent = await prisma.agent.update({
       where: { id: agentId },
-      data: { profilePhotoUrl: optimizedPath },
+      data: { profilePhotoUrl: optimizeUrl },
       select: {
         id: true,
         firstName: true,
@@ -53,6 +55,7 @@ const uploadAgentPhoto = async (req, res) => {
         profilePhotoUrl: true
       }
     });
+    
 
     return res.status(200).json({
       success: true,
@@ -112,8 +115,11 @@ const deleteAgentPhoto = async (req, res) => {
     }
 
     // Delete photo file
-    await ImageProcessor.deletePhoto(agent.profilePhotoUrl);
-
+    // await ImageProcessor.deleteFromCloudinary(agent.id);
+     const result = await deleteFromCloudinary(agent.id);
+    if (result.result !== 'ok' && result.result !== 'not found') {
+      return res.status(502).json({ success: false, error: 'Cloudinary delete failed', details: result });
+    }
     // Update agent record
     await prisma.agent.update({
       where: { id: agentId },

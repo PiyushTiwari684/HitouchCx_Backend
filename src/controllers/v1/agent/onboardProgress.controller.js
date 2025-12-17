@@ -10,9 +10,6 @@ const getProgress = async (req, res) => {
       where: { id: userId },
       select: {
         id: true,
-        status: true,
-        emailVerified: true,
-        phoneVerified: true,
         profileCompleted: true,
         kycCompleted: true,
         assessmentStatus: true,

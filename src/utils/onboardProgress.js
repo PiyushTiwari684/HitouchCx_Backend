@@ -1,6 +1,4 @@
  const Step = {
-  VERIFY: 'VERIFY',
-  SET_PASSWORD: 'SET_PASSWORD',
   PROFILE: 'PROFILE',
   KYC: 'KYC',
   ASSESSMENT_INTRO: 'ASSESSMENT_INTRO',
@@ -12,17 +10,12 @@
 
  function calculateNextStepCode(flags) {
   const {
-    emailVerified = false,
-    phoneVerified = false,
-    status = 'INACTIVE',
     profileCompleted = false,
     kycCompleted = false,            // PENDING | APPROVED | REJECTED
     assessmentStatus = 'NOT_STARTED', // NOT_STARTED | IN_PROGRESS | COMPLETED
     agreementSigned = false,
   } = flags || {};
 
-  if (!emailVerified || !phoneVerified) return Step.VERIFY;
-  if (status !== 'ACTIVE') return Step.SET_PASSWORD;
   if (!profileCompleted) return Step.PROFILE;
   if (kycCompleted !== true) return Step.KYC;
   if (assessmentStatus !== 'COMPLETED') {
@@ -35,8 +28,6 @@
  function buildProgress(user = {}) {
   // Map DB → flags. Adjust field names to your schema.
   const flags = {
-    emailVerified: user.emailVerified ?? false,
-    phoneVerified: user.phoneVerified ?? false,
     status: user.status ?? 'INACTIVE',
     profileCompleted: user.profileCompleted ?? false,
     kycCompleted: user.kycCompleted ?? false,
