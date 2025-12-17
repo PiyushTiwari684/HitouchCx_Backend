@@ -1,19 +1,3 @@
-/**
- * DigiLocker Service
- *
- * Main orchestration service for KYC verification via DigiLocker.
- * Coordinates the entire flow from link generation to verification completion.
- *
- * Flow:
- * 1. Generate DigiLocker link → Create session
- * 2. User authenticates → Callback received
- * 3. Download documents → Process and save
- * 4. Validate names → Update KYC status
- * 5. Log everything → Return result
- *
- * @module services/kyc/digilocker
- */
-
 import prisma from "../../config/db.js";
 import perfiosConfig from "../../config/perfios.config.js";
 import * as perfiosService from "./perfios.service.js";
@@ -27,20 +11,6 @@ import {
 import { validateKYC } from "../../utils/kyc-validator.js";
 import { extractAadhaarData, extractPANData } from "../../utils/kyc-data-extractor.js";
 
-/**
- * Create audit log entry
- *
- * Logs KYC action to database for compliance and debugging.
- *
- * @param {string} userId - User ID
- * @param {string} action - Action name
- * @param {string} status - "SUCCESS" or "FAILED"
- * @param {Object} [metadata] - Additional data
- * @param {string} [ipAddress] - User's IP
- * @param {string} [userAgent] - User's browser
- * @returns {Promise<void>}
- * @private
- */
 const createAuditLog = async (
   userId,
   action,
@@ -66,33 +36,6 @@ const createAuditLog = async (
   }
 };
 
-/**
- * Generate DigiLocker Link (Step 1)
- *
- * Creates a DigiLocker authentication link and stores session in database.
- * This is the entry point for KYC verification.
- *
- * @param {string} userId - User ID
- * @param {string} consent - User consent ("Y")
- * @param {string} [ipAddress] - User's IP address
- * @param {string} [userAgent] - User's browser/device info
- * @returns {Promise<Object>} Link generation result
- * @returns {string} returns.link - DigiLocker OAuth URL
- * @returns {string} returns.sessionId - KYCSession ID
- * @returns {string} returns.requestId - Perfios request ID
- * @returns {Date} returns.expiresAt - Session expiry time
- *
- * @throws {Error} If consent not provided or API call fails
- *
- * @example
- * const result = await generateLink("user123", "Y", "192.168.1.1", "Mozilla...");
- * // {
- * //   link: "https://digilocker.gov.in/oauth2/...",
- * //   sessionId: "session123",
- * //   requestId: "request456",
- * //   expiresAt: "2024-01-01T12:30:00Z"
- * // }
- */
 export const generateLink = async (userId, consent, ipAddress = null, userAgent = null) => {
   try {
     // Validate consent
@@ -193,34 +136,6 @@ export const generateLink = async (userId, consent, ipAddress = null, userAgent 
   }
 };
 
-/**
- * Process DigiLocker Callback (Steps 2 & 3)
- *
- * Handles the callback from DigiLocker after user authentication.
- * Downloads documents, processes them, validates names, and updates KYC status.
- *
- * @param {string} oAuthState - State parameter from callback URL
- * @param {string} code - Authorization code from DigiLocker (unused by Perfios)
- * @param {string} [ipAddress] - User's IP address
- * @param {string} [userAgent] - User's browser/device info
- * @returns {Promise<Object>} Processing result
- * @returns {string} returns.userId - User ID
- * @returns {string} returns.kycStatus - Final KYC status (APPROVED, PARTIAL, REJECTED)
- * @returns {Object} returns.documents - Processed documents
- * @returns {Object} [returns.nameValidation] - Name validation result
- * @returns {string} returns.redirectUrl - Frontend URL to redirect to
- *
- * @throws {Error} If session invalid, expired, or processing fails
- *
- * @example
- * const result = await processCallback("user123_1704...", "auth_code", "192.168.1.1");
- * // {
- * //   userId: "user123",
- * //   kycStatus: "APPROVED",
- * //   documents: { aadhaar: {...}, pan: {...} },
- * //   redirectUrl: "http://localhost:5173/assessment-instructions"
- * // }
- */
 export const processCallback = async (oAuthState, code, ipAddress = null, userAgent = null) => {
   let userId = null;
   let session = null;
@@ -282,6 +197,19 @@ export const processCallback = async (oAuthState, code, ipAddress = null, userAg
     if (!agent) {
       throw new Error("Agent profile not found");
     }
+
+    // Debug: Log agent data to check if address field exists
+    console.log("[DigiLocker Service] Agent data from database:", {
+      id: agent.id,
+      firstName: agent.firstName,
+      middleName: agent.middleName,
+      lastName: agent.lastName,
+      dob: agent.dob,
+      address: agent.address,
+      addressExists: !!agent.address,
+      addressLength: agent.address?.length || 0,
+      allFields: Object.keys(agent),
+    });
 
     // Step 2: Fetch document list from DigiLocker
     console.log("Fetching documents from DigiLocker...");

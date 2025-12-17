@@ -1,23 +1,3 @@
-/**
- * KYC Validation Utility
- *
- * Comprehensive validation for KYC verification:
- * - Name matching across Profile, Aadhaar, and PAN (fuzzy, 80% threshold)
- * - DOB matching across all three (exact)
- * - Address matching between Profile and Aadhaar (PIN exact, others fuzzy)
- *
- * @module utils/kyc-validator
- */
-
-/**
- * Calculate Levenshtein distance between two strings
- * (Number of edits needed to transform one string to another)
- *
- * @param {string} str1 - First string
- * @param {string} str2 - Second string
- * @returns {number} Edit distance
- * @private
- */
 function levenshteinDistance(str1, str2) {
   const len1 = str1.length;
   const len2 = str2.length;
@@ -42,14 +22,6 @@ function levenshteinDistance(str1, str2) {
   return matrix[len1][len2];
 }
 
-/**
- * Calculate similarity score between two strings (0 to 1)
- *
- * @param {string} str1 - First string
- * @param {string} str2 - Second string
- * @returns {number} Similarity score (0 = no match, 1 = perfect match)
- * @private
- */
 function calculateSimilarity(str1, str2) {
   if (!str1 || !str2) return 0;
 
@@ -65,17 +37,6 @@ function calculateSimilarity(str1, str2) {
   return 1.0 - distance / maxLen;
 }
 
-/**
- * Normalize name for comparison
- * - Trim whitespace
- * - Convert to lowercase
- * - Remove extra spaces
- * - Remove special characters except spaces
- *
- * @param {string} name - Name to normalize
- * @returns {string} Normalized name
- * @private
- */
 function normalizeName(name) {
   if (!name) return "";
   return name
@@ -85,18 +46,6 @@ function normalizeName(name) {
     .replace(/[^a-z\s]/g, ""); // Remove special characters except spaces
 }
 
-/**
- * Normalize date to YYYY-MM-DD format
- *
- * Handles formats:
- * - YYYY-MM-DD (already normalized)
- * - DD-MM-YYYY
- * - DD/MM/YYYY
- * - ISO format with time
- *
- * @param {string|Date} dateInput - Date string or Date object
- * @returns {string|null} Normalized date in YYYY-MM-DD format, or null if invalid
- */
 export function normalizeDate(dateInput) {
   if (!dateInput) return null;
 
@@ -132,13 +81,6 @@ export function normalizeDate(dateInput) {
   return null;
 }
 
-/**
- * Extract PIN code from address string
- *
- * @param {string} address - Address string
- * @returns {string|null} 6-digit PIN code or null
- * @private
- */
 function extractPINCode(address) {
   if (!address) return null;
 
@@ -147,14 +89,6 @@ function extractPINCode(address) {
   return match ? match[1] : null;
 }
 
-/**
- * Extract city/district from address string
- * Looks for common patterns before PIN code
- *
- * @param {string} address - Address string
- * @returns {string} Extracted city/district
- * @private
- */
 function extractCity(address) {
   if (!address) return "";
 
@@ -173,15 +107,6 @@ function extractCity(address) {
   return "";
 }
 
-/**
- * Validate name across Profile, Aadhaar, and PAN
- * All three must match with fuzzy matching (80% similarity threshold)
- *
- * @param {string} profileName - Full name from profile (firstName + middleName + lastName)
- * @param {string} aadhaarName - Name from Aadhaar
- * @param {string} panName - Name from PAN
- * @returns {Object} Validation result
- */
 export function validateName(profileName, aadhaarName, panName) {
   const normalized = {
     profile: normalizeName(profileName),
@@ -249,15 +174,6 @@ export function validateName(profileName, aadhaarName, panName) {
   return result;
 }
 
-/**
- * Validate DOB across Profile, Aadhaar, and PAN
- * All three must match exactly
- *
- * @param {string|Date} profileDOB - DOB from profile
- * @param {string|Date} aadhaarDOB - DOB from Aadhaar
- * @param {string|Date} panDOB - DOB from PAN
- * @returns {Object} Validation result
- */
 export function validateDOB(profileDOB, aadhaarDOB, panDOB) {
   // Normalize all dates
   const normalized = {
@@ -324,17 +240,17 @@ export function validateDOB(profileDOB, aadhaarDOB, panDOB) {
   return result;
 }
 
-/**
- * Validate address between Profile and Aadhaar
- * - PIN code must match exactly
- * - District/City must match with fuzzy matching (80%)
- *
- * @param {string} profileAddress - Full address string from profile
- * @param {Object} aadhaarAddress - Address object from Aadhaar
- * @returns {Object} Validation result
- */
 export function validateAddress(profileAddress, aadhaarAddress) {
+  console.log("\n[ADDRESS VALIDATION] Starting address validation...");
+  // Reason: See the raw input data before any processing
+  console.log("[ADDRESS VALIDATION] Raw profile address:", profileAddress);
+  console.log(
+    "[ADDRESS VALIDATION] Raw Aadhaar address object:",
+    JSON.stringify(aadhaarAddress, null, 2),
+  );
+
   if (!profileAddress || !aadhaarAddress) {
+    console.log("[ADDRESS VALIDATION] ❌ Missing address data - validation failed");
     const result = {
       valid: false,
       error: "Missing address data",
@@ -374,19 +290,41 @@ export function validateAddress(profileAddress, aadhaarAddress) {
   const profilePIN = extractPINCode(profileAddress);
   const aadhaarPIN = aadhaarAddress.pin || aadhaarAddress.pc;
 
+  console.log("\n[ADDRESS VALIDATION] PIN Code Extraction:");
+  // Reason: Verify PIN extraction is working and see if they match
+  console.log(`  Profile PIN: "${profilePIN}"`);
+  console.log(`  Aadhaar PIN: "${aadhaarPIN}"`);
+
   // PIN code must match exactly
   const pinMatch = profilePIN === aadhaarPIN;
+  console.log(`  PIN Match: ${pinMatch ? "✓" : "❌"} (${pinMatch})`);
+  // Reason: Immediate feedback on whether the critical PIN match passed
 
   // Format full Aadhaar address for comparison
   const aadhaarFullAddress = formatAadhaarAddress(aadhaarAddress);
+
+  console.log("\n[ADDRESS VALIDATION] Address Formatting:");
+  // Reason: See the formatted Aadhaar address before normalization
+  console.log(`  Formatted Aadhaar address: "${aadhaarFullAddress}"`);
 
   // Normalize both addresses
   const normalizedProfile = normalizeAddress(profileAddress);
   const normalizedAadhaar = normalizeAddress(aadhaarFullAddress);
 
+  console.log("\n[ADDRESS VALIDATION] Normalized Addresses (for comparison):");
+  // Reason: See how addresses look after removing punctuation and lowercasing
+  console.log(`  Profile (normalized): "${normalizedProfile}"`);
+  console.log(`  Aadhaar (normalized): "${normalizedAadhaar}"`);
+  // Reason: Quick visual check if they look similar after normalization
+
   // Extract key address components
   const profileCity = extractCity(profileAddress);
   const aadhaarCity = aadhaarAddress.district || aadhaarAddress.dist || aadhaarAddress.vtc || "";
+
+  console.log("\n[ADDRESS VALIDATION] City/District Extraction:");
+  // Reason: Verify city extraction logic is working correctly
+  console.log(`  Profile city: "${profileCity}"`);
+  console.log(`  Aadhaar city/district: "${aadhaarCity}"`);
 
   // Check if key components exist in each other's addresses
   const aadhaarComponents = [
@@ -399,27 +337,68 @@ export function validateAddress(profileAddress, aadhaarAddress) {
     .filter(Boolean)
     .map((c) => normalizeAddress(c));
 
+  console.log("\n[ADDRESS VALIDATION] Aadhaar Address Components:");
+  // Reason: See which components were extracted from Aadhaar for matching
+  console.log(`  Total components: ${aadhaarComponents.length}`);
+  console.log(`  Components list:`, aadhaarComponents);
+  // Reason: Helps identify if components are being extracted correctly
+
   // Calculate component matches
   let componentMatchCount = 0;
   let totalComponents = aadhaarComponents.length;
 
+  console.log("\n[ADDRESS VALIDATION] Component Matching:");
+  // Reason: Track which specific components match and which don't
+  const matchedComponentsList = [];
+  const unmatchedComponentsList = [];
+
   aadhaarComponents.forEach((component) => {
     if (component && normalizedProfile.includes(component)) {
       componentMatchCount++;
+      matchedComponentsList.push(component);
+      console.log(`  ✓ Matched: "${component}"`);
+      // Reason: Show which components were found in profile address
+    } else {
+      unmatchedComponentsList.push(component);
+      console.log(`  ❌ Not found: "${component}"`);
+      // Reason: Show which components are missing from profile address
     }
   });
+
+  console.log(`  Matched ${componentMatchCount}/${totalComponents} components`);
+  // Reason: Quick summary of component matching success rate
 
   // Calculate overall address similarity
   const addressSimilarity = calculateSimilarity(normalizedProfile, normalizedAadhaar);
   const componentMatchRatio = totalComponents > 0 ? componentMatchCount / totalComponents : 0;
 
   // City match with fuzzy matching
-  const cityMatch = calculateSimilarity(profileCity, aadhaarCity) >= 0.8;
+  const citySimilarity = calculateSimilarity(profileCity, aadhaarCity);
+  const cityMatch = citySimilarity >= 0.8;
+
+  console.log("\n[ADDRESS VALIDATION] Similarity Scores:");
+  // Reason: See all calculated similarity scores and thresholds
+  console.log(
+    `  Overall address similarity: ${(addressSimilarity * 100).toFixed(1)}% (threshold: 70%)`,
+  );
+  console.log(
+    `  Component match ratio: ${(componentMatchRatio * 100).toFixed(1)}% (threshold: 60%)`,
+  );
+  console.log(`  City similarity: ${(citySimilarity * 100).toFixed(1)}% (threshold: 80%)`);
+  // Reason: Understand how close the addresses are to passing each criterion
 
   // Address is valid if:
   // 1. PIN matches AND
   // 2. Either city matches OR at least 60% of address components match OR overall similarity >= 70%
   const addressContentMatch = cityMatch || componentMatchRatio >= 0.6 || addressSimilarity >= 0.7;
+
+  console.log("\n[ADDRESS VALIDATION] Content Match Evaluation:");
+  // Reason: Show which criteria passed or failed
+  console.log(`  City match (≥80%): ${cityMatch ? "✓" : "❌"}`);
+  console.log(`  Component ratio (≥60%): ${componentMatchRatio >= 0.6 ? "✓" : "❌"}`);
+  console.log(`  Overall similarity (≥70%): ${addressSimilarity >= 0.7 ? "✓" : "❌"}`);
+  console.log(`  Address content match result: ${addressContentMatch ? "✓ PASS" : "❌ FAIL"}`);
+  // Reason: Identify which validation path succeeded or why all failed
 
   const result = {
     valid: pinMatch && addressContentMatch,
@@ -438,6 +417,21 @@ export function validateAddress(profileAddress, aadhaarAddress) {
       totalComponents,
     },
   };
+
+  console.log("\n[ADDRESS VALIDATION] Final Result:");
+  // Reason: Show the overall validation outcome and why
+  console.log(`  Valid: ${result.valid ? "✓ PASS" : "❌ FAIL"}`);
+  if (result.valid) {
+    console.log(`  ✓ Both PIN match AND content match criteria satisfied`);
+    // Reason: Confirm both required conditions were met
+  } else {
+    console.log(`  ❌ Validation failed:`);
+    if (!pinMatch) console.log(`    - PIN codes don't match`);
+    if (!addressContentMatch) console.log(`    - Address content doesn't match sufficiently`);
+    // Reason: Clearly state which validation(s) failed
+  }
+  console.log("[ADDRESS VALIDATION] Validation complete\n");
+  // Reason: Mark the end of address validation debugging
 
   // Add mismatch information
   if (!pinMatch || !addressContentMatch) {
@@ -497,25 +491,8 @@ function formatAadhaarAddress(address) {
   return parts.join(", ");
 }
 
-/**
- * Main KYC Validation Function
- * Validates Name, DOB, and Address across all documents
- *
- * @param {Object} profileData - Profile registration data
- * @param {string} profileData.name - Full name (firstName + middleName + lastName)
- * @param {string|Date} profileData.dob - Date of birth
- * @param {string} profileData.address - Full address string
- * @param {Object} aadhaarData - Extracted Aadhaar data
- * @param {string} aadhaarData.name - Name from Aadhaar
- * @param {string} aadhaarData.dob - DOB from Aadhaar
- * @param {Object} aadhaarData.address - Address object from Aadhaar
- * @param {boolean} aadhaarData.signatureVerified - XML signature status
- * @param {Object} panData - Extracted PAN data
- * @param {string} panData.name - Name from PAN
- * @param {string} panData.dob - DOB from PAN
- * @param {boolean} panData.signatureVerified - XML signature status
- * @returns {Object} Complete validation result
- */
+// Main KYC validation function(For DOB, Name, Address, Signature)
+
 export function validateKYC(profileData, aadhaarData, panData) {
   console.log("[KYC Validator] Starting validation...");
   console.log("[KYC Validator] Profile:", { name: profileData.name, dob: profileData.dob });

@@ -1,16 +1,6 @@
 import groq from "../../utils/groq.client.js";
 
-/**
- * Evaluate an answer using Groq AI (Llama 3.3 70B)
- * FREE alternative to Gemini - much faster and more generous limits!
- *
- * @param {Object} params - Evaluation parameters
- * @param {string} params.questionText - The question text
- * @param {string} params.answerText - The candidate's answer
- * @param {string} params.questionType - Type: "WRITING" or "SPEAKING"
- * @param {string} params.expectedAnswer - Expected/correct answer (optional)
- * @returns {Promise<Object>} Evaluation results with scores and feedback
- */
+
 export async function evaluateAnswer({
   questionText,
   answerText,
