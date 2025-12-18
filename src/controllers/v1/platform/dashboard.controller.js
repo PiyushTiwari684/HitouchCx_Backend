@@ -93,7 +93,9 @@ const getDashboardInfo = async (req, res) => {
                   select: {
                     id: true,
                     title: true,
-                    Payment: true
+                    Payment: true,
+                    createdAt: true,     // <-- needed
+                    submittedAt: true 
                   }
                 }
               }
@@ -134,14 +136,21 @@ const getDashboardInfo = async (req, res) => {
       .flatMap(sw => sw.Payment || []);
 
 
-    // Task-based payments (grouped by submitted work)
-    const taskPayments = (agent.GigApplication || [])
-      .flatMap(ga => ga.selectedGig?.submittedWorks || [])
-      .map(sw => ({
-        submittedWorkId: sw.id,
-        title: sw.title,
-        payments: sw.Payment || []
-      }));
+  // Task-based payments (grouped by submitted work) + approximate hours
+const taskPayments = (agent.GigApplication || [])
+  .flatMap(ga => ga.selectedGig?.submittedWorks || [])
+  .map(sw => {
+    const start = new Date(sw.createdAt);
+    const end = sw.submittedAt ? new Date(sw.submittedAt) : new Date(sw.createdAt);
+    const durationMs = Math.max(0, end - start);
+    return {
+      submittedWorkId: sw.id,
+      title: sw.title,
+      payments: sw.Payment || [],
+      hoursWorked: Math.round(msToHours(durationMs) * 100) / 100, // elapsed hours
+
+    };
+  });
 
     // console.log(taskPayments)
 

@@ -495,8 +495,8 @@ export const uploadAudioRecording = asyncHandler(async (req, res) => {
       console.log("Groq transcription complete:", finalTranscription.substring(0, 100));
     }
 
-    // 9. Calculate match score
-    const matchResult = checkMatch(originalText, finalTranscription, 80);
+    // 9. Calculate match score (90% threshold for accuracy)
+    const matchResult = checkMatch(originalText, finalTranscription, 90);
 
     // 10. Store relative path
     const relativePath = path.relative(process.cwd(), finalAudioPath);

@@ -1,5 +1,6 @@
 import prisma from "../config/db.js";
 import assessmentConfig from "../config/assessmentConfig.js";
+import { selectRandom } from "../utils/arrayHelpers.js";
 
 
 export async function generateAssessmentContent(assessmentId, assessmentType) {
@@ -36,15 +37,30 @@ export async function generateAssessmentContent(assessmentId, assessmentType) {
 
       // Map questions to section based on rules
       for (const rule of sectionConf.rules) {
-        const questions = await prisma.question.findMany({
+        // ✅ STEP 1: Fetch ALL matching questions (not just first N)
+        const allQuestions = await prisma.question.findMany({
           where: {
             questionType: sectionConf.type,
             cefrLevel: { in: rule.cefrLevels },
             assessmentType: assessmentType,
             isActive: true,
           },
-          take: rule.count,
+          select: {
+            id: true,
+            questionType: true,
+            cefrLevel: true,
+            questionText: true,
+            options: true,
+            correctAnswer: true,
+            audioFilePath: true,
+            readingPassage: true,
+            timeLimit: true,
+            timesUsed: true,
+          },
         });
+
+        // ✅ STEP 2: Randomly select N questions
+        const questions = selectRandom(allQuestions, rule.count);
 
         // Warning if not enough questions found
         if (questions.length < rule.count) {
@@ -53,14 +69,26 @@ export async function generateAssessmentContent(assessmentId, assessmentType) {
           );
         }
 
-        // Batch insert question-section mappings (only if questions exist)
+        // ✅ STEP 3: Batch insert question-section mappings AND increment timesUsed
         if (questions.length > 0) {
-          await prisma.$transaction(
-            questions.map((q) =>
+          await prisma.$transaction([
+            // Create question-section mappings
+            ...questions.map((q) =>
               prisma.questionSection.create({
                 data: { sectionId: section.id, questionId: q.id },
               })
-            )
+            ),
+            // Increment timesUsed counter for each selected question
+            ...questions.map((q) =>
+              prisma.question.update({
+                where: { id: q.id },
+                data: { timesUsed: { increment: 1 } },
+              })
+            ),
+          ]);
+
+          console.log(
+            `[Background] Selected ${questions.length} random questions for ${sectionConf.name} [${rule.cefrLevels.join(", ")}]`
           );
         }
 
