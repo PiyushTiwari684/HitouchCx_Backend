@@ -165,6 +165,7 @@ model Agent {
   reviews        Review[] //Reviews related to the agent (platform reviews, performance reviews, etc.)
   GigApplication GigApplication[]
   conversations  Conversation[] //Conversations started by this agent
+  agentWorkSlots AgentWorkSlot[]
   createdAt      DateTime         @default(now())
   updatedAt      DateTime         @updatedAt
   Dispute        Dispute[]
@@ -471,6 +472,7 @@ model Client {
 
   // Relationships
   projects Project[]
+  clientScheduleSlots ClientScheduleSlot[]
 }
 
 model Project {
@@ -755,104 +757,100 @@ enum SubmissionStatus {
 
 //~~~~~~~~~ Step 4 ~~~~~~~~~
 
-// Time Slots of Weekly Schedule defined by company
+// FIX: Admin-defined time Slots/Shifts
+model TimeSlot {
+  id          Int       @id @default(autoincrement())
+  name        String
+  startTime   String    // "HH:MM" 24-hour
+  endTime     String    // "HH:MM" 24-hour
+  isActive    Boolean   @default(true)
+
+
+
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+
+  // Relations
+  clientScheduleSlots ClientScheduleSlot[]
+
+}
+
+// Redesigned: Client’s concrete slot on a date
 model ClientScheduleSlot {
   id String @id @default(cuid())
 
-  opportunityId String
-  opportunity   Opportunity @relation(fields: [opportunityId], references: [id], onDelete: Cascade)
+  // Who owns the slot
+  clientId String
+  client   Client @relation(fields: [clientId], references: [id], onDelete: Cascade)
 
-  // TimeSlot & Day of week
-  timeSlot  TimeSlot // SLOT_09_10, SLOT_14_15, etc.
-  dayOfWeek DayOfWeek // MONDAY, TUESDAY, etc.
+  // Optional: link to an opportunity
+  opportunityId String?
+  opportunity   Opportunity? @relation(fields: [opportunityId], references: [id], onDelete: Cascade)
 
-  //ACTUAL SCHEDULING (calculated from timeSlot + date)
-  startDateTime DateTime // 2025-11-13 09:00:00
-  endDateTime   DateTime // 2025-11-13 10:00:00
+  // When
+  date       DateTime  @db.Date // YYYY-MM-DD (date only)
+  timeSlotId Int
+  timeSlot   TimeSlot  @relation(fields: [timeSlotId], references: [id], onDelete: Restrict)
 
-  // How many agents needed for this slot
-  agentsRequired Int @default(1)
-  agentsFilled   Int @default(0) // How many agents selected this slot
+
+  // Job details
+  workDescription   String   @db.Text
+
+
+  // Capacity
+  maxAgents     Int            @default(1)
+  agentsFilled  Int            @default(0)
 
   // Status
-  status SlotStatus @default(OPEN) // OPEN, FULL, CLOSED
+  status   ScheduleStatus @default(OPEN)
+  timezone String         @default("Asia/Kolkata")
 
+  // Metadata
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
+  completedAt     DateTime?
 
-  // Relationships
-  AgentWorkSlot AgentWorkSlot[] // Agents who selected this slot
+
+  // Relations
+  agentWorkSlots AgentWorkSlot[]
+
+}
+enum ScheduleStatus {
+  OPEN
+  FULL
+  CANCELLED
+  COMPLETED
 }
 
-// Agent's Selected Time Slots
+// Redesigned: Agent picking a client slot
 model AgentWorkSlot {
   id String @id @default(cuid())
 
-  // SCHEDULE SLOT (the fixed slot they chose)
+  // Slot selected
   clientScheduleSlotId String
   clientScheduleSlot   ClientScheduleSlot @relation(fields: [clientScheduleSlotId], references: [id], onDelete: Cascade)
 
-  //Gig Information for which the agent has time slot for
+  // Who is working (ensure agent has an accepted gig)
   selectedGigId String      @unique
   selectedGig   SelectedGig @relation(fields: [selectedGigId], references: [id], onDelete: Cascade)
 
-  // STATUS
-  status AgentSlotStatus @default(CONFIRMED)
+  // Optional denormalized agent for faster queries
+  agentId String?
+  agent   Agent?  @relation(fields: [agentId], references: [id], onDelete: SetNull)
 
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  // Status (reuse AssignmentStatus)
+  status AssignmentStatus @default(CONFIRMED)
+
+
+  completedAt DateTime?
+  updatedAt   DateTime @updatedAt
 }
 
-enum SlotStatus {
-  OPEN // Available for selection
-  FULL // All positions filled
-  CLOSED // No longer available
-}
-
-enum TimeSlot {
-  SLOT_00_01 // 12:00 AM - 01:00 AM
-  SLOT_01_02 // 01:00 AM - 02:00 AM
-  SLOT_02_03 // 02:00 AM - 03:00 AM
-  SLOT_03_04 // 03:00 AM - 04:00 AM
-  SLOT_04_05 // 04:00 AM - 05:00 AM
-  SLOT_05_06 // 05:00 AM - 06:00 AM
-  SLOT_06_07 // 06:00 AM - 07:00 AM
-  SLOT_07_08 // 07:00 AM - 08:00 AM
-  SLOT_08_09 // 08:00 AM - 09:00 AM
-  SLOT_09_10 // 09:00 AM - 10:00 AM
-  SLOT_10_11 // 10:00 AM - 11:00 AM
-  SLOT_11_12 // 11:00 AM - 12:00 PM
-  SLOT_12_13 // 12:00 PM - 01:00 PM
-  SLOT_13_14 // 01:00 PM - 02:00 PM
-  SLOT_14_15 // 02:00 PM - 03:00 PM
-  SLOT_15_16 // 03:00 PM - 04:00 PM
-  SLOT_16_17 // 04:00 PM - 05:00 PM
-  SLOT_17_18 // 05:00 PM - 06:00 PM
-  SLOT_18_19 // 06:00 PM - 07:00 PM
-  SLOT_19_20 // 07:00 PM - 08:00 PM
-  SLOT_20_21 // 08:00 PM - 09:00 PM
-  SLOT_21_22 // 09:00 PM - 10:00 PM
-  SLOT_22_23 // 10:00 PM - 11:00 PM
-  SLOT_23_24 // 11:00 PM - 12:00 AM
-}
-
-enum DayOfWeek {
-  MONDAY
-  TUESDAY
-  WEDNESDAY
-  THURSDAY
-  FRIDAY
-  SATURDAY
-  SUNDAY
-}
-
-enum AgentSlotStatus {
-  CONFIRMED // Agent confirmed to work this slot
-  IN_PROGRESS // Agent is currently working this slot
-  COMPLETED // Agent finished working this slot
-  CANCELLED // Agent cancelled this slot selection
-  NO_SHOW // Agent didn't show up for the slot
-  RESCHEDULED // Slot moved to different time
+enum AssignmentStatus {
+  PENDING
+  CONFIRMED
+  CANCELLED
+  COMPLETED
 }
 
 //~~~~~ Review/Feedback and Dispute ~~~~~
