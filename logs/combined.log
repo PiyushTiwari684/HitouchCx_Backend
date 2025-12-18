@@ -397,3 +397,112 @@
 2025-12-18 12:00:53 [info]: ::1 - - [18/Dec/2025:06:30:53 +0000] "GET /api/v1/platform/dashboard-info/cmi5uzu8w0001o420uoclv9oz HTTP/1.1" 200 - "-" "PostmanRuntime/7.51.0"
 2025-12-18 12:10:47 [info]: ::1 - - [18/Dec/2025:06:40:47 +0000] "GET /api/v1/platform/dashboard-info/cmi5uzu8w0001o420uoclv9oz HTTP/1.1" 200 - "-" "PostmanRuntime/7.51.0"
 2025-12-18 12:11:34 [info]: ::1 - - [18/Dec/2025:06:41:34 +0000] "GET /api/v1/platform/dashboard-info/cmi5uzu8w0001o420uoclv9oz HTTP/1.1" 200 - "-" "PostmanRuntime/7.51.0"
+2025-12-18 17:07:07 [info]: ::1 - - [18/Dec/2025:11:37:07 +0000] "GET /api/v1/auth/google HTTP/1.1" 302 0 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.0.0 Safari/537.36"
+2025-12-18 17:07:38 [info]: ::1 - - [18/Dec/2025:11:37:38 +0000] "GET /api/v1/auth/google HTTP/1.1" 302 0 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.0.0 Safari/537.36"
+2025-12-18 17:07:42 [info]: ::1 - - [18/Dec/2025:11:37:42 +0000] "GET /api/v1/auth/google HTTP/1.1" 302 0 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.0.0 Safari/537.36"
+2025-12-18 17:07:45 [info]: ::1 - - [18/Dec/2025:11:37:45 +0000] "GET /api/v1/auth/google HTTP/1.1" 302 0 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.0.0 Safari/537.36"
+2025-12-18 17:09:53 [info]: ::1 - - [18/Dec/2025:11:39:53 +0000] "GET /api/v1/auth/google HTTP/1.1" 302 0 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.0.0 Safari/537.36"
+2025-12-18 17:11:58 [info]: ::1 - - [18/Dec/2025:11:41:58 +0000] "GET /api/v1/auth/google HTTP/1.1" 302 0 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.0.0 Safari/537.36"
+2025-12-18 17:12:43 [info]: ::1 - - [18/Dec/2025:11:42:43 +0000] "GET /api/v1/auth/google HTTP/1.1" 302 0 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.0.0 Safari/537.36"
+2025-12-18 17:21:30 [info]: ::1 - - [18/Dec/2025:11:51:30 +0000] "GET /api/v1/auth/google HTTP/1.1" 302 0 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.0.0 Safari/537.36"
+2025-12-18 17:21:45 [info]: ::1 - - [18/Dec/2025:11:51:45 +0000] "GET /api/v1/auth/google HTTP/1.1" 302 0 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.0.0 Safari/537.36"
+2025-12-18 17:21:51 [info]: ::1 - - [18/Dec/2025:11:51:51 +0000] "GET /api/v1/auth/google HTTP/1.1" 302 0 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.0.0 Safari/537.36"
+2025-12-18 17:23:24 [info]: ::1 - - [18/Dec/2025:11:53:24 +0000] "GET /api/v1/auth/google HTTP/1.1" 302 0 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.0.0 Safari/537.36"
+2025-12-18 17:23:30 [info]: ::1 - - [18/Dec/2025:11:53:30 +0000] "GET /api/v1/auth/google HTTP/1.1" 302 0 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.0.0 Safari/537.36"
+2025-12-18 17:23:43 [error]: PrismaClientValidationError: 
+[31mInvalid [1m`prisma.user.update()`[22m invocation:[39m
+
+{
+  where: {
+    id: "cmj6pevmf0000o4akj2j53v68"
+  },
+  data: {
+    googleId: "100884535787892322003",
+    profilePicture: "https://lh3.googleusercontent.com/a/ACg8ocK0nnjPOGXhHqjwX5GCRl8zLnLqYnQeNFJkEeZ0eK5E7Ejn5GM=s96-c",
+    provider: [31m"google"[39m
+              [31m~~~~~~~~[39m
+  }
+}
+
+Invalid value for argument `[1mprovider[22m`. Expected [32mAuthProvider[39m.
+    at oa (C:\Users\shama\HitouchCx_Backend\node_modules\@prisma\client\runtime\binary.js:156:1375)
+    at bl.handleRequestError (C:\Users\shama\HitouchCx_Backend\node_modules\@prisma\client\runtime\binary.js:258:6913)
+    at bl.handleAndLogRequestError (C:\Users\shama\HitouchCx_Backend\node_modules\@prisma\client\runtime\binary.js:258:6594)
+    at bl.request (C:\Users\shama\HitouchCx_Backend\node_modules\@prisma\client\runtime\binary.js:258:6301)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async o (C:\Users\shama\HitouchCx_Backend\node_modules\@prisma\client\runtime\binary.js:267:9560)
+    at async Strategy._verify (file:///C:/Users/shama/HitouchCx_Backend/src/config/passport.js:77:18)
+2025-12-18 17:23:43 [info]: ::1 - - [18/Dec/2025:11:53:43 +0000] "GET /api/v1/auth/google/callback?code=4%2F0ATX87lPIdHxoyqeZTBZJLa7OlPWCsFCAGUFmxH917n34qX_CsCpy1maF3ZEpcpsg7yfqPw&scope=email+profile+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.profile+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.email+openid&authuser=0&prompt=consent HTTP/1.1" 500 554 "https://accounts.google.com/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.0.0 Safari/537.36"
+2025-12-18 17:23:43 [error]: Error: Route not found: /favicon.ico
+    at notFoundHandler (file:///C:/Users/shama/HitouchCx_Backend/src/middlewares/errorHandler.js:115:17)
+    at Layer.handleRequest (C:\Users\shama\HitouchCx_Backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (C:\Users\shama\HitouchCx_Backend\node_modules\router\index.js:342:13)
+    at C:\Users\shama\HitouchCx_Backend\node_modules\router\index.js:297:9
+    at processParams (C:\Users\shama\HitouchCx_Backend\node_modules\router\index.js:582:12)
+    at next (C:\Users\shama\HitouchCx_Backend\node_modules\router\index.js:291:5)
+    at initialize (C:\Users\shama\HitouchCx_Backend\node_modules\passport\lib\middleware\initialize.js:98:5)
+    at Layer.handleRequest (C:\Users\shama\HitouchCx_Backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (C:\Users\shama\HitouchCx_Backend\node_modules\router\index.js:342:13)
+    at C:\Users\shama\HitouchCx_Backend\node_modules\router\index.js:297:9
+    at processParams (C:\Users\shama\HitouchCx_Backend\node_modules\router\index.js:582:12)
+    at next (C:\Users\shama\HitouchCx_Backend\node_modules\router\index.js:291:5)
+    at urlencodedParser (C:\Users\shama\HitouchCx_Backend\node_modules\body-parser\lib\types\urlencoded.js:68:7)
+    at Layer.handleRequest (C:\Users\shama\HitouchCx_Backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (C:\Users\shama\HitouchCx_Backend\node_modules\router\index.js:342:13)
+    at C:\Users\shama\HitouchCx_Backend\node_modules\router\index.js:297:9
+2025-12-18 17:23:43 [info]: ::1 - - [18/Dec/2025:11:53:43 +0000] "GET /favicon.ico HTTP/1.1" 404 59 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.0.0 Safari/537.36"
+2025-12-18 17:31:02 [info]: ::1 - - [18/Dec/2025:12:01:02 +0000] "GET /api/v1/auth/google HTTP/1.1" 302 0 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.0.0 Safari/537.36"
+2025-12-18 17:34:49 [info]: ::1 - - [18/Dec/2025:12:04:49 +0000] "GET /api/v1/auth/google HTTP/1.1" 302 0 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.0.0 Safari/537.36"
+2025-12-18 17:34:56 [error]: PrismaClientValidationError: 
+[31mInvalid [1m`prisma.user.update()`[22m invocation:[39m
+
+{
+  where: {
+    id: "cmi5r3nu50000o4w81un9hjuf"
+  },
+  data: {
+    googleId: "110198664611849059750",
+    profilePicture: "https://lh3.googleusercontent.com/a/ACg8ocKQmq5YiOFk6-PSC5UibgTH89kgdUffLjH02sKYF9HXv8pEvTdV5A=s96-c",
+    provider: [31m"google"[39m
+              [31m~~~~~~~~[39m
+  }
+}
+
+Invalid value for argument `[1mprovider[22m`. Expected [32mAuthProvider[39m.
+    at oa (C:\Users\shama\HitouchCx_Backend\node_modules\@prisma\client\runtime\binary.js:156:1375)
+    at bl.handleRequestError (C:\Users\shama\HitouchCx_Backend\node_modules\@prisma\client\runtime\binary.js:258:6913)
+    at bl.handleAndLogRequestError (C:\Users\shama\HitouchCx_Backend\node_modules\@prisma\client\runtime\binary.js:258:6594)
+    at bl.request (C:\Users\shama\HitouchCx_Backend\node_modules\@prisma\client\runtime\binary.js:258:6301)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async o (C:\Users\shama\HitouchCx_Backend\node_modules\@prisma\client\runtime\binary.js:267:9560)
+    at async Strategy._verify (file:///C:/Users/shama/HitouchCx_Backend/src/config/passport.js:77:18)
+2025-12-18 17:34:56 [info]: ::1 - - [18/Dec/2025:12:04:56 +0000] "GET /api/v1/auth/google/callback?code=4%2F0ATX87lMsipkIIAE9PXf3EzpuOWwqUAenPoDlm85dlOttAJTb0r-n_oJLD7EMl9XFlItJkQ&scope=email+profile+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.profile+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.email+openid&authuser=1&prompt=consent HTTP/1.1" 500 557 "https://accounts.google.com/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.0.0 Safari/537.36"
+2025-12-18 17:38:31 [info]: ::1 - - [18/Dec/2025:12:08:31 +0000] "GET /api/v1/auth/google HTTP/1.1" 302 0 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.0.0 Safari/537.36"
+2025-12-18 17:38:44 [info]: ::1 - - [18/Dec/2025:12:08:44 +0000] "GET /api/v1/auth/google HTTP/1.1" 302 0 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.0.0 Safari/537.36"
+2025-12-18 17:38:48 [info]: ::1 - - [18/Dec/2025:12:08:48 +0000] "GET /api/v1/auth/google/callback?code=4%2F0ATX87lPwLAEix0F7PmFybWIsUltO2aLtFPxPMInHYvT0q40THnPjvHQ0Zq-4KgKIIsAx0g&scope=email+profile+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.email+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.profile+openid&authuser=1&prompt=none HTTP/1.1" 302 287 "https://accounts.google.com/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.0.0 Safari/537.36"
+2025-12-18 17:41:29 [info]: ::1 - - [18/Dec/2025:12:11:29 +0000] "GET /api/v1/auth/google HTTP/1.1" 302 0 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.0.0 Safari/537.36"
+2025-12-18 17:41:41 [info]: ::1 - - [18/Dec/2025:12:11:41 +0000] "GET /api/v1/auth/google/callback?code=4%2F0ATX87lN_uA4IL5gzloS2mrDL2h_N7ROzk7Qzt1vrnbQOpRebGOc9QOX9sxkgxnmgAmR18g&scope=email+profile+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.email+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.profile+openid&authuser=0&prompt=none HTTP/1.1" 302 286 "https://accounts.google.com/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.0.0 Safari/537.36"
+2025-12-18 17:41:59 [info]: ::1 - - [18/Dec/2025:12:11:59 +0000] "POST /api/v1/auth/token/introspect HTTP/1.1" 200 170 "-" "PostmanRuntime/7.51.0"
+2025-12-18 17:45:30 [info]: ::1 - - [18/Dec/2025:12:15:30 +0000] "GET /api/v1/auth/google HTTP/1.1" 302 0 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.0.0 Safari/537.36"
+2025-12-18 17:45:35 [info]: ::1 - - [18/Dec/2025:12:15:35 +0000] "GET /api/v1/auth/google/callback?code=4%2F0ATX87lP9WVjuEPjCky4bPtFQ9l60pafIuQFkv6xzCtZV_7yb8gTPum8K2hTZsOf8xWk5nA&scope=email+profile+openid+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.email+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.profile&authuser=1&prompt=none HTTP/1.1" 302 290 "https://accounts.google.com/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.0.0 Safari/537.36"
+2025-12-18 17:46:14 [info]: ::1 - - [18/Dec/2025:12:16:14 +0000] "GET /api/v1/auth/google HTTP/1.1" 302 0 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.0.0 Safari/537.36"
+2025-12-18 17:46:20 [info]: ::1 - - [18/Dec/2025:12:16:20 +0000] "GET /api/v1/auth/google/callback?code=4%2F0ATX87lPl98DWQ2s2lq-A2M58bUJ9biACP6ICnMuN3USXOciZBq_g_o4-7TrooZEcnIOXVA&scope=email+profile+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.profile+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.email+openid&authuser=1&prompt=none HTTP/1.1" 302 290 "https://accounts.google.com/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.0.0 Safari/537.36"
+2025-12-18 17:47:16 [info]: ::1 - - [18/Dec/2025:12:17:16 +0000] "GET /api/v1/auth/google HTTP/1.1" 302 0 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.0.0 Safari/537.36"
+2025-12-18 17:47:20 [info]: ::1 - - [18/Dec/2025:12:17:20 +0000] "GET /api/v1/auth/google/callback?code=4%2F0ATX87lOBG3wM4avOK5dcT6mzVnQQSvkxbGLsRb5cUro2GwYXKuG9PzMBp25pZtsGvQl_Ug&scope=email+profile+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.profile+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.email+openid&authuser=1&prompt=none HTTP/1.1" 302 288 "https://accounts.google.com/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.0.0 Safari/537.36"
+2025-12-18 17:50:19 [info]: ::1 - - [18/Dec/2025:12:20:19 +0000] "GET /api/v1/auth/google HTTP/1.1" 302 0 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.0.0 Safari/537.36"
+2025-12-18 17:50:24 [info]: ::1 - - [18/Dec/2025:12:20:24 +0000] "GET /api/v1/auth/google/callback?code=4%2F0ATX87lM3kqY9cDhzDzsMbUNN-tZPzEA2Lk1b9KwwCWk45TDmSreV1h4Ka8qnVmJbz_Sm8A&scope=email+profile+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.profile+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.email+openid&authuser=0&prompt=none HTTP/1.1" 302 286 "https://accounts.google.com/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.0.0 Safari/537.36"
+2025-12-18 17:53:47 [info]: ::1 - - [18/Dec/2025:12:23:47 +0000] "GET /api/v1/auth/google HTTP/1.1" 302 0 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.0.0 Safari/537.36"
+2025-12-18 17:53:56 [info]: ::1 - - [18/Dec/2025:12:23:56 +0000] "GET /api/v1/auth/google/callback?code=4%2F0ATX87lNFEImnT_lCG8gBajX9LOYGXZiFQSj2tSw1psUiOueLakXlM1bZ-qCBaASN1uHa4Q&scope=email+profile+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.email+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.profile+openid&authuser=1&prompt=none HTTP/1.1" 302 288 "https://accounts.google.com/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.0.0 Safari/537.36"
+2025-12-18 17:54:35 [info]: ::1 - - [18/Dec/2025:12:24:35 +0000] "GET /api/v1/auth/google HTTP/1.1" 302 0 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.0.0 Safari/537.36"
+2025-12-18 17:54:39 [info]: ::1 - - [18/Dec/2025:12:24:39 +0000] "GET /api/v1/auth/google/callback?code=4%2F0ATX87lP_hiYavvt03OtnYYMPIXMuDsaOpVt-Wldi6Qhb3aMuXvgmS_prLavRDp7wY6PE9g&scope=email+profile+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.email+openid+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.profile&authuser=1&prompt=none HTTP/1.1" 302 288 "https://accounts.google.com/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.0.0 Safari/537.36"
+2025-12-18 17:54:51 [info]: ::1 - - [18/Dec/2025:12:24:51 +0000] "GET /api/v1/auth/google HTTP/1.1" 302 0 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.0.0 Safari/537.36"
+2025-12-18 17:54:58 [info]: ::1 - - [18/Dec/2025:12:24:58 +0000] "GET /api/v1/auth/google/callback?code=4%2F0ATX87lOtVGNoNE_Shk0mMfgj9Ko4lynaWUD67BvUhI8jz8FqCSsolGlaCWrIu9SliBu2FQ&scope=email+profile+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.email+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.profile+openid&authuser=1&prompt=none HTTP/1.1" 302 288 "https://accounts.google.com/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.0.0 Safari/537.36"
+2025-12-18 17:55:31 [info]: ::1 - - [18/Dec/2025:12:25:31 +0000] "GET /api/v1/auth/google HTTP/1.1" 302 0 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.0.0 Safari/537.36"
+2025-12-18 17:55:35 [info]: ::1 - - [18/Dec/2025:12:25:35 +0000] "GET /api/v1/auth/google/callback?code=4%2F0ATX87lP0N-JeXp0k4V8UY4JbiAcW4PQVDwfVGR2ztiEHlAIzAAPoiWyFP4sD8FRQjv50uA&scope=email+profile+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.email+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.profile+openid&authuser=1&prompt=none HTTP/1.1" 302 288 "https://accounts.google.com/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.0.0 Safari/537.36"
+2025-12-18 17:56:15 [info]: ::1 - - [18/Dec/2025:12:26:15 +0000] "GET /api/v1/auth/google HTTP/1.1" 302 0 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.0.0 Safari/537.36"
+2025-12-18 17:56:19 [error]: ReferenceError: res is not defined
+    at Strategy._verify (file:///C:/Users/shama/HitouchCx_Backend/src/config/passport.js:61:11)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+2025-12-18 17:56:19 [info]: ::1 - - [18/Dec/2025:12:26:19 +0000] "GET /api/v1/auth/google/callback?code=4%2F0ATX87lPC8vIhzeo87fKz5RHwjwt3Ci1A3cCDfr05BPT2L5rvU76Rwj2foNv1wcd5XF7tDQ&scope=email+profile+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.email+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.profile+openid&authuser=1&prompt=none HTTP/1.1" 500 48 "https://accounts.google.com/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.0.0 Safari/537.36"
+2025-12-18 17:56:43 [info]: ::1 - - [18/Dec/2025:12:26:43 +0000] "GET /api/v1/auth/google HTTP/1.1" 302 0 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.0.0 Safari/537.36"
+2025-12-18 17:56:47 [info]: ::1 - - [18/Dec/2025:12:26:47 +0000] "GET /api/v1/auth/google/callback?code=4%2F0ATX87lPEimnPRwmmKwPwtcImCVI7RFCohVurluwplHvUIhBdd5HiOB_vXIrj82kNVeMxvw&scope=email+profile+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.email+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.profile+openid&authuser=1&prompt=none HTTP/1.1" 302 287 "https://accounts.google.com/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.0.0 Safari/537.36"

@@ -5,7 +5,7 @@ import {verifyToken} from "../../../utils/token.js"
 import authMiddleware from "../../../middlewares/authMiddleware.js"
 import {signUp,logIn,requestForgotPassword,verifyForgotPasswordOtp,resetPasswordWithToken,logout,refresh} from "../../../controllers/v1/auth/auth.controller.js"
 import passport from '../../../config/passport.js';
-
+import {googleCallback} from "../../../controllers/v1/auth/oAuth.controller.js"
 
 const router = express.Router();
 
@@ -30,7 +30,7 @@ router.patch("/password/new-password",authMiddleware,resetPasswordWithToken)
 
 //OAuth Stuff
 
-// Initiate Google OAuth
+// It basically takes user to google's consent screen and request scope items : profile,email
 router.get(
   '/google',
   passport.authenticate('google', {
@@ -46,24 +46,7 @@ router.get(
     session: false,
     failureRedirect: `${process.env.FRONTEND_URL}/login?error=oauth_failed`,
   }),
-  (req, res) => {
-    try {
-      // Generate JWT token (same as your regular login)
-      const token = jwt.sign(
-        { id: req.user.id, email: req.user.email },
-        process.env.JWT_SECRET,
-        { expiresIn: '7d' }
-      );
-      
-      
-      // Redirect to frontend with token
-      res.redirect(
-        `${process.env.FRONTEND_URL}/auth/callback?token=${token}`
-      );
-    } catch (error) {
-      res.redirect(`${process.env.FRONTEND_URL}/login?error=token_generation_failed`);
-    }
-  }
+  googleCallback
 );
 
 
