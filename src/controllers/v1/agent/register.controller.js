@@ -12,6 +12,15 @@ const registerAgent = async (req, res) => {
             lastName,
             dob,
             profilePhotoUrl,
+            // Address fields
+            currentAddress,
+            currentCity,
+            currentState,
+            currentPincode,
+            permanentAddress,
+            permanentCity,
+            permanentState,
+            permanentPincode,
             qualifications,
             hasExperience,
             experiences,
@@ -107,6 +116,15 @@ const registerAgent = async (req, res) => {
                 lastName,
                 dob: dobDate,
                 profilePhotoUrl,
+                // Address fields (structured)
+                currentAddress,
+                currentCity,
+                currentState,
+                currentPincode,
+                permanentAddress,
+                permanentCity,
+                permanentState,
+                permanentPincode,
                 hasExperience: hasExperience || false,
                 isEmployed: isEmployed || false,
                 skills: skills || [],
@@ -114,7 +132,7 @@ const registerAgent = async (req, res) => {
                 kycStatus: 'PENDING',
                 preferredShift,
                 hoursPerDay,
-                
+
                 // Add qualifications if provided
                 qualifications:  {
                     create: qualifications

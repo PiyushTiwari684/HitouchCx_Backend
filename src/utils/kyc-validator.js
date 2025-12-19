@@ -240,10 +240,11 @@ export function validateDOB(profileDOB, aadhaarDOB, panDOB) {
   return result;
 }
 
-export function validateAddress(profileAddress, aadhaarAddress) {
+export function validateAddress(profileAddress, aadhaarAddress, profilePincode = null) {
   console.log("\n[ADDRESS VALIDATION] Starting address validation...");
   // Reason: See the raw input data before any processing
   console.log("[ADDRESS VALIDATION] Raw profile address:", profileAddress);
+  console.log("[ADDRESS VALIDATION] Profile pincode (if provided separately):", profilePincode);
   console.log(
     "[ADDRESS VALIDATION] Raw Aadhaar address object:",
     JSON.stringify(aadhaarAddress, null, 2),
@@ -287,12 +288,13 @@ export function validateAddress(profileAddress, aadhaarAddress) {
   };
 
   // Extract PIN codes
-  const profilePIN = extractPINCode(profileAddress);
+  // If profilePincode is provided separately, use it; otherwise extract from address string
+  const profilePIN = profilePincode || extractPINCode(profileAddress);
   const aadhaarPIN = aadhaarAddress.pin || aadhaarAddress.pc;
 
   console.log("\n[ADDRESS VALIDATION] PIN Code Extraction:");
   // Reason: Verify PIN extraction is working and see if they match
-  console.log(`  Profile PIN: "${profilePIN}"`);
+  console.log(`  Profile PIN: "${profilePIN}" (${profilePincode ? 'provided separately' : 'extracted from address'})`);
   console.log(`  Aadhaar PIN: "${aadhaarPIN}"`);
 
   // PIN code must match exactly
@@ -513,7 +515,11 @@ export function validateKYC(profileData, aadhaarData, panData) {
 
   const dobValidation = validateDOB(profileData.dob, aadhaarData.dob, panData.dob);
 
-  const addressValidation = validateAddress(profileData.address, aadhaarData.address);
+  const addressValidation = validateAddress(
+    profileData.address,
+    aadhaarData.address,
+    profileData.pincode // Pass pincode separately if available
+  );
 
   // Check signature verification
   const signatureValidation = {

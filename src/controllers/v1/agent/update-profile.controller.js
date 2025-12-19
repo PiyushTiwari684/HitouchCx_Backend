@@ -41,7 +41,16 @@ export const getAgentProfile = async (req, res) => {
         middleName: agent.middleName,
         lastName: agent.lastName,
         dob: agent.dob,
-        address: agent.address,
+
+        // Address fields (structured)
+        currentAddress: agent.currentAddress,
+        currentCity: agent.currentCity,
+        currentState: agent.currentState,
+        currentPincode: agent.currentPincode,
+        permanentAddress: agent.permanentAddress,
+        permanentCity: agent.permanentCity,
+        permanentState: agent.permanentState,
+        permanentPincode: agent.permanentPincode,
 
         // Qualifications
         qualifications: agent.qualifications.map(q => ({
@@ -141,7 +150,15 @@ export const updateAgentProfile = async (req, res) => {
       middleName: updates.middleName || null,
       lastName: updates.lastName || null,
       dob: new Date(updates.dob),
-      address: updates.address || null,
+      // Address fields (structured)
+      currentAddress: updates.currentAddress || null,
+      currentCity: updates.currentCity || null,
+      currentState: updates.currentState || null,
+      currentPincode: updates.currentPincode || null,
+      permanentAddress: updates.permanentAddress || null,
+      permanentCity: updates.permanentCity || null,
+      permanentState: updates.permanentState || null,
+      permanentPincode: updates.permanentPincode || null,
       skills: updates.skills || agent.skills,
       languages: updates.languages || agent.languages,
       preferredShift: updates.preferredShift || agent.preferredShift,
@@ -168,7 +185,15 @@ export const updateAgentProfile = async (req, res) => {
         middleName: updatedAgent.middleName,
         lastName: updatedAgent.lastName,
         dob: updatedAgent.dob,
-        address: updatedAgent.address,
+        // Address fields
+        currentAddress: updatedAgent.currentAddress,
+        currentCity: updatedAgent.currentCity,
+        currentState: updatedAgent.currentState,
+        currentPincode: updatedAgent.currentPincode,
+        permanentAddress: updatedAgent.permanentAddress,
+        permanentCity: updatedAgent.permanentCity,
+        permanentState: updatedAgent.permanentState,
+        permanentPincode: updatedAgent.permanentPincode,
         kycStatus: updatedAgent.kycStatus,
       },
     });

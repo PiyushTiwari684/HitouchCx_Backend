@@ -74,9 +74,9 @@ const requestOtp = async (req, res) => {
           data: { phone },
         });
 
-        res.json({ message: "OTP Sent..", otpStatus: otpStatus, userUpdated: user.email });
+        return res.json({ message: "OTP Sent..", otpStatus: otpStatus, userUpdated: user.email });
       } else {
-        res.json({ error: "Failed to send otp to phone" });
+        return res.json({ error: "Failed to send otp to phone" });
       }
     } else {
       return res.status(400).json({ error: "Provide both email and phone" });
@@ -97,7 +97,7 @@ const requestOtp = async (req, res) => {
     //If Email send the otp and give response
     if (email) {
       await sendEmailOTP(user, WINDOW_MINUTES);
-      res.json({ message: "OTP Sent To Email", user: user });
+      return res.json({ message: "OTP Sent To Email", user: user });
     }
   } catch (error) {
     res.status(500).json({ message: "Cannot send the otp", error });

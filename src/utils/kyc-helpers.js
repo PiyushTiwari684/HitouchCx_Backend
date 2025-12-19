@@ -267,3 +267,49 @@ export const calculateExpiryTime = (minutes = 30) => {
   const now = new Date();
   return new Date(now.getTime() + minutes * 60 * 1000);
 };
+
+/**
+ * Construct full address string from structured address components
+ *
+ * Combines address, city, state, and pincode into a single formatted string
+ * for KYC validation. Filters out empty/null values.
+ *
+ * @param {Object} components - Address components
+ * @param {string} [components.address] - Street address line
+ * @param {string} [components.city] - City name
+ * @param {string} [components.state] - State name
+ * @param {string} [components.pincode] - PIN code
+ * @returns {string} Full address string with components joined by ", "
+ *
+ * @example
+ * constructFullAddress({
+ *   address: "123 Main Street",
+ *   city: "Mumbai",
+ *   state: "Maharashtra",
+ *   pincode: "400001"
+ * })
+ * // "123 Main Street, Mumbai, Maharashtra, 400001"
+ *
+ * @example
+ * constructFullAddress({
+ *   address: "Plot 45, Sector 12",
+ *   city: "Bangalore",
+ *   state: null,
+ *   pincode: "560001"
+ * })
+ * // "Plot 45, Sector 12, Bangalore, 560001"
+ */
+export const constructFullAddress = (components) => {
+  if (!components) return '';
+
+  const { address, city, state, pincode } = components;
+
+  const parts = [
+    address,
+    city,
+    state,
+    pincode
+  ].filter(Boolean); // Remove empty, null, or undefined values
+
+  return parts.join(', ');
+};

@@ -128,7 +128,20 @@ model Agent {
   middleName     String?
   lastName       String?
   dob            DateTime
-  address        String?
+  address        String? // Legacy field - kept for backward compatibility
+
+  // Current Address (structured fields)
+  currentAddress  String?
+  currentCity     String?
+  currentState    String?
+  currentPincode  String?
+
+  // Permanent Address (structured fields)
+  permanentAddress  String?
+  permanentCity     String?
+  permanentState    String?
+  permanentPincode  String?
+
   additionalInfo Json?
 
   //Bank Details (Essential for NEFT)

@@ -7,6 +7,7 @@ import {
   parseOAuthState,
   calculateExpiryTime,
   isSessionExpired,
+  constructFullAddress,
 } from "../../utils/kyc-helpers.js";
 import { validateKYC } from "../../utils/kyc-validator.js";
 import { extractAadhaarData, extractPANData } from "../../utils/kyc-data-extractor.js";
@@ -307,12 +308,21 @@ export const processCallback = async (oAuthState, code, ipAddress = null, userAg
       const panData = extractPANData(panDoc);
 
       // Prepare profile data for validation
+      // Construct full address from structured fields (PERMANENT address is used for KYC validation against Aadhaar)
+      const fullAddress = constructFullAddress({
+        address: agent.permanentAddress,
+        city: agent.permanentCity,
+        state: agent.permanentState,
+        pincode: agent.permanentPincode,
+      });
+
       const profileData = {
         name: `${agent.firstName || ""} ${agent.middleName || ""} ${agent.lastName || ""}`
           .trim()
           .replace(/\s+/g, " "),
         dob: agent.dob,
-        address: agent.address || "",
+        address: fullAddress || agent.address || "", // Fallback to legacy address field if new fields not populated
+        pincode: agent.permanentPincode, // Pass permanent pincode separately for better validation
       };
 
       console.log("[DigiLocker Service] Profile data:", profileData);
