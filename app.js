@@ -17,7 +17,7 @@ app.set("trust proxy", 1); // one reverse proxy hop (ngrok)
 
 const corsOptions = {
   origin: (origin, callback) => {
-    const allowedLocal = ["http://localhost:5173", "http://localhost:3000"];
+    const allowedLocal = ["http://localhost:5173", "http://localhost:3000","http://localhost:5174"];
     const isNgrok = origin && /https:\/\/[a-z0-9-]+\.ngrok(-free)?\.(dev|app|io)/i.test(origin);
     if (!origin || allowedLocal.includes(origin) || isNgrok) {
       return callback(null, true);

@@ -99,13 +99,26 @@ const logIn = async (req, res) => {
             data: { userId: user.id, tokenHash: refreshHash, expiresAt }
           })
 
+          // Fetch agent details to include in response
+          const agent = await prisma.agent.findUnique({
+            where: { userId: user.id },
+            select: {
+              id: true,
+              firstName: true,
+              lastName: true
+            }
+          });
 
           return res.json({
             message: "User Authenticated",
             accessToken,
             refreshToken: refreshPlain,
             userEmail: user.email,
-            userPhone: user.phone
+            userPhone: user.phone,
+            // Include agent details for frontend
+            agentId: agent?.id || null,
+            firstName: agent?.firstName || null,
+            lastName: agent?.lastName || null
           })
         } else {
           return res.status(401).json({ error: "Invalid credentials or user not active" })
