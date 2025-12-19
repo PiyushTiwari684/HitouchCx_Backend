@@ -7,7 +7,7 @@ const uploadToCloudinary = async function (photoUrl,photoId) {
     cloudinary.config({
         cloud_name: 'dvgiafjxp',
         api_key: process.env.CLOUDINARY_API_KEY,
-        api_secret: process.env.CLOUDINARY_API_SECRET // Click 'View API Keys' above to copy your API secret
+        api_secret: process.env.CLOUDINARY_API_SECRET 
     });
 
 
@@ -24,6 +24,7 @@ const uploadToCloudinary = async function (photoUrl,photoId) {
 
 
     // Optimize delivery by resizing and applying auto-format and auto-quality
+    //This URL is sharable url having the link of the media uploaded which can be used in client side
     const optimizeUrl = cloudinary.url(photoId, {
         fetch_format: 'auto',
         quality: 'auto'

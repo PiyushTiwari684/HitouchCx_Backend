@@ -2,3 +2,44 @@
 2025-12-18 18:04:37 [info]: ::1 - - [18/Dec/2025:12:34:37 +0000] "GET /api/v1/auth/google/callback?code=4%2F0ATX87lOojmpRWkzm2uzls-UHzEzy_4E-Ov3ng8CgAXvSBAtEs-vQEWRGgpSFFPNLOV9qfQ&scope=email+profile+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.profile+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.email+openid&authuser=1&prompt=none HTTP/1.1" 302 287 "https://accounts.google.com/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.0.0 Safari/537.36"
 2025-12-18 18:04:41 [info]: ::1 - - [18/Dec/2025:12:34:41 +0000] "POST /api/v1/auth/log-in HTTP/1.1" 200 444 "-" "PostmanRuntime/7.51.0"
 2025-12-18 18:04:52 [info]: ::1 - - [18/Dec/2025:12:34:52 +0000] "POST /api/v1/auth/token/introspect HTTP/1.1" 200 184 "-" "PostmanRuntime/7.51.0"
+2025-12-19 10:17:00 [info]: ::1 - - [19/Dec/2025:04:47:00 +0000] "GET /api/v1/platform/dashboard-info/cmi5uzu8w0001o420uoclv9oz HTTP/1.1" 200 - "-" "PostmanRuntime/7.51.0"
+2025-12-19 10:18:25 [error]: Error: Route not found: /api/v1/agent/cmi5uzu8w0001o420uoclv9oz/upload-photo
+    at notFoundHandler (file:///C:/Users/shama/HitouchCx_Backend/src/middlewares/errorHandler.js:115:17)
+    at Layer.handleRequest (C:\Users\shama\HitouchCx_Backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (C:\Users\shama\HitouchCx_Backend\node_modules\router\index.js:342:13)
+    at C:\Users\shama\HitouchCx_Backend\node_modules\router\index.js:297:9
+    at processParams (C:\Users\shama\HitouchCx_Backend\node_modules\router\index.js:582:12)
+    at next (C:\Users\shama\HitouchCx_Backend\node_modules\router\index.js:291:5)
+    at C:\Users\shama\HitouchCx_Backend\node_modules\router\index.js:688:15
+    at next (C:\Users\shama\HitouchCx_Backend\node_modules\router\index.js:276:14)
+    at C:\Users\shama\HitouchCx_Backend\node_modules\router\index.js:688:15
+    at next (C:\Users\shama\HitouchCx_Backend\node_modules\router\index.js:276:14)
+    at C:\Users\shama\HitouchCx_Backend\node_modules\router\index.js:688:15
+    at next (C:\Users\shama\HitouchCx_Backend\node_modules\router\index.js:276:14)
+    at Function.handle (C:\Users\shama\HitouchCx_Backend\node_modules\router\index.js:186:3)
+    at router (C:\Users\shama\HitouchCx_Backend\node_modules\router\index.js:60:12)
+    at Layer.handleRequest (C:\Users\shama\HitouchCx_Backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (C:\Users\shama\HitouchCx_Backend\node_modules\router\index.js:342:13)
+2025-12-19 10:18:25 [info]: ::1 - - [19/Dec/2025:04:48:25 +0000] "GET /api/v1/agent/cmi5uzu8w0001o420uoclv9oz/upload-photo HTTP/1.1" 404 99 "-" "PostmanRuntime/7.51.0"
+2025-12-19 10:18:38 [error]: MulterError: Unexpected field
+    at wrappedFileFilter (C:\Users\shama\HitouchCx_Backend\node_modules\multer\index.js:40:19)
+    at Multipart.<anonymous> (C:\Users\shama\HitouchCx_Backend\node_modules\multer\lib\make-middleware.js:132:7)
+    at Multipart.emit (node:events:519:28)
+    at HeaderParser.cb (C:\Users\shama\HitouchCx_Backend\node_modules\busboy\lib\types\multipart.js:358:14)
+    at HeaderParser.push (C:\Users\shama\HitouchCx_Backend\node_modules\busboy\lib\types\multipart.js:162:20)
+    at SBMH.ssCb [as _cb] (C:\Users\shama\HitouchCx_Backend\node_modules\busboy\lib\types\multipart.js:394:37)
+    at feed (C:\Users\shama\HitouchCx_Backend\node_modules\streamsearch\lib\sbmh.js:248:10)
+    at SBMH.push (C:\Users\shama\HitouchCx_Backend\node_modules\streamsearch\lib\sbmh.js:104:16)
+    at Multipart._write (C:\Users\shama\HitouchCx_Backend\node_modules\busboy\lib\types\multipart.js:567:19)
+    at writeOrBuffer (node:internal/streams/writable:572:12)
+    at _write (node:internal/streams/writable:501:10)
+    at Writable.write (node:internal/streams/writable:510:10)
+    at IncomingMessage.ondata (node:internal/streams/readable:1009:22)
+    at IncomingMessage.emit (node:events:519:28)
+    at Readable.read (node:internal/streams/readable:782:10)
+    at flow (node:internal/streams/readable:1283:53)
+2025-12-19 10:18:38 [info]: ::1 - - [19/Dec/2025:04:48:38 +0000] "POST /api/v1/agent/cmi5uzu8w0001o420uoclv9oz/upload-photo HTTP/1.1" 400 51 "-" "PostmanRuntime/7.51.0"
+2025-12-19 10:19:40 [info]: ::1 - - [19/Dec/2025:04:49:40 +0000] "POST /api/v1/agent/cmi5uzu8w0001o420uoclv9oz/upload-photo HTTP/1.1" 200 271 "-" "PostmanRuntime/7.51.0"
+2025-12-19 10:19:58 [info]: ::1 - - [19/Dec/2025:04:49:58 +0000] "GET /api/v1/platform/dashboard-info/cmi5uzu8w0001o420uoclv9oz HTTP/1.1" 200 - "-" "PostmanRuntime/7.51.0"
+2025-12-19 10:24:41 [info]: ::1 - - [19/Dec/2025:04:54:41 +0000] "GET /api/v1/platform/dashboard-info/cmi5uzu8w0001o420uoclv9ozd HTTP/1.1" 404 43 "-" "PostmanRuntime/7.51.0"
+2025-12-19 10:24:46 [info]: ::1 - - [19/Dec/2025:04:54:46 +0000] "GET /api/v1/platform/dashboard-info/cmi5uzu8w0001o420uoclv9oz HTTP/1.1" 200 - "-" "PostmanRuntime/7.51.0"
