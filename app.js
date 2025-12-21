@@ -69,6 +69,7 @@ if (process.env.NODE_ENV === "development") {
 }
 
 // ========== RATE LIMITING ==========
+// General API rate limiting (100 requests per 15 minutes)
 const limiter = rateLimit({
   windowMs: RATE_LIMIT_CONFIG.WINDOW_MS,
   max: RATE_LIMIT_CONFIG.MAX_REQUESTS,
@@ -84,17 +85,29 @@ const limiter = rateLimit({
   },
 });
 
-app.use("/api", limiter);
+// Stricter rate limiting for authentication endpoints (5 attempts per 15 minutes)
+const authLimiter = rateLimit({
+  windowMs: 15 * 60 * 1000, // 15 minutes
+  max: 5, // 5 attempts per window
+  message: "Too many authentication attempts, please try again later",
+  standardHeaders: true,
+  legacyHeaders: false,
+  skipSuccessfulRequests: false, // Count all attempts
+  handler: (req, res) => {
+    logger.warn(`Auth rate limit exceeded for IP: ${req.ip}, Path: ${req.path}`);
+    res.status(429).json({
+      success: false,
+      message: "Too many authentication attempts. Please try again after 15 minutes.",
+    });
+  },
+});
 
-// ========== CORS ==========
-app.use(
-  cors({
-    origin: CORS_CONFIG.ALLOWED_ORIGINS,
-    credentials: CORS_CONFIG.CREDENTIALS,
-    methods: ["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"],
-    allowedHeaders: ["Content-Type", "Authorization"],
-  }),
-);
+app.use("/api", limiter);
+app.use("/api/v1/auth/login", authLimiter);
+app.use("/api/v1/auth/register", authLimiter);
+app.use("/api/v1/auth/forgot-password", authLimiter);
+app.use("/api/v1/auth/reset-password", authLimiter);
+app.use("/api/v1/otp", authLimiter);
 
 // ========== BODY PARSERS ==========
 app.use(

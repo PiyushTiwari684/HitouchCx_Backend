@@ -123,7 +123,7 @@ enum Status {
 model Agent {
   id             String   @id @default(cuid())
   userId         String   @unique
-  user           User     @relation(fields: [userId], references: [id], onDelete: SetNull)
+  user           User     @relation(fields: [userId], references: [id], onDelete: Cascade)
   firstName      String
   middleName     String?
   lastName       String?
@@ -643,10 +643,10 @@ model GigApplication {
   id String @id @default(cuid())
 
   agentId String //Agent Applying for Opportunity
-  agent   Agent  @relation(fields: [agentId], references: [id], onDelete: SetNull)
+  agent   Agent  @relation(fields: [agentId], references: [id], onDelete: Cascade)
 
   opportunityId String //Opportunity agent applied for
-  opportunity   Opportunity @relation(fields: [opportunityId], references: [id], onDelete: SetNull)
+  opportunity   Opportunity @relation(fields: [opportunityId], references: [id], onDelete: Cascade)
 
   // Application Status
   status ApplicationStatus @default(PENDING) // PENDING, ACCEPTED, REJECTED
