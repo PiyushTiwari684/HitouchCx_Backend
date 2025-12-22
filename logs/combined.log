@@ -713,3 +713,1109 @@
 2025-12-22 17:46:45 [info]: ::1 - - [22/Dec/2025:12:16:45 +0000] "GET /api/v1/proctoring/assessment/latest-evaluation HTTP/1.1" 200 211 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.0.0 Safari/537.36"
 2025-12-22 17:46:46 [info]: ::1 - - [22/Dec/2025:12:16:46 +0000] "GET /api/v1/proctoring/assessment/latest-evaluation HTTP/1.1" 304 - "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.0.0 Safari/537.36"
 2025-12-22 17:46:48 [info]: ::1 - - [22/Dec/2025:12:16:48 +0000] "POST /api/v1/auth/log-in HTTP/1.1" 200 552 "http://localhost:5173/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.0.0 Safari/537.36"
+2025-12-23 02:49:50 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:19:50 +0000] "POST /api/v1/auth/sign-up HTTP/1.1" 404 45 "-" "-"
+2025-12-23 02:49:50 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:19:50 +0000] "POST /api/v1/auth/sign-up HTTP/1.1" 404 45 "-" "-"
+2025-12-23 02:49:50 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:19:50 +0000] "POST /api/v1/auth/sign-up HTTP/1.1" 400 34 "-" "-"
+2025-12-23 02:49:50 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:19:50 +0000] "POST /api/v1/auth/sign-up HTTP/1.1" 400 41 "-" "-"
+2025-12-23 02:49:50 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:19:50 +0000] "POST /api/v1/auth/log-in HTTP/1.1" 404 26 "-" "-"
+2025-12-23 02:49:50 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:19:50 +0000] "POST /api/v1/auth/log-in HTTP/1.1" 404 26 "-" "-"
+2025-12-23 02:49:50 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:19:50 +0000] "POST /api/v1/auth/log-in HTTP/1.1" 404 26 "-" "-"
+2025-12-23 02:49:50 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:19:50 +0000] "POST /api/v1/auth/refresh-token HTTP/1.1" 500 35 "-" "-"
+2025-12-23 02:49:50 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:19:50 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:52:09 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:22:09 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:52:10 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:22:10 +0000] "POST /api/v1/otp/request-otp HTTP/1.1" 500 44 "-" "-"
+2025-12-23 02:52:11 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:22:11 +0000] "POST /api/v1/otp/request-otp HTTP/1.1" 400 40 "-" "-"
+2025-12-23 02:52:11 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:22:11 +0000] "POST /api/v1/auth/sign-up HTTP/1.1" 404 45 "-" "-"
+2025-12-23 02:52:11 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:22:11 +0000] "POST /api/v1/auth/sign-up HTTP/1.1" 400 41 "-" "-"
+2025-12-23 02:52:11 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:22:11 +0000] "POST /api/v1/auth/sign-up HTTP/1.1" 400 34 "-" "-"
+2025-12-23 02:52:11 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:22:11 +0000] "POST /api/v1/auth/log-in HTTP/1.1" 400 28 "-" "-"
+2025-12-23 02:52:11 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:22:11 +0000] "POST /api/v1/auth/log-in HTTP/1.1" 404 26 "-" "-"
+2025-12-23 02:52:11 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:22:11 +0000] "POST /api/v1/auth/refresh-token HTTP/1.1" 400 32 "-" "-"
+2025-12-23 02:52:11 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:22:11 +0000] "POST /api/v1/auth/sign-up HTTP/1.1" 400 38 "-" "-"
+2025-12-23 02:52:11 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:22:11 +0000] "POST /api/v1/auth/log-in HTTP/1.1" 400 28 "-" "-"
+2025-12-23 02:52:11 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:22:11 +0000] "POST /api/v1/auth/refresh-token HTTP/1.1" 400 32 "-" "-"
+2025-12-23 02:52:11 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:22:11 +0000] "POST /api/v1/otp/request-otp HTTP/1.1" 400 43 "-" "-"
+2025-12-23 02:52:24 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:22:24 +0000] "POST /api/v1/auth/sign-up HTTP/1.1" 404 45 "-" "-"
+2025-12-23 02:52:48 [error]: Error: Route not found: /api/v1/agent/test-id
+    at notFoundHandler (file:///C:/Users/tiwar/Desktop/HitouchCX_Projects/Hitouch_Project/HitouchCx_Backend/src/middlewares/errorHandler.js:115:17)
+    at Layer.handleRequest (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:342:13)
+    at C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:297:9
+    at processParams (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:582:12)
+    at next (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:291:5)
+    at C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:688:15
+    at next (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:276:14)
+    at C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:688:15
+    at next (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:276:14)
+    at C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:688:15
+    at next (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:276:14)
+    at Function.handle (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:186:3)
+    at router (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:60:12)
+    at Layer.handleRequest (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:342:13)
+    at C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:297:9
+    at processParams (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:582:12)
+    at next (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:291:5)
+    at Function.handle (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:186:3)
+    at router (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:60:12)
+    at Layer.handleRequest (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:342:13)
+    at C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:297:9
+    at processParams (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:582:12)
+    at next (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:291:5)
+    at Function.handle (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:186:3)
+    at router (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:60:12)
+    at Layer.handleRequest (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:342:13)
+    at C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:297:9
+    at processParams (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:582:12)
+    at next (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:291:5)
+    at initialize (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\passport\lib\middleware\initialize.js:98:5)
+    at Layer.handleRequest (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:342:13)
+    at C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:297:9
+    at processParams (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:582:12)
+    at next (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:291:5)
+    at urlencodedParser (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\body-parser\lib\types\urlencoded.js:68:7)
+    at Layer.handleRequest (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:342:13)
+    at C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:297:9
+    at processParams (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:582:12)
+    at next (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:291:5)
+    at jsonParser (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\body-parser\lib\types\json.js:100:7)
+    at Layer.handleRequest (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:342:13)
+    at C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:297:9
+    at processParams (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:582:12)
+    at next (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:291:5)
+    at file:///C:/Users/tiwar/Desktop/HitouchCX_Projects/Hitouch_Project/HitouchCx_Backend/node_modules/express-rate-limit/dist/index.mjs:870:7
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async file:///C:/Users/tiwar/Desktop/HitouchCX_Projects/Hitouch_Project/HitouchCx_Backend/node_modules/express-rate-limit/dist/index.mjs:753:5
+2025-12-23 02:52:48 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:22:48 +0000] "GET /api/v1/agent/test-id HTTP/1.1" 404 68 "-" "-"
+2025-12-23 02:52:48 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:22:48 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:52:48 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:22:48 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:52:48 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:22:48 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:52:48 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:22:48 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:52:48 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:22:48 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:52:48 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:22:48 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:52:48 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:22:48 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:52:48 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:22:48 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:52:48 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:22:48 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:52:48 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:22:48 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:52:48 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:22:48 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:52:48 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:22:48 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:52:48 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:22:48 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:52:48 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:22:48 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:52:48 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:22:48 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:52:48 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:22:48 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:52:48 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:22:48 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:52:48 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:22:48 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:52:48 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:22:48 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:52:48 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:22:48 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:52:48 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:22:48 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:52:48 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:22:48 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:52:48 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:22:48 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:52:48 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:22:48 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:52:48 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:22:48 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:52:48 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:22:48 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:52:48 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:22:48 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:52:48 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:22:48 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:52:48 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:22:48 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:52:48 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:22:48 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:52:48 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:22:48 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:52:48 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:22:48 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:52:48 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:22:48 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:52:48 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:22:48 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:52:48 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:22:48 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:52:48 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:22:48 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:52:48 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:22:48 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:52:48 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:22:48 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:52:48 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:22:48 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:52:48 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:22:48 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:52:48 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:22:48 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:52:48 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:22:48 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:52:48 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:22:48 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:52:48 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:22:48 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:52:48 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:22:48 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:52:48 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:22:48 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:52:48 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:22:48 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:52:48 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:22:48 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:52:48 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:22:48 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:52:48 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:22:48 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:52:48 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:22:48 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:52:48 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:22:48 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:52:48 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:22:48 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:52:48 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:22:48 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:52:48 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:22:48 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:52:48 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:22:48 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:52:48 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:22:48 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:52:48 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:22:48 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:52:48 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:22:48 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:52:48 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:22:48 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:52:48 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:22:48 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:52:48 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:22:48 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:52:48 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:22:48 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:52:48 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:22:48 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:52:48 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:22:48 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:52:48 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:22:48 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:52:48 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:22:48 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:52:48 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:22:48 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:52:48 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:22:48 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:52:48 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:22:48 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:52:48 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:22:48 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:52:48 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:22:48 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:52:48 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:22:48 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:52:48 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:22:48 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:52:48 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:22:48 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:52:48 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:22:48 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:52:48 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:22:48 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:52:48 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:22:48 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:52:48 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:22:48 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:52:48 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:22:48 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:52:48 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:22:48 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:52:48 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:22:48 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:52:48 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:22:48 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:52:48 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:22:48 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:52:48 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:22:48 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:52:48 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:22:48 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:52:48 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:22:48 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:52:48 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:22:48 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:52:48 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:22:48 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:52:48 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:22:48 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:52:48 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:22:48 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:52:48 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:22:48 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:52:48 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:22:48 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:52:48 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:22:48 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:52:48 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:22:48 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:52:48 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:22:48 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:52:48 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:22:48 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:52:48 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:22:48 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:52:48 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:22:48 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:52:48 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:22:48 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:52:48 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:22:48 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:52:48 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:22:48 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:52:48 [error]: Error: Route not found: /api/v1/nonexistent
+    at notFoundHandler (file:///C:/Users/tiwar/Desktop/HitouchCX_Projects/Hitouch_Project/HitouchCx_Backend/src/middlewares/errorHandler.js:115:17)
+    at Layer.handleRequest (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:342:13)
+    at C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:297:9
+    at processParams (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:582:12)
+    at next (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:291:5)
+    at C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:688:15
+    at next (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:276:14)
+    at C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:688:15
+    at next (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:276:14)
+    at Function.handle (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:186:3)
+    at router (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:60:12)
+    at Layer.handleRequest (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:342:13)
+    at C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:297:9
+    at processParams (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:582:12)
+    at next (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:291:5)
+    at Function.handle (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:186:3)
+    at router (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:60:12)
+    at Layer.handleRequest (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:342:13)
+    at C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:297:9
+    at processParams (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:582:12)
+    at next (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:291:5)
+    at initialize (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\passport\lib\middleware\initialize.js:98:5)
+    at Layer.handleRequest (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:342:13)
+    at C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:297:9
+    at processParams (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:582:12)
+    at next (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:291:5)
+    at urlencodedParser (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\body-parser\lib\types\urlencoded.js:68:7)
+    at Layer.handleRequest (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:342:13)
+    at C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:297:9
+    at processParams (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:582:12)
+    at next (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:291:5)
+    at jsonParser (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\body-parser\lib\types\json.js:100:7)
+    at Layer.handleRequest (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:342:13)
+    at C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:297:9
+    at processParams (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:582:12)
+    at next (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:291:5)
+    at file:///C:/Users/tiwar/Desktop/HitouchCX_Projects/Hitouch_Project/HitouchCx_Backend/node_modules/express-rate-limit/dist/index.mjs:870:7
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async file:///C:/Users/tiwar/Desktop/HitouchCX_Projects/Hitouch_Project/HitouchCx_Backend/node_modules/express-rate-limit/dist/index.mjs:753:5
+2025-12-23 02:52:48 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:22:48 +0000] "GET /api/v1/nonexistent HTTP/1.1" 404 66 "-" "-"
+2025-12-23 02:52:48 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:22:48 +0000] "POST /api/v1/auth/sign-up HTTP/1.1" 400 38 "-" "-"
+2025-12-23 02:53:24 [error]: Error: Route not found: /api/v1/agent/test-id
+    at notFoundHandler (file:///C:/Users/tiwar/Desktop/HitouchCX_Projects/Hitouch_Project/HitouchCx_Backend/src/middlewares/errorHandler.js:115:17)
+    at Layer.handleRequest (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:342:13)
+    at C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:297:9
+    at processParams (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:582:12)
+    at next (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:291:5)
+    at C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:688:15
+    at next (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:276:14)
+    at C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:688:15
+    at next (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:276:14)
+    at C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:688:15
+    at next (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:276:14)
+    at Function.handle (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:186:3)
+    at router (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:60:12)
+    at Layer.handleRequest (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:342:13)
+    at C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:297:9
+    at processParams (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:582:12)
+    at next (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:291:5)
+    at Function.handle (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:186:3)
+    at router (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:60:12)
+    at Layer.handleRequest (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:342:13)
+    at C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:297:9
+    at processParams (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:582:12)
+    at next (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:291:5)
+    at Function.handle (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:186:3)
+    at router (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:60:12)
+    at Layer.handleRequest (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:342:13)
+    at C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:297:9
+    at processParams (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:582:12)
+    at next (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:291:5)
+    at initialize (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\passport\lib\middleware\initialize.js:98:5)
+    at Layer.handleRequest (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:342:13)
+    at C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:297:9
+    at processParams (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:582:12)
+    at next (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:291:5)
+    at urlencodedParser (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\body-parser\lib\types\urlencoded.js:68:7)
+    at Layer.handleRequest (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:342:13)
+    at C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:297:9
+    at processParams (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:582:12)
+    at next (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:291:5)
+    at jsonParser (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\body-parser\lib\types\json.js:100:7)
+    at Layer.handleRequest (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:342:13)
+    at C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:297:9
+    at processParams (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:582:12)
+    at next (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:291:5)
+    at file:///C:/Users/tiwar/Desktop/HitouchCX_Projects/Hitouch_Project/HitouchCx_Backend/node_modules/express-rate-limit/dist/index.mjs:870:7
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async file:///C:/Users/tiwar/Desktop/HitouchCX_Projects/Hitouch_Project/HitouchCx_Backend/node_modules/express-rate-limit/dist/index.mjs:753:5
+2025-12-23 02:53:24 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:23:24 +0000] "GET /api/v1/agent/test-id HTTP/1.1" 404 68 "-" "-"
+2025-12-23 02:53:24 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:23:24 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:53:24 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:23:24 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:53:24 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:23:24 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:53:24 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:23:24 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:53:24 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:23:24 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:53:24 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:23:24 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:53:24 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:23:24 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:53:24 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:23:24 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:53:24 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:23:24 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:53:24 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:23:24 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:53:24 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:23:24 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:53:24 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:23:24 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:53:24 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:23:24 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:53:24 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:23:24 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:53:24 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:23:24 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:53:24 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:23:24 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:53:24 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:23:24 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:53:24 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:23:24 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:53:24 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:23:24 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:53:24 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:23:24 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:53:24 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:23:24 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:53:24 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:23:24 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:53:24 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:23:24 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:53:24 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:23:24 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:53:24 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:23:24 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:53:24 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:23:24 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:53:24 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:23:24 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:53:24 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:23:24 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:53:24 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:23:24 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:53:24 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:23:24 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:53:24 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:23:24 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:53:24 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:23:24 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:53:24 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:23:24 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:53:24 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:23:24 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:53:24 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:23:24 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:53:24 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:23:24 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:53:24 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:23:24 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:53:24 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:23:24 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:53:24 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:23:24 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:53:24 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:23:24 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:53:24 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:23:24 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:53:24 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:23:24 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:53:24 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:23:24 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:53:24 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:23:24 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:53:24 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:23:24 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:53:24 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:23:24 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:53:24 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:23:24 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:53:24 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:23:24 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:53:24 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:23:24 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:53:24 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:23:24 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:53:24 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:23:24 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:53:24 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:23:24 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:53:24 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:23:24 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:53:24 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:23:24 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:53:24 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:23:24 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:53:24 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:23:24 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:53:24 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:23:24 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:53:24 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:23:24 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:53:24 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:23:24 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:53:24 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:23:24 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:53:24 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:23:24 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:53:24 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:23:24 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:53:24 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:23:24 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:53:24 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:23:24 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:53:24 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:23:24 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:53:24 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:23:24 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:53:24 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:23:24 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:53:24 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:23:24 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:53:24 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:23:24 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:53:24 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:23:24 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:53:24 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:23:24 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:53:24 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:23:24 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:53:24 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:23:24 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:53:24 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:23:24 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:53:24 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:23:24 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:53:24 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:23:24 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:53:24 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:23:24 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:53:24 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:23:24 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:53:24 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:23:24 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:53:24 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:23:24 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:53:24 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:23:24 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:53:24 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:23:24 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:53:24 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:23:24 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:53:24 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:23:24 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:53:24 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:23:24 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:53:24 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:23:24 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:53:24 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:23:24 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:53:24 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:23:24 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:53:24 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:23:24 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:53:24 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:23:24 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:53:24 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:23:24 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:53:24 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:23:24 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:53:24 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:23:24 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:53:24 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:23:24 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:53:24 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:23:24 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:53:24 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:23:24 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:53:24 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:23:24 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:53:25 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:23:25 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:53:25 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:23:25 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:53:25 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:23:25 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:53:25 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:23:25 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:53:25 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:23:25 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:53:25 [error]: Error: Route not found: /api/v1/nonexistent
+    at notFoundHandler (file:///C:/Users/tiwar/Desktop/HitouchCX_Projects/Hitouch_Project/HitouchCx_Backend/src/middlewares/errorHandler.js:115:17)
+    at Layer.handleRequest (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:342:13)
+    at C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:297:9
+    at processParams (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:582:12)
+    at next (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:291:5)
+    at C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:688:15
+    at next (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:276:14)
+    at C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:688:15
+    at next (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:276:14)
+    at Function.handle (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:186:3)
+    at router (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:60:12)
+    at Layer.handleRequest (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:342:13)
+    at C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:297:9
+    at processParams (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:582:12)
+    at next (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:291:5)
+    at Function.handle (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:186:3)
+    at router (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:60:12)
+    at Layer.handleRequest (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:342:13)
+    at C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:297:9
+    at processParams (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:582:12)
+    at next (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:291:5)
+    at initialize (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\passport\lib\middleware\initialize.js:98:5)
+    at Layer.handleRequest (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:342:13)
+    at C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:297:9
+    at processParams (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:582:12)
+    at next (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:291:5)
+    at urlencodedParser (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\body-parser\lib\types\urlencoded.js:68:7)
+    at Layer.handleRequest (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:342:13)
+    at C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:297:9
+    at processParams (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:582:12)
+    at next (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:291:5)
+    at jsonParser (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\body-parser\lib\types\json.js:100:7)
+    at Layer.handleRequest (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:342:13)
+    at C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:297:9
+    at processParams (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:582:12)
+    at next (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:291:5)
+    at file:///C:/Users/tiwar/Desktop/HitouchCX_Projects/Hitouch_Project/HitouchCx_Backend/node_modules/express-rate-limit/dist/index.mjs:870:7
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async file:///C:/Users/tiwar/Desktop/HitouchCX_Projects/Hitouch_Project/HitouchCx_Backend/node_modules/express-rate-limit/dist/index.mjs:753:5
+2025-12-23 02:53:25 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:23:25 +0000] "GET /api/v1/nonexistent HTTP/1.1" 404 66 "-" "-"
+2025-12-23 02:53:25 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:23:25 +0000] "POST /api/v1/auth/sign-up HTTP/1.1" 400 38 "-" "-"
+2025-12-23 02:53:47 [error]: Error: Route not found: /api/v1/agent/test-id
+    at notFoundHandler (file:///C:/Users/tiwar/Desktop/HitouchCX_Projects/Hitouch_Project/HitouchCx_Backend/src/middlewares/errorHandler.js:115:17)
+    at Layer.handleRequest (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:342:13)
+    at C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:297:9
+    at processParams (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:582:12)
+    at next (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:291:5)
+    at C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:688:15
+    at next (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:276:14)
+    at C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:688:15
+    at next (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:276:14)
+    at C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:688:15
+    at next (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:276:14)
+    at Function.handle (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:186:3)
+    at router (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:60:12)
+    at Layer.handleRequest (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:342:13)
+    at C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:297:9
+    at processParams (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:582:12)
+    at next (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:291:5)
+    at Function.handle (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:186:3)
+    at router (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:60:12)
+    at Layer.handleRequest (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:342:13)
+    at C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:297:9
+    at processParams (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:582:12)
+    at next (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:291:5)
+    at Function.handle (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:186:3)
+    at router (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:60:12)
+    at Layer.handleRequest (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:342:13)
+    at C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:297:9
+    at processParams (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:582:12)
+    at next (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:291:5)
+    at initialize (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\passport\lib\middleware\initialize.js:98:5)
+    at Layer.handleRequest (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:342:13)
+    at C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:297:9
+    at processParams (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:582:12)
+    at next (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:291:5)
+    at urlencodedParser (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\body-parser\lib\types\urlencoded.js:68:7)
+    at Layer.handleRequest (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:342:13)
+    at C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:297:9
+    at processParams (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:582:12)
+    at next (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:291:5)
+    at jsonParser (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\body-parser\lib\types\json.js:100:7)
+    at Layer.handleRequest (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:342:13)
+    at C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:297:9
+    at processParams (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:582:12)
+    at next (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:291:5)
+    at file:///C:/Users/tiwar/Desktop/HitouchCX_Projects/Hitouch_Project/HitouchCx_Backend/node_modules/express-rate-limit/dist/index.mjs:870:7
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async file:///C:/Users/tiwar/Desktop/HitouchCX_Projects/Hitouch_Project/HitouchCx_Backend/node_modules/express-rate-limit/dist/index.mjs:753:5
+2025-12-23 02:53:47 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:23:47 +0000] "GET /api/v1/agent/test-id HTTP/1.1" 404 68 "-" "-"
+2025-12-23 02:53:47 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:23:47 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:53:47 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:23:47 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:53:47 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:23:47 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:53:47 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:23:47 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:53:47 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:23:47 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:53:47 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:23:47 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:53:47 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:23:47 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:53:47 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:23:47 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:53:47 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:23:47 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:53:47 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:23:47 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:53:47 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:23:47 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:53:47 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:23:47 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:53:47 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:23:47 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:53:47 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:23:47 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:53:47 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:23:47 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:53:47 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:23:47 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:53:47 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:23:47 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:53:47 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:23:47 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:53:47 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:23:47 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:53:47 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:23:47 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:53:47 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:23:47 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:53:47 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:23:47 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:53:47 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:23:47 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:53:47 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:23:47 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:53:47 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:23:47 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:53:47 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:23:47 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:53:47 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:23:47 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:53:47 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:23:47 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:53:47 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:23:47 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:53:47 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:23:47 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:53:47 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:23:47 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:53:47 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:23:47 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:53:47 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:23:47 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:53:47 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:23:47 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:53:47 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:23:47 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:53:47 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:23:47 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:53:47 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:23:47 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:53:47 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:23:47 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:53:47 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:23:47 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:53:47 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:23:47 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:53:47 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:23:47 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:53:47 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:23:47 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:53:47 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:23:47 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:53:47 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:23:47 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:53:47 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:23:47 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:53:47 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:23:47 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:53:47 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:23:47 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:53:47 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:23:47 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:53:47 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:23:47 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:53:47 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:23:47 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:53:47 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:23:47 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:53:47 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:23:47 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:53:47 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:23:47 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:53:47 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:23:47 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:53:47 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:23:47 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:53:47 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:23:47 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:53:47 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:23:47 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:53:47 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:23:47 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:53:47 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:23:47 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:53:47 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:23:47 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:53:47 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:23:47 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:53:47 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:23:47 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:53:47 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:23:47 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:53:47 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:23:47 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:53:47 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:23:47 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:53:47 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:23:47 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:53:47 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:23:47 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:53:47 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:23:47 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:53:47 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:23:47 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:53:47 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:23:47 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:53:47 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:23:47 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:53:47 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:23:47 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:53:47 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:23:47 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:53:47 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:23:47 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:53:47 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:23:47 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:53:47 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:23:47 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:53:47 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:23:47 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:53:47 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:23:47 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:53:47 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:23:47 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:53:47 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:23:47 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:53:47 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:23:47 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:53:47 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:23:47 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:53:47 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:23:47 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:53:47 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:23:47 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:53:47 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:23:47 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:53:47 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:23:47 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:53:47 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:23:47 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:53:47 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:23:47 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:53:47 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:23:47 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:53:47 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:23:47 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:53:47 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:23:47 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:53:47 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:23:47 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:53:47 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:23:47 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:53:47 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:23:47 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:53:47 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:23:47 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:53:47 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:23:47 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:53:47 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:23:47 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:53:47 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:23:47 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:53:47 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:23:47 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:53:47 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:23:47 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:53:47 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:23:47 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:53:47 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:23:47 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:53:47 [error]: Error: Route not found: /api/v1/nonexistent
+    at notFoundHandler (file:///C:/Users/tiwar/Desktop/HitouchCX_Projects/Hitouch_Project/HitouchCx_Backend/src/middlewares/errorHandler.js:115:17)
+    at Layer.handleRequest (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:342:13)
+    at C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:297:9
+    at processParams (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:582:12)
+    at next (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:291:5)
+    at C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:688:15
+    at next (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:276:14)
+    at C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:688:15
+    at next (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:276:14)
+    at Function.handle (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:186:3)
+    at router (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:60:12)
+    at Layer.handleRequest (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:342:13)
+    at C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:297:9
+    at processParams (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:582:12)
+    at next (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:291:5)
+    at Function.handle (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:186:3)
+    at router (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:60:12)
+    at Layer.handleRequest (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:342:13)
+    at C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:297:9
+    at processParams (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:582:12)
+    at next (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:291:5)
+    at initialize (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\passport\lib\middleware\initialize.js:98:5)
+    at Layer.handleRequest (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:342:13)
+    at C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:297:9
+    at processParams (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:582:12)
+    at next (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:291:5)
+    at urlencodedParser (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\body-parser\lib\types\urlencoded.js:68:7)
+    at Layer.handleRequest (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:342:13)
+    at C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:297:9
+    at processParams (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:582:12)
+    at next (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:291:5)
+    at jsonParser (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\body-parser\lib\types\json.js:100:7)
+    at Layer.handleRequest (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:342:13)
+    at C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:297:9
+    at processParams (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:582:12)
+    at next (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:291:5)
+    at file:///C:/Users/tiwar/Desktop/HitouchCX_Projects/Hitouch_Project/HitouchCx_Backend/node_modules/express-rate-limit/dist/index.mjs:870:7
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async file:///C:/Users/tiwar/Desktop/HitouchCX_Projects/Hitouch_Project/HitouchCx_Backend/node_modules/express-rate-limit/dist/index.mjs:753:5
+2025-12-23 02:53:47 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:23:47 +0000] "GET /api/v1/nonexistent HTTP/1.1" 404 66 "-" "-"
+2025-12-23 02:53:47 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:23:47 +0000] "POST /api/v1/auth/sign-up HTTP/1.1" 400 38 "-" "-"
+2025-12-23 02:54:01 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:24:01 +0000] "GET /api/v1/cron/health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:54:01 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:24:01 +0000] "POST /api/v1/cron/email-retry HTTP/1.1" 401 81 "-" "-"
+2025-12-23 02:54:01 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:24:01 +0000] "POST /api/v1/cron/email-retry HTTP/1.1" 401 81 "-" "-"
+2025-12-23 02:54:02 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:24:02 +0000] "POST /api/v1/cron/email-retry HTTP/1.1" 200 105 "-" "-"
+2025-12-23 02:54:18 [error]: Error: Route not found: /api/v1/agent/test-id
+    at notFoundHandler (file:///C:/Users/tiwar/Desktop/HitouchCX_Projects/Hitouch_Project/HitouchCx_Backend/src/middlewares/errorHandler.js:115:17)
+    at Layer.handleRequest (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:342:13)
+    at C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:297:9
+    at processParams (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:582:12)
+    at next (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:291:5)
+    at C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:688:15
+    at next (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:276:14)
+    at C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:688:15
+    at next (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:276:14)
+    at C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:688:15
+    at next (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:276:14)
+    at Function.handle (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:186:3)
+    at router (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:60:12)
+    at Layer.handleRequest (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:342:13)
+    at C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:297:9
+    at processParams (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:582:12)
+    at next (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:291:5)
+    at Function.handle (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:186:3)
+    at router (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:60:12)
+    at Layer.handleRequest (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:342:13)
+    at C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:297:9
+    at processParams (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:582:12)
+    at next (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:291:5)
+    at Function.handle (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:186:3)
+    at router (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:60:12)
+    at Layer.handleRequest (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:342:13)
+    at C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:297:9
+    at processParams (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:582:12)
+    at next (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:291:5)
+    at initialize (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\passport\lib\middleware\initialize.js:98:5)
+    at Layer.handleRequest (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:342:13)
+    at C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:297:9
+    at processParams (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:582:12)
+    at next (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:291:5)
+    at urlencodedParser (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\body-parser\lib\types\urlencoded.js:68:7)
+    at Layer.handleRequest (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:342:13)
+    at C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:297:9
+    at processParams (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:582:12)
+    at next (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:291:5)
+    at jsonParser (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\body-parser\lib\types\json.js:100:7)
+    at Layer.handleRequest (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:342:13)
+    at C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:297:9
+    at processParams (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:582:12)
+    at next (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:291:5)
+    at file:///C:/Users/tiwar/Desktop/HitouchCX_Projects/Hitouch_Project/HitouchCx_Backend/node_modules/express-rate-limit/dist/index.mjs:870:7
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async file:///C:/Users/tiwar/Desktop/HitouchCX_Projects/Hitouch_Project/HitouchCx_Backend/node_modules/express-rate-limit/dist/index.mjs:753:5
+2025-12-23 02:54:18 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:24:18 +0000] "GET /api/v1/agent/test-id HTTP/1.1" 404 68 "-" "-"
+2025-12-23 02:54:18 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:24:18 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:54:18 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:24:18 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:54:18 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:24:18 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:54:18 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:24:18 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:54:18 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:24:18 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:54:18 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:24:18 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:54:18 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:24:18 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:54:18 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:24:18 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:54:18 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:24:18 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:54:18 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:24:18 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:54:18 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:24:18 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:54:18 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:24:18 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:54:18 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:24:18 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:54:18 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:24:18 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:54:18 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:24:18 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:54:18 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:24:18 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:54:18 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:24:18 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:54:18 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:24:18 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:54:18 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:24:18 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:54:18 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:24:18 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:54:18 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:24:18 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:54:18 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:24:18 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:54:18 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:24:18 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:54:18 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:24:18 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:54:18 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:24:18 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:54:18 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:24:18 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:54:18 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:24:18 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:54:18 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:24:18 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:54:18 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:24:18 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:54:18 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:24:18 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:54:18 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:24:18 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:54:18 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:24:18 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:54:18 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:24:18 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:54:18 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:24:18 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:54:18 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:24:18 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:54:18 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:24:18 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:54:18 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:24:18 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:54:18 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:24:18 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:54:18 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:24:18 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:54:18 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:24:18 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:54:18 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:24:18 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:54:18 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:24:18 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:54:18 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:24:18 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:54:18 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:24:18 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:54:18 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:24:18 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:54:18 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:24:18 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:54:18 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:24:18 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:54:18 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:24:18 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:54:18 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:24:18 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:54:18 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:24:18 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:54:18 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:24:18 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:54:18 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:24:18 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:54:18 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:24:18 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:54:18 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:24:18 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:54:18 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:24:18 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:54:18 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:24:18 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:54:18 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:24:18 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:54:18 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:24:18 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:54:18 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:24:18 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:54:18 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:24:18 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:54:18 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:24:18 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:54:18 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:24:18 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:54:18 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:24:18 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:54:18 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:24:18 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:54:18 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:24:18 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:54:18 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:24:18 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:54:18 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:24:18 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:54:18 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:24:18 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:54:18 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:24:18 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:54:18 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:24:18 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:54:18 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:24:18 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:54:18 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:24:18 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:54:18 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:24:18 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:54:18 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:24:18 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:54:18 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:24:18 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:54:18 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:24:18 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:54:18 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:24:18 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:54:18 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:24:18 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:54:18 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:24:18 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:54:18 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:24:18 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:54:18 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:24:18 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:54:18 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:24:18 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:54:18 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:24:18 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:54:18 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:24:18 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:54:18 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:24:18 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:54:18 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:24:18 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:54:18 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:24:18 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:54:18 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:24:18 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:54:18 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:24:18 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:54:18 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:24:18 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:54:18 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:24:18 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:54:18 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:24:18 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:54:18 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:24:18 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:54:18 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:24:18 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:54:18 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:24:18 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:54:18 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:24:18 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:54:18 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:24:18 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:54:18 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:24:18 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:54:18 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:24:18 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:54:18 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:24:18 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:54:18 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:24:18 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:54:18 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:24:18 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:54:18 [error]: Error: Route not found: /api/v1/nonexistent
+    at notFoundHandler (file:///C:/Users/tiwar/Desktop/HitouchCX_Projects/Hitouch_Project/HitouchCx_Backend/src/middlewares/errorHandler.js:115:17)
+    at Layer.handleRequest (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:342:13)
+    at C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:297:9
+    at processParams (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:582:12)
+    at next (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:291:5)
+    at C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:688:15
+    at next (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:276:14)
+    at C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:688:15
+    at next (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:276:14)
+    at Function.handle (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:186:3)
+    at router (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:60:12)
+    at Layer.handleRequest (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:342:13)
+    at C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:297:9
+    at processParams (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:582:12)
+    at next (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:291:5)
+    at Function.handle (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:186:3)
+    at router (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:60:12)
+    at Layer.handleRequest (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:342:13)
+    at C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:297:9
+    at processParams (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:582:12)
+    at next (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:291:5)
+    at initialize (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\passport\lib\middleware\initialize.js:98:5)
+    at Layer.handleRequest (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:342:13)
+    at C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:297:9
+    at processParams (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:582:12)
+    at next (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:291:5)
+    at urlencodedParser (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\body-parser\lib\types\urlencoded.js:68:7)
+    at Layer.handleRequest (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:342:13)
+    at C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:297:9
+    at processParams (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:582:12)
+    at next (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:291:5)
+    at jsonParser (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\body-parser\lib\types\json.js:100:7)
+    at Layer.handleRequest (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:342:13)
+    at C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:297:9
+    at processParams (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:582:12)
+    at next (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:291:5)
+    at file:///C:/Users/tiwar/Desktop/HitouchCX_Projects/Hitouch_Project/HitouchCx_Backend/node_modules/express-rate-limit/dist/index.mjs:870:7
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async file:///C:/Users/tiwar/Desktop/HitouchCX_Projects/Hitouch_Project/HitouchCx_Backend/node_modules/express-rate-limit/dist/index.mjs:753:5
+2025-12-23 02:54:18 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:24:18 +0000] "GET /api/v1/nonexistent HTTP/1.1" 404 66 "-" "-"
+2025-12-23 02:54:18 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:24:18 +0000] "POST /api/v1/auth/sign-up HTTP/1.1" 400 38 "-" "-"
+2025-12-23 02:54:18 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:24:18 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:54:20 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:24:20 +0000] "POST /api/v1/otp/request-otp HTTP/1.1" 500 44 "-" "-"
+2025-12-23 02:54:21 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:24:21 +0000] "POST /api/v1/otp/request-otp HTTP/1.1" 400 40 "-" "-"
+2025-12-23 02:54:21 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:24:21 +0000] "POST /api/v1/auth/sign-up HTTP/1.1" 404 45 "-" "-"
+2025-12-23 02:54:21 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:24:21 +0000] "POST /api/v1/auth/sign-up HTTP/1.1" 400 41 "-" "-"
+2025-12-23 02:54:21 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:24:21 +0000] "POST /api/v1/auth/sign-up HTTP/1.1" 400 34 "-" "-"
+2025-12-23 02:54:21 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:24:21 +0000] "POST /api/v1/auth/log-in HTTP/1.1" 400 28 "-" "-"
+2025-12-23 02:54:21 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:24:21 +0000] "POST /api/v1/auth/log-in HTTP/1.1" 404 26 "-" "-"
+2025-12-23 02:54:21 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:24:21 +0000] "POST /api/v1/auth/refresh-token HTTP/1.1" 400 32 "-" "-"
+2025-12-23 02:54:21 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:24:21 +0000] "POST /api/v1/auth/sign-up HTTP/1.1" 400 38 "-" "-"
+2025-12-23 02:54:21 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:24:21 +0000] "POST /api/v1/auth/log-in HTTP/1.1" 400 28 "-" "-"
+2025-12-23 02:54:21 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:24:21 +0000] "POST /api/v1/auth/refresh-token HTTP/1.1" 400 32 "-" "-"
+2025-12-23 02:54:21 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:24:21 +0000] "POST /api/v1/otp/request-otp HTTP/1.1" 400 43 "-" "-"
+2025-12-23 02:54:21 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:24:21 +0000] "GET /api/v1/cron/health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:54:21 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:24:21 +0000] "POST /api/v1/cron/email-retry HTTP/1.1" 401 81 "-" "-"
+2025-12-23 02:54:21 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:24:21 +0000] "POST /api/v1/cron/email-retry HTTP/1.1" 401 81 "-" "-"
+2025-12-23 02:54:21 [error]: Error [ERR_HTTP_HEADERS_SENT]: Cannot set headers after they are sent to the client
+    at ServerResponse.setHeader (node:_http_outgoing:700:11)
+    at ServerResponse.header (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\express\lib\response.js:684:10)
+    at ServerResponse.send (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\express\lib\response.js:161:12)
+    at ServerResponse.json (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\express\lib\response.js:250:15)
+    at requestOtp (file:///C:/Users/tiwar/Desktop/HitouchCX_Projects/Hitouch_Project/HitouchCx_Backend/src/controllers/v1/auth/otp.controller.js:103:21)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+2025-12-23 02:54:22 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:24:22 +0000] "POST /api/v1/cron/email-retry HTTP/1.1" 200 105 "-" "-"
+2025-12-23 02:54:26 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:24:26 +0000] "POST /api/v1/auth/sign-up HTTP/1.1" 404 45 "-" "-"
+2025-12-23 02:54:50 [error]: Error: Route not found: /api/v1/agent/test-id
+    at notFoundHandler (file:///C:/Users/tiwar/Desktop/HitouchCX_Projects/Hitouch_Project/HitouchCx_Backend/src/middlewares/errorHandler.js:115:17)
+    at Layer.handleRequest (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:342:13)
+    at C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:297:9
+    at processParams (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:582:12)
+    at next (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:291:5)
+    at C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:688:15
+    at next (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:276:14)
+    at C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:688:15
+    at next (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:276:14)
+    at C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:688:15
+    at next (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:276:14)
+    at Function.handle (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:186:3)
+    at router (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:60:12)
+    at Layer.handleRequest (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:342:13)
+    at C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:297:9
+    at processParams (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:582:12)
+    at next (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:291:5)
+    at Function.handle (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:186:3)
+    at router (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:60:12)
+    at Layer.handleRequest (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:342:13)
+    at C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:297:9
+    at processParams (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:582:12)
+    at next (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:291:5)
+    at Function.handle (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:186:3)
+    at router (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:60:12)
+    at Layer.handleRequest (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:342:13)
+    at C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:297:9
+    at processParams (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:582:12)
+    at next (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:291:5)
+    at initialize (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\passport\lib\middleware\initialize.js:98:5)
+    at Layer.handleRequest (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:342:13)
+    at C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:297:9
+    at processParams (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:582:12)
+    at next (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:291:5)
+    at urlencodedParser (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\body-parser\lib\types\urlencoded.js:68:7)
+    at Layer.handleRequest (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:342:13)
+    at C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:297:9
+    at processParams (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:582:12)
+    at next (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:291:5)
+    at jsonParser (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\body-parser\lib\types\json.js:100:7)
+    at Layer.handleRequest (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:342:13)
+    at C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:297:9
+    at processParams (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:582:12)
+    at next (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:291:5)
+    at file:///C:/Users/tiwar/Desktop/HitouchCX_Projects/Hitouch_Project/HitouchCx_Backend/node_modules/express-rate-limit/dist/index.mjs:870:7
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async file:///C:/Users/tiwar/Desktop/HitouchCX_Projects/Hitouch_Project/HitouchCx_Backend/node_modules/express-rate-limit/dist/index.mjs:753:5
+2025-12-23 02:54:50 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:24:50 +0000] "GET /api/v1/agent/test-id HTTP/1.1" 404 68 "-" "-"
+2025-12-23 02:54:50 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:24:50 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:54:50 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:24:50 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:54:50 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:24:50 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:54:50 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:24:50 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:54:50 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:24:50 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:54:50 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:24:50 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:54:50 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:24:50 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:54:50 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:24:50 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:54:50 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:24:50 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:54:50 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:24:50 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:54:50 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:24:50 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:54:50 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:24:50 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:54:50 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:24:50 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:54:50 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:24:50 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:54:50 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:24:50 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:54:50 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:24:50 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:54:50 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:24:50 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:54:50 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:24:50 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:54:50 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:24:50 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:54:50 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:24:50 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:54:50 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:24:50 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:54:50 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:24:50 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:54:50 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:24:50 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:54:50 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:24:50 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:54:50 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:24:50 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:54:50 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:24:50 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:54:50 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:24:50 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:54:50 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:24:50 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:54:50 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:24:50 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:54:50 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:24:50 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:54:50 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:24:50 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:54:50 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:24:50 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:54:50 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:24:50 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:54:50 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:24:50 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:54:50 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:24:50 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:54:50 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:24:50 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:54:50 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:24:50 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:54:50 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:24:50 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:54:50 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:24:50 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:54:50 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:24:50 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:54:50 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:24:50 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:54:50 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:24:50 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:54:50 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:24:50 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:54:50 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:24:50 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:54:50 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:24:50 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:54:50 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:24:50 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:54:50 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:24:50 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:54:50 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:24:50 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:54:50 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:24:50 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:54:50 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:24:50 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:54:50 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:24:50 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:54:50 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:24:50 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:54:50 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:24:50 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:54:50 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:24:50 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:54:50 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:24:50 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:54:50 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:24:50 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:54:50 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:24:50 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:54:50 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:24:50 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:54:50 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:24:50 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:54:50 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:24:50 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:54:50 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:24:50 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:54:50 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:24:50 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:54:50 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:24:50 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:54:50 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:24:50 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:54:50 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:24:50 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:54:50 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:24:50 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:54:50 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:24:50 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:54:50 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:24:50 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:54:50 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:24:50 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:54:50 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:24:50 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:54:50 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:24:50 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:54:50 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:24:50 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:54:50 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:24:50 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:54:50 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:24:50 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:54:50 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:24:50 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:54:50 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:24:50 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:54:50 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:24:50 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:54:50 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:24:50 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:54:50 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:24:50 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:54:50 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:24:50 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:54:50 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:24:50 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:54:50 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:24:50 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:54:50 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:24:50 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:54:50 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:24:50 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:54:50 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:24:50 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:54:50 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:24:50 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:54:50 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:24:50 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:54:50 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:24:50 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:54:50 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:24:50 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:54:50 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:24:50 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:54:50 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:24:50 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:54:50 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:24:50 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:54:50 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:24:50 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:54:50 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:24:50 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:54:50 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:24:50 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:54:50 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:24:50 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:54:50 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:24:50 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:54:50 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:24:50 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:54:50 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:24:50 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:54:50 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:24:50 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:54:50 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:24:50 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:54:50 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:24:50 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:54:51 [error]: Error: Route not found: /api/v1/nonexistent
+    at notFoundHandler (file:///C:/Users/tiwar/Desktop/HitouchCX_Projects/Hitouch_Project/HitouchCx_Backend/src/middlewares/errorHandler.js:115:17)
+    at Layer.handleRequest (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:342:13)
+    at C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:297:9
+    at processParams (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:582:12)
+    at next (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:291:5)
+    at C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:688:15
+    at next (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:276:14)
+    at C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:688:15
+    at next (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:276:14)
+    at Function.handle (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:186:3)
+    at router (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:60:12)
+    at Layer.handleRequest (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:342:13)
+    at C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:297:9
+    at processParams (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:582:12)
+    at next (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:291:5)
+    at Function.handle (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:186:3)
+    at router (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:60:12)
+    at Layer.handleRequest (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:342:13)
+    at C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:297:9
+    at processParams (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:582:12)
+    at next (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:291:5)
+    at initialize (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\passport\lib\middleware\initialize.js:98:5)
+    at Layer.handleRequest (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:342:13)
+    at C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:297:9
+    at processParams (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:582:12)
+    at next (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:291:5)
+    at urlencodedParser (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\body-parser\lib\types\urlencoded.js:68:7)
+    at Layer.handleRequest (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:342:13)
+    at C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:297:9
+    at processParams (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:582:12)
+    at next (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:291:5)
+    at jsonParser (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\body-parser\lib\types\json.js:100:7)
+    at Layer.handleRequest (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\lib\layer.js:152:17)
+    at trimPrefix (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:342:13)
+    at C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:297:9
+    at processParams (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:582:12)
+    at next (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\router\index.js:291:5)
+    at file:///C:/Users/tiwar/Desktop/HitouchCX_Projects/Hitouch_Project/HitouchCx_Backend/node_modules/express-rate-limit/dist/index.mjs:870:7
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async file:///C:/Users/tiwar/Desktop/HitouchCX_Projects/Hitouch_Project/HitouchCx_Backend/node_modules/express-rate-limit/dist/index.mjs:753:5
+2025-12-23 02:54:51 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:24:51 +0000] "GET /api/v1/nonexistent HTTP/1.1" 404 66 "-" "-"
+2025-12-23 02:54:51 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:24:51 +0000] "POST /api/v1/auth/sign-up HTTP/1.1" 400 38 "-" "-"
+2025-12-23 02:54:51 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:24:51 +0000] "GET /health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:54:52 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:24:52 +0000] "POST /api/v1/otp/request-otp HTTP/1.1" 500 44 "-" "-"
+2025-12-23 02:54:53 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:24:53 +0000] "POST /api/v1/otp/request-otp HTTP/1.1" 400 40 "-" "-"
+2025-12-23 02:54:53 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:24:53 +0000] "POST /api/v1/auth/sign-up HTTP/1.1" 404 45 "-" "-"
+2025-12-23 02:54:53 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:24:53 +0000] "POST /api/v1/auth/sign-up HTTP/1.1" 400 41 "-" "-"
+2025-12-23 02:54:53 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:24:53 +0000] "POST /api/v1/auth/sign-up HTTP/1.1" 400 34 "-" "-"
+2025-12-23 02:54:53 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:24:53 +0000] "POST /api/v1/auth/log-in HTTP/1.1" 400 28 "-" "-"
+2025-12-23 02:54:53 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:24:53 +0000] "POST /api/v1/auth/log-in HTTP/1.1" 404 26 "-" "-"
+2025-12-23 02:54:53 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:24:53 +0000] "POST /api/v1/auth/refresh-token HTTP/1.1" 400 32 "-" "-"
+2025-12-23 02:54:53 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:24:53 +0000] "POST /api/v1/auth/sign-up HTTP/1.1" 400 38 "-" "-"
+2025-12-23 02:54:53 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:24:53 +0000] "POST /api/v1/auth/log-in HTTP/1.1" 400 28 "-" "-"
+2025-12-23 02:54:53 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:24:53 +0000] "POST /api/v1/auth/refresh-token HTTP/1.1" 400 32 "-" "-"
+2025-12-23 02:54:53 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:24:53 +0000] "POST /api/v1/otp/request-otp HTTP/1.1" 400 43 "-" "-"
+2025-12-23 02:54:53 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:24:53 +0000] "GET /api/v1/cron/health HTTP/1.1" 200 113 "-" "-"
+2025-12-23 02:54:53 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:24:53 +0000] "POST /api/v1/cron/email-retry HTTP/1.1" 401 81 "-" "-"
+2025-12-23 02:54:53 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:24:53 +0000] "POST /api/v1/cron/email-retry HTTP/1.1" 401 81 "-" "-"
+2025-12-23 02:54:53 [error]: Error [ERR_HTTP_HEADERS_SENT]: Cannot set headers after they are sent to the client
+    at ServerResponse.setHeader (node:_http_outgoing:700:11)
+    at ServerResponse.header (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\express\lib\response.js:684:10)
+    at ServerResponse.send (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\express\lib\response.js:161:12)
+    at ServerResponse.json (C:\Users\tiwar\Desktop\HitouchCX_Projects\Hitouch_Project\HitouchCx_Backend\node_modules\express\lib\response.js:250:15)
+    at requestOtp (file:///C:/Users/tiwar/Desktop/HitouchCX_Projects/Hitouch_Project/HitouchCx_Backend/src/controllers/v1/auth/otp.controller.js:103:21)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+2025-12-23 02:54:54 [info]: ::ffff:127.0.0.1 - - [22/Dec/2025:21:24:54 +0000] "POST /api/v1/cron/email-retry HTTP/1.1" 200 105 "-" "-"

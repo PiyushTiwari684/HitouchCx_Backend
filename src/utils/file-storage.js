@@ -1,93 +1,102 @@
-import fs from 'fs';
-import path from 'path';
-import { fileURLToPath } from 'url';
-import { generateFilePath } from './kyc-helpers.js';
-
-// Get __dirname equivalent in ES modules
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
-
-// Base upload directory (relative to project root)
-const UPLOAD_BASE_DIR = path.join(__dirname, '..', '..', 'uploads', 'kyc');
+import cloudinary from '../config/cloudinary.config.js';
 
 /**
- * Ensure directory exists, create if it doesn't
+ * Save PDF document to Cloudinary
  *
- * @param {string} dirPath - Directory path to ensure
- * @private
+ * @param {string} base64Content - Base64 encoded PDF content
+ * @param {string} userId - User ID for file organization
+ * @param {string} documentType - Type of document (aadhaar, pan, etc.)
+ * @returns {Promise<string>} Cloudinary URL of uploaded file
  */
-const ensureDirectoryExists = (dirPath) => {
-  if (!fs.existsSync(dirPath)) {
-    fs.mkdirSync(dirPath, { recursive: true });
-  }
-};
-
-
 export const savePdfDocument = async (base64Content, userId, documentType) => {
   try {
-    // Generate file path
-    const relativePath = generateFilePath(userId, documentType, 'pdf');
-    const absolutePath = path.join(__dirname, '..', '..', relativePath);
+    // Generate unique file identifier
+    const timestamp = Date.now();
+    const publicId = `hitouchcx/kyc/${documentType}/${userId}_${documentType}_${timestamp}`;
 
-    // Ensure directory exists
-    const dirPath = path.dirname(absolutePath);
-    ensureDirectoryExists(dirPath);
+    // Upload to Cloudinary
+    const result = await cloudinary.uploader.upload(
+      `data:application/pdf;base64,${base64Content}`,
+      {
+        public_id: publicId,
+        resource_type: 'raw',
+        folder: `hitouchcx/kyc/${documentType}`,
+      }
+    );
 
-    // Convert base64 to buffer and save
-    const buffer = Buffer.from(base64Content, 'base64');
-    fs.writeFileSync(absolutePath, buffer);
-
-    return relativePath;
+    console.log(`✅ PDF uploaded to Cloudinary: ${result.secure_url}`);
+    return result.secure_url;
   } catch (error) {
     console.error(`Error saving PDF for ${documentType}:`, error);
     throw new Error(`Failed to save PDF document: ${error.message}`);
   }
 };
 
-
+/**
+ * Save XML document to Cloudinary
+ *
+ * @param {string} xmlContent - XML content as string
+ * @param {string} userId - User ID for file organization
+ * @returns {Promise<string>} Cloudinary URL of uploaded file
+ */
 export const saveXmlDocument = async (xmlContent, userId) => {
   try {
-    // Generate file path
-    const relativePath = generateFilePath(userId, 'aadhaar', 'xml');
-    const absolutePath = path.join(__dirname, '..', '..', relativePath);
+    // Convert XML content to base64
+    const base64Content = Buffer.from(xmlContent, 'utf8').toString('base64');
+    const timestamp = Date.now();
+    const publicId = `hitouchcx/kyc/aadhaar/${userId}_aadhaar_${timestamp}`;
 
-    // Ensure directory exists
-    const dirPath = path.dirname(absolutePath);
-    ensureDirectoryExists(dirPath);
+    // Upload to Cloudinary
+    const result = await cloudinary.uploader.upload(
+      `data:application/xml;base64,${base64Content}`,
+      {
+        public_id: publicId,
+        resource_type: 'raw',
+        folder: 'hitouchcx/kyc/aadhaar',
+      }
+    );
 
-    // Save XML content
-    fs.writeFileSync(absolutePath, xmlContent, 'utf8');
-
-    return relativePath;
+    console.log(`✅ XML uploaded to Cloudinary: ${result.secure_url}`);
+    return result.secure_url;
   } catch (error) {
     console.error('Error saving XML document:', error);
     throw new Error(`Failed to save XML document: ${error.message}`);
   }
 };
 
-
+/**
+ * Save photo to Cloudinary
+ *
+ * @param {string} base64Photo - Base64 encoded photo
+ * @param {string} userId - User ID for file organization
+ * @returns {Promise<string>} Cloudinary URL of uploaded photo
+ */
 export const savePhoto = async (base64Photo, userId) => {
   try {
-    // Generate file path (use 'photo' as type for clearer naming)
     const timestamp = Date.now();
-    const filename = `${userId}_photo_${timestamp}.jpg`;
-    const relativePath = `uploads/kyc/aadhaar/${filename}`;
-    const absolutePath = path.join(__dirname, '..', '..', relativePath);
+    const publicId = `hitouchcx/kyc/photos/${userId}_photo_${timestamp}`;
 
-    // Ensure directory exists
-    const dirPath = path.dirname(absolutePath);
-    ensureDirectoryExists(dirPath);
+    // Upload to Cloudinary
+    const result = await cloudinary.uploader.upload(
+      `data:image/jpeg;base64,${base64Photo}`,
+      {
+        public_id: publicId,
+        folder: 'hitouchcx/kyc/photos',
+        transformation: [
+          { width: 1000, height: 1000, crop: 'limit' },
+          { quality: 'auto' },
+        ],
+      }
+    );
 
-    // Convert base64 to buffer and save
-    const buffer = Buffer.from(base64Photo, 'base64');
-    fs.writeFileSync(absolutePath, buffer);
-
-    return relativePath;
+    console.log(`✅ Photo uploaded to Cloudinary: ${result.secure_url}`);
+    return result.secure_url;
   } catch (error) {
     console.error('Error saving photo:', error);
     throw new Error(`Failed to save photo: ${error.message}`);
   }
 };
+
 
 export const saveDocumentSet = async (documentData, userId, documentType, photoBase64 = null) => {
   const savedFiles = {};
@@ -122,38 +131,58 @@ export const saveDocumentSet = async (documentData, userId, documentType, photoB
   }
 };
 
-
-export const deleteFile = async (relativePath) => {
+/**
+ * Delete file from Cloudinary
+ *
+ * @param {string} cloudinaryUrl - Full Cloudinary URL or public ID
+ * @returns {Promise<boolean>} True if deleted successfully
+ */
+export const deleteFile = async (cloudinaryUrl) => {
   try {
-    const absolutePath = path.join(__dirname, '..', '..', relativePath);
+    // Extract public_id from Cloudinary URL
+    // Example: https://res.cloudinary.com/cloud/raw/upload/v123/hitouchcx/kyc/pan/file.pdf
+    // We need: hitouchcx/kyc/pan/file
 
-    if (fs.existsSync(absolutePath)) {
-      fs.unlinkSync(absolutePath);
-      return true;
+    let publicId;
+    if (cloudinaryUrl.includes('cloudinary.com')) {
+      const urlParts = cloudinaryUrl.split('/');
+      const uploadIndex = urlParts.findIndex(part => part === 'upload');
+      if (uploadIndex !== -1) {
+        // Get everything after 'upload/v{version}/'
+        const pathAfterUpload = urlParts.slice(uploadIndex + 2).join('/');
+        // Remove file extension
+        publicId = pathAfterUpload.replace(/\.[^/.]+$/, '');
+      }
+    } else {
+      // Assume it's already a public_id
+      publicId = cloudinaryUrl;
     }
 
-    return false;
+    if (!publicId) {
+      console.error('Could not extract public_id from URL:', cloudinaryUrl);
+      return false;
+    }
+
+    // Determine resource type based on public_id
+    const resourceType = publicId.includes('/kyc/') ? 'raw' : 'image';
+
+    const result = await cloudinary.uploader.destroy(publicId, {
+      resource_type: resourceType,
+    });
+
+    console.log(`🗑️  File deletion result:`, result);
+    return result.result === 'ok';
   } catch (error) {
-    console.error('Error deleting file:', error);
+    console.error('Error deleting file from Cloudinary:', error);
     return false;
   }
 };
 
 /**
- * Initialize upload directories
- * Creates the required folder structure if it doesn't exist
- *
- * Should be called on application startup
+ * Initialize upload directories - NOT NEEDED FOR CLOUDINARY
+ * This function is kept for backward compatibility but does nothing
+ * since we're using cloud storage
  */
 export const initializeUploadDirectories = () => {
-  const directories = [
-    path.join(UPLOAD_BASE_DIR, 'aadhaar'),
-    path.join(UPLOAD_BASE_DIR, 'pan'),
-  ];
-
-  directories.forEach(dir => {
-    ensureDirectoryExists(dir);
-  });
-
-  console.log('✓ KYC upload directories initialized');
+  console.log('✅ Using Cloudinary for file storage - no local directories needed');
 };

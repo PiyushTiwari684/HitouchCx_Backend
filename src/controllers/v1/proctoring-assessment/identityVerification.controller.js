@@ -11,22 +11,49 @@ import { checkMatch } from "../../../utils/stringSimilarity.js";
 import fs from "fs";
 import path from "path";
 import crypto from "crypto";
+import axios from "axios";
 import { SessionStatus } from "@prisma/client";
+import cloudinary from "../../../config/cloudinary.config.js";
+
+/**
+ * Download file from Cloudinary URL to temporary location
+ */
+async function downloadFromCloudinary(cloudinaryUrl) {
+  try {
+    console.log('📥 Downloading from Cloudinary:', cloudinaryUrl);
+
+    const response = await axios.get(cloudinaryUrl, {
+      responseType: 'arraybuffer'
+    });
+
+    const buffer = Buffer.from(response.data);
+    const tempFileName = `temp-${Date.now()}-${Math.random().toString(36).substring(7)}`;
+    const tempPath = path.join('/tmp', tempFileName);
+
+    fs.writeFileSync(tempPath, buffer);
+    console.log('✅ File downloaded to temp:', tempPath);
+
+    return { path: tempPath, buffer };
+  } catch (error) {
+    console.error('❌ Error downloading from Cloudinary:', error.message);
+    throw new Error(`Failed to download file: ${error.message}`);
+  }
+}
 
 // ============================================================
 // FACE CAPTURE ENDPOINT
 // ============================================================
 
 export const uploadFaceCapture = asyncHandler(async (req, res) => {
-  const { attemptId } = req.params; // ✅ Extract attemptId from URL params FIRST
-  const { faceDescriptor } = req.body; // NEW: Face descriptor array from frontend
+  const { attemptId } = req.params;
+  const { faceDescriptor } = req.body;
 
-  // 1. Validate required fields
+  // Validate required fields
   if (!attemptId) {
     return sendError(res, "Attempt ID is required", 400);
   }
 
-  // 2. Get candidateId from attemptId (candidate was created in startAssessment)
+  // Get candidateId from attemptId
   const attempt = await prisma.candidateAssessment.findUnique({
     where: { id: attemptId },
     select: { candidateId: true },
@@ -38,20 +65,18 @@ export const uploadFaceCapture = asyncHandler(async (req, res) => {
 
   const candidateId = attempt.candidateId;
 
-  // 2. Check if file was uploaded
+  // Check if file was uploaded
   if (!req.file) {
     return sendError(res, "Face image is required", 400);
   }
 
-  // 3. Validate face descriptor (optional but recommended)
+  // Validate face descriptor
   let parsedDescriptor = null;
   if (faceDescriptor) {
     try {
       parsedDescriptor = JSON.parse(faceDescriptor);
-
-      // Validate descriptor format (should be array of 128 numbers)
       if (!Array.isArray(parsedDescriptor) || parsedDescriptor.length !== 128) {
-        console.warn("Invalid face descriptor format. Expected array of 128 numbers.");
+        console.warn("Invalid face descriptor format");
         parsedDescriptor = null;
       }
     } catch (error) {
@@ -61,31 +86,30 @@ export const uploadFaceCapture = asyncHandler(async (req, res) => {
   }
 
   try {
-    // 3. Check if candidate exists
+    // Check if candidate exists
     const candidate = await prisma.candidate.findUnique({
       where: { id: candidateId },
     });
 
     if (!candidate) {
-      // Delete uploaded file if candidate not found
-      fs.unlinkSync(req.file.path);
       return sendError(res, "Candidate not found", 404);
     }
 
-    // 4. Check if identity verification record exists
+    // Check if identity verification record exists
     let verification = await prisma.identityVerification.findUnique({
       where: { attemptId },
     });
 
-    // 5. Read uploaded image
-    const imageBuffer = fs.readFileSync(req.file.path);
+    // req.file.path is now Cloudinary URL - download to process
+    const cloudinaryUrl = req.file.path;
+    const { buffer, path: tempPath } = await downloadFromCloudinary(cloudinaryUrl);
 
-    // 6. Check image quality (blur detection)
-    const blurCheck = await checkImageBlur(imageBuffer);
+    // Check image quality (blur detection)
+    const blurCheck = await checkImageBlur(buffer);
 
     if (blurCheck.isBlurry) {
-      // Delete blurry image
-      fs.unlinkSync(req.file.path);
+      // Delete temp file
+      fs.unlinkSync(tempPath);
       return sendError(
         res,
         `Image is too blurry (sharpness: ${blurCheck.sharpness}). Please retake with better lighting.`,
@@ -93,43 +117,52 @@ export const uploadFaceCapture = asyncHandler(async (req, res) => {
       );
     }
 
-    // 7. Get image metadata
-    const metadata = await getImageMetadata(imageBuffer);
+    // Get image metadata
+    const metadata = await getImageMetadata(buffer);
 
-    // 8. Resize image if too large (save storage)
-    let finalImagePath = req.file.path;
+    // Resize image if too large
+    let finalCloudinaryUrl = cloudinaryUrl;
     if (metadata.width > 1280 || metadata.height > 720) {
-      const resizedBuffer = await resizeImage(imageBuffer);
-      fs.writeFileSync(req.file.path, resizedBuffer);
-      console.log(`Image resized from ${metadata.width}x${metadata.height}`);
+      const resizedBuffer = await resizeImage(buffer);
+
+      // Re-upload resized version to Cloudinary
+      const base64Image = resizedBuffer.toString('base64');
+      const result = await cloudinary.uploader.upload(
+        `data:image/jpeg;base64,${base64Image}`,
+        {
+          folder: 'hitouchcx/faces',
+          public_id: `face-${attemptId}-${Date.now()}`,
+        }
+      );
+
+      finalCloudinaryUrl = result.secure_url;
+      console.log(`✅ Image resized and re-uploaded from ${metadata.width}x${metadata.height}`);
     }
 
-    // 9. Store relative path (not absolute)
-    const relativePath = path.relative(process.cwd(), finalImagePath);
+    // Delete temp file
+    fs.unlinkSync(tempPath);
 
-    // 10. Create or update identity verification record
+    // Create or update identity verification record
     if (verification) {
-      // Update existing record
       verification = await prisma.identityVerification.update({
         where: { attemptId },
         data: {
-          faceImagePath: relativePath,
+          faceImagePath: finalCloudinaryUrl,
           faceDetectedInitial: true,
-          faceQualityScore: blurCheck.sharpness / 1000, // Normalize to 0-1 scale
-          faceEmbedding: parsedDescriptor, // NEW: Store face descriptor
+          faceQualityScore: blurCheck.sharpness / 1000,
+          faceEmbedding: parsedDescriptor,
           verificationStatus: "IN_PROGRESS",
         },
       });
     } else {
-      // Create new record
       verification = await prisma.identityVerification.create({
         data: {
           candidateId,
           attemptId,
-          faceImagePath: relativePath,
+          faceImagePath: finalCloudinaryUrl,
           faceDetectedInitial: true,
           faceQualityScore: blurCheck.sharpness / 1000,
-          faceEmbedding: parsedDescriptor, // NEW: Store face descriptor
+          faceEmbedding: parsedDescriptor,
           verificationStatus: "IN_PROGRESS",
         },
       });
@@ -148,10 +181,7 @@ export const uploadFaceCapture = asyncHandler(async (req, res) => {
       "Face captured successfully",
     );
   } catch (error) {
-    // Clean up uploaded file on error
-    if (req.file && fs.existsSync(req.file.path)) {
-      fs.unlinkSync(req.file.path);
-    }
+    console.error('❌ Error in uploadFaceCapture:', error);
     throw error;
   }
 });
@@ -163,12 +193,10 @@ export const uploadFaceCapture = asyncHandler(async (req, res) => {
 export const getReferenceDescriptor = asyncHandler(async (req, res) => {
   const { attemptId } = req.params;
 
-  // 1. Validate required fields
   if (!attemptId) {
     return sendError(res, "Attempt ID is required", 400);
   }
 
-  // 2. Get candidateId from attemptId (same pattern as previous functions)
   const attempt = await prisma.candidateAssessment.findUnique({
     where: { id: attemptId },
     select: { candidateId: true },
@@ -181,7 +209,6 @@ export const getReferenceDescriptor = asyncHandler(async (req, res) => {
   const candidateId = attempt.candidateId;
 
   try {
-    // 3. Get identity verification record
     const verification = await prisma.identityVerification.findUnique({
       where: { attemptId },
       select: {
@@ -200,12 +227,10 @@ export const getReferenceDescriptor = asyncHandler(async (req, res) => {
       );
     }
 
-    // 3. Verify ownership
     if (verification.candidateId !== candidateId) {
       return sendError(res, "Unauthorized access to verification data", 403);
     }
 
-    // 4. Check if face descriptor exists
     if (!verification.faceEmbedding) {
       return sendError(res, "Face descriptor not found. Please retake face capture.", 404);
     }
@@ -245,7 +270,6 @@ export const logFaceComparison = asyncHandler(async (req, res) => {
   }
 
   try {
-    // Get candidateId from attemptId (same pattern as other functions)
     const attempt = await prisma.candidateAssessment.findUnique({
       where: { id: attemptId },
       select: { candidateId: true },
@@ -257,7 +281,6 @@ export const logFaceComparison = asyncHandler(async (req, res) => {
 
     const candidateId = attempt.candidateId;
 
-    // Check if verification record exists
     let verification = await prisma.identityVerification.findUnique({
       where: { attemptId },
       select: {
@@ -361,7 +384,6 @@ export const logFaceComparison = asyncHandler(async (req, res) => {
     let snapshot = null;
     if (!matched && snapshotBase64) {
       try {
-        // ✅ FIXED: Added all required fields
         snapshot = await prisma.violationSnapshot.create({
           data: {
             verificationId: verification.id,
@@ -409,50 +431,46 @@ export const uploadAudioRecording = asyncHandler(async (req, res) => {
   const { attemptId } = req.params;
   const { originalText, transcription } = req.body;
 
-  // 1. Validate required fields
+  // Validate required fields
   if (!attemptId || !originalText) {
     return sendError(res, "Attempt ID and original text are required", 400);
   }
 
-  // 2. Check if file was uploaded
+  // Check if file was uploaded
   if (!req.file) {
     return sendError(res, "Audio file is required", 400);
   }
 
-  // 3. Get candidateId from attemptId (same pattern as other functions)
+  // Get candidateId from attemptId
   const attempt = await prisma.candidateAssessment.findUnique({
     where: { id: attemptId },
     select: { candidateId: true },
   });
 
   if (!attempt) {
-    // Clean up uploaded file
-    if (req.file && fs.existsSync(req.file.path)) {
-      fs.unlinkSync(req.file.path);
-    }
     return sendError(res, "Assessment attempt not found", 404);
   }
 
   const candidateId = attempt.candidateId;
 
+  let tempPath = null;
+
   try {
-    // 4. Check if candidate exists
+    // Check if candidate exists
     const candidate = await prisma.candidate.findUnique({
       where: { id: candidateId },
     });
 
     if (!candidate) {
-      fs.unlinkSync(req.file.path);
       return sendError(res, "Candidate not found", 404);
     }
 
-    // 4. Get identity verification record
+    // Get identity verification record
     let verification = await prisma.identityVerification.findUnique({
       where: { attemptId },
     });
 
     if (!verification) {
-      fs.unlinkSync(req.file.path);
       return sendError(
         res,
         "Identity verification not found. Please complete face capture first.",
@@ -460,28 +478,33 @@ export const uploadAudioRecording = asyncHandler(async (req, res) => {
       );
     }
 
-    // 5. Check retry limit (max 3 attempts)
+    // Check retry limit (max 3 attempts)
     if (verification.audioAttemptCount >= 3) {
-      fs.unlinkSync(req.file.path);
       return sendError(res, "Maximum audio recording attempts (3) exceeded", 400);
     }
 
-    // 6. Process audio (compress if needed)
-    const audioResult = await processAudio(req.file.path);
+    // req.file.path is Cloudinary URL - download for processing
+    const cloudinaryUrl = req.file.path;
+    const downloadResult = await downloadFromCloudinary(cloudinaryUrl);
+    tempPath = downloadResult.path;
+
+    // Process audio (compress if needed)
+    const audioResult = await processAudio(tempPath);
     const finalAudioPath = audioResult.filePath;
 
-    // 7. Get audio duration
+    // Get audio duration
     const duration = await getAudioDuration(finalAudioPath);
 
-    // 8. Get transcription
-    let finalTranscription = transcription; // From frontend (Web Speech API)
+    // Get transcription
+    let finalTranscription = transcription;
 
-    // If no transcription provided, use Groq Whisper as fallback (FREE & FAST!)
+    // If no transcription provided, use Groq Whisper as fallback
     if (!finalTranscription || finalTranscription.trim() === "") {
-      console.log("No transcription from frontend. Using Groq Whisper (FREE) fallback...");
+      console.log("No transcription from frontend. Using Groq Whisper fallback...");
 
       if (!isGroqTranscriptionConfigured()) {
         fs.unlinkSync(finalAudioPath);
+        if (tempPath && tempPath !== finalAudioPath) fs.unlinkSync(tempPath);
         return sendError(
           res,
           "Groq transcription service not configured. Please set GROQ_API_KEY.",
@@ -495,17 +518,14 @@ export const uploadAudioRecording = asyncHandler(async (req, res) => {
       console.log("Groq transcription complete:", finalTranscription.substring(0, 100));
     }
 
-    // 9. Calculate match score (90% threshold for accuracy)
+    // Calculate match score (90% threshold)
     const matchResult = checkMatch(originalText, finalTranscription, 90);
 
-    // 10. Store relative path
-    const relativePath = path.relative(process.cwd(), finalAudioPath);
-
-    // 11. Update identity verification record
+    // Update identity verification record with Cloudinary URL
     const updatedVerification = await prisma.identityVerification.update({
       where: { attemptId },
       data: {
-        audioRecordingPath: relativePath,
+        audioRecordingPath: cloudinaryUrl, // Store Cloudinary URL
         audioTranscription: finalTranscription,
         audioOriginalText: originalText,
         audioMatchScore: matchResult.score,
@@ -514,7 +534,15 @@ export const uploadAudioRecording = asyncHandler(async (req, res) => {
       },
     });
 
-    // 12. Prepare response
+    // Clean up temp files
+    if (finalAudioPath && fs.existsSync(finalAudioPath)) {
+      fs.unlinkSync(finalAudioPath);
+    }
+    if (tempPath && tempPath !== finalAudioPath && fs.existsSync(tempPath)) {
+      fs.unlinkSync(tempPath);
+    }
+
+    // Prepare response
     const response = {
       verification: updatedVerification,
       audioValidation: {
@@ -533,17 +561,18 @@ export const uploadAudioRecording = asyncHandler(async (req, res) => {
       },
     };
 
-    // 13. Check if warning needed (2nd failed attempt)
+    // Check if warning needed
     if (!matchResult.isMatch && updatedVerification.audioAttemptCount === 2) {
       response.warning = "This is your 2nd failed attempt. You have 1 more try remaining.";
     }
 
     return sendSuccess(res, response, "Audio recorded successfully");
   } catch (error) {
-    // Clean up uploaded file on error
-    if (req.file && fs.existsSync(req.file.path)) {
-      fs.unlinkSync(req.file.path);
+    // Clean up temp files on error
+    if (tempPath && fs.existsSync(tempPath)) {
+      fs.unlinkSync(tempPath);
     }
+    console.error('❌ Error in uploadAudioRecording:', error);
     throw error;
   }
 });

@@ -1,0 +1,124 @@
+services:
+  # Main Backend API Service
+  - type: web
+    name: hitouchcx-backend
+    runtime: node
+    env: node
+    region: singapore # Change to your preferred region (oregon, frankfurt, singapore, ohio)
+    plan: free # Options: free, starter ($7/mo), standard ($25/mo)
+    buildCommand: npm install && npx prisma generate
+    startCommand: node server.js
+    healthCheckPath: /health
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 10000
+      # Database - Add from Render dashboard or sync from .env
+      - key: DATABASE_URL
+        sync: false # Set to true if using Render PostgreSQL
+      - key: DIRECT_URL
+        sync: false
+      - key: PRISMA_CLIENT_ENGINE_TYPE
+        value: binary
+
+      # JWT Secret - MUST BE SET IN RENDER DASHBOARD
+      - key: JWT_SECRET
+        sync: false
+
+      # Email Configuration
+      - key: SMTP_USER
+        sync: false
+      - key: SMTP_PASS
+        sync: false
+      - key: SENDGRID_API_KEY
+        sync: false
+
+      # Twilio
+      - key: TWILIO_ACCOUNT_SID
+        sync: false
+      - key: TWILIO_AUTH_TOKEN
+        sync: false
+      - key: TWILIO_PHONE_NUMBER
+        sync: false
+      - key: TWILIO_VERIFY_SERVICE_SID
+        sync: false
+
+      # Discord
+      - key: DISCORD_WEBHOOK_URL
+        sync: false
+      - key: ADMIN_PHONE_NUMBER
+        sync: false
+
+      # OAuth
+      - key: GOOGLE_CLIENT_ID
+        sync: false
+      - key: GOOGLE_CLIENT_SECRET
+        sync: false
+      - key: GOOGLE_CALLBACK_URL
+        sync: false
+
+      # Cloudinary
+      - key: CLOUDINARY_CLOUD_NAME
+        sync: false
+      - key: CLOUDINARY_API_KEY
+        sync: false
+      - key: CLOUDINARY_API_SECRET
+        sync: false
+
+      # AI Services
+      - key: GEMINI_API_KEY
+        sync: false
+      - key: GROQ_API_KEY
+        sync: false
+      - key: GROQ_MODEL
+        value: llama-3.3-70b-versatile
+      - key: HUGGINGFACE_API_KEY
+        sync: false
+      - key: ASSEMBLYAI_API_KEY
+        sync: false
+
+      # KYC Configuration
+      - key: KYC_APP_ID
+        sync: false
+      - key: KYC_API_KEY
+        sync: false
+
+      # Perfios
+      - key: PERFIOS_SECURE_ID
+        sync: false
+      - key: PERFIOS_SECURE_CRED
+        sync: false
+      - key: PERFIOS_ORG_ID
+        sync: false
+      - key: PERFIOS_API_BASE_URL
+        value: https://hub-test.perfios.ai
+      - key: PERFIOS_TIMEOUT
+        value: 180000
+
+      # DigiLocker - UPDATE THESE WITH RENDER URL AFTER DEPLOYMENT
+      - key: DIGILOCKER_REDIRECT_URL
+        sync: false
+      - key: DIGILOCKER_CUSTOM_DOC_LIST
+        value: ADHAR,PANCR
+      - key: DIGILOCKER_SESSION_EXPIRY_MINUTES
+        value: 30
+
+      # Frontend URLs - UPDATE THESE WITH YOUR ACTUAL FRONTEND URL
+      - key: FRONTEND_URL
+        sync: false
+      - key: FRONTEND_KYC_SUCCESS_URL
+        sync: false
+      - key: FRONTEND_KYC_ERROR_URL
+        sync: false
+
+      # System Admin
+      - key: SYSTEM_ADMIN_ID
+        sync: false
+
+# Optional: If you want Render to manage your PostgreSQL database
+# databases:
+#   - name: hitouchcx-db
+#     databaseName: hitouchcx
+#     user: hitouchcx_user
+#     plan: free # Free tier: 90 days, then $7/mo for starter

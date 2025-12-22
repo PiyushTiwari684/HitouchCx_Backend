@@ -1,22 +1,20 @@
-import prisma from '../../../config/db.js'; 
-import ImageProcessor from '../../../utils/imageProcessor.js';
-import fs from 'fs/promises';
-import {uploadToCloudinary,deleteFromCloudinary } from '../../../utils/cloudinaryUpload.js'
+import prisma from '../../../config/db.js';
+import { deleteFromCloudinary } from '../../../utils/cloudinaryUpload.js';
 
 /**
  * Upload and process agent profile photo
  * @param {Object} req - Express request object
  * @param {Object} res - Express response object
-*/  
+ */
 const uploadAgentPhoto = async (req, res) => {
   try {
     const { agentId } = req.params;
 
     // Check if file was uploaded
     if (!req.file) {
-      return res.status(400).json({ 
+      return res.status(400).json({
         success: false,
-        error: 'No file uploaded' 
+        error: 'No file uploaded'
       });
     }
 
@@ -25,29 +23,35 @@ const uploadAgentPhoto = async (req, res) => {
       where: { id: agentId }
     });
 
-    // if (!agent) {
-    //   // Delete uploaded file if agent not found
-    //   await fs.unlink(req.file.path);
-    //   return res.status(404).json({ 
-    //     success: false,
-    //     error: 'Agent not found' 
-    //   });
-    // }
+    if (!agent) {
+      return res.status(404).json({
+        success: false,
+        error: 'Agent not found'
+      });
+    }
 
-    // Process and optimize the uploaded image
-    // const optimizedPath = await ImageProcessor.processProfilePhoto(req.file.path);
+    // When using CloudinaryStorage, req.file contains:
+    // - path: Cloudinary URL
+    // - filename: Cloudinary public_id
+    const cloudinaryUrl = req.file.path;
 
-    const {uploadResult,optimizeUrl,autoCropUrl} = await uploadToCloudinary(req.file.path,agent.id)
+    console.log('✅ File uploaded to Cloudinary:', cloudinaryUrl);
 
     // Delete old profile photo if exists
-    // if (agent.profilePhotoUrl) {
-    //   await ImageProcessor.deletePhoto(agent.profilePhotoUrl);
-    // }
+    if (agent.profilePhotoUrl) {
+      try {
+        await deleteFromCloudinary(agent.id);
+        console.log('🗑️ Old profile photo deleted');
+      } catch (deleteError) {
+        console.warn('⚠️ Could not delete old photo:', deleteError.message);
+        // Continue even if deletion fails
+      }
+    }
 
-   // Update agent with new photo URL
+    // Update agent with new photo URL
     const updatedAgent = await prisma.agent.update({
       where: { id: agentId },
-      data: { profilePhotoUrl: optimizeUrl },
+      data: { profilePhotoUrl: cloudinaryUrl },
       select: {
         id: true,
         firstName: true,
@@ -55,7 +59,6 @@ const uploadAgentPhoto = async (req, res) => {
         profilePhotoUrl: true
       }
     });
-    
 
     return res.status(200).json({
       success: true,
@@ -66,16 +69,7 @@ const uploadAgentPhoto = async (req, res) => {
     });
 
   } catch (error) {
-    console.error('Error uploading photo:', error);
-    
-    // Clean up uploaded file on error
-    if (req.file) {
-      try {
-        await fs.unlink(req.file.path);
-      } catch (unlinkError) {
-        console.error('Error deleting file:', unlinkError);
-      }
-    }
+    console.error('❌ Error uploading photo:', error);
 
     return res.status(500).json({
       success: false,
@@ -89,7 +83,7 @@ const uploadAgentPhoto = async (req, res) => {
  * Delete agent profile photo
  * @param {Object} req - Express request object
  * @param {Object} res - Express response object
-*/
+ */
 const deleteAgentPhoto = async (req, res) => {
   try {
     const { agentId } = req.params;
@@ -114,12 +108,17 @@ const deleteAgentPhoto = async (req, res) => {
       });
     }
 
-    // Delete photo file
-    // await ImageProcessor.deleteFromCloudinary(agent.id);
-     const result = await deleteFromCloudinary(agent.id);
+    // Delete photo from Cloudinary
+    const result = await deleteFromCloudinary(agent.id);
+
     if (result.result !== 'ok' && result.result !== 'not found') {
-      return res.status(502).json({ success: false, error: 'Cloudinary delete failed', details: result });
+      return res.status(502).json({
+        success: false,
+        error: 'Cloudinary delete failed',
+        details: result
+      });
     }
+
     // Update agent record
     await prisma.agent.update({
       where: { id: agentId },
@@ -132,7 +131,7 @@ const deleteAgentPhoto = async (req, res) => {
     });
 
   } catch (error) {
-    console.error('Error deleting photo:', error);
+    console.error('❌ Error deleting photo:', error);
     return res.status(500).json({
       success: false,
       error: 'Failed to delete profile photo',
@@ -141,4 +140,4 @@ const deleteAgentPhoto = async (req, res) => {
   }
 };
 
-export {uploadAgentPhoto,deleteAgentPhoto}
+export { uploadAgentPhoto, deleteAgentPhoto };

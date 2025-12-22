@@ -1,39 +1,26 @@
 import multer from "multer";
-import path from "path";
-import fs from "fs";
-import { fileURLToPath } from "url";
-
-// ====== __dirname for ES modules ======
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
-
-// Helper: ensure directory exists
-function ensureDir(dirPath) {
-  if (!fs.existsSync(dirPath)) {
-    fs.mkdirSync(dirPath, { recursive: true });
-  }
-}
+import { CloudinaryStorage } from "multer-storage-cloudinary";
+import cloudinary from "./cloudinary.config.js";
 
 // ====== 1) PROFILE PHOTOS (agents) ======
-const profilePhotosDir = path.join(process.cwd(), "uploads", "profilePhotos");
-ensureDir(profilePhotosDir);
-
-const profilePhotoStorage = multer.diskStorage({
-  destination: (req, file, cb) => {
-    cb(null, profilePhotosDir);
-  },
-  filename: (req, file, cb) => {
-    const uniqueSuffix = Date.now() + "-" + Math.round(Math.random() * 1e9);
-    cb(null, "agent-" + uniqueSuffix + path.extname(file.originalname));
+const profilePhotoStorage = new CloudinaryStorage({
+  cloudinary: cloudinary,
+  params: {
+    folder: "hitouchcx/profilePhotos",
+    allowed_formats: ["jpg", "jpeg", "png", "gif", "webp"],
+    transformation: [{ width: 500, height: 500, crop: "limit" }],
+    public_id: (req, file) => {
+      const uniqueSuffix = Date.now() + "-" + Math.round(Math.random() * 1e9);
+      return `agent-${uniqueSuffix}`;
+    },
   },
 });
 
 const profilePhotoFileFilter = (req, file, cb) => {
   const allowedTypes = /jpeg|jpg|png|gif|webp/;
-  const extname = allowedTypes.test(path.extname(file.originalname).toLowerCase());
   const mimetype = allowedTypes.test(file.mimetype);
 
-  if (mimetype && extname) {
+  if (mimetype) {
     cb(null, true);
   } else {
     cb(new Error("Only image files are allowed (jpeg, jpg, png, gif, webp)"));
@@ -49,12 +36,18 @@ export const uploadProfilePhoto = multer({
 });
 
 // ====== 2) RESUMES (PDF / DOC / DOCX) ======
-const resumesDir = path.join(process.cwd(), "uploads", "resumes");
-ensureDir(resumesDir);
-
-const resumeStorage = multer.diskStorage({
-  destination: (req, file, cb) => cb(null, resumesDir),
-  filename: (req, file, cb) => cb(null, Date.now() + "-" + file.originalname),
+const resumeStorage = new CloudinaryStorage({
+  cloudinary: cloudinary,
+  params: {
+    folder: "hitouchcx/resumes",
+    allowed_formats: ["pdf", "doc", "docx"],
+    resource_type: "raw", // Important for non-image files
+    public_id: (req, file) => {
+      const timestamp = Date.now();
+      const originalName = file.originalname.replace(/\.[^/.]+$/, ""); // Remove extension
+      return `${timestamp}-${originalName}`;
+    },
+  },
 });
 
 const resumeFileFilter = (req, file, cb) => {
@@ -76,23 +69,18 @@ export const uploadResume = multer({
   fileFilter: resumeFileFilter,
 });
 
-// ====== 3) FACE IMAGES & AUDIO (proctoring) ======
-const facesDir = path.join(process.cwd(), "uploads", "faces");
-const audioDir = path.join(process.cwd(), "uploads", "audio");
-ensureDir(facesDir);
-ensureDir(audioDir);
-
-// Face images
-const faceStorage = multer.diskStorage({
-  destination: (req, file, cb) => {
-    cb(null, facesDir);
-  },
-  filename: (_req, file, cb) => {
-    const timestamp = Date.now();
-    const ext = path.extname(file.originalname);
-    const randomString = Math.random().toString(36).substring(2, 15);
-    const filename = `face-${timestamp}-${randomString}${ext}`;
-    cb(null, filename);
+// ====== 3) FACE IMAGES (proctoring) ======
+const faceStorage = new CloudinaryStorage({
+  cloudinary: cloudinary,
+  params: {
+    folder: "hitouchcx/faces",
+    allowed_formats: ["jpg", "jpeg", "png"],
+    transformation: [{ width: 1000, height: 1000, crop: "limit" }],
+    public_id: (req, file) => {
+      const timestamp = Date.now();
+      const randomString = Math.random().toString(36).substring(2, 15);
+      return `face-${timestamp}-${randomString}`;
+    },
   },
 });
 
@@ -113,39 +101,18 @@ export const uploadFaceImage = multer({
   },
 });
 
-// Audio
-const audioStorage = multer.diskStorage({
-  destination: (req, file, cb) => {
-    cb(null, audioDir);
-  },
-  filename: (_req, file, cb) => {
-    const timestamp = Date.now();
-    const randomString = Math.random().toString(36).substring(2, 15);
-
-    // Get extension from originalname
-    let extension = path.extname(file.originalname);
-
-    // If no extension found, determine from MIME type (CRITICAL FIX!)
-    if (!extension || extension === "") {
-      console.log(
-        `⚠️  No extension in originalname: "${file.originalname}", using MIME type: ${file.mimetype}`,
-      );
-      const mimeToExt = {
-        "audio/webm": ".webm",
-        "audio/webm;codecs=opus": ".webm",
-        "audio/mpeg": ".mp3",
-        "audio/mp3": ".mp3",
-        "audio/wav": ".wav",
-        "audio/ogg": ".ogg",
-        "audio/opus": ".opus",
-      };
-      extension = mimeToExt[file.mimetype] || ".webm"; // Default to .webm
-      console.log(`   ✅ Using extension: ${extension}`);
-    }
-
-    const filename = `audio-${timestamp}-${randomString}${extension}`;
-    console.log(`[Multer] Saving audio as: ${filename}`);
-    cb(null, filename);
+// ====== 4) AUDIO FILES (proctoring) ======
+const audioStorage = new CloudinaryStorage({
+  cloudinary: cloudinary,
+  params: {
+    folder: "hitouchcx/audio",
+    resource_type: "video", // Cloudinary stores audio as 'video' resource type
+    allowed_formats: ["mp3", "wav", "webm", "ogg", "opus"],
+    public_id: (req, file) => {
+      const timestamp = Date.now();
+      const randomString = Math.random().toString(36).substring(2, 15);
+      return `audio-${timestamp}-${randomString}`;
+    },
   },
 });
 

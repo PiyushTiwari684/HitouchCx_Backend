@@ -1,93 +1,148 @@
 import fs from "fs";
+import path from "path";
 import mammoth from "mammoth";
 import ApiError from "../../../utils/ApiError.js";
-import pdfjsLib from "pdfjs-dist/legacy/build/pdf.js"; // for older versions of pdfjs-dist
+import pdfjsLib from "pdfjs-dist/legacy/build/pdf.js";
 import { extractResumeWithFallback, transformToFrontendFormat } from "../../../utils/resumeExtractor.js";
+import axios from "axios";
 
-
-export const extractResume = async(req,res) =>{
-  // get the path of the uploaded file from the multer
-
-  const filePath = req.file?.path;
-  console.log("FilePath:", filePath);
-
-  if(!filePath){
-    throw new ApiError(400," Error : File path is required from controller file ");
-  }
-
-  // read the uploaded file from the disk as a buffer 
-  // this allows us to process both the pdf and word file 
-  let buffer = fs.readFileSync(filePath);
-  console.log("Buffer length : ", buffer.length);
-
-  //Initialize an empty string to hold the extractedt text content 
-  let textContent = "";
-
-  // check the mimetype of the uploaded file to determine how to process it (depending on the file type)
-
-  if(req.file.mimetype === "application/pdf"){
-    // if the file is pdf we use the pdfjs-dist library to extract the text content from the buffer
-    try{
-      // convert the buffer to a typed array(Unit8Array) for pdfjs-dist
-      const data  = new Uint8Array(buffer);
-      // Load the Pdf document 
-      const pdf = await pdfjsLib.getDocument({data}).promise;
-      let pdfText = "";
-
-      // iterate through all the pages and extract the data 
-      for(let i =1; i <=pdf.numPages; i++){
-        const page = await pdf.getPage(i); // get the page
-        const content = await page.getTextContent(); // get the text content of the page 
-
-        // concotenate all the text items on the page to a single string
-        const pageText = content.items.map((item)=>item.str).join(" ");
-        pdfText += `\n\n Page ${i} \n\n ${pageText}`;
-      }
-
-      textContent = pdfText; // set the Extract text content 
-    }catch(err){
-      console.log("Pdf-Parse Error: ", err);
-      throw new ApiError(500," Failed to parse the pdf file ");
-    }
-  }else if(
-    req.file.mimetype === "application/vnd.openxmlformats-officedocument.wordprocessingml.document" ||
-    req.file.mimetype === "application/msword"){
-      // if the file is a word document we use the mammoth library to extract the text content from the buffer
-      try{
-        const result = await mammoth.extractRawText({buffer});
-        textContent = result.value;
-      }catch(err){
-        throw new ApiError(500," Failed to parse the word document ");
-      }
-  }else{
-    throw new ApiError(400," Unsupported file format. Please upload a pdf or word document ");
-  } 
-  
+/**
+ * Download file from Cloudinary URL to temporary location
+ * @param {string} cloudinaryUrl - URL of the file on Cloudinary
+ * @returns {Promise<{path: string, buffer: Buffer}>} - Temp file path and buffer
+ */
+async function downloadFromCloudinary(cloudinaryUrl) {
   try {
-    fs.unlinkSync(filePath);
-  } catch (error) {
-    console.warn("Could not delete temp file:", error.message);
-  }
+    console.log('📥 Downloading file from Cloudinary:', cloudinaryUrl);
 
-  // After extracting textContent, call AI to structure the data
-  try {
-    // Step 1: Extract raw data using AI (Groq/HuggingFace/Gemini with fallback)
-    const rawData = await extractResumeWithFallback(textContent);
-    console.log("Raw AI extraction successful:", rawData._extractedBy);
-
-    // Step 2: Transform raw data to frontend form format
-    const structuredData = transformToFrontendFormat(rawData);
-    console.log("Data transformation complete");
-
-    // Respond with both the file name and the structured data
-    res.json({
-      file: req.file.originalname,
-      structuredData,
-      message: "File uploaded, parsed, and structured successfully"
+    const response = await axios.get(cloudinaryUrl, {
+      responseType: 'arraybuffer'
     });
-  } catch (err) {
-    // Handle errors from AI API
-    console.error("Resume extraction error:", err);
-    throw new ApiError(500, "Failed to structure resume data with AI");
+
+    const buffer = Buffer.from(response.data);
+
+    // Create temp file in /tmp (works on Render)
+    const tempFileName = `resume-${Date.now()}-${Math.random().toString(36).substring(7)}.tmp`;
+    const tempPath = path.join('/tmp', tempFileName);
+
+    fs.writeFileSync(tempPath, buffer);
+
+    console.log('✅ File downloaded to temp:', tempPath);
+
+    return { path: tempPath, buffer };
+  } catch (error) {
+    console.error('❌ Error downloading from Cloudinary:', error.message);
+    throw new Error(`Failed to download file: ${error.message}`);
   }
 }
+
+/**
+ * Extract resume data from uploaded file
+ */
+export const extractResume = async (req, res) => {
+  let tempFilePath = null;
+
+  try {
+    // When using CloudinaryStorage, req.file.path is Cloudinary URL
+    const cloudinaryUrl = req.file?.path;
+
+    if (!cloudinaryUrl) {
+      throw new ApiError(400, "Error: File upload failed");
+    }
+
+    console.log('📄 Processing resume from Cloudinary URL:', cloudinaryUrl);
+
+    // Download file from Cloudinary to temp location
+    const { path: filePath, buffer } = await downloadFromCloudinary(cloudinaryUrl);
+    tempFilePath = filePath;
+
+    console.log("Buffer length:", buffer.length);
+
+    // Initialize an empty string to hold the extracted text content
+    let textContent = "";
+
+    // Check the mimetype of the uploaded file to determine how to process it
+    if (req.file.mimetype === "application/pdf") {
+      // Process PDF
+      try {
+        const data = new Uint8Array(buffer);
+        const pdf = await pdfjsLib.getDocument({ data }).promise;
+        let pdfText = "";
+
+        // Iterate through all pages and extract text
+        for (let i = 1; i <= pdf.numPages; i++) {
+          const page = await pdf.getPage(i);
+          const content = await page.getTextContent();
+          const pageText = content.items.map((item) => item.str).join(" ");
+          pdfText += `\n\n Page ${i} \n\n ${pageText}`;
+        }
+
+        textContent = pdfText;
+      } catch (err) {
+        console.log("PDF-Parse Error:", err);
+        throw new ApiError(500, "Failed to parse the PDF file");
+      }
+    } else if (
+      req.file.mimetype === "application/vnd.openxmlformats-officedocument.wordprocessingml.document" ||
+      req.file.mimetype === "application/msword"
+    ) {
+      // Process Word document
+      try {
+        const result = await mammoth.extractRawText({ buffer });
+        textContent = result.value;
+      } catch (err) {
+        throw new ApiError(500, "Failed to parse the Word document");
+      }
+    } else {
+      throw new ApiError(400, "Unsupported file format. Please upload a PDF or Word document");
+    }
+
+    // Delete temp file
+    try {
+      fs.unlinkSync(tempFilePath);
+      console.log('🗑️ Temp file deleted');
+    } catch (error) {
+      console.warn("⚠️ Could not delete temp file:", error.message);
+    }
+
+    // Extract and structure data using AI
+    try {
+      // Step 1: Extract raw data using AI (Groq/HuggingFace/Gemini with fallback)
+      const rawData = await extractResumeWithFallback(textContent);
+      console.log("✅ Raw AI extraction successful:", rawData._extractedBy);
+
+      // Step 2: Transform raw data to frontend form format
+      const structuredData = transformToFrontendFormat(rawData);
+      console.log("✅ Data transformation complete");
+
+      // Respond with structured data and Cloudinary URL
+      res.json({
+        file: req.file.originalname,
+        cloudinaryUrl: cloudinaryUrl,
+        structuredData,
+        message: "Resume uploaded, parsed, and structured successfully"
+      });
+    } catch (err) {
+      console.error("❌ Resume extraction error:", err);
+      throw new ApiError(500, "Failed to structure resume data with AI");
+    }
+  } catch (error) {
+    // Clean up temp file on error
+    if (tempFilePath && fs.existsSync(tempFilePath)) {
+      try {
+        fs.unlinkSync(tempFilePath);
+      } catch (unlinkError) {
+        console.warn("⚠️ Could not delete temp file:", unlinkError.message);
+      }
+    }
+
+    // Return error response
+    const statusCode = error.statusCode || 500;
+    const message = error.message || "Failed to process resume";
+
+    res.status(statusCode).json({
+      success: false,
+      error: message
+    });
+  }
+};
