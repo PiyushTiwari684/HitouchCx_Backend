@@ -105,9 +105,48 @@ const logIn = async (req, res) => {
             select: {
               id: true,
               firstName: true,
-              lastName: true
+              lastName: true,
+              kycStatus: true
             }
           });
+
+          // Fetch latest assessment attempt to determine progress
+          const assessment = await prisma.candidateAssessment.findFirst({
+            where: {
+              candidate: {
+                agentId: agent?.id
+              }
+            },
+            orderBy: { createdAt: 'desc' },
+            select: {
+              sessionStatus: true,
+              startedAt: true,
+              fullscreenEntered: true,
+              completedAt: true
+            }
+          });
+
+          // Calculate next step in registration flow
+          console.log('=== DEBUG LOGIN ===');
+          console.log('User data:', {
+            id: user.id,
+            email: user.email,
+            emailVerified: user.emailVerified,
+            profileCompleted: user.profileCompleted,
+            kycCompleted: user.kycCompleted,
+            agreementSigned: user.agreementSigned,
+            assessmentStatus: user.assessmentStatus
+          });
+          console.log('Agent data:', {
+            id: agent?.id,
+            kycStatus: agent?.kycStatus
+          });
+          console.log('Assessment data:', assessment);
+
+          const nextStep = calculateNextStep(user, agent, assessment);
+
+          console.log('Calculated nextStep:', nextStep);
+          console.log('=== END DEBUG ===');
 
           return res.json({
             message: "User Authenticated",
@@ -118,7 +157,9 @@ const logIn = async (req, res) => {
             // Include agent details for frontend
             agentId: agent?.id || null,
             firstName: agent?.firstName || null,
-            lastName: agent?.lastName || null
+            lastName: agent?.lastName || null,
+            // Include next step for frontend routing
+            nextStep: nextStep
           })
         } else {
           return res.status(401).json({ error: "Invalid credentials or user not active" })
